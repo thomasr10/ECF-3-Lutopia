@@ -18,5 +18,5 @@ abstract class Model {
         }
 
         return self::$db;
-    
+    }
 }
