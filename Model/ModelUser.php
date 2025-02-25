@@ -1,6 +1,6 @@
 <?php
 
-class ModelUser {
+class ModelUser extends Model{
 
     public function checkUser(string $name, string $email){
         $req = $this->getDb()->prepare("SELECT `name`, `email` FROM `user` WHERE `name` = :name OR `email` = :email");
