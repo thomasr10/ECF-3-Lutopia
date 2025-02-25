@@ -11,7 +11,19 @@ class ControllerMail extends Mail {
         $model = new ModelUser();
         $user = $model->getNewUser($id);
         $email = $user->getEmail();
-        $name = $user->getName();
+        $name = $user->getUser_name();
+        $token = $user->getToken();
+
+        $phpmailer->setFrom('lutopia@gmail.com', 'Lutopia');
+        $phpmailer->addAddress($email, $name);
+
+        $phpmailer->isHtml(true);
+        $phpmailer->Subject = "Confirmation d'inscription";
+        $phpmailer->Body = "Bonjour " . $name . '.' . "Veuillez confirmez votre inscription en cliquant sur le <a href=" . "http://localhost/lutopia/confirm-user/" . $token . ">lien</a>";
+        $phpmailer->AltBody = "Inscription";
+        $phpmailer->send();
+
+        require_once('./view/confirmation.php');
     }
 
 }

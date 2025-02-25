@@ -18,15 +18,18 @@ class ControllerUser {
 
                         if($_POST['password'] === $_POST['confpassword'] && preg_match($pattern, $_POST['password'])){
                             $hashed_pass = password_hash($_POST['password'], PASSWORD_BCRYPT);
-                            $lastId = $model->newUser($_POST['name'], $_POST['email'], $hashed_pass);
+                            $token = bin2hex(random_bytes(50));
+                            $lastId = $model->newUser($_POST['name'], $_POST['email'], $hashed_pass, $token);
                             $id = intval($lastId);
 
-                            header('Location: /confirmation/' . $id);
+                            header('Location: /lutopia/confirmation/' . $id);
                             exit();
 
                         } else {
                             $message = "Mots de passe différents ou insuffisants";                       
                         }
+                    } else {
+                        $message = "Adresse mail invalide";
                     }
                 } else {
                     $message = "Tous les champs doivent être remplis";
@@ -36,6 +39,23 @@ class ControllerUser {
         } else {
             require_once('./View/register.php');
         }
+    }
 
+    public function confirmUser(string $token){
+        $url = $_SERVER['REQUEST_URI'];
+        $part = explode('/', $url);
+        $token = end($part);
+        $model = new ModelUser();
+        $user = $model->checkUserByToken($token);
+
+        if($user){
+            $email = $user->getEmail();
+            $model->validateUser($email);
+            header('Location: /lutopia');
+            exit();
+        } else {
+            require_once('./View/confirm-token.php');
+            die('test');
+        }
     }
 }
