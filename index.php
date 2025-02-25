@@ -8,6 +8,9 @@ $router = new AltoRouter();
 $router->setBasePath('/lutopia');
 
 //ROUTES
+//homepage
+$router->map('GET', '/', 'ControllerBook#home', 'home');
+
 //inscription
 $router->map('GET|POST', '/register', 'ControllerUser#register', 'register');
 $router->map('GET', '/confirmation/[i:id]', 'ControllerMail#sendMail', 'send-mail');

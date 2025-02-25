@@ -12,7 +12,7 @@ abstract class Model {
         }
     }
 
-    private static function getDb(){
+    protected static function getDb(){
         if(self::$db === null){
             self::setDb();
         }
