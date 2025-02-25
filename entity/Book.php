@@ -6,6 +6,7 @@ class Book {
     private $isbn;
     private $title;
     private $editor;
+    private $img_src;
     private $publication_date;
     private $edition_date;
     private $synopsis;
@@ -41,6 +42,9 @@ class Book {
     public function getEditor(){
         return $this->editor;
     }
+    public function getImg_Src(){
+        return $this->img_src;
+    }
     public function getPublication_date(){
         return $this->publication_date;
     }
@@ -62,7 +66,7 @@ class Book {
     public function setId_book(int $id_book){
         $this->id_book = $id_book;
     }
-    public function setIsbn(int $isbn){
+    public function setIsbn(string $isbn){
         $this->isbn = $isbn;
     }
     public function setTitle(string $title){
@@ -70,6 +74,9 @@ class Book {
     }
     public function setEditor(string $editor){
         $this->editor = $editor;
+    }
+    public function setImg_Src(string $img_src){
+        $this->img_src = $img_src;
     }
     public function setPublication_date(string $publication_date){
         $this->publication_date = new DateTime($publication_date);

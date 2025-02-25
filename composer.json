@@ -1,6 +1,6 @@
 {
     "autoload": {
-        "classmap": ["entity/", "controller/", "model/", "view/"]
+        "classmap": ["entity/", "Controller/", "Model/", "View/"]
     },
 
     "require": {
