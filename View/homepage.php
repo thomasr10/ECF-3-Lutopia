@@ -6,9 +6,12 @@ ob_start();
     <h1>Bienvenue sur la page d'accueil</h1>
         <?php foreach($datas as $key=>$value){ ?>
             <article>
-                <img src="./<?= $datas[$key]->getImg_Src() ?>" alt="" width="200px" height="200px">
-                <h2><?= $datas[$key]->getTitle(); ?> </h2>
-                <p>par les <?= $datas[$key]->getEditor();?></p>
+                <img src="./<?= $datas[$key]->book->getImg_Src() ?>" alt="" width="200px" height="200px"> <!-- image pour chaque livre --> 
+                <h2><?= $datas[$key]->book->getTitle(); ?> </h2> <!-- titre  --> 
+                <p> écrit par <?= $datas[$key]->author ?> <!-- auteur  --> 
+                <p> illustrée par <?= $datas[$key]->illustrator ?> <!-- illustrateur  --> 
+                <p>par les <?= $datas[$key]->book->getEditor();?></p> <!-- edition  --> 
+                
             </article>
             <?php }?>
 <?php 
