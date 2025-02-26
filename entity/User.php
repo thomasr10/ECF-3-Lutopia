@@ -3,7 +3,8 @@
 class User {
 
     private $id_user;
-    private $user_name;
+    private $first_name;
+    private $last_name;
     private $email;
     private $password;
     private $role;
@@ -31,8 +32,11 @@ class User {
     public function getId_user(){
         return $this->id_user;
     }
-    public function getUser_name(){
-        return $this->user_name;
+    public function getFirst_name(){
+        return $this->first_name;
+    }
+    public function getLast_name(){
+        return $this->last_name;
     }
     public function getEmail(){
         return $this->email;
@@ -59,8 +63,11 @@ class User {
     public function setId_user(int $id_user){
         $this->id_user = $id_user;
     }
-    public function setUser_name(string $user_name){
-        $this->user_name = $user_name;
+    public function setFirst_name(string $first_name){
+        $this->first_name = $first_name;
+    }
+    public function setLast_name(string $last_name){
+        $this->last_name = $last_name;
     }
     public function setEmail(string $email){
         $this->email = $email;

@@ -3,6 +3,8 @@
 class ControllerMail extends Mail {
 
     public function sendMail($id){
+        global $router;
+
         $url = $_SERVER['REQUEST_URI'];
         $s = explode('/', $url);
         $id = intval(end($s));
@@ -11,7 +13,7 @@ class ControllerMail extends Mail {
         $model = new ModelUser();
         $user = $model->getNewUser($id);
         $email = $user->getEmail();
-        $name = $user->getUser_name();
+        $name = $user->getFirst_name();
         $token = $user->getToken();
 
         $phpmailer->setFrom('lutopia@gmail.com', 'Lutopia');

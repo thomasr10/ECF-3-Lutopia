@@ -5,22 +5,34 @@ class ControllerUser {
     public function register(){
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
+            
             $model = new ModelUser();
-            $user = $model->checkUser($_POST['name'], $_POST['email']);
-
+            $user = $model->checkUser($_POST['email']);
             if($user){
-                $message = "Adresse mail ou pseudo déjà existant";
+                $message = "Adresse mail déjà existante";
+                
             } else {
-                if(!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confpassword'])){
+                if(!empty($_POST['first-name']) && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confpassword'])&& !empty($_POST['child-name']) && !empty($_POST['child-birth'])){
+                    //Check if more than 1 child
                     if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
                         $pattern = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[?.!+*-_&*]).{8,}$/";
+
+                        $arrayChild = [];
+                        //associate child name with child birth
+                        for($i = 0; $i < count($_POST['child-name']); $i++){
+                            $arrayChild[] = [
+                                "name" => $_POST['child-name'][$i],
+                                "birth" => $_POST['child-birth'][$i]
+                            ];
+                        }
 
                         if($_POST['password'] === $_POST['confpassword'] && preg_match($pattern, $_POST['password'])){
                             $hashed_pass = password_hash($_POST['password'], PASSWORD_BCRYPT);
                             $token = bin2hex(random_bytes(50));
-                            $lastId = $model->newUser($_POST['name'], $_POST['email'], $hashed_pass, $token);
+                            $lastId = $model->newUser($_POST['first-name'], $_POST['name'], $_POST['email'], $hashed_pass, $token);
                             $id = intval($lastId);
+
+                            $model->newChild($id, $arrayChild);
 
                             header('Location: /lutopia/confirmation/' . $id);
                             exit();
@@ -41,6 +53,14 @@ class ControllerUser {
         }
     }
 
+    public function newMail(int $id){
+        $model = new ModelUser;
+        $token = bin2hex(random_bytes(50));
+        $model->updateToken($id, $token);
+        header('Location: /lutopia/confirmation/' . $id);
+        exit();
+    }
+
     public function confirmUser(string $token){
         $url = $_SERVER['REQUEST_URI'];
         $part = explode('/', $url);
@@ -58,4 +78,5 @@ class ControllerUser {
             die('test');
         }
     }
+
 }

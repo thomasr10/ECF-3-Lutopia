@@ -7,8 +7,9 @@ ob_start();
 ?>
 <!-- affichage temporaire -->
 <h1>Vérifiez votre boîte mail</h1>
+<a href="<?= $router->generate('new-mail', ['id' => $id]) ?>">Renvoyer un mail</a>
 <!-- MESSAGE D'ERREUR -->
-<?= $message ?>
+<?= (isset($message)) ? $message : '' ?>
 
 <?php 
 $content = ob_get_contents();
