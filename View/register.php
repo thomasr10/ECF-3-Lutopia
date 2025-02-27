@@ -20,7 +20,7 @@ ob_start();
     </div>
     <div>
         <label for="email">Adresse mail</label>
-        <input type="text" placeholder="Votre adresse mail" name="email" id="email" required>
+        <input type="email" placeholder="Votre adresse mail" name="email" id="email" required>
     </div>
     <div id="child-section">
         <div>

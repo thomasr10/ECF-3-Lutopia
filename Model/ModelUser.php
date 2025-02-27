@@ -67,4 +67,19 @@ class ModelUser extends Model {
         $req->bindParam('email', $email, PDO::PARAM_STR);
         $req->execute();
     }
+
+    public function checkUserByEmail(string $email){
+        $req = $this->getDb()->prepare("SELECT `id_user`, `first_name`, `last_name`, `email`, `password`, `role`, `status` FROM `user` WHERE `email` = :email");
+        $req->bindParam('email', $email, PDO::PARAM_STR);
+        $req->execute();
+
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+        return ($data) ? new User($data) : null;
+    }
+
+    public function isConnected(){
+        if(isset($_SESSION['id'])){
+            header('Location: /');
+        }
+    }
 }

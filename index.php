@@ -14,9 +14,11 @@ $router->map('GET', '/', 'ControllerBook#home', 'home');
 //inscription
 $router->map('GET|POST', '/register', 'ControllerUser#register', 'register');
 $router->map('GET', '/confirmation/[i:id]', 'ControllerMail#sendMail', 'send-mail');
-$router->map('GET',  '/new-mail/[i:id]', 'ControllerUser#newMail', 'new-mail');
+$router->map('GET',  '/new-mail/[i:id]', 'ControllerUser#newVerificationMail', 'new-mail');
 $router->map('GET', '/confirm-user/[a:token]', 'ControllerUser#confirmUser', 'confirm-user');
 
+//connexion
+$router->map('GET|POST', '/login', 'ControllerUser#login', 'login');
 
 
 $match = $router->match();

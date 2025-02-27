@@ -3,9 +3,11 @@
 class ControllerUser {
     
     public function register(){
+
+        $model = new ModelUser();
+        $model->isConnected();
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             
-            $model = new ModelUser();
             $user = $model->checkUser($_POST['email']);
             if($user){
                 $message = "Adresse mail déjà existante";
@@ -61,7 +63,7 @@ class ControllerUser {
         }
     }
 
-    public function newMail(int $id){
+    public function newVerificationMail(int $id){
         $model = new ModelUser();
         $token = bin2hex(random_bytes(50));
         $model->updateToken($id, $token);
@@ -87,4 +89,37 @@ class ControllerUser {
         }
     }
 
+
+    public function login(){
+
+        $model = new ModelUser();
+        $model->isConnected();
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(!empty($_POST['email']) && !empty($_POST['password'])){
+
+                $user = $model->checkUserByEmail($_POST['email']);
+
+                if($user && password_verify($_POST['password'], $user->getPassword())){
+                    
+                    $_SESSION['id'] = $user->getId_user();
+                    $_SESSION['first-name'] = $user->getFirst_name();
+                    $_SESSION['last-name'] = $user->getLast_name();
+                    $_SESSION['full-name'] = $user->getFirst_Name() . ' ' . $user->getLast_Name();
+
+                    header('Location: /');
+                    exit();
+                } else {
+                    $message = "Adresse mail ou mot de passe incorrect";
+                    require_once('View/login.php');
+                }
+            } else {
+                $message = "Veuillez remplir tous les champs";
+                require_once('View/login.php');                
+            }
+
+
+        } else {
+            require_once('View/login.php');
+        }
+    }
 }

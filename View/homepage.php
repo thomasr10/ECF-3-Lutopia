@@ -2,7 +2,7 @@
 $title = 'Accueil | Lutopia';
 ob_start();
 ?>
-
+<?= (isset($_SESSION['id'])) ? $_SESSION['first-name'] : '' ?>
     <h1>Bienvenue sur la page d'accueil</h1>
         <?php foreach($datas as $key=>$value){ ?>
             <article>
