@@ -7,7 +7,7 @@ ob_start();
 ?>
 
 <h2>Token invalide ou expiré</h2>
-<a href="<?= $router->generate('new-mail', ['id' => $id]) ?>">Renvoyer un mail</a>
+<a href="<?= $router->generate('new-mail', ['id' => $_SESSION['id']]) ?>">Renvoyer un mail</a>
 
 <?php 
 $content = ob_get_contents();

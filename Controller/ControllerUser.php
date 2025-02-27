@@ -62,7 +62,7 @@ class ControllerUser {
     }
 
     public function newMail(int $id){
-        $model = new ModelUser;
+        $model = new ModelUser();
         $token = bin2hex(random_bytes(50));
         $model->updateToken($id, $token);
         header('Location: /confirmation/' . $id);
@@ -70,6 +70,7 @@ class ControllerUser {
     }
 
     public function confirmUser(string $token){
+        global $router;
         $url = $_SERVER['REQUEST_URI'];
         $part = explode('/', $url);
         $token = end($part);
@@ -83,7 +84,6 @@ class ControllerUser {
             exit();
         } else {
             require_once('./View/confirm-token.php');
-            die('test');
         }
     }
 

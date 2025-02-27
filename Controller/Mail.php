@@ -9,6 +9,7 @@ abstract class Mail {
     private static function setPhpmailer(){
         self::$phpmailer = new PHPMailer();
         self::$phpmailer->isSMTP();
+        self::$phpmailer->CharSet = 'UTF-8';
         self::$phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         self::$phpmailer->SMTPAuth = true;
         self::$phpmailer->Port = 2525;
