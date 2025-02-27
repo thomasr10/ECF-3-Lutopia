@@ -19,6 +19,12 @@ $router->map('GET', '/confirm-user/[a:token]', 'ControllerUser#confirmUser', 'co
 
 //connexion
 $router->map('GET|POST', '/login', 'ControllerUser#login', 'login');
+//deconnexion
+$router->map('GET', '/logout', 'ControllerUser#logout', 'logout');
+
+
+
+
 
 
 $match = $router->match();

@@ -4,6 +4,7 @@ class ControllerUser {
     
     public function register(){
 
+        global $router;
         $model = new ModelUser();
         $model->isConnected();
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -92,6 +93,7 @@ class ControllerUser {
 
     public function login(){
 
+        global $router;
         $model = new ModelUser();
         $model->isConnected();
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -121,5 +123,11 @@ class ControllerUser {
         } else {
             require_once('View/login.php');
         }
+    }
+
+    public function logout(){
+        session_unset();
+        session_destroy();
+        header('Location: /');
     }
 }
