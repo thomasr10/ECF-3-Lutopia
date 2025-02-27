@@ -5,7 +5,7 @@ require_once('./vendor/autoload.php');
 require_once('./vendor/altorouter/altorouter/AltoRouter.php');
 
 $router = new AltoRouter();
-$router->setBasePath('/Lutopia');
+
 
 //ROUTES
 //homepage

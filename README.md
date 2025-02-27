@@ -1,4 +1,5 @@
 # ECF-3
-Online library
+Lutopia - Online library only for children
 
-First step : composer install
+- Create virtual host : 'lutopia'
+- composer install in terminal to get dependencies

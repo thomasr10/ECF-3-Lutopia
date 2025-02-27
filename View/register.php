@@ -9,7 +9,7 @@ ob_start();
 <div>
     <p><?= (isset($message)) ? $message : '' ?></p>
 </div>
-<form action="/lutopia/register" method="POST">
+<form action="/register" method="POST">
     <div>
         <label for="first-name">Prénom</label>
         <input type="text" placeholder="Votre prénom" name="first-name" id="first-name" required>
