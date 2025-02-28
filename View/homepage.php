@@ -1,21 +1,33 @@
 <?php 
-$title = 'Accueil | Lutopia';
+$title = "Accueil | Lutopia";
+$description = "Page d'accueil de Lutopia";
+$arrayJs = ["./assets/js/homepage.js"];
 ob_start();
 ?>
-<?= (isset($_SESSION['id'])) ? $_SESSION['first-name'] : '' ?>
-    <h1>Bienvenue sur la page d'accueil</h1>
-        <?php foreach($datas as $key=>$value){ ?>
-            <article>
-                <img src="./<?= $datas[$key]->book->getImg_Src() ?>" alt="" width="200px" height="200px"> <!-- image pour chaque livre --> 
-                <h2><?= $datas[$key]->book->getTitle(); ?> </h2> <!-- titre  --> 
-                <p> écrit par <?= $datas[$key]->author ?> <!-- auteur  --> 
-                <p> illustrée par <?= $datas[$key]->illustrator ?> <!-- illustrateur  --> 
-                <p>par les <?= $datas[$key]->book->getEditor();?></p> <!-- edition  --> 
-                
-            </article>
-            <?php }?>
+<?php
+if(isset($_SESSION['id'])){
+?>
+<div>
+    <span><?= $_SESSION['first-name']?></span>
+    <select name="select-child" id="select-child">
+    <?php
+    foreach($datas as $child){
+    ?>
+    <option value="<?=date('Y')-$child->getBirth_date()->format('Y')?>"><?= $child->getName() ?></option>
+    <?php
+    }
+    ?>
+    </select>
+</div>
+<div>
+
+</div>
+<?php
+}
+?>
 <?php 
 $content = ob_get_contents();
 ob_end_clean();
 require_once('./View/base_html.php');
 ?>
+

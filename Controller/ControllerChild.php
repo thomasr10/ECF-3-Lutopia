@@ -22,7 +22,7 @@ class ControllerChild {
                 $id = $_SESSION['id'];
 
                 if($years !== null){
-                    $model->newChild($id, $arrayChild, $years);                   
+                    $model->newChild($id, $arrayChild);                   
                     header('Location: /confirmation/' . $id);
                     exit();
                 } else {
@@ -32,5 +32,21 @@ class ControllerChild {
         } else {
             require_once('./View/register-child.php');
         }
+    }
+
+    public function home(){
+        global $router;
+        if(isset($_SESSION['id'])){
+            
+            $model = new ModelChild();
+            $id = $_SESSION['id'];
+            $datas = $model->getChildByUser($id);
+
+            require_once('./View/homepage.php');
+        } else {
+            require_once('./View/homepage.php');
+        }
+        
+
     }
 }

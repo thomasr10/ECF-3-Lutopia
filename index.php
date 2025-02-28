@@ -9,7 +9,7 @@ $router = new AltoRouter();
 
 //ROUTES
 //homepage
-$router->map('GET', '/', 'ControllerBook#home', 'home');
+$router->map('GET', '/', 'ControllerChild#home', 'home');
 
 //inscription
 $router->map('GET|POST', '/register', 'ControllerUser#register', 'register');

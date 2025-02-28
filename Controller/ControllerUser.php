@@ -47,7 +47,7 @@ class ControllerUser {
                                 $_SESSION['full-name'] = $_POST['first-name'] . ' ' . $_POST['name'];  
                                 
                                 if($years !== null){
-                                    $modelChild->newChild($id, $arrayChild, $years);                   
+                                    $modelChild->newChild($id, $arrayChild);                   
                                     header('Location: /confirmation/' . $id);
                                     exit();
 
