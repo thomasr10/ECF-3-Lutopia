@@ -1,16 +1,16 @@
 # 💫 Lutopia
 
-Lutopia is an online library only for young children, from 0 to 10 years old.
+Lutopia is a magical library designed just for young readers, from newborns to 10-year-olds. Filled with captivating stories, interactive books, and educational adventures, Lutopia nurtures a love for reading in a safe, fun, and enriching environment. Discover a world where imagination and learning grow together!
 
 ---
 
 ## 👥 Developers on this project
 
-[@SASSOU69](https://github.com/SASSOU69)
-[@Chris181076](https://github.com/Chris181076)
-[@Mattheonpil](https://github.com/Mattheonpil)
-[@Nmec2](https://github.com/Nmec2)
-[@thomasr10](https://github.com/thomasr10)
+- [@SASSOU69](https://github.com/SASSOU69)
+- [@Chris181076](https://github.com/Chris181076)
+- [@Mattheonpil](https://github.com/Mattheonpil)
+- [@Nmec2](https://github.com/Nmec2)
+- [@thomasr10](https://github.com/thomasr10)
 
 ---
 
@@ -18,8 +18,8 @@ Lutopia is an online library only for young children, from 0 to 10 years old.
 
 ### Create a virtual host
 
-Server name : lutopia
-Absolute folder path : C:\path\to\project
+- Virtual host name : lutopia
+- Absolute folder path : C:\path\to\project
 
 ### Install dependencies
 
