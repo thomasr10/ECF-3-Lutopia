@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();;
 
 require_once('./vendor/autoload.php');
 require_once('./vendor/altorouter/altorouter/AltoRouter.php');
@@ -21,7 +21,7 @@ $router->map('GET', '/confirm-user/[a:token]', 'ControllerUser#confirmUser', 'co
 $router->map('GET|POST', '/login', 'ControllerUser#login', 'login');
 //deconnexion
 $router->map('GET', '/logout', 'ControllerUser#logout', 'logout');
-
+$router->map('GET|POST', '/register-child', 'ControllerChild#registerChild', 'register-child');
 
 
 

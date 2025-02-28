@@ -35,16 +35,29 @@ class ControllerUser {
                             
                             if($lastId){
                                 $id = intval($lastId);
-                                $model->newChild($id, $arrayChild);
+                                //check child age  
+                                $modelChild = new ModelChild();
+                                $diff = 12;
+                                $years = $modelChild->yearDiff($arrayChild, $diff);
+
+                                //Pour récup les infos de la session si pb à l'inscription d'un enfant
                                 $_SESSION['id'] = $id;
-                                $_SESSION['name'] = $_POST['first-name'];                        
-                                header('Location: /confirmation/' . $id);
-                                exit();
+                                $_SESSION['first-name'] = $_POST['first-name']; 
+                                $_SESSION['last-name'] = $_POST['name'];
+                                $_SESSION['full-name'] = $_POST['first-name'] . ' ' . $_POST['name'];  
+                                
+                                if($years !== null){
+                                    $modelChild->newChild($id, $arrayChild, $years);                   
+                                    header('Location: /confirmation/' . $id);
+                                    exit();
+
+                                } else {
+                                   header('Location: /register-child');
+                                }
                             } else {
                                 $message = "Problème lors de l'inscription";
                                 require_once('./View/register.php');
-                            }
-                            
+                            }       
                         } else {
                             $message = "Mots de passe différents ou insuffisants";
                             require_once('./View/register.php');                    

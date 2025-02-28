@@ -25,18 +25,6 @@ class ModelUser extends Model {
         return $lastId;
     }
 
-    public function newChild(int $id, array $arrayChild){
-        $bdd = $this->getDb();
-
-        foreach($arrayChild as $child){
-            $req = $bdd->prepare("INSERT INTO `child`(`id_user`, `name`, `birth_date`) VALUES (:id, :name, :birth)");
-            $req->bindParam('id', $id, PDO::PARAM_INT);
-            $req->bindParam('name', $child['name'], PDO::PARAM_STR);
-            $req->bindParam('birth', $child['birth'], PDO::PARAM_STR);
-            $req->execute();
-        }
-    }
-
     public function getNewUser(int $id){
         $req =$this->getDb()->prepare("SELECT `id_user`, `first_name`, `last_name`,`email`, `password`, `token` FROM `user` WHERE `id_user` = :id");
         $req->bindParam('id', $id, PDO::PARAM_INT);
