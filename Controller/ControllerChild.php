@@ -16,7 +16,7 @@ class ControllerChild {
                     ];
                 }
     
-                $diff = 12;
+                $diff = 10;
                 $model = new ModelChild();
                 $years = $model->yearDiff($arrayChild, $diff);
                 $id = $_SESSION['id'];
