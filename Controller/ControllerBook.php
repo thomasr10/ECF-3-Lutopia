@@ -14,7 +14,7 @@ class ControllerBook {
         $model = new ModelBook();
         $datas = $model->drawZeroTwo();
         $radioDatas = $model->radioBookType();
-        var_dump($radioDatas);
+        $categoryDatas = $model->categorySelect();
         // var_dump($datas); debug
         require_once('./View/zeroTwo.php');
     }

@@ -32,4 +32,14 @@ class ModelBook extends Model {
         }
         return $radioArray;
     }
+
+    public function categorySelect(){
+        $categoryReq = $this->getDb()->query('SELECT `id_category`, `category_name` FROM `category`;');
+        $categoryArray = [];
+
+        while($data = $categoryReq->fetch(PDO::FETCH_ASSOC)){
+            $categoryArray[] = new Category($data);
+        }
+        return $categoryArray;
+    }
 }

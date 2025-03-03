@@ -4,15 +4,24 @@ ob_start();
 ?>
 <?= (isset($_SESSION['id'])) ? $_SESSION['first-name'] : '' ?>
     <h1>Tous les livres jusqu'à 2 ans</h1>
-        <form action="#">
-            <?php foreach($radioDatas as $radio=>$radioValue):?>
-            <div>
-                <label for="<?= $radioDatas[$radio]->getId_type();?>"><?= $radioDatas[$radio]->getType_name();?></label>
-                <input type="radio" name="type" id="<?= $radioDatas[$radio]->getId_type();?>">
-            </div>
-            <?php endforeach ?>
-        </form>
-        <?php foreach($datas as $key=>$value){ ?>
+            <form action="#">
+                <?php foreach($radioDatas as $radio=>$radioValue):?>
+                <div>
+                    <label for="<?= $radioDatas[$radio]->getId_type();?>"><?= $radioDatas[$radio]->getType_name();?></label>
+                    <input type="radio" name="type" id="<?= $radioDatas[$radio]->getId_type();?>">
+                </div>
+                <?php endforeach ?>
+            </form>
+            <form action="#">
+                <label for="category"></label>
+                <select name="category" default id="">
+                    <option value="">Toutes les catégories</option>
+                    <?php foreach($categoryDatas as $category=>$categoryValue): ?>
+                        <option value="<?= $categoryDatas[$category]->getId_category();?>"><?= $categoryDatas[$category]->getCategory_name();?></option>
+                    <?php endforeach ?>
+                </select>
+            </form>
+        <?php foreach($datas as $key=>$value): ?>
             <article>
                 <img src="./<?= $datas[$key]->book->getImg_Src() ?>" alt="" width="200px" height="200px"> <!-- image pour chaque livre --> 
                 <h2><?= $datas[$key]->book->getTitle(); ?> </h2> <!-- titre  --> 
@@ -21,7 +30,7 @@ ob_start();
                 <p>par les <?= $datas[$key]->book->getEditor();?></p> <!-- edition  --> 
                 
             </article>
-            <?php }?>
+            <?php endforeach ?>
 <?php 
 $content = ob_get_contents();
 ob_end_clean();
