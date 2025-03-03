@@ -1,5 +1,5 @@
 <?php
-session_start();;
+session_start();
 
 require_once('./vendor/autoload.php');
 require_once('./vendor/altorouter/altorouter/AltoRouter.php');
@@ -8,8 +8,15 @@ $router = new AltoRouter();
 
 
 //ROUTES
-//homepage
-$router->map('GET', '/', 'ControllerBook#home', 'home');
+
+
+//--- HOMEPAGE ---
+// get children ages
+$router->map('GET', '/', 'ControllerChild#home', 'home');
+// display books depending on age
+$router->map('GET', '/home-category-age/[i:age]', 'ControllerBook#homePage', 'home-page');
+
+
 
 //inscription
 $router->map('GET|POST', '/register', 'ControllerUser#register', 'register');
@@ -23,6 +30,7 @@ $router->map('GET|POST', '/login', 'ControllerUser#login', 'login');
 //deconnexion
 $router->map('GET', '/logout', 'ControllerUser#logout', 'logout');
 $router->map('GET|POST', '/register-child', 'ControllerChild#registerChild', 'register-child');
+
 
 
 

@@ -37,7 +37,7 @@ class ControllerUser {
                                 $id = intval($lastId);
                                 //check child age  
                                 $modelChild = new ModelChild();
-                                $diff = 12;
+                                $diff = 10;
                                 $years = $modelChild->yearDiff($arrayChild, $diff);
 
                                 //Pour récup les infos de la session si pb à l'inscription d'un enfant
@@ -47,7 +47,7 @@ class ControllerUser {
                                 $_SESSION['full-name'] = $_POST['first-name'] . ' ' . $_POST['name'];  
                                 
                                 if($years !== null){
-                                    $modelChild->newChild($id, $arrayChild, $years);                   
+                                    $modelChild->newChild($id, $arrayChild);                   
                                     header('Location: /confirmation/' . $id);
                                     exit();
 

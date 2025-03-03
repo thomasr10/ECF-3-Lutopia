@@ -56,7 +56,7 @@ class ControllerMail extends Mail {
         
          
         $phpmailer->AltBody = "Inscription";
-        $phpmailer->send();
+        // $phpmailer->send();
 
         require_once('./view/confirmation.php');
     }
