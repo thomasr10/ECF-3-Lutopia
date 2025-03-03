@@ -38,4 +38,14 @@ class ControllerBook {
         
 
     }
+
+    public function zeroTwo(){
+        global $router;
+        $model = new ModelBook();
+        $datas = $model->drawZeroTwo();
+        $radioDatas = $model->radioBookType();
+        $categoryDatas = $model->categorySelect();
+        // var_dump($datas); debug
+        require_once('./View/zeroTwo.php');
+    }
 }
