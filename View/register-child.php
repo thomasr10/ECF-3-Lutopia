@@ -2,6 +2,7 @@
 // CETTE VUE EST AFFICHEE S'IL Y A EU UN PB A L'INSCRIPTION  DES ENFANTS (SI QQN A TENTE D'INSCRIRE UN ENFANT QUI A PLUS DE 12 ANS)
 $title = "Inscription des enfants | Lutopia";
 $description = "Page pour inscrire ses enfants s'il y a eu un problème lors de la première tentative d'inscription.";
+$arrayJs = ["./assets/js/register.js"];
 ob_start();
 ?>
 <div>
