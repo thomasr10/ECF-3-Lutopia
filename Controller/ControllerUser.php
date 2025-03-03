@@ -121,6 +121,14 @@ class ControllerUser {
                     $_SESSION['last-name'] = $user->getLast_name();
                     $_SESSION['full-name'] = $user->getFirst_Name() . ' ' . $user->getLast_Name();
 
+                    if(isset($_POST['Check1'])){
+                        setcookie("remember_mail", $_POST['email'], time() + 3600*24*30);
+                        setcookie("remember", $_POST['Check1'], time() + 3600*24*30);
+                    } else {
+                        setcookie("remember_mail", '', time() - 36000);
+                        setcookie("remember", '', time() - 3600);
+                    }
+
                     header('Location: /');
                     exit();
                 } else {
