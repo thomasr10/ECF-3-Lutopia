@@ -48,4 +48,34 @@ class ControllerBook {
         // var_dump($datas); debug
         require_once('./View/zeroTwo.php');
     }
+
+    public function typeBook(int $age, int $type){
+        $model = new ModelBook();
+        $typeBook = $model->getTypeBook($age, $type);
+
+        header('Content-Type: application/json');
+
+        if($typeBook){
+            foreach($typeBook as $i => $book){
+                $arrayObj[] = [
+                    "id_book" => $typeBook[$i]->book->getId_book(),
+                    "isbn" => $typeBook[$i]->book->getIsbn(),
+                    "title" => $typeBook[$i]->book->getTitle(),
+                    "editor" => $typeBook[$i]->book->getEditor(),
+                    "img" => $typeBook[$i]->book->getImg_src(),
+                    "publication_date" => $typeBook[$i]->book->getPublication_date(),
+                    "edition_date" => $typeBook[$i]->book->getEdition_date(),
+                    "synopsis" => $typeBook[$i]->book->getSynopsis(),
+                    "id_type" => $typeBook[$i]->book->getId_type(),
+                    "id_age" => $typeBook[$i]->book->getId_age(),
+                    "author" => $typeBook[$i]->author,
+                    "illustrator" => $typeBook[$i]->illustrator
+                ]; 
+            }
+            echo json_encode($arrayObj);
+
+        } else {
+            echo json_encode("Aucun livre trouver de se type");
+        }
+    }
 }
