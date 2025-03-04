@@ -13,8 +13,8 @@ abstract class Mail {
         self::$phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         self::$phpmailer->SMTPAuth = true;
         self::$phpmailer->Port = 2525;
-        self::$phpmailer->Username = 'd311165f9141d2';
-        self::$phpmailer->Password = '08b7bb0684f678';    
+        self::$phpmailer->Username = $_ENV['MAIL_USERNAME'];
+        self::$phpmailer->Password = $_ENV['MAIL_PASSWORD'];    
     }
 
     // pattern de Singleton
