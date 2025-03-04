@@ -33,13 +33,21 @@ if(isset($_SESSION['id'])){
     }
     ?>
 </div>
-<!-- slider des nouveautés en fonction de l'age -->
-<h1>Les dernières sorties</h1>
+<!-- carroussel -->
 
-<div id="book-container"></div>
+<h1>Les dernières sorties</h1>
+<div class="center">
+<div id="bookContainer">
+</div>
+<div class="buttons">
+        <button class="button" id="prevButton"><img src="uploads/buttonCarrousselLeft.webp" alt="button left"> </button>
+        <button class="button" id="nextButton"><img src="uploads/buttonCarrousselRight.png" alt="button right"></button>
+</div>
+</div>
 <?php
 }
 ?>
+
 <?php 
 $content = ob_get_contents();
 ob_end_clean();
