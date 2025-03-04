@@ -1,1 +1,14 @@
-@use 'reset';
+@use 'Base/reset';
+@use 'Base/variables';
+@use 'Base/mixins';
+
+@use 'Component/buttons';
+@use 'Component/cards';
+@use 'Component/forms';
+
+@use 'layout/footer';
+@use 'layout/grid';
+@use 'layout/header';
+
+
+
