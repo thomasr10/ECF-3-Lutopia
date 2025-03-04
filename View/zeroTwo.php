@@ -17,7 +17,7 @@ ob_start();
             <form action="#">
                 <label for="category"></label>
                 <select name="category" default id="">
-                    <option value="">Toutes les catégories</option>
+                    <option value="0">Toutes les catégories</option>
                     <?php foreach($categoryDatas as $category=>$categoryValue): ?>
                         <option value="<?= $categoryDatas[$category]->getId_category();?>"><?= $categoryDatas[$category]->getCategory_name();?></option>
                     <?php endforeach ?>

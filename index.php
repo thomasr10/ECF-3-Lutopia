@@ -16,7 +16,7 @@ $router->map('GET', '/', 'ControllerChild#home', 'home');
 // display books depending on age
 $router->map('GET', '/home-category-age/[i:age]', 'ControllerBook#homePage', 'home-page');
 // display books depending on type
-$router->map('GET', '/type/[i:age]/[i:type]', 'ControllerBook#typeBook', 'typeBook');
+$router->map('GET', '/type/[i:age]/[i:type]/[i:category]', 'ControllerBook#typeBook', 'typeBook');
 
 
 
