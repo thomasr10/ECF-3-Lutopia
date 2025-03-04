@@ -1,0 +1,122 @@
+//fonts-----------------------------------------------------------------
+// Playwrite BE WAL
+    // <weight>: Use a value from 100 to 400
+// <uniquifier>: Use a unique and descriptive class name
+// .playwrite-be-wal-<uniquifier> {
+//     font-family: "Playwrite BE WAL", cursive;
+//     font-optical-sizing: auto;
+//     font-weight: <weight>;
+//     font-style: normal;
+//   }
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Georama:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Liu+Jian+Mao+Cao&family=Playwrite+BE+WAL:wght@100..400&display=swap');
+
+// Lexend
+// <weight>: Use a value from 100 to 900
+// <uniquifier>: Use a unique and descriptive class name
+
+// .lexend-<uniquifier> {
+//     font-family: "Lexend", sans-serif;
+//     font-optical-sizing: auto;
+//     font-weight: <weight>;
+//     font-style: normal;
+//   }
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Georama:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Lexend:wght@100..900&family=Liu+Jian+Mao+Cao&family=Playwrite+BE+WAL:wght@100..400&display=swap');
+
+
+
+$prenoms-enfants : "Playwrite BE WAL";
+$titre-h1 : 3rem;
+$titre-h2 : 2.5rem;
+$titre-h3 : 1.5rem;
+$titre-h4 : 1.25rem;
+$para : 1rem;
+
+
+
+
+// Couleurs--------------------------------------------------------------
+
+$pastel-saumon-100: #fffcf9;
+$pastel-saumon-200: #fff1e0;
+$pastel-saumon-300: #ffe6c7;
+$pastel-saumon-400: #e5cdaf;
+$pastel-saumon-500: #ccb497;
+$pastel-saumon-600: #b29c81;
+$pastel-saumon-700: #99856b;
+$pastel-saumon-800: #806d57;
+$pastel-saumon-900: #665743;
+$pastel-saumon-1000: #4d4031;
+
+
+$primary-text-1100: #181b31;
+$primary-text-100: #fafbff;
+$primary-text-200: #eef0ff;
+$primary-text-300: #e1e4ff;
+$primary-text-400: #d3d8fd;
+$primary-text-500: #afb5e0;
+$primary-text-600: #8f95c3;
+$primary-text-700: #7178a6;
+$primary-text-800: #575d88;
+$primary-text-900: #3f446b;
+$primary-text-1000: #2a4e3d;
+
+$pastel-rose-200: #ffd8d4;
+$pastel-rose-300: #ffbab5;
+$pastel-rose-400: #fd9c94;
+$pastel-rose-500: #e0857e;
+$pastel-rose-600: #c36f69;
+$pastel-rose-700: #a65b55;
+$pastel-rose-800: #884843;
+$pastel-rose-900: #6b3632;
+$pastel-rose-1000: #4e2623;
+
+$stroke-gris-100: #fcfdff;
+$stroke-gris-200: #f0f4ff;
+$stroke-gris-300: #e4ecff;
+$stroke-gris-400: #ccd4e9;
+$stroke-gris-500: #b1bad0;
+$stroke-gris-600: #98a1b6;
+$stroke-gris-700: #7f889d;
+$stroke-gris-800: #687083;
+$stroke-gris-900: #52596a;
+$stroke-gris-1000: #3c4250;
+
+$stroke-marron-100: #fff9f7;
+$stroke-marron-200: #ffe8e0;
+$stroke-marron-300: #ffd7c9;
+$stroke-marron-400: #f7c0ac;
+$stroke-marron-500: #daa38e;
+$stroke-marron-600: #bc8773;
+$stroke-marron-700: #9f6d5b;
+$stroke-marron-800: #825545;
+$stroke-marron-900: #653f31;
+$stroke-marron-1000: #482b20;
+
+$pastel-vert-100: #fcfff6;
+$pastel-vert-200: #f1ffcf;
+$pastel-vert-300: #e5fea6;
+$pastel-vert-400: #cde491;
+$pastel-vert-500: #b5ca7d;
+$pastel-vert-600: #9db169;
+$pastel-vert-700: #869757;
+$pastel-vert-800: #6e7e46;
+$pastel-vert-900: #586536;
+$pastel-vert-1000: #414b27;
+
+// dégradés--------------------------------------------------------------------------
+
+$degrade-footer: linear-gradient(to bottom, #cbb5b5 0%,#9f8585 100%);
+$degrade-fond-definitif: linear-gradient(to bottom, #fcddec 0%,#ffe6c7 29.51%,#e8ffc4 50.77%,#fcddec 75.27%,#fffafb 97.01%);
+$fond-accueil: linear-gradient(to bottom, #e6ddd1 0%,#e6d0c9 27.55%,#e3f4c8 50%,#e6d0c9 75%,#e8ffc4 100%);
+
+
+
+// pas sur qu'elles sont utilisées:---------------------------------------------------
+
+// $fuschia-100: #ef5da8;
+// $fuschia-80: #f178b6;
+// $fuschia-60: #fcddec;
+// $iris-100: #5d5fef;
+// $iris-80: #7879f1;
+// $iris-60: #a5a6f6;

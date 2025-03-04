@@ -9,7 +9,27 @@
 <body>
     <!-- LES FRONT : vous pouvez modifier la navbar. C'était juste pour tester les routes (il faudra bien les réutiliser si jamais vous faites des modif) -->
     <header>
-        <nav>
+        <div>
+            <figure>
+
+            </figure>
+            <nav>
+
+            </nav>
+            <div>
+                <ul>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                </ul>
+            </div>
+
+        </div>
+
+       
+    </header>
+
+    <!-- <nav>
             <ul>
                 <li><a href="<?= $router->generate('home')?>">Accueil</a></li>
                 <li><a href="#">Contact</a></li>
@@ -27,5 +47,4 @@
                 }
                 ?>
             </ul>
-        </nav>
-    </header>
+        </nav> -->
