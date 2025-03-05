@@ -7,6 +7,10 @@ ob_start();
     <h1>Tous les livres jusqu'à 2 ans</h1>
             <form action="#">
                 <input id="page_age" type="hidden" value="1">
+                <div>
+                    <label for="0">Voir tous</label>
+                    <input type="radio" name="type" id="0">
+                </div>
                 <?php foreach($radioDatas as $radio=>$radioValue):?>
                 <div>
                     <label for="<?= $radioDatas[$radio]->getId_type();?>"><?= $radioDatas[$radio]->getType_name();?></label>
