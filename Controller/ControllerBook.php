@@ -47,7 +47,11 @@ class ControllerBook {
         $radioDatas = $model->radioBookType();
         $categoryDatas = $model->categorySelect();
         // var_dump($datas); debug
-        require_once('./View/age.php');
+        if(empty($datas)){
+            header('Location: /error404');
+        } else {
+            require_once('./View/age.php');
+        }
     }
 
     public function typeBook(int $age, int $type, int $category){
@@ -90,6 +94,10 @@ class ControllerBook {
         global $router;
         $model = new ModelBook();
         $bookInfo = $model->bookId($id);
-        require_once('./View/onebook.php');
+        if(empty($bookInfo)){
+            header('Location: /error404');
+        } else {
+            require_once('./View/onebook.php');
+        }
     }
 }

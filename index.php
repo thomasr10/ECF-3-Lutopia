@@ -37,6 +37,9 @@ $router->map('GET|POST', '/register-child', 'ControllerChild#registerChild', 're
 //route age
 $router->map('GET', '/age/[i:age]', 'ControllerBook#drawAge', 'drawAge');
 
+//route 404 error
+$router->map('GET', '/error404', 'ControllerUser#errorPage', 'errorPage');
+
 
 
 
@@ -52,4 +55,6 @@ if(is_array($match)){
         
     }
 
+} else {
+    header('Location: /error404');
 }

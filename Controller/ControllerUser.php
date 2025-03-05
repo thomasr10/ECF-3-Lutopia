@@ -152,4 +152,9 @@ class ControllerUser {
         header('Location: /');
         exit();
     }
+
+    public function errorPage(){
+        global $router;
+        require_once('./View/error404.php');
+    }
 }
