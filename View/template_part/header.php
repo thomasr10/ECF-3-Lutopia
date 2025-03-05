@@ -13,10 +13,7 @@
       <figure>
         <img src="/uploads/autre/Logo-flat.svg" alt="Logo Lutopia">
       </figure>
-
-
-      <nav>
-        
+      <nav>      
       <div>
         <ul class = "navbar">
           <li><a href="<?= $router->generate('home')?>">Accueil</a></li>

@@ -34,6 +34,7 @@ figure {
   margin: 0 auto;
   li {
     font-size: $titre-h3;
+    padding: 0 1rem;
     
 
     a {
@@ -67,10 +68,14 @@ figure {
     padding: 0.4rem 1.5rem;
     border-radius: 100px;
     border :3px solid transparent;
+   
+    
 
         &:hover {
             border: 3px solid $primary-text-800; 
         }
+
+       
 
     input {
         border: none;
@@ -78,7 +83,7 @@ figure {
         font-family: "Lexend";
         font-size: $titre-h4;
         background-color: $primary-text-200;
-       
+        outline: none;
     }
 
     button {
