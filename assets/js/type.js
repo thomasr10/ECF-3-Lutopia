@@ -7,7 +7,7 @@ let containerArticle = document.getElementById('containerArticle');
 // console.log(getPageAge.value); debug
 
 let typeId;
-let pageAge;
+let pageAge = getPageAge.value;
 let categoryId = 0;
 // console.log(typeRadio); debug
 
@@ -64,9 +64,8 @@ for (let items of category) {
     items.addEventListener("change", (e)=>{
         console.log(items.value);
         categoryId = items.value;
-        if(typeId == undefined && pageAge == undefined){
+        if(typeId == undefined){
             typeId = 0;
-            pageAge = 1;
         }
         showTypeBook(pageAge, typeId, categoryId);
     });
@@ -79,10 +78,7 @@ typeRadio.forEach(element => {
         // console.log(element.id);
         // console.log(typeId);     debug
         // console.log(pageAge);
-        
         typeId = element.id;
-        pageAge = getPageAge.value;
-        
         showTypeBook(pageAge, typeId, categoryId);
     });
 });
