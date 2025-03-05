@@ -29,7 +29,7 @@
        
     </header>
 
-    <!-- <nav>
+     <nav>
             <ul>
                 <li><a href="<?= $router->generate('home')?>">Accueil</a></li>
                 <li><a href="#">Contact</a></li>
@@ -47,4 +47,4 @@
                 }
                 ?>
             </ul>
-        </nav> -->
+        </nav> 
