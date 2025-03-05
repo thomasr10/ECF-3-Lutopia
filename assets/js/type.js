@@ -1,21 +1,27 @@
 const typeRadio = document.getElementsByName('type');
 const getPageAge = document.getElementById('page_age');
-const category = document.getElementsByTagName('option');
+const category = document.getElementsByTagName('select');
 
 let containerArticle = document.getElementById('containerArticle');
 
-console.log(getPageAge.value);
+// console.log(getPageAge.value); debug
 
 let typeId;
-let pageAge;
-console.log(typeRadio);
+let pageAge = getPageAge.value;
+let categoryId = 0;
+// console.log(typeRadio); debug
 
-function showTypeBook(age, type){
+
+
+function showTypeBook(age, type, categoryId){
     containerArticle.innerHTML = '';
-    fetch(`/type/${age}/${type}`)
+    console.log(age);
+    console.log(type);
+    console.log(categoryId);
+    fetch(`/type/${age}/${type}/${categoryId}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        // console.log(data); debug
         if(data == "Aucun livre trouvé pour se type"){
             let noFound = document.createElement('h2');
             containerArticle.append(noFound);
@@ -54,16 +60,26 @@ function showTypeBook(age, type){
     })
 }
 
+for (let items of category) {
+    items.addEventListener("change", (e)=>{
+        console.log(items.value);
+        categoryId = items.value;
+        if(typeId == undefined){
+            typeId = 0;
+        }
+        showTypeBook(pageAge, typeId, categoryId);
+    });
+}
+
+
 
 typeRadio.forEach(element => {
     element.addEventListener("change", (e)=>{
-        console.log(element.id);
-        
+        // console.log(element.id);
+        // console.log(typeId);     debug
+        // console.log(pageAge);
         typeId = element.id;
-        pageAge = getPageAge.value;
-        console.log(typeId);
-        console.log(pageAge);
-        showTypeBook(pageAge, typeId);
+        showTypeBook(pageAge, typeId, categoryId);
     });
 });
 
