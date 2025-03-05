@@ -9,7 +9,7 @@ ob_start();
 
 ?>
 
-    <h2 style="font-size: 150px;">ERROR 404 TRYING TO ACCESS PAGE THAT DOESNT EXIST</h2>
+    <h2 style="font-size: 150px;color:red;background-color:orange;">ERROR 404 TRYING TO ACCESS PAGE THAT DOESNT EXIST</h2>  <!--STYLE A SUPPRIMER PROVISOIRE-->
 
 <?php 
 $content = ob_get_contents();
