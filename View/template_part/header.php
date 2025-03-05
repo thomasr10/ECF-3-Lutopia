@@ -14,7 +14,6 @@
         <img src="uploads/Logo-flat.svg" alt="Logo Lutopia">
       </figure>
 
-
       <nav>
         
       <div>
@@ -44,3 +43,4 @@
     </div>
    
   </header>
+
