@@ -85,4 +85,11 @@ class ControllerBook {
             
         // }
     }
+
+    public function showOneBook(int $id){
+        global $router;
+        $model = new ModelBook();
+        $bookInfo = $model->bookId($id);
+        require_once('./View/onebook.php');
+    }
 }

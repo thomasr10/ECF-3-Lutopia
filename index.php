@@ -18,7 +18,8 @@ $router->map('GET', '/home-category-age/[i:age]', 'ControllerBook#homePage', 'ho
 // display books depending on type
 $router->map('GET', '/type/[i:age]/[i:type]/[i:category]', 'ControllerBook#typeBook', 'typeBook');
 
-
+//show 1 book
+$router->map('GET', '/book/[i:id]', 'ControllerBook#showOneBook', 'showOneBook');
 
 //inscription
 $router->map('GET|POST', '/register', 'ControllerUser#register', 'register');
