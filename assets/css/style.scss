@@ -40,6 +40,8 @@ figure {
       text-decoration: none;
       padding: 0.5rem 1rem;
       color: $primary-text-800;
+      border: 3px solid transparent;
+      border-radius: 100px ;
       &:hover {
         border-radius: 100px ;
         border: 3px solid $primary-text-800;
@@ -58,8 +60,35 @@ figure {
 
 }
 .search-form {
-  
+    display: flex;
+    justify-content: space-between;
+    background-color: $primary-text-200;
+    border: none;
+    padding: 0.4rem 1.5rem;
+    border-radius: 100px;
+    border :3px solid transparent;
+
+        &:hover {
+            border: 3px solid $primary-text-800; 
+        }
+
+    input {
+        border: none;
+        color: $primary-text-800;
+        font-family: "Lexend";
+        font-size: $titre-h4;
+        background-color: $primary-text-200;
+       
+    }
+
+    button {
+        border: none;
+       
+    }
+    
 }
+
+
 
 
 

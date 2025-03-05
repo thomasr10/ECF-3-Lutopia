@@ -11,7 +11,7 @@
   <header class = "header">
     <div class = "menu">
       <figure>
-        <img src="uploads/Logo-flat.svg" alt="Logo Lutopia">
+        <img src="/uploads/autre/Logo-flat.svg" alt="Logo Lutopia">
       </figure>
 
 
@@ -39,8 +39,11 @@
       </nav>
       <form action="" method="GET" class="search-form">
       <input type="text" name="query" placeholder="Rechercher..."      class="search-input" />
-        <button type="submit" class="search-button search-form">🔍</button>
-  </form>
+
+        <button type="submit" class="search-button">
+            <img src="uploads/autre/icon-loupe.svg" alt="icone loupe">
+        </button>
+        </form>
     </div>
    
   </header>
