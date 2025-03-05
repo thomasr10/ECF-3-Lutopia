@@ -2,6 +2,7 @@
 //Page qui s'affiche si le token est invalide ou expiré
 $title = "Confirmation | Lutopia";
 $description = "Page de confirmation de l'inscription à Lutopia";
+$pointSlash = "";
 ob_start();
 
 ?>

@@ -39,14 +39,15 @@ class ControllerBook {
 
     }
 
-    public function zeroTwo(){
+    public function drawAge(int $age){
         global $router;
         $model = new ModelBook();
-        $datas = $model->drawZeroTwo();
+        $datas = $model->drawAge($age);
+        $ageInfos = $model->getAgeInfo($age);
         $radioDatas = $model->radioBookType();
         $categoryDatas = $model->categorySelect();
         // var_dump($datas); debug
-        require_once('./View/zeroTwo.php');
+        require_once('./View/age.php');
     }
 
     public function typeBook(int $age, int $type, int $category){
