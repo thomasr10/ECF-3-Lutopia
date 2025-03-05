@@ -34,12 +34,22 @@ if(isset($_SESSION['id'])){
     ?>
 </div>
 <!-- slider des nouveautés en fonction de l'age -->
+
+
+
+
+
+
 <h1>Les dernières sorties</h1>
 
 <div id="book-container"></div>
 <?php
 }
 ?>
+
+<div id="section-container">
+    
+</div>
 <?php 
 $content = ob_get_contents();
 ob_end_clean();

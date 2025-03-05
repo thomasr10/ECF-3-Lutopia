@@ -15,6 +15,7 @@ $router = new AltoRouter();
 $router->map('GET', '/', 'ControllerChild#home', 'home');
 // display books depending on age
 $router->map('GET', '/home-category-age/[i:age]', 'ControllerBook#homePage', 'home-page');
+$router->map('POST', '/home-section', 'ControllerBook#displayBooks', 'display-books');
 
 
 
