@@ -1,14 +1,65 @@
-@use 'Base/reset';
-@use 'Base/variables';
-@use 'Base/mixins';
+@import 'Base/reset';
+@import 'Base/mixins';
+@import 'Component/buttons';
+@import 'Component/cards';
+@import 'Component/forms';
+@import 'layout/footer';
+@import 'layout/grid';
+@import 'layout/header';
+@import 'Base/variables';
+.header{
+  font-family: "Lexend";
+  display: flex;
+  width: 100%;
+  height: 167px;
+  background: $degrade-footer;
+  
+}
+.menu {
+  display: flex;
+  height: 100%;
+  width: 90%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+figure {
+  height: 100%;
+  img {
+    height : 80%;
+  } 
+}
+.navbar {
+  display: flex;
+  margin: 0 auto;
+  li {
+    font-size: $titre-h3;
+    
 
-@use 'Component/buttons';
-@use 'Component/cards';
-@use 'Component/forms';
+    a {
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      color: $primary-text-800;
+      &:hover {
+        border-radius: 100px ;
+        border: 3px solid $primary-text-800;
+        color: $primary-text-800; // Couleur lors du survol
+      }
+      &:active {
+        color: $primary-text-800; // Couleur lors du clic
+        border-radius: 100px ;
+        border: 3px solid $primary-text-300;
+        background-color: $primary-text-300;
+      }
 
-@use 'layout/footer';
-@use 'layout/grid';
-@use 'layout/header';
+
+    }
+  }
+
+}
+.search-form {
+  
+}
 
 header{
     width: 100%;
