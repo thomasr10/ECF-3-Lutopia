@@ -2,6 +2,7 @@
 
 $title = "Connexion | Lutopia";
 $description = "Page de connexion à Lutopia";
+$pointSlash = "";
 ob_start();
 ?>
 <div>
