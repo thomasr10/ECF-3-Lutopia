@@ -89,11 +89,9 @@ if(isset($_SESSION['id'])){
         <div class="card">Livre 4</div>
     </div>
 </div>
-
 <?php
 }
 ?>
-
 <?php 
 $content = ob_get_contents();
 ob_end_clean();
