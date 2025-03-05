@@ -1,12 +1,17 @@
 <?php 
-$title = 'Jusqu\'à 2 ans | Lutopia';
-$arrayJs = ["./assets/js/type.js"];
+$title = $ageInfos[0]->getFrom() . ' à ' . $ageInfos[0]->getTo() .' ans | Lutopia';
+$arrayJs = ["../assets/js/type.js"];
+$pointSlash = "../";
 ob_start();
 ?>
 <?= (isset($_SESSION['id'])) ? $_SESSION['first-name'] : '' ?>
-    <h1>Tous les livres jusqu'à 2 ans</h1>
+    <h1>Tous les livres de <?=$ageInfos[0]->getFrom();?> à <?=$ageInfos[0]->getTo();?> ans</h1>
             <form action="#">
-                <input id="page_age" type="hidden" value="1">
+                <input id="page_age" type="hidden" value="<?= $ageInfos[0]->getId_age();?>">
+                <div>
+                    <label for="0">Voir tous</label>
+                    <input type="radio" name="type" id="0">
+                </div>
                 <?php foreach($radioDatas as $radio=>$radioValue):?>
                 <div>
                     <label for="<?= $radioDatas[$radio]->getId_type();?>"><?= $radioDatas[$radio]->getType_name();?></label>
@@ -26,7 +31,7 @@ ob_start();
         <div id="containerArticle">
             <?php foreach($datas as $key=>$value): ?>
                 <article>
-                    <img src="./<?= $datas[$key]->book->getImg_Src() ?>" alt="" width="200px" height="200px"> <!-- image pour chaque livre --> 
+                    <img src="../<?= $datas[$key]->book->getImg_Src() ?>" alt="" width="200px" height="200px"> <!-- image pour chaque livre --> 
                     <h2><?= $datas[$key]->book->getTitle(); ?> </h2> <!-- titre  --> 
                     <p> écrit par <?= $datas[$key]->author ?> <!-- auteur  --> 
                     <p> illustrée par <?= $datas[$key]->illustrator ?> <!-- illustrateur  --> 
