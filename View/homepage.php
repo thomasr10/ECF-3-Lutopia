@@ -38,11 +38,10 @@ if(isset($_SESSION['id'])){
 
 <div id="center">
     <h1>Les dernières sorties</h1>
-    <div id="bookContainer">
-    </div>
+    <div id="bookContainer"></div>
     <div class="buttons">
-        <button class="button" id="prevButton"><img src="uploads/buttonCarrousselLeft.webp" alt="button left"> </button>
-        <button class="button" id="nextButton"><img src="uploads/buttonCarrousselRight.png" alt="button right"></button>
+        <button class="button" id="prevButton"><img src="/uploads/autres/buttonCarrousselLeft.webp" alt="button left"> </button>
+        <button class="button" id="nextButton"><img src="/uploads/autres/buttonCarrousselRight.png" alt="button right"></button>
     </div>
 </div>
 <div class="grid">

@@ -1,12 +1,13 @@
 @import 'Base/reset';
 @import 'Base/mixins';
+@import 'Base/variables';
 @import 'Component/buttons';
 @import 'Component/cards';
 @import 'Component/forms';
 @import 'layout/footer';
 @import 'layout/grid';
 @import 'layout/header';
-@import 'Base/variables';
+
 
 .header{
   font-family: "Lexend";
@@ -58,9 +59,9 @@ figure {
   }
 
 }
-.search-form {
+// .search-form {
   
-}
+// }
 
 header{
     width: 100%;
