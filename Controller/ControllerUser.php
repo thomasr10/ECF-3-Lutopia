@@ -157,4 +157,9 @@ class ControllerUser {
         global $router;
         require_once('./View/error404.php');
     }
+
+    public function infoPage(){
+        global $router;
+        require_once('./View/informations.php');
+    }
 }

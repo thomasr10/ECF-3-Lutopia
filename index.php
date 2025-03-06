@@ -40,6 +40,9 @@ $router->map('GET', '/age/[i:age]', 'ControllerBook#drawAge', 'drawAge');
 //route 404 error
 $router->map('GET', '/error404', 'ControllerUser#errorPage', 'errorPage');
 
+//route informations page
+$router->map('GET', '/informations', 'ControllerUser#infoPage', 'infoPage');
+
 
 
 
