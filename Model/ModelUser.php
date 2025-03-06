@@ -88,4 +88,8 @@ class ModelUser extends Model {
             header('Location: /');
         }
     }
+
+    public function getBorrowByCard(string $card){
+
+    }
 }

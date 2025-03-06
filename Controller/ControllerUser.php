@@ -192,6 +192,11 @@ class ControllerUser {
         if(isset($_SESSION['role'])){
             global $router;
             require_once('./View/dashboard.php');
+
+            if($_SERVER['REQUEST_METHOD'] === 'POST'){
+                $model = new ModelUser();
+                $model->getBorrowByCard($_POST['searchAdminUser']);
+            }
         } else {
             header('Location: /');
         }
