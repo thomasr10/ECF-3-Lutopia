@@ -33,6 +33,10 @@ $router->map('GET|POST', '/login', 'ControllerUser#login', 'login');
 $router->map('GET', '/logout', 'ControllerUser#logout', 'logout');
 $router->map('GET|POST', '/register-child', 'ControllerChild#registerChild', 'register-child');
 
+//bibliotequaire
+$router->map('GET|POST', '/login-admin', 'ControllerUser#loginAdmin', 'loginAdmin');
+$router->map('GET|POST', '/dashboard', 'ControllerUser#dashboard', 'dashboard');
+
 
 //route age
 $router->map('GET', '/age/[i:age]', 'ControllerBook#drawAge', 'drawAge');

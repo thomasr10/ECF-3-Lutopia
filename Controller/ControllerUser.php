@@ -146,6 +146,52 @@ class ControllerUser {
         }
     }
 
+    public function loginAdmin(){
+        global $router;
+        $model = new ModelUser();
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password'])){
+
+                $admin = $model->checkAdmin($_POST['name'], $_POST['email']);
+
+                if($admin && password_verify($_POST['password'], $admin->getPassword())){
+
+                    if($admin->getRole() == 1){
+
+                        $_SESSION['id'] = $admin->getId_user();
+                        $_SESSION['role'] = $admin->getRole();
+                        $_SESSION['first-name'] = $admin->getFirst_name();
+                        $_SESSION['last-name'] = $admin->getLast_name();
+                        $_SESSION['full-name'] = $admin->getFirst_Name() . ' ' . $admin->getLast_Name();
+                        header('Location: /dashboard');
+                        
+                    } else {
+                        $message = "Vos droits sont insuffisants";
+                        require_once('View/loginAdmin.php'); 
+                    }
+                } else {
+                    $message = "Adresse mail ou mot de passe incorrect";
+                    require_once('View/loginAdmin.php'); 
+                }
+            } else {
+                $message = "Veuillez remplir tous les champs";
+                require_once('View/loginAdmin.php'); 
+            }
+        } else {
+            require_once('./View/loginAdmin.php');
+        }
+    }
+
+    public function dashboard(){
+        if(isset($_SESSION['role'])){
+            global $router;
+            require_once('./View/dashboard.php');
+        } else {
+            header('Location: /');
+        }
+    }
+
     public function logout(){
         session_unset();
         session_destroy();
