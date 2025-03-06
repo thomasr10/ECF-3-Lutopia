@@ -6,6 +6,9 @@ require_once('./vendor/altorouter/altorouter/AltoRouter.php');
 
 $router = new AltoRouter();
 
+// load .env files
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 //ROUTES
 
@@ -32,6 +35,10 @@ $router->map('GET|POST', '/login', 'ControllerUser#login', 'login');
 //deconnexion
 $router->map('GET', '/logout', 'ControllerUser#logout', 'logout');
 $router->map('GET|POST', '/register-child', 'ControllerChild#registerChild', 'register-child');
+
+//bibliotequaire
+$router->map('GET|POST', '/login-admin', 'ControllerUser#loginAdmin', 'loginAdmin');
+$router->map('GET|POST', '/dashboard', 'ControllerUser#dashboard', 'dashboard');
 
 
 //route age

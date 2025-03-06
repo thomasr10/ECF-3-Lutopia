@@ -1,7 +1,7 @@
 const selectChild = document.getElementById('select-child');
 let booksContainer = document.getElementById('booksContainer');
 const childOption = document.querySelectorAll('.child')
-const sectionContainer = document.getElementById('section-container');
+const grid = document.getElementById('grid');
 
 // afficher les nouveautés en fonction de l'age de l'enfant séléctionné
 
@@ -30,7 +30,7 @@ function displayNewBooks(age) {
             imgContainer.style.width = 200 + 'px'
 
             
-        });
+         })
     })
 }
 
@@ -49,12 +49,16 @@ function initCarousel() {
 }
 
 function showImage() {
-    const images = document.querySelector('.images');
-    images.style.transform = `translateX(${-index * 100 / 4}%)`; 
+    const imagesContainer = document.querySelector('.images');
+    const totalImages = document.querySelectorAll('.image').length;
+    
+    // Calcul dynamique de la largeur pour adapter au nombre d'images
+    imagesContainer.style.transform = `translateX(${-index * 100 / totalImages}%)`; 
 }
 
 function next() {
     const totalImages = document.querySelectorAll('.image').length;
+    
     if (index < totalImages - 1) { 
         index++;
         showImage();
@@ -67,6 +71,7 @@ function prev() {
         showImage();
     }
 }
+
 
 document.getElementById('nextButton').addEventListener('click', next);
 document.getElementById('prevButton').addEventListener('click', prev);
@@ -106,7 +111,7 @@ function sendChildValue(array){
             let div = document.createElement('div');
             div.setAttribute('id', `div-${i}`);
             div.classList.add('row-container');
-            sectionContainer.append(div);
+            grid.append(div);
         }
 
         const rowContainers = document.querySelectorAll('.row-container');
@@ -156,6 +161,6 @@ sendChildValue(ageArray);
 selectChild.addEventListener('change', function(event) {
     const selectedAge = event.target.value;
     const newArray = [selectedAge, ...ageArray.filter(age => age !== selectedAge)]
-    sectionContainer.innerHTML = "";
+    grid.innerHTML = "";
     sendChildValue(newArray);
 });
