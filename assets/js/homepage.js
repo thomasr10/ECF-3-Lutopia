@@ -1,7 +1,7 @@
 const selectChild = document.getElementById('select-child');
 let bookContainer = document.getElementById('book-container');
 const childOption = document.querySelectorAll('.child')
-const sectionContainer = document.getElementById('section-container');
+const grid = document.getElementById('grid');
 
 // afficher les nouveautés en fonction de l'age de l'enfant séléctionné
 
@@ -11,9 +11,9 @@ function displayNewBooks(age) {
     fetch(`/home-category-age/${currentAge}`)
     .then(response => response.json())
     .then(data => {
+        let bookArticle = document.createElement('div');
+        bookArticle.className = 'images';
         data.forEach(book => {
-            let bookArticle = document.createElement('div');
-            bookArticle.className = 'images';
 
             let imgContainer = document.createElement('img');
             imgContainer.className = 'image';
@@ -30,7 +30,7 @@ function displayNewBooks(age) {
             imgContainer.style.width = 200 + 'px'
 
             
-        });
+         })
     })
 }
 
@@ -44,26 +44,41 @@ selectChild.addEventListener('change', function() {
 let index = 0;
 
 function showImage() {
-    const images = document.querySelector('.images');
-    images.style.transform = `translateX(${-index * 100 / 4}%)`; 
+    const imagesContainer = document.querySelector('.images');
+    const totalImages = document.querySelectorAll('.image').length;
+    
+    // Calcul dynamique de la largeur pour adapter au nombre d'images
+    imagesContainer.style.transform = `translateX(${-index * 100 / totalImages}%)`; 
 }
 
 function next() {
     const totalImages = document.querySelectorAll('.image').length;
+    
     if (index < totalImages - 1) { 
         index++;
+    } else {
+        index = 0; // Retour au début si on atteint la fin (effet boucle)
+    }
+
     showImage();
-}}
+}
 
 function prev() {
     const totalImages = document.querySelectorAll('.image').length;
+    
     if (index > 0) {
         index--;
+    } else {
+        index = totalImages - 1; // Aller à la dernière image si on est au début (effet boucle)
     }
+
     showImage();
 }
+
+// Écouteurs d'événements pour les boutons
 document.getElementById('nextButton').addEventListener('click', next);
 document.getElementById('prevButton').addEventListener('click', prev);
+
 
 
 
@@ -99,7 +114,7 @@ function sendChildValue(array){
             let div = document.createElement('div');
             div.setAttribute('id', `div-${i}`);
             div.classList.add('row-container');
-            sectionContainer.append(div);
+            grid.append(div);
         }
 
         const rowContainers = document.querySelectorAll('.row-container');
@@ -147,6 +162,6 @@ sendChildValue(ageArray);
 selectChild.addEventListener('change', function(event) {
     const selectedAge = event.target.value;
     const newArray = [selectedAge, ...ageArray.filter(age => age !== selectedAge)]
-    sectionContainer.innerHTML = "";
+    grid.innerHTML = "";
     sendChildValue(newArray);
 });

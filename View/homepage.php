@@ -44,7 +44,7 @@ if(isset($_SESSION['id'])){
         <button class="button" id="nextButton"><img src="/uploads/autres/buttonCarrousselRight.png" alt="button right"></button>
     </div>
 </div>
-<div class="grid">
+<div id="grid">
     <div class="des_0_2_ans"><img src="uploads/des_0_2_ans.webp" alt="0 à 2 ans"></div>
     <div class="slider_0_2_ans">
         <div class="card">
