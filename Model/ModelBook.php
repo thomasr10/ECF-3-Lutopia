@@ -203,6 +203,18 @@ class ModelBook extends Model {
         }
         return $arrayObj;
     }
+
+    public function getBooksUnconnectHomepage(){
+        $req = $this->getDb()->query("WITH RankedBooks AS (SELECT `book`.`id_book`, `book`.`title`, `book`.`img_src`, `book`.`synopsis`, `book`.`id_type`, `age`.`id_age`, CONCAT(`author`.`first_name`, ' ', `author`.`last_name`) AS 'author', CONCAT(`illustrator`.`first_name`, ' ', `illustrator`.`last_name`) AS 'illustrator', COUNT(`borrow`.`id_copy`) AS 'top', ROW_NUMBER() OVER (PARTITION BY `age`.`id_age` ORDER BY COUNT(`borrow`.`id_copy`) DESC) AS rn FROM `borrow` INNER JOIN `copy` ON `borrow`.`id_copy` = `copy`.`id_copy` INNER JOIN `book` ON `copy`.`id_book` = `book`.`id_book` INNER JOIN `age` ON `book`.`id_age` = `age`.`id_age` INNER JOIN `book_author` ON `book`.`id_book` = `book_author`.`id_book` INNER JOIN `author` ON `book_author`.`id_author` = `author`.`id_author` INNER JOIN `book_illustrator` ON `book`.`id_book` = `book_illustrator`.`id_book` INNER JOIN `illustrator` ON `book_illustrator`.`id_illustrator` = `illustrator`.`id_illustrator` WHERE `age`.`id_age` IN (1, 2, 3, 4, 5) GROUP BY `book`.`id_book`, `age`.`id_age`, `author`, `illustrator`) SELECT `id_book`, `title`, `img_src`, `synopsis`, `id_type`, `id_age`, `author`, `illustrator`, `top` FROM RankedBooks WHERE rn <= 4 ORDER BY FIELD(`id_age`, 1, 2, 3, 4, 5), `top` DESC");
+
+        $arrayObj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayObj[] = new BookDTO(new Book($data), $data['author'], $data['illustrator']);
+        }
+        return $arrayObj;
+
+    }
     
 
 
