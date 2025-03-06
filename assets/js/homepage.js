@@ -1,5 +1,5 @@
 const selectChild = document.getElementById('select-child');
-let bookContainer = document.getElementById('book-container');
+let booksContainer = document.getElementById('booksContainer');
 const childOption = document.querySelectorAll('.child')
 const sectionContainer = document.getElementById('section-container');
 
@@ -11,9 +11,9 @@ function displayNewBooks(age) {
     fetch(`/home-category-age/${currentAge}`)
     .then(response => response.json())
     .then(data => {
+        let bookArticle = document.createElement('div');
+        bookArticle.className = 'images';
         data.forEach(book => {
-            let bookArticle = document.createElement('div');
-            bookArticle.className = 'images';
 
             let imgContainer = document.createElement('img');
             imgContainer.className = 'image';
@@ -23,8 +23,8 @@ function displayNewBooks(age) {
 
             bookArticle.append(imgContainer);
             bookArticle.append(authorContainer);
-            bookContainer = document.getElementById('bookContainer');
-            bookContainer.append(bookArticle);
+            booksContainer = document.getElementById('bookContainer');
+            booksContainer.append(bookArticle);
 
             //à enlever c juste pour pas que l'image soit BALEZE
             imgContainer.style.width = 200 + 'px'
@@ -37,11 +37,16 @@ function displayNewBooks(age) {
 displayNewBooks(selectChild);
 
 selectChild.addEventListener('change', function() {
-    bookContainer.innerHTML = "";
+    sectionContainer.innerHTML = "";
     displayNewBooks(selectChild);
 });
 
 let index = 0;
+
+function initCarousel() {
+    const imagesContainer = document.querySelector('.images');
+    imagesContainer.innerHTML = ''; // Réinitialise le conteneur avant d'ajouter de nouvelles images
+}
 
 function showImage() {
     const images = document.querySelector('.images');
@@ -52,19 +57,19 @@ function next() {
     const totalImages = document.querySelectorAll('.image').length;
     if (index < totalImages - 1) { 
         index++;
-    showImage();
-}}
+        showImage();
+    }
+}
 
 function prev() {
-    const totalImages = document.querySelectorAll('.image').length;
     if (index > 0) {
         index--;
+        showImage();
     }
-    showImage();
 }
+
 document.getElementById('nextButton').addEventListener('click', next);
 document.getElementById('prevButton').addEventListener('click', prev);
-
 
 
 // afficher des propositions de livres
@@ -80,6 +85,8 @@ childOption.forEach(age => {
 
 
 function sendChildValue(array){
+    const sectionContainer = document.getElementById('section-container');
+
     console.log(array)
     fetch('/home-section', {
         method: "POST",
@@ -140,7 +147,9 @@ function sendChildValue(array){
             
         }
     })
-}
+  
+    };
+
 
 sendChildValue(ageArray);
 
