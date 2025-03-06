@@ -25,6 +25,13 @@ class ModelUser extends Model {
         return $lastId;
     }
 
+    public function updateUser(string $card, int $id){
+        $req = $this->getDb()->prepare("UPDATE `user` SET `card`= :cards WHERE `id_user` = :id;");
+        $req->bindParam(':cards', $card, PDO::PARAM_STR);
+        $req->bindParam(':id', $id, PDO::PARAM_INT);
+        $req->execute();
+    }
+
     public function getNewUser(int $id){
         $req =$this->getDb()->prepare("SELECT `id_user`, `first_name`, `last_name`,`email`, `password`, `token` FROM `user` WHERE `id_user` = :id");
         $req->bindParam('id', $id, PDO::PARAM_INT);

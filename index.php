@@ -6,6 +6,9 @@ require_once('./vendor/altorouter/altorouter/AltoRouter.php');
 
 $router = new AltoRouter();
 
+// load .env files
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 //ROUTES
 
