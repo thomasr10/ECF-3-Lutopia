@@ -65,3 +65,24 @@ function prev() {
 }
 document.getElementById('nextButton').addEventListener('click', next);
 document.getElementById('prevButton').addEventListener('click', prev);
+
+
+
+
+
+
+
+
+
+
+
+
+// Debut menu burger-------------------------------------------------------
+// const menuToggle = document.querySelector('.menu-toggle');
+// const navbar = document.querySelector('.navbar');
+
+// menuToggle.addEventListener('click', () => {
+//   navbar.classList.toggle('active');
+// });
+
+// Fin menu burger-------------------------------------------------------

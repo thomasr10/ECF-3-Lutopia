@@ -10,14 +10,21 @@
   <!-- LES FRONT : vous pouvez modifier la navbar. C'était juste pour tester les routes (il faudra bien les réutiliser si jamais vous faites des modif) -->
   <header class = "header">
     <div class = "menu">
+    <button class="menu-toggle" aria-label="Menu burger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    
       <figure>
         <img src="/uploads/autre/Logo-flat.svg" alt="Logo Lutopia">
       </figure>
-      <nav>      
-      <div>
+
+      <nav class ="nav">      
+     
         <ul class = "navbar">
           <li><a href="<?= $router->generate('home')?>">Accueil</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#">Informations</a></li>
         <?php
         if(isset($_SESSION['id'])){
         ?>
@@ -32,15 +39,20 @@
         }
         ?>
         </ul>
-      </div>
-      </nav>
+      </nav> 
+      
+      
+      
+     
       <form action="" method="GET" class="search-form">
-      <input type="text" name="query" placeholder="Rechercher..."      class="search-input" />
+        <input type="text" name="query" placeholder="Rechercher..."      class="search-input" />
 
         <button type="submit" class="search-button">
             <img src="uploads/autre/icon-loupe.svg" alt="icone loupe">
         </button>
-        </form>
+      </form>
+
+
     </div>
    
-  </header>
+  </header> 
