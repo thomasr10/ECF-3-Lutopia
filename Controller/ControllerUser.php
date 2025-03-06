@@ -35,6 +35,11 @@ class ControllerUser {
                             
                             if($lastId){
                                 $id = intval($lastId);
+
+                                //generate card with id , first name and name
+                                $card = strtoupper(substr($_POST['first-name'], 0, 2)) . $id . strtoupper(substr($_POST['name'], 0, 2));
+                                $model->updateUser($card, $id);
+                                
                                 //check child age  
                                 $modelChild = new ModelChild();
                                 $diff = 10;
