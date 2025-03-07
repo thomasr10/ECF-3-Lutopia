@@ -6,8 +6,19 @@ class ControllerAuthor {
         $a = file_get_contents('php://input');
         $data = json_decode($a, true);
         $model = new ModelAuthor();
-        $author = $model->searchAuthor($data);
+        $authors = $model->searchAuthor($data);
 
+        $arrayObj = []; 
+
+        foreach($authors as $author){
+            $arrayObj[] = [
+                'id_author' => $author->getId_author(),
+                'first_name' => $author->getFirst_name(),
+                'last_name' => $author->getLast_name()
+            ];
+        }
+
+        echo json_encode($arrayObj);
 
     }
 }

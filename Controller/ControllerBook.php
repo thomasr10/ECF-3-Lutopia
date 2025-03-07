@@ -194,7 +194,17 @@ class ControllerBook {
 
     public function createBook(){
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            var_dump('test');
+            if(!empty($_POST['isbn']) && !empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['illustrator']) && !empty($_POST['editor']) && !empty($_POST['publication_date']) && !empty($_POST['edition_date']) && !empty($_POST['synopsis']) && !empty($_FILES['picture']) && !empty($_POST['copy-number']) ){
+            var_dump('test');
 
+                //check img.ext
+
+                $fileName = str_replace(' ', '_', strtolower($_POST['title']));
+                $_FILES['picture']['name'] = $fileName;
+                var_dump($fileName);
+                header('Location: /dashboard-book');
+            }
         } else {
             require_once('./View/dashboard_create_book.php');
         }

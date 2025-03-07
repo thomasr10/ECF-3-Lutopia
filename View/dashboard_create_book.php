@@ -8,7 +8,7 @@ ob_start();
 
 <div>
     <h2>Ajouter une oeuvre</h2>
-    <form id="form" action="/dashboard-book" method="POST" enctype="multipart/form-data">
+    <form action="/dashboard-book" method="POST" enctype="multipart/form-data">
         <div>
             <label for="isbn">Numéro ISBN</label>
             <input type="number" name="isbn"  id="isbn" placeholder="Numéro ISBN" required>
@@ -17,12 +17,12 @@ ob_start();
             <label for="title">Titre du livre</label>
             <input type="text" name="title"  id="title" placeholder="Titre du livre" required>
         </div>
-        <div>
+        <div id="author-section">
             <label for="author">Auteur</label>
             <input type="text" name="author"  id="author" placeholder="Auteur" required>
             <p>Créez l'auteur s'il n'existe pas</p>
         </div>
-        <div>
+        <div id="illustrator-section">
             <label for="illustrator">Illustrateur</label>
             <input type="text" name="illustrator"  id="illustrator" placeholder="Illustrateur" required>
             <p>Créez l'illustrateur s'il n'existe pas</p>
@@ -46,6 +46,13 @@ ob_start();
         <div>
             <label for="picture">Image webp</label>
             <input type="file" accept="image/webp" name="picture"  id="picture" placeholder="Synopsis" required>
+        </div>
+        <div>
+            <label for="copy-number">Nombre de copies du livre</label>
+            <input type="number" name="copy-number"  id="copy-number" placeholder="Nombre de copies du livre" min=1 required>
+        </div>
+        <div>
+            <input type="submit" value="Ajouter le livre">
         </div>
     </form>
 </div>
