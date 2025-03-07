@@ -139,5 +139,65 @@ class ControllerBook {
         echo json_encode($arrayObj);
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function createBook(){
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+        } else {
+            require_once('./View/dashboard_create_book.php');
+        }
+    }
     
 }
