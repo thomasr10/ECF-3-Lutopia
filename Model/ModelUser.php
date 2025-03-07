@@ -90,6 +90,15 @@ class ModelUser extends Model {
     }
 
     public function getBorrowByCard(string $card){
+        $req = $this->getDb()->prepare("SELECT `user`.`card`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`card` = :card;");
+        $req->bindParam('card', $card, PDO::PARAM_STR);
+        $req->execute();
 
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Borrow($data);
+        }
+        return $arrayobj;
     }
 }
