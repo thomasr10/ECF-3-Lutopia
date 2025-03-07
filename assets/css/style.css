@@ -70,17 +70,19 @@ body {
   display: flex;
   height: 100%;
   width: 90%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 @media (max-width: 1440px) {
   .menu {
     width: 100%;
+    justify-content: space-around;
   }
 }
 @media (max-width: 1024px) {
   .menu {
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 1rem;
   }
 }
 
@@ -91,9 +93,6 @@ figure img {
   height: 80%;
 }
 
-.nav {
-  padding-left: 4rem;
-}
 @media (max-width: 1024px) {
   .nav {
     padding: 0;
@@ -102,15 +101,39 @@ figure img {
 }
 
 .navbar {
+  position: relative;
   display: flex;
   margin: 0 auto;
 }
 .navbar li {
   font-size: 1.5rem;
+  padding: 0 0.5rem;
 }
 @media (max-width: 1440px) {
   .navbar li {
     font-size: 1.25rem;
+  }
+}
+@media (max-width: 1024px) {
+  .navbar li .navbar {
+    display: block;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #eef0ff;
+    z-index: 1000;
+  }
+  .navbar li .navbar li {
+    padding: 1rem;
+    text-align: center;
+  }
+  .navbar li .menu-toggle {
+    display: flex;
+  }
+  .navbar li .navbar.active {
+    display: flex;
   }
 }
 .navbar li a {
@@ -140,7 +163,6 @@ figure img {
   padding: 0.4rem 1.5rem;
   border-radius: 100px;
   border: 3px solid transparent;
-  margin-left: auto;
 }
 @media (max-width: 1440px) {
   .search-form {
@@ -150,7 +172,7 @@ figure img {
 }
 @media (max-width: 1024px) {
   .search-form {
-    padding: 0;
+    padding: 0.3rem 0.3rem;
   }
 }
 .search-form:hover {
@@ -170,6 +192,7 @@ figure img {
   }
 }
 .search-form button {
+  background-color: #eef0ff;
   border: none;
 }
 @media (max-width: 1440px) {
@@ -179,7 +202,7 @@ figure img {
 }
 @media (max-width: 1024px) {
   .search-form button {
-    padding: 0;
+    padding: 0.2rem 0.3rem;
   }
 }
 
@@ -199,27 +222,4 @@ figure img {
   background-color: #575d88;
   margin: 3px 0;
   transition: 0.3s;
-}
-
-@media (max-width: 1024) {
-  .navbar {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #eef0ff;
-    z-index: 1000;
-  }
-  .navbar li {
-    padding: 1rem;
-    text-align: center;
-  }
-  .menu-toggle {
-    display: flex;
-  }
-  .navbar.active {
-    display: flex;
-  }
 }/*# sourceMappingURL=style.css.map */

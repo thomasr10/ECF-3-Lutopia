@@ -32,13 +32,15 @@ body {
   display: flex;
   height: 100%;
   width: 90%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   @include desktop {
     width: 100%;
+    justify-content: space-around;
       }
   @include tablet {
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 1rem;
   }
 }
 
@@ -51,23 +53,48 @@ figure {
 }
 
 .nav {
-  padding-left: 4rem;
+  // padding-left: 4rem;
     @include tablet {
       padding: 0;
       display: none;
     }
 }
 .navbar {
-  
+  position: relative;
   display: flex;
   margin: 0 auto;
   li {
     font-size: $titre-h3;
+    padding: 0 0.5rem;
     @include desktop {
       font-size: $titre-h4;
-
         }
-    
+        @include tablet {
+          .navbar {
+            display: block; 
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: $primary-text-200;
+            z-index: 1000;
+             
+      
+            li {
+              padding: 1rem;
+              text-align: center;
+            }
+          }
+        
+          .menu-toggle {
+            display: flex;
+          }
+        
+          .navbar.active {
+            display: flex;
+          }
+        }
     
     
 
@@ -102,14 +129,13 @@ figure {
     padding: 0.4rem 1.5rem;
     border-radius: 100px;
     border :3px solid transparent;
-    margin-left: auto;
        @include desktop {
         padding: 0.2rem 1rem;
         margin-left: 2rem;
           }
 
       @include tablet {
-        padding: 0;
+        padding: 0.3rem 0.3rem;
       }
   
         &:hover {
@@ -132,13 +158,16 @@ figure {
     }
 
     button {
+        background-color: $primary-text-200;
         border: none;
         @include desktop {
           padding: 0 2rem;
             }
         @include tablet {
-          padding: 0;
+          padding: 0.2rem 0.3rem;
         }
+
+
        
     }
     
@@ -162,31 +191,32 @@ figure {
     }
   }
 
-  @media (max-width: 1024) {
-    .navbar {
-      display: none; 
-      flex-direction: column;
-      width: 100%;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: $primary-text-200;
-      z-index: 1000;
-      
-      li {
-        padding: 1rem;
-        text-align: center;
-      }
-    }
+  // @include tablet {
+  //   .navbar {
+  //     display: block; 
+  //     flex-direction: column;
+  //     width: 100%;
+  //     position: absolute;
+  //     top: 100%;
+  //     left: 0;
+  //     background-color: $primary-text-200;
+  //     z-index: 1000;
+       
+
+  //     li {
+  //       padding: 1rem;
+  //       text-align: center;
+  //     }
+  //   }
   
-    .menu-toggle {
-      display: flex;
-    }
+  //   .menu-toggle {
+  //     display: flex;
+  //   }
   
-    .navbar.active {
-      display: flex;
-    }
-  }
+  //   .navbar.active {
+  //     display: flex;
+  //   }
+  // }
 
 
 
