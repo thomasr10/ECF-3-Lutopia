@@ -2,6 +2,7 @@
 
 class Borrow {
     private $card;
+    private $last_name;
     private $name;
     private $start_date;
     private $end_date;
@@ -30,6 +31,9 @@ class Borrow {
     public function getName(){
         return $this->name;
     }
+    public function getLast_name(){
+        return $this->last_name;
+    }
     public function getStart_date(){
         return $this->start_date;
     }
@@ -52,6 +56,9 @@ class Borrow {
     }
     public function setName(string $name){
         $this->name = $name;
+    }
+    public function setLast_name(string $last_name){
+        $this->last_name = $last_name;
     }
     public function setStart_date(string $start_date){
         $this->start_date = new DateTime($start_date);

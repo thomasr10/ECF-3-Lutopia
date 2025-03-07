@@ -193,9 +193,14 @@ class ControllerUser {
             global $router;
             
 
-            if($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['searchAdminUser']){
+            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchAdminUser'])){
                 $model = new ModelUser();
                 $search = $model->getBorrowByCard($_POST['searchAdminUser']);
+            }
+            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prolong'])){
+                $model = new ModelUser();
+                $search = $model->updateBorrow($_POST['id_borrow'], $_POST['date_back']);
+                
             }
             require_once('./View/dashboard.php');
         } else {
