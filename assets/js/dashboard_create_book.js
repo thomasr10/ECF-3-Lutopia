@@ -84,7 +84,7 @@ illustratorInput.addEventListener('input', function(){
                         illustratorInput.value = this.textContent;
                         const illustratorId = document.createElement('input');
                         illustratorSection.append(illustratorId)
-                        illustratorId.setAttribute('id', illustrator.id_illustrator);
+                        illustratorId.setAttribute('value', illustrator.id_illustrator);
                         illustratorId.setAttribute('name', 'id_illustrator');
                         illustratorId.type = 'hidden';
                         responseDiv.textContent = "";

@@ -44,12 +44,57 @@ ob_start();
             <textarea name="synopsis" id="synopsis" placeholder="Synopsis"></textarea>
         </div>
         <div>
-            <label for="picture">Image webp</label>
-            <input type="file" accept="image/webp" name="picture"  id="picture" placeholder="Synopsis" required>
+            <label for="category">Catégorie</label>
+            <select name="category" id="category">
+                <option value="">Catégories</option>
+                <?php
+                foreach($categories as $category){
+                ?>
+                <option value="<?=$category->getId_category()?>"><?=$category->getCategory_name()?></option>
+                <?php
+                }
+                ?>
+            </select>
+            <p>Créez la catégories si elle n'existe pas</p>
         </div>
         <div>
-            <label for="copy-number">Nombre de copies du livre</label>
-            <input type="number" name="copy-number"  id="copy-number" placeholder="Nombre de copies du livre" min=1 required>
+            <label for="age">Tranche d'âge</label>
+            <select name="age" id="age">
+                <option value="">Tranche d'âge</option>
+                <?php
+                foreach($ageRanges as $age){
+                ?>
+                <option value="<?=$age->getId_age()?>"><?=$age->getFrom()?> - <?=$age->getTo()?> ans</option>
+                <?php
+                }
+                ?>
+            </select>
+        </div>
+        <div>
+            <label for="type">Type de livre</label>
+            <select name="type" id="type">
+                <option value="">Type de livre</option>
+                <?php
+                foreach($types as $type){
+                ?>
+                <option value="<?=$type->getId_type()?>"><?=$type->getType_name()?></option>
+                <?php
+                }
+                ?>
+            </select>
+        </div>
+        <div>
+            <label for="state-0">État de l'exemplaire</label>
+            <select name="state-0" id="state-0">
+                <option value="">État de l'exemplaire</option>
+                <option value="0">Très bon état</option>
+                <option value="1">Bon état</option>
+                <option value="2">Dégradé</option>
+            </select>
+        </div>
+        <div>
+            <label for="picture">Image du livre</label>
+            <input type="file" accept="image/webp, image/png, image/jpeg, image/jpg" name="picture"  id="picture" placeholder="Synopsis" required>
         </div>
         <div>
             <input type="submit" value="Ajouter le livre">
