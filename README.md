@@ -30,3 +30,12 @@ composer install
 ```
 npm install gsap
 ```
+
+### Create a .env file
+
+Complete with your own credentials and settings.
+
+```
+MAIL_USERNAME = "Your mailtrap username"
+MAIL_PASSWORD = "Your mailtrap password"
+```
