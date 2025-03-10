@@ -90,7 +90,7 @@ class ModelUser extends Model {
     }
 
     public function getBorrowByCard(string $card){
-        $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`card` = :card;");
+        $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`card` = :card;"); //AND `borrow`.`status` = '0' A AJOUTER AVEC LA BDD <--
         $req->bindParam('card', $card, PDO::PARAM_STR);
         $req->execute();
 
@@ -104,6 +104,13 @@ class ModelUser extends Model {
 
     public function updateBorrow(int $id_borrow, string $end_date){
         $req = $this->getDb()->prepare("UPDATE `borrow` SET `end_date`= :end_date WHERE `id_borrow` = :id_borrow;");
+        $req->bindParam('id_borrow', $id_borrow, PDO::PARAM_INT);
+        $req->bindParam('end_date', $end_date, PDO::PARAM_STR);
+        $req->execute();
+    }
+
+    public function deleteBorrow(int $id_borrow, string $end_date){
+        $req = $this->getDb()->prepare("UPDATE `borrow` SET `end_date`= :end_date , `status` = 1 WHERE `id_borrow` = :id_borrow;");
         $req->bindParam('id_borrow', $id_borrow, PDO::PARAM_INT);
         $req->bindParam('end_date', $end_date, PDO::PARAM_STR);
         $req->execute();
