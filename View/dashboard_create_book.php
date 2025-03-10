@@ -84,13 +84,8 @@ ob_start();
             </select>
         </div>
         <div>
-            <label for="state-0">État de l'exemplaire</label>
-            <select name="state-0" id="state-0">
-                <option value="">État de l'exemplaire</option>
-                <option value="0">Très bon état</option>
-                <option value="1">Bon état</option>
-                <option value="2">Dégradé</option>
-            </select>
+            <label for="copy">Nombre d'exemplaires</label>
+            <input type="number" placeholder="Nombre d'exemplaires" step=1>
         </div>
         <div>
             <label for="picture">Image du livre</label>
