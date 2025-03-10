@@ -85,7 +85,7 @@ ob_start();
         </div>
         <div>
             <label for="copy">Nombre d'exemplaires</label>
-            <input type="number" placeholder="Nombre d'exemplaires" step=1>
+            <input type="number" name="copy" id="copy" placeholder="Nombre d'exemplaires" step=1>
         </div>
         <div>
             <label for="picture">Image du livre</label>

@@ -194,9 +194,8 @@ class ControllerBook {
 
     public function createBook(){
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
-            if(!empty($_POST['isbn']) && !empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['illustrator']) && !empty($_POST['editor']) && !empty($_POST['publication_date']) && !empty($_POST['edition_date']) && !empty($_POST['synopsis']) && !empty($_POST['id_category']) && !empty($_POST['id_age']) && !empty($_POST['id_type']) && !empty($_FILES['picture']) && !empty($_POST['copy-number']) && !empty($_POST['id_author']) && !empty($_POST['id_illustrator'])){
-                
+            if(!empty($_POST['isbn']) && !empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['illustrator']) && !empty($_POST['editor']) && !empty($_POST['publication_date']) && !empty($_POST['edition_date']) && !empty($_POST['synopsis']) && !empty($_POST['category']) && !empty($_POST['age']) && !empty($_POST['type']) && !empty($_FILES['picture']) && !empty($_POST['copy']) && !empty($_POST['id_author']) && !empty($_POST['id_illustrator'])){
+                var_dump($_POST);
                 //change img.ext
                 $fileName = str_replace([' ', 'é', 'è', 'à'], ['_', 'e', 'e', 'a'], strtolower($_POST['title']));
                 $_FILES['picture']['name'] = $fileName;
@@ -205,20 +204,23 @@ class ControllerBook {
                 if(move_uploaded_file($_FILES['picture']['tmp_name'], './uploads/' . $img)){
                     
                     $model = new ModelBook();
-                    $id_book  = $model->addNewBook($_POST['isbn'], $_POST['title'], $_POST['editor'], $img, $_POST['publication_date'], $_POST['edition_date'], $_POST['synopsis'], $_POST['id_type'], $_POST['id_age']);
+                    $id_book = $model->addNewBook($_POST['isbn'], $_POST['title'], $_POST['editor'], $img, $_POST['publication_date'], $_POST['edition_date'], $_POST['synopsis'], intval($_POST['type']), intval($_POST['age']));
 
-                    $model->addBookAuthor($_POST['id_author'], $id_book);
-                    $model->addBookIllustrator($id_book, $_POST['id_illustrator']);
-                    $model->addBookCategory($_POST['id_category'], $id_book);
-                    $model->addBookCopy($_POST['copy'], $id_book);
+                    $model->addBookAuthor(intval($_POST['id_author']), $id_book);
+                    $model->addBookIllustrator($id_book, intval($_POST['id_illustrator']));
+                    $model->addBookCategory(intval($_POST['category']), $id_book);
+                    $status = 0;
+                    for($i = 0; $i <= $_POST['copy']; $i++){
+                        $model->addBookCopy($status, $id_book);
+                    }
                     
+                    header('Location: /dashboard');
+                    exit();
+
                 } else {
                     echo "Erreur lors du téléchargement du fichier";
+                    require_once('./View/dashboard_create_book.php');
                 }
-
-
-
-                // header('Location: /dashboard-book');
             }
         } else {
 
