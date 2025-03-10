@@ -1,8 +1,6 @@
 const selectChild = document.getElementById('select-child');
 let booksContainer = document.getElementById('booksContainer');
 const childOption = document.querySelectorAll('.child')
-const grid = document.getElementById('grid');
-
 // afficher les nouveautés en fonction de l'age de l'enfant séléctionné
 
 function displayNewBooks(age) {
@@ -33,13 +31,16 @@ function displayNewBooks(age) {
          })
     })
 }
-
-displayNewBooks(selectChild);
-
-selectChild.addEventListener('change', function() {
-    sectionContainer.innerHTML = "";
+if(selectChild !== null){
+    
     displayNewBooks(selectChild);
-});
+    selectChild.addEventListener('change', function() {
+        sectionContainer.innerHTML = "";
+        displayNewBooks(selectChild);
+    });
+
+}
+
 
 let index = 0;
 
@@ -108,9 +109,9 @@ childOption.forEach(age => {
 
 
 
+const sectionContainer = document.getElementById('section-connected');
 
 function sendChildValue(array){
-    const sectionContainer = document.getElementById('section-container');
 
     console.log(array)
     fetch('/home-section', {
@@ -131,7 +132,8 @@ function sendChildValue(array){
             let div = document.createElement('div');
             div.setAttribute('id', `div-${i}`);
             div.classList.add('row-container');
-            grid.append(div);
+            div.classList.add('booksContainer');
+            sectionContainer.append(div);
         }
 
         const rowContainers = document.querySelectorAll('.row-container');
@@ -142,9 +144,8 @@ function sendChildValue(array){
         }
         for(let i = 0; i < chunks.length; i++){
             for(let j = 0; j < chunks[i].length; j++){
-                console.log(i)
-                console.log(chunks[i][j])
                 const bookArticle = document.createElement('article');
+                bookArticle.classList.add('card');
                 rowContainers[i].append(bookArticle);
                 const bookImg = document.createElement('img');
                 const bookTitle = document.createElement('p');
@@ -154,8 +155,8 @@ function sendChildValue(array){
                 const borrowLink = document.createElement('a');
                 const linkDiv1 = document.createElement('div');
                 const linkDiv2 = document.createElement('div');
-                linkDiv1.classList.add("div-link");
-                linkDiv2.classList.add("div-link");
+                descLink.classList.add("button_pink");
+                borrowLink.classList.add("button_borrow");
                 linkDiv1.append(descLink);
                 linkDiv2.append(borrowLink);
                 descLink.setAttribute('href', '#');
@@ -181,6 +182,6 @@ sendChildValue(ageArray);
 selectChild.addEventListener('change', function(event) {
     const selectedAge = event.target.value;
     const newArray = [selectedAge, ...ageArray.filter(age => age !== selectedAge)]
-    grid.innerHTML = "";
+    sectionContainer.innerHTML = "";
     sendChildValue(newArray);
 });

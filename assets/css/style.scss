@@ -448,9 +448,11 @@ body{
             .button{
                 cursor: pointer;
                 margin-right: 50px;
+                background: none;
+                border: none;
                 
             }
-#section-container{
+#section-container, #section-connected{
     display: flex;
     flex-direction: row; /* Met toutes les rangées en ligne */
     flex-wrap: wrap; /* Permet d'aller à la ligne si nécessaire */

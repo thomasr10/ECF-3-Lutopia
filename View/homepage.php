@@ -45,6 +45,8 @@ if(isset($_SESSION['id'])){
     </div>
 </div>
 
+<div id="section-connected"></div>
+
 <?php
 } else {
 ?>
