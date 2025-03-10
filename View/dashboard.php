@@ -18,7 +18,20 @@ ob_start();
         if(!isset($search)){
             echo 'Aucune carte séléctionner';
         } else {
-            ?> <h2>Emprunt en cours</h2><hr><?php
+            ?> 
+            <hr>
+            <h2>Réservation en cours</h2>
+            <hr>
+           <?php 
+           foreach($reservation as $key=>$value):
+           ?> 
+           <form action="">
+            <p><?= $reservation[$key]->getTitle(); ?></p> <input type="submit" value="Annuler">
+           </form>
+           <?php endforeach;
+           echo 3 - count($reservation). ' reservations restantes'; ?>
+           <hr>
+            <h2>Emprunt en cours</h2><hr><?php
             foreach($search as $key=>$value): ?>
                 <?=$search[$key]->getLast_Name()?>
                 <article>

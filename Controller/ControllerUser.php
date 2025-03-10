@@ -191,11 +191,12 @@ class ControllerUser {
     public function dashboard(){
         if(isset($_SESSION['role'])){
             global $router;
-            
 
             if(isset($_GET['searchAdminUser'])){
                 $model = new ModelUser();
                 $search = $model->getBorrowByCard($_GET['searchAdminUser']);
+                $reservation = $model->getReservationByCard($_GET['searchAdminUser']);
+                
             }
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prolong'])){
                 $model = new ModelUser();
