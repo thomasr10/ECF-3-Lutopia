@@ -1,6 +1,6 @@
 //fonts-----------------------------------------------------------------
 // Playwrite BE WAL
-    // <weight>: Use a value from 100 to 400
+// <weight>: Use a value from 100 to 400
 // <uniquifier>: Use a unique and descriptive class name
 // .playwrite-be-wal-<uniquifier> {
 //     font-family: "Playwrite BE WAL", cursive;
@@ -8,7 +8,7 @@
 //     font-weight: <weight>;
 //     font-style: normal;
 //   }
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Georama:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Liu+Jian+Mao+Cao&family=Playwrite+BE+WAL:wght@100..400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Georama:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Liu+Jian+Mao+Cao&family=Playwrite+BE+WAL:wght@100..400&display=swap");
 
 // Lexend
 // <weight>: Use a value from 100 to 900
@@ -21,19 +21,14 @@
 //     font-style: normal;
 //   }
 
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Georama:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Lexend:wght@100..900&family=Liu+Jian+Mao+Cao&family=Playwrite+BE+WAL:wght@100..400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Georama:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Lexend:wght@100..900&family=Liu+Jian+Mao+Cao&family=Playwrite+BE+WAL:wght@100..400&display=swap");
 
-
-
-$prenoms-enfants : "Playwrite BE WAL";
-$titre-h1 : 3rem;
-$titre-h2 : 2.5rem;
-$titre-h3 : 1.5rem;
-$titre-h4 : 1.25rem;
-$para : 1rem;
-
-
-
+$prenoms-enfants: "Playwrite BE WAL";
+$titre-h1: 3rem;
+$titre-h2: 2.5rem;
+$titre-h3: 1.5rem;
+$titre-h4: 1.25rem;
+$para: 1rem;
 
 // Couleurs--------------------------------------------------------------
 
@@ -47,7 +42,6 @@ $pastel-saumon-700: #99856b;
 $pastel-saumon-800: #806d57;
 $pastel-saumon-900: #665743;
 $pastel-saumon-1000: #4d4031;
-
 
 $primary-text-1100: #181b31;
 $primary-text-100: #fafbff;
@@ -106,11 +100,24 @@ $pastel-vert-1000: #414b27;
 
 // dégradés--------------------------------------------------------------------------
 
-$degrade-footer: linear-gradient(to bottom, #cbb5b5 0%,#9f8585 100%);
-$degrade-fond-definitif: linear-gradient(to top, #fcddec 0%,#ffe6c7 29.51%,#e8ffc4 50.77%,#fcddec 75.27%,#fffafb 97.01%);
-$fond-accueil: linear-gradient(to bottom, #e6ddd1 0%,#e6d0c9 27.55%,#e3f4c8 50%,#e6d0c9 75%,#e8ffc4 100%);
-
-
+$degrade-footer: linear-gradient(to bottom, #cbb5b5 0%, #9f8585 100%);
+$degrade-footerTop: linear-gradient(to top, #cbb5b5 0%, #9f8585 100%);
+$degrade-fond-definitif: linear-gradient(
+  to top,
+  #fcddec 0%,
+  #ffe6c7 29.51%,
+  #e8ffc4 50.77%,
+  #fcddec 75.27%,
+  #fffafb 97.01%
+);
+$fond-accueil: linear-gradient(
+  to bottom,
+  #e6ddd1 0%,
+  #e6d0c9 27.55%,
+  #e3f4c8 50%,
+  #e6d0c9 75%,
+  #e8ffc4 100%
+);
 
 // pas sur qu'elles sont utilisées:---------------------------------------------------
 
