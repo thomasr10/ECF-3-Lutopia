@@ -12,11 +12,15 @@
 // outline: 3px solid $stroke-gris-900 ;
 // }
 
+
 body {
     width: 100%;
 }
 
+
+
 .header{
+
   font-family: "Lexend";
   display: flex;
   width: 100%;
@@ -41,8 +45,10 @@ body {
   @include tablet {
     justify-content: space-between;
     padding: 0 1rem;
+   
   }
 }
+
 
 
 figure {
@@ -53,14 +59,13 @@ figure {
 }
 
 .nav {
-  // padding-left: 4rem;
     @include tablet {
       padding: 0;
       display: none;
     }
 }
 .navbar {
-  position: relative;
+
   display: flex;
   margin: 0 auto;
   li {
@@ -191,32 +196,7 @@ figure {
     }
   }
 
-  // @include tablet {
-  //   .navbar {
-  //     display: block; 
-  //     flex-direction: column;
-  //     width: 100%;
-  //     position: absolute;
-  //     top: 100%;
-  //     left: 0;
-  //     background-color: $primary-text-200;
-  //     z-index: 1000;
-       
 
-  //     li {
-  //       padding: 1rem;
-  //       text-align: center;
-  //     }
-  //   }
-  
-  //   .menu-toggle {
-  //     display: flex;
-  //   }
-  
-  //   .navbar.active {
-  //     display: flex;
-  //   }
-  // }
 
 
 
