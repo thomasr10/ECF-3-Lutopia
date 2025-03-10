@@ -1,18 +1,26 @@
 
 .button_pink{
-    width: 96px;
-    height: 26px;
+    width: auto;
+    height: auto;
+    text-decoration: none;
+    color: $primary-text-900;
     background-color: $pastel-rose-200;
     border-radius: 20px;
     font-family: "Lexend", sans-serif;
     font-size: 14px;
     margin: 20px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 7px;
+    border: none;
 }
 .button_borrow{
     width: 219px;
     height: 40px;
+    text-decoration: none;
+    border: none;
+    color: $primary-text-900;
     background-color: $stroke-gris-200;
+    padding: 7px;
     font-family: "Lexend", sans-serif;
     font-size: $para;
     border-radius: 20px;
