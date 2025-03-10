@@ -77,6 +77,26 @@ document.getElementById('nextButton').addEventListener('click', next);
 document.getElementById('prevButton').addEventListener('click', prev);
 
 
+
+
+
+
+
+
+
+
+
+
+// Debut menu burger-------------------------------------------------------
+const menuToggle = document.querySelector('.menu-toggle');
+const navbar = document.querySelector('.navbar');
+console.log(menuToggle);
+menuToggle.addEventListener('click', () => {
+    alert('ok')
+  navbar.classList.toggle('active');
+});
+
+// Fin menu burger-------------------------------------------------------
 // afficher des propositions de livres
 
 
