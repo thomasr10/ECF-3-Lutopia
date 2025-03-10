@@ -25,6 +25,13 @@ class ModelUser extends Model {
         return $lastId;
     }
 
+    public function updateUser(string $card, int $id){
+        $req = $this->getDb()->prepare("UPDATE `user` SET `card`= :cards WHERE `id_user` = :id;");
+        $req->bindParam(':cards', $card, PDO::PARAM_STR);
+        $req->bindParam(':id', $id, PDO::PARAM_INT);
+        $req->execute();
+    }
+
     public function getNewUser(int $id){
         $req =$this->getDb()->prepare("SELECT `id_user`, `first_name`, `last_name`,`email`, `password`, `token` FROM `user` WHERE `id_user` = :id");
         $req->bindParam('id', $id, PDO::PARAM_INT);
@@ -65,9 +72,40 @@ class ModelUser extends Model {
         return ($data) ? new User($data) : null;
     }
 
+    public function checkAdmin(string $name, string $email){
+        $req = $this->getDb()->prepare("SELECT `id_user`, `first_name`, `last_name`, `email`, `password`, `role`, `status` FROM `user` WHERE `first_name` = :fname AND `email` = :email");
+        $req->bindParam('fname', $name, PDO::PARAM_STR);
+        $req->bindParam('email', $email, PDO::PARAM_STR);
+        $req->execute();
+
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+
+        return ($data) ? new User($data) : null;
+    }
+
     public function isConnected(){
         if(isset($_SESSION['id'])){
             header('Location: /');
         }
+    }
+
+    public function getBorrowByCard(string $card){
+        $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`card` = :card;");
+        $req->bindParam('card', $card, PDO::PARAM_STR);
+        $req->execute();
+
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Borrow($data);
+        }
+        return $arrayobj;
+    }
+
+    public function updateBorrow(int $id_borrow, string $end_date){
+        $req = $this->getDb()->prepare("UPDATE `borrow` SET `end_date`= :end_date WHERE `id_borrow` = :id_borrow;");
+        $req->bindParam('id_borrow', $id_borrow, PDO::PARAM_INT);
+        $req->bindParam('end_date', $end_date, PDO::PARAM_STR);
+        $req->execute();
     }
 }

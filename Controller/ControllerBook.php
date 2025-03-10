@@ -47,7 +47,11 @@ class ControllerBook {
         $radioDatas = $model->radioBookType();
         $categoryDatas = $model->categorySelect();
         // var_dump($datas); debug
-        require_once('./View/age.php');
+        if(empty($datas)){
+            header('Location: /error404');
+        } else {
+            require_once('./View/age.php');
+        }
     }
 
     public function typeBook(int $age, int $type, int $category){
@@ -85,4 +89,55 @@ class ControllerBook {
             
         // }
     }
+
+    public function showOneBook(int $id){
+        global $router;
+        $model = new ModelBook();
+        $bookInfo = $model->bookId($id);
+        if(empty($bookInfo)){
+            header('Location: /error404');
+        } else {
+            require_once('./View/onebook.php');
+        }
+    }
+
+    
+    public function displayBooks(){
+
+        $a = file_get_contents('php://input');
+        $data = json_decode($a, true);
+        $result = [];
+        $model = new ModelBook();
+
+        foreach($data as $age){
+            foreach($age as $childAge){
+                $result[] = $model->getId_Age($childAge);
+            }
+        }
+
+        $books = $model->getBooksHomepage($result);
+        
+        $arrayObj = [];
+
+        foreach($books as $i => $book){
+            $arrayObj[] = [
+                "id_book" => $books[$i]->book->getId_book(),
+                "isbn" => $books[$i]->book->getIsbn(),
+                "title" => $books[$i]->book->getTitle(),
+                "editor" => $books[$i]->book->getEditor(),
+                "img" => $books[$i]->book->getImg_src(),
+                "publication_date" => $books[$i]->book->getPublication_date(),
+                "edition_date" => $books[$i]->book->getEdition_date(),
+                "synopsis" => $books[$i]->book->getSynopsis(),
+                "id_type" => $books[$i]->book->getId_type(),
+                "id_age" => $books[$i]->book->getId_age(),
+                "author" => $books[$i]->author,
+                "illustrator" => $books[$i]->illustrator
+            ]; 
+        }
+
+        echo json_encode($arrayObj);
+
+    }
+    
 }

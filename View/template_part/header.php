@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
-    <link rel="stylesheet" href="<?= $pointSlash ?>assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
   <!-- LES FRONT : vous pouvez modifier la navbar. C'était juste pour tester les routes (il faudra bien les réutiliser si jamais vous faites des modif) -->
@@ -20,8 +20,7 @@
         <img src="/uploads/autre/Logo-flat.svg" alt="Logo Lutopia">
       </figure>
 
-      <nav class ="nav">      
-     
+      <nav class ="nav">       
         <ul class = "navbar">
           <li><a href="<?= $router->generate('home')?>">Accueil</a></li>
           <li><a href="#">Informations</a></li>
@@ -56,3 +55,4 @@
     </div>
    
   </header> 
+
