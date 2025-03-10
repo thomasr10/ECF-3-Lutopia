@@ -7,7 +7,7 @@ const grid = document.getElementById('grid');
 
 function displayNewBooks(age) {
     let currentAge = age.value;
-    
+
     fetch(`/home-category-age/${currentAge}`)
     .then(response => response.json())
     .then(data => {

@@ -215,7 +215,79 @@ class ModelBook extends Model {
         return $arrayObj;
 
     }
-    
 
+    public function getBookCategories(){
+        $req = $this->getDb()->query("SELECT `id_category`, `category_name` FROM `category`");
+        $arrayObj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayObj[] = new Category($data);
+        }
+
+        return $arrayObj;
+    }
+
+
+    public function getBookAgeRanges(){
+        $req = $this->getDb()->query("SELECT `id_age`, `from`, `to` FROM `age`");
+        $arrayObj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayObj[] = new Age($data);
+        }
+
+        return $arrayObj;
+    }
+    
+    public function getBookTypes(){
+        $req = $this->getDb()->query("SELECT `id_type`, `type_name` FROM `type`");
+        $arrayObj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayObj[] = new Type($data);
+        }
+
+        return $arrayObj;
+    }
+
+    public function addNewBook(int $isbn, string $title, string $editor, string $img_src, string $publication_date, string $edition_date, string $synopsis, int $i_type, int $id_age){
+        $req = $this->getDb()->prepare("INSERT INTO `book`(`isbn`, `title`, `editor`, `img_src`, `publication_date`, `edition_date`, `synopsis`, `id_type`, `id_age`) VALUES (:isbn, :title, :editor, :img_src, :publication_date, :edition_date, :synopsis, :id_type, :id_age)");
+        $req->bindParam('isbn', $isbn, PDO::PARAM_INT);
+        $req->bindParam('title', $title, PDO::PARAM_STR);
+        $req->bindParam('editor', $editor, PDO::PARAM_STR);
+        $req->bindParam('img_src', $img_src, PDO::PARAM_STR);
+        $req->bindParam('publication_date', $publication_date, PDO::PARAM_STR);
+        $req->bindParam('edition_date', $edition_date, PDO::PARAM_STR);
+        $req->bindParam('synopsis', $synopsis, PDO::PARAM_STR);
+        $req->bindParam('id_type', $id_type, PDO::PARAM_INT);
+        $req->bindParam('id_age', $id_age, PDO::PARAM_INT);
+
+        $req->execute();
+
+        $id_book = $this->getDb()->lastInsertId();
+        return $id_book;
+    }
+
+
+    public function addBookAuthor(int $id_author, int $id_book){
+        $req = $this->getDb()->prepare("INSERT INTO `book_author`(`id_author`, `id_book`) VALUES (:id_author, :id_book)");
+        $req->bindParam('id_author', $id_author, PDO::PARAM_INT);
+        $req->bindParam('id_book', $id_book, PDO::PARAM_INT);
+        $req->execute();
+    }
+
+    public function addBookIllustrator(int $id_illustrator, int $id_book){
+        $req = $this->getDb()->prepare("INSERT INTO `book_illustrator`(`id_book`, `id_illustrator`) VALUES (:id_book, :id_illustrator)");
+        $req->bindParam('id_book', $id_book, PDO::PARAM_INT);
+        $req->bindParam('id_illustrator', $id_illustrator, PDO::PARAM_INT);
+        $req->execute();
+    }
+
+    public function addBookCategory(int $id_category, int $id_book){
+        $req = $this->getDb()->prepare("INSERT INTO `book_category`(`id_category`, `id_book`) VALUES (:id_category, :id_book)");
+        $req->bindParam('id_category', $id_category, PDO::PARAM_INT);
+        $req->bindParam('id_book', $id_book, PDO::PARAM_INT);
+        $req->execute();
+    }
 
 }

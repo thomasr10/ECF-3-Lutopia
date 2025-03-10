@@ -41,6 +41,13 @@ $router->map('GET|POST', '/login-admin', 'ControllerUser#loginAdmin', 'loginAdmi
 $router->map('GET|POST', '/dashboard', 'ControllerUser#dashboard', 'dashboard');
 
 
+
+//Créer un livre
+$router->map('GET|POST', '/dashboard-book', 'ControllerBook#createBook', 'create-book');
+//Chercher un auteur
+$router->map('POST', '/dashboard-search-author', 'ControllerAuthor#searchAuthor', 'search-author');
+$router->map('POST', '/dashboard-search-illustrator', 'ControllerIllustrator#searchIllustrator', 'search-illustrator');
+
 //route age
 $router->map('GET', '/age/[i:age]', 'ControllerBook#drawAge', 'drawAge');
 
@@ -49,6 +56,9 @@ $router->map('GET', '/error404', 'ControllerUser#errorPage', 'errorPage');
 
 //route informations page
 $router->map('GET', '/informations', 'ControllerUser#infoPage', 'infoPage');
+
+
+
 
 
 

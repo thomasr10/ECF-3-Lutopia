@@ -139,5 +139,95 @@ class ControllerBook {
         echo json_encode($arrayObj);
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function createBook(){
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+            if(!empty($_POST['isbn']) && !empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['illustrator']) && !empty($_POST['editor']) && !empty($_POST['publication_date']) && !empty($_POST['edition_date']) && !empty($_POST['synopsis']) && !empty($_POST['id_category']) && !empty($_POST['id_age']) && !empty($_POST['id_type']) && !empty($_FILES['picture']) && !empty($_POST['copy-number']) && !empty($_POST['id_author']) && !empty($_POST['id_illustrator'])){
+                
+                //change img.ext
+                $fileName = str_replace([' ', 'é', 'è', 'à'], ['_', 'e', 'e', 'a'], strtolower($_POST['title']));
+                $_FILES['picture']['name'] = $fileName;
+                $img = $fileName . '.webp';
+                
+                if(move_uploaded_file($_FILES['picture']['tmp_name'], './uploads/' . $img)){
+                    
+                    $model = new ModelBook();
+                    $id_book  = $model->addNewBook($_POST['isbn'], $_POST['title'], $_POST['editor'], $img, $_POST['publication_date'], $_POST['edition_date'], $_POST['synopsis'], $_POST['id_type'], $_POST['id_age']);
+
+                    $model->addBookAuthor($_POST['id_author'], $id_book);
+                    $model->addBookIllustrator($id_book, $_POST['id_illustrator']);
+                    $model->addBookCategory($_POST['id_category'], $id_book);
+                    $model->addBookCopy($_POST['copy'], $id_book);
+                    
+                } else {
+                    echo "Erreur lors du téléchargement du fichier";
+                }
+
+
+
+                // header('Location: /dashboard-book');
+            }
+        } else {
+
+            $model = new ModelBook();
+            $categories = $model->getBookCategories();
+            $ageRanges = $model->getBookAgeRanges();
+            $types = $model->getBookTypes();
+            require_once('./View/dashboard_create_book.php');
+        }
+    }
     
 }
