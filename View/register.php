@@ -3,6 +3,7 @@
 $title = "Inscription | Lutopia";
 $description = "Page d'inscription de Lutopia";
 $arrayJs = ["./assets/js/register.js"];
+$pointSlash = "";
 ob_start();
 
 ?>

@@ -3,6 +3,7 @@
 $title = "Inscription des enfants | Lutopia";
 $description = "Page pour inscrire ses enfants s'il y a eu un problème lors de la première tentative d'inscription.";
 $arrayJs = ["./assets/js/register.js"];
+$pointSlash = "";
 ob_start();
 ?>
 <div>
