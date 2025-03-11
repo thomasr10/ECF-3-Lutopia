@@ -1,12 +1,12 @@
-@import 'Base/reset';
-@import 'Base/mixins';
-@import 'Base/variables';
-@import 'Component/buttons';
-@import 'Component/cards';
-@import 'Component/forms';
-@import 'layout/footer';
-@import 'layout/grid';
-@import 'layout/header';
+@import "Base/reset";
+@import "Base/mixins";
+@import "Base/variables";
+@import "Component/buttons";
+@import "Component/cards";
+@import "Component/forms";
+@import "layout/footer";
+@import "layout/grid";
+@import "layout/header";
 
 // * {
 // outline: 3px solid $stroke-gris-900 ;
@@ -40,24 +40,26 @@ figure {
   }
 }
 
-
 .navbar {
   display: flex;
   @include tablet {
-    display: none;
+    // display: none;
     flex-direction: column;
     width: 80%;
     height: 50vh;
     position: absolute;
     top: 120px;
-    left: 0;
+    left: -80%;
     padding: 1rem 1rem;
+    transform: scale(0);
+    transform-origin: left;
+    border-radius: 0 0px 20px 0;
     background: $degrade-footerTop;
     z-index: 1000;
   }
-    &.active {
-      display: flex;
-    }
+  // &.active {
+  //   display: flex;
+  // }
 
   li {
     font-size: $titre-h3;
@@ -139,6 +141,7 @@ figure {
   cursor: pointer;
   @include tablet {
     display: flex;
+    cursor: pointer;
   }
 
   .bar {
@@ -151,342 +154,163 @@ figure {
 }
 // -------------------fin header ---------------------------------------------------------------------------------------
 .reservation {
-    display: flex;
-    
-   }
-   .mini-book-img {
-    height: 40px;
-    line-height: 40px;
-    width: auto;
-    border-radius: 8px;
-   } 
-   
-   .mini-book {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    background-color: $pastel-vert-300;
-    padding: 0 1rem;
-    border-radius: 20px;
-   } 
-   
-   .mini-book-title {
-    display: flex;
-    justify-items: center;
-    align-content: center;
-    padding-left: 0.5rem;
-   }
-  .mini-book-title > a {
-   text-decoration: none;
-   color: $primary-text-1000;
-   font-family: "Lexend";
-   line-height: 40px;
-   
-  }
-  .close-x-icon {
-   vertical-align: middle;
-   padding-left: 0.5rem;
-   opacity: 1; /* Initialement caché */
-   // visibility: hidden; /* Empêche l'interaction */
-   transition: opacity 0.8s, transform 0.3s; /* Ajoutez la transition pour l'opacité */
-   // transform: scale(0); 
-  }
-  .mini-book:hover .close-x-icon {
-   opacity: 1; /* Visible au survol */
-   visibility: visible; /* Permet l'interaction */
-   transform: scale(1);
-  }
-  #close-button:focus {
-   content: url('uploads/autres/IconXrose.svg');
-  }
-  
-  
-  
-  
-  // fin selection enfant et affichage de ses reservations 
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  display: flex;
+}
+.mini-book-img {
+  height: 40px;
+  line-height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.mini-book {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: $pastel-vert-300;
+  padding: 0 1rem;
+  border-radius: 20px;
+}
+
+.mini-book-title {
+  display: flex;
+  justify-items: center;
+  align-content: center;
+  padding-left: 0.5rem;
+}
+.mini-book-title > a {
+  text-decoration: none;
+  color: $primary-text-1000;
+  font-family: "Lexend";
+  line-height: 40px;
+}
+.close-x-icon {
+  vertical-align: middle;
+  padding-left: 0.5rem;
+  opacity: 1; /* Initialement caché */
+  // visibility: hidden; /* Empêche l'interaction */
+  transition: opacity 0.8s, transform 0.3s; /* Ajoutez la transition pour l'opacité */
+  // transform: scale(0);
+}
+.mini-book:hover .close-x-icon {
+  opacity: 1; /* Visible au survol */
+  visibility: visible; /* Permet l'interaction */
+  transform: scale(1);
+}
+#close-button:focus {
+  content: url("uploads/autres/IconXrose.svg");
+}
+
+// fin selection enfant et affichage de ses reservations
 
 //fin header---------------------------------------------------------------------------------------------------
-html, body{
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
+html,
+body {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
 }
-body{
-    background: linear-gradient(to top, #fcddec 0%,#ffe6c7 29.51%,#e8ffc4 50.77%,#fcddec 75.27%,#fffafb 97.01%);
-    background-repeat: no-repeat;
-    background-size: 100%;
+body {
+  background: linear-gradient(
+    to top,
+    #fcddec 0%,
+    #ffe6c7 29.51%,
+    #e8ffc4 50.77%,
+    #fcddec 75.27%,
+    #fffafb 97.01%
+  );
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 //debut enfant-livre
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // fin enfant-livre ------------------------------------------------------------------------------------------------
-#center{
-    position: relative;
+#center {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  width: 100%;
+}
+#bookContainer {
+  position: relative;
+  max-width: 1150px;
+  height: 350px;
+  overflow: hidden;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+.images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  margin-bottom: 30px;
+}
+.image {
+  min-width: 250px;
+  object-fit: cover;
+  box-sizing: border-box;
+  height: 250px;
+  margin-right: 50px;
+  justify-content: center;
+}
+.buttons {
+  position: absolute;
+  display: flex;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+}
+.button {
+  cursor: pointer;
+  margin-right: 50px;
+  background: none;
+  border: none;
+}
+#section-container,
+#section-connected {
+  display: flex;
+  flex-direction: row; /* Met toutes les rangées en ligne */
+  flex-wrap: wrap; /* Permet d'aller à la ligne si nécessaire */
+  justify-content: center;
+  align-items: center;
+  gap: 50px; /* Espacement entre chaque rangée */
+  width: 100%;
+  margin-top: 50px;
+
+  .booksContainer {
+    display: flex;
+    flex-direction: row; /* Affichage en ligne */
+    flex-wrap: nowrap; /* Les livres restent en ligne */
+    justify-content: center;
+    gap: 60px;
+    width: auto;
+  }
+  .card img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+  .card {
+    margin: 150px 30px;
+    width: 276px;
+    height: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-    h1{
-        font-size: 2rem;
-        text-align: center;
-        width: 100%;
-    }
-    #bookContainer{
-        position: relative;
-        max-width: 1150px;
-        height: 350px;
-        overflow: hidden;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-left: 20px;
-    }
-        .images{
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            margin-bottom: 30px;
-    }
-            .image{
-                min-width: 250px;
-                object-fit: cover;
-                box-sizing: border-box;
-                height: 250px;
-                margin-right: 50px;
-                justify-content: center;
-            }
-        .buttons{
-            position: absolute;
-            display: flex;
-            left: 50%;
-            top: 100%;
-            transform: translateX(-50%);
-            }
-            .button{
-                cursor: pointer;
-                margin-right: 50px;
-                background: none;
-                border: none;
-                
-            }
-#section-container, #section-connected{
-    display: flex;
-    flex-direction: row; /* Met toutes les rangées en ligne */
-    flex-wrap: wrap; /* Permet d'aller à la ligne si nécessaire */
-    justify-content: center;
-    align-items: center;
-    gap: 50px; /* Espacement entre chaque rangée */
-    width: 100%;
-    margin-top: 50px;
-
-    .booksContainer{
-        display: flex;
-        flex-direction: row; /* Affichage en ligne */
-        flex-wrap: nowrap; /* Les livres restent en ligne */
-        justify-content: center;
-        gap: 60px; 
-        width: auto;
-    }
-        .card img{
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-        }
-        .card{
-            margin: 150px 30px;
-            width: 276px;
-            height: 380px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around; 
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
+    justify-content: space-around;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .modal {
