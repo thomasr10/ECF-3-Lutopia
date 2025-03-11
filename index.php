@@ -4,6 +4,8 @@ session_start();
 require_once('./vendor/autoload.php');
 require_once('./vendor/altorouter/altorouter/AltoRouter.php');
 
+require_once('./config/config.php');
+
 $router = new AltoRouter();
 
 // load .env files

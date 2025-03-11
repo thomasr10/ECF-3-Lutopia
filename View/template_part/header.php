@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="<?=  ASSETS . 'css/style.css' ?>">
 </head>
 <body>
   <!-- LES FRONT : vous pouvez modifier la navbar. C'était juste pour tester les routes (il faudra bien les réutiliser si jamais vous faites des modif) -->
@@ -17,7 +17,7 @@
     </button>
     
       <figure>
-        <img src="/uploads/autre/Logo-flat.svg" alt="Logo Lutopia">
+        <img src="<?= UPLOADS . '/autre/Logo-flat.svg'?>" alt="Logo Lutopia">
       </figure>
 
       <nav class ="nav">       
@@ -47,7 +47,7 @@
         <input type="text" name="query" placeholder="Rechercher..."      class="search-input" />
 
         <button type="submit" class="search-button">
-            <img src="uploads/autre/icon-loupe.svg" alt="icone loupe">
+            <img src="<?= UPLOADS . 'autre/icon-loupe.svg'?>" alt="icone loupe">
         </button>
       </form>
 
