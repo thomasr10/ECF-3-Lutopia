@@ -6,7 +6,7 @@
     <title><?= $title ?></title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body>
+<!-- <body> -->
   <!-- LES FRONT : vous pouvez modifier la navbar. C'était juste pour tester les routes (il faudra bien les réutiliser si jamais vous faites des modif) -->
   <header class = "header">
     <div class = "menu">
@@ -17,7 +17,7 @@
     </button>
     
       <figure>
-        <img src="/uploads/autre/Logo-flat.svg" alt="Logo Lutopia">
+        <img src="/uploads/autres/Logo-flat.svg" alt="Logo Lutopia">
       </figure>
 
       <nav class ="nav">       
@@ -47,7 +47,7 @@
         <input type="text" name="query" placeholder="Rechercher..."      class="search-input" />
 
         <button type="submit" class="search-button">
-            <img src="uploads/autre/icon-loupe.svg" alt="icone loupe">
+            <img src="uploads/autres/icon-loupe.svg" alt="icone loupe">
         </button>
       </form>
 

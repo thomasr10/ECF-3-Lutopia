@@ -34,8 +34,69 @@ if(isset($_SESSION['id'])){
     }
     ?>
 </div>
-<!-- carroussel -->
 
+<!-- carroussel -->
+<!-- début selection enfant et affichage de ses reservations -->
+
+<section class = "reservation">
+      <div class = "child-select">
+
+
+
+
+
+
+      </div>
+      <div>
+
+      </div > 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+
+<!-- fin selection enfant et affichage de ses reservations -->
 <div id="center">
     <h1>Les dernières sorties</h1>
     <div id="bookContainer"></div>
