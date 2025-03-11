@@ -208,6 +208,63 @@ header{
     height: 167px;
 }
 
+.reservation {
+    display: flex;
+    
+   }
+   .mini-book-img {
+    height: 40px;
+    line-height: 40px;
+    width: auto;
+    border-radius: 8px;
+   } 
+   
+   .mini-book {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: $pastel-vert-300;
+    padding: 0 1rem;
+    border-radius: 20px;
+   } 
+   
+   .mini-book-title {
+    display: flex;
+    justify-items: center;
+    align-content: center;
+    padding-left: 0.5rem;
+   }
+  .mini-book-title > a {
+   text-decoration: none;
+   color: $primary-text-1000;
+   font-family: "Lexend";
+   line-height: 40px;
+   
+  }
+  .close-x-icon {
+   vertical-align: middle;
+   padding-left: 0.5rem;
+   opacity: 1; /* Initialement caché */
+   // visibility: hidden; /* Empêche l'interaction */
+   transition: opacity 0.8s, transform 0.3s; /* Ajoutez la transition pour l'opacité */
+   // transform: scale(0); 
+  }
+  .mini-book:hover .close-x-icon {
+   opacity: 1; /* Visible au survol */
+   visibility: visible; /* Permet l'interaction */
+   transform: scale(1);
+  }
+  #close-button:focus {
+   content: url('uploads/autres/IconXrose.svg');
+  }
+  
+  
+  
+  
+  // fin selection enfant et affichage de ses reservations 
+  
+  
+
 
 
 
