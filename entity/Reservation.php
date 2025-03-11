@@ -6,6 +6,7 @@ class Reservation {
     private $id_child;
     private $id_book;
     private $title;
+    private $end_date;
 
     public function __construct(array $datas){
         $this->hydrate($datas);
@@ -38,6 +39,9 @@ class Reservation {
     public function getTitle(){
         return $this->title;
     }
+    public function getEnd_date(){
+        return $this->end_date;
+    }
 
     //setter
 
@@ -55,5 +59,8 @@ class Reservation {
     }
     public function setTitle(string $title){
         $this->title = $title;
+    }
+    public function setEnd_date(string $end_date){
+        $this->end_date = new DateTime($end_date);
     }
 }
