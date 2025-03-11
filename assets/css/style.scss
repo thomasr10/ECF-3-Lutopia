@@ -197,11 +197,55 @@ figure {
     }
   }
 
+  //  début selection enfant et affichage de ses reservations
+  
+  .reservation {
+    display: flex;
+    
+  }
+  .mini-book-img {
+    height: 40px;
+    width: auto;
+    border-radius: 8px;
+  } 
+  
+  .mini-book {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: $pastel-vert-300;
+    padding: 0 1rem;
+    border-radius: 20px;
+   } 
+   
+   .mini-book-title {
+    display: flex;
+    justify-items: center;
+    align-content: center;
+    padding-left: 0.5rem;
+
+   }
+.mini-book-title > a {
+  text-decoration: none;
+  color: $primary-text-1000;
+  font-family: "Lexend";
+  line-height: 40px;
+  
+
+}
+.close-x-icon {
+  padding: 0.6rem 0;
+  padding-left: 0.5rem;
+  display: none;
+}
+.close-x-icon:hover{
+  display: flex;
+}
 
 
 
 
 
-
+ //  fin selection enfant et affichage de ses reservations 
 
 
