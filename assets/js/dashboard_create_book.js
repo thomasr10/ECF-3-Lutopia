@@ -162,3 +162,45 @@ function updateOptions() {
         category3.value = "";
     }
 }
+
+
+
+// AJOUTER UN AUTEUR/ ILLUSTRATEUR
+
+const addAuthorBtn = document.getElementById('author-btn');
+const modal = document.getElementById('modal');
+const addForm = document.getElementById('add');
+const firstNameInput = document.getElementById('first-name');
+const lastNameInput = document.getElementById('last-name');
+const submitBtn = document.getElementById('submit-btn');
+
+
+
+addAuthorBtn.addEventListener('click', function(event){
+    modal.style.display = 'block';
+    const modalTitle = document.getElementById('modal-title');
+    modalTitle.textContent = 'Ajouter un(e) auteur(ice) !';
+
+    submitBtn.addEventListener('click', function(){
+        event.preventDefault();
+        let firstName = firstNameInput.value;
+        let lastName = lastNameInput.value;
+
+        fetch('/dashboard/add-author', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({"first-name": firstName, "last-name": lastName})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data){
+                modal.style.display = 'none';
+            }
+        })
+    })
+})
+
+
+

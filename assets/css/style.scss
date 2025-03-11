@@ -489,3 +489,12 @@ body{
         }
         
 }
+
+.modal {
+  display: none;
+  height: 400px;
+  max-width: 400px;
+  width: 100%;
+  background-color: #fff;
+  margin: 0 auto;
+}
