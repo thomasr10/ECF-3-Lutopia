@@ -43,10 +43,11 @@ ob_start();
             <label for="synopsis">Synopsis</label>
             <textarea name="synopsis" id="synopsis" placeholder="Synopsis"></textarea>
         </div>
-        <div>
+        <div id="category-section">
+            <!-- DIV A FLEX POUR AVOIR LES SELECTS SUR LA MEME LIGNE -->
             <label for="category">Catégorie</label>
-            <select name="category" id="category">
-                <option value="">Catégories</option>
+            <select name="category[]" id="category"> 
+                <option value=""></option>
                 <?php
                 foreach($categories as $category){
                 ?>
@@ -56,6 +57,26 @@ ob_start();
                 ?>
             </select>
             <p>Créez la catégories si elle n'existe pas</p>
+            <select name="category[]" id="category-2">
+            <option value=""></option>
+                <?php
+                foreach($categories as $category){
+                ?>
+                <option value="<?=$category->getId_category()?>"><?=$category->getCategory_name()?></option>
+                <?php
+                }
+                ?>
+            </select>
+            <select name="category[]" id="category-3">
+            <option value=""></option>
+                <?php
+                foreach($categories as $category){
+                ?>
+                <option value="<?=$category->getId_category()?>"><?=$category->getCategory_name()?></option>
+                <?php
+                }
+                ?>
+            </select>
         </div>
         <div>
             <label for="age">Tranche d'âge</label>

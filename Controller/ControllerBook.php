@@ -195,22 +195,23 @@ class ControllerBook {
     public function createBook(){
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(!empty($_POST['isbn']) && !empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['illustrator']) && !empty($_POST['editor']) && !empty($_POST['publication_date']) && !empty($_POST['edition_date']) && !empty($_POST['synopsis']) && !empty($_POST['category']) && !empty($_POST['age']) && !empty($_POST['type']) && !empty($_FILES['picture']) && !empty($_POST['copy']) && !empty($_POST['id_author']) && !empty($_POST['id_illustrator'])){
-                var_dump($_POST);
+
                 //change img.ext
                 $fileName = str_replace([' ', 'é', 'è', 'à'], ['_', 'e', 'e', 'a'], strtolower($_POST['title']));
                 $_FILES['picture']['name'] = $fileName;
                 $img = $fileName . '.webp';
-                
+                $path = '/uploads' . '/' . $img;
                 if(move_uploaded_file($_FILES['picture']['tmp_name'], './uploads/' . $img)){
-                    
                     $model = new ModelBook();
-                    $id_book = $model->addNewBook($_POST['isbn'], $_POST['title'], $_POST['editor'], $img, $_POST['publication_date'], $_POST['edition_date'], $_POST['synopsis'], intval($_POST['type']), intval($_POST['age']));
+                    $id_book = $model->addNewBook($_POST['isbn'], $_POST['title'], $_POST['editor'], $path, $_POST['publication_date'], $_POST['edition_date'], $_POST['synopsis'], intval($_POST['type']), intval($_POST['age']));
 
                     $model->addBookAuthor(intval($_POST['id_author']), $id_book);
                     $model->addBookIllustrator($id_book, intval($_POST['id_illustrator']));
-                    $model->addBookCategory(intval($_POST['category']), $id_book);
+                    foreach($_POST['category'] as $category){
+                        $model->addBookCategory(intval($category), $id_book);
+                    }
                     $status = 0;
-                    for($i = 0; $i <= $_POST['copy']; $i++){
+                    for($i = 0; $i < $_POST['copy']; $i++){
                         $model->addBookCopy($status, $id_book);
                     }
                     
