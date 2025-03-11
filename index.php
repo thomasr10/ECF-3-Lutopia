@@ -49,6 +49,9 @@ $router->map('POST', '/dashboard-search-author', 'ControllerAuthor#searchAuthor'
 $router->map('POST', '/dashboard-search-illustrator', 'ControllerIllustrator#searchIllustrator', 'search-illustrator');
 
 
+//Ajouter un auteur
+$router->map('POST', '/dashboard/add-author', 'ControllerAuthor#addAuthor', 'add-author');
+
 //route age
 $router->map('GET', '/age/[i:age]', 'ControllerBook#drawAge', 'drawAge');
 

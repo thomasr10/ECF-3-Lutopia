@@ -15,4 +15,11 @@ class ModelAuthor extends Model {
         }
         return $arrayObj;
     }
+
+    public function addAuthor(string $first_name, string $last_name){
+        $req = $this->getDb()->prepare("INSERT INTO `author`(`first_name`, `last_name`) VALUES (:first_name, :last_name)");
+        $req->bindParam('first_name', $first_name, PDO::PARAM_STR);
+        $req->bindParam('last_name', $last_name, PDO::PARAM_STR);
+        $req->execute();
+    }
 }

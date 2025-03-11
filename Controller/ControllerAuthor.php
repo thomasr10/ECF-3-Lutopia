@@ -21,4 +21,13 @@ class ControllerAuthor {
         echo json_encode($arrayObj);
 
     }
+
+    public function addAuthor(){
+        $a = file_get_contents('php://input');
+        $data = json_decode($a, true);
+        $model = new ModelAuthor();
+        $model->addAuthor($data['first-name'], $data['last-name']);
+
+        echo json_encode(["success" => true]);
+    }
 }

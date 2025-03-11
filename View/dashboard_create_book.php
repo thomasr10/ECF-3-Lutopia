@@ -1,10 +1,27 @@
 <?php
 $title = "Dashboard - Création d'un livre | Lutopia";
-$description = "Page de création d'un livre, sur le dashboard admin de Lutopia";
+$description = "Page de création d'un livre sur le dashboard admin de Lutopia";
 $pointSlash = "./";
 $arrayJs = ["./assets/js/dashboard_create_book"];
 ob_start();
 ?>
+
+<div id="modal" class="modal">
+    <h2 id="modal-title"></h2>
+    <form name="add" id="add" method="POST">
+        <div>
+            <label for="first-name">Prénom</label>
+            <input type="text" name="first-name" id="first-name" placeholder="Prénom" required>
+        </div>
+        <div>
+            <label for="last-name">Nom de famille</label>
+            <input type="text" name="last-name" id="last-name" placeholder="Nom de famille" required>
+        </div>
+        <div>
+            <input type="submit" name="submit-btn" id="submit-btn" value="Ajouter">
+        </div>
+    </form>
+</div>
 
 <div>
     <h2>Ajouter une oeuvre</h2>
@@ -20,7 +37,7 @@ ob_start();
         <div id="author-section">
             <label for="author">Auteur</label>
             <input type="text" name="author"  id="author" placeholder="Auteur" required>
-            <p>Créez l'auteur s'il n'existe pas</p>
+            <button id="author-btn" type="button">Ajouter un auteur</button>
         </div>
         <div id="illustrator-section">
             <label for="illustrator">Illustrateur</label>
