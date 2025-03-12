@@ -123,10 +123,9 @@ if(isset($_SESSION['id'])){
     foreach(array_chunk($books, 4) as $chunk){
 ?>
 <!-- div qui comprend l'image du dé + la rangée de livres associé -->
-        <div id="bookRowCubeAge">
-            <img src="/uploads/autres/age_<?=$count?>" alt="Dés représentant la catégorie d'âge">
-            <!-- div qui comprend la rangée de 4 livres -->
-        <div >
+        <div class="bookRowCubeAge">
+        <?php include "animation_{$count}.php"; ?>
+        <div>
 
 
 <div class="booksContainer">          
@@ -136,7 +135,7 @@ if(isset($_SESSION['id'])){
                     <p><?=$book->book->getTitle()?></p>
                     <button class="button_pink">voir la fiche</button>
                     <button class="button_borrow">Réserver</button>
-</div>
+                </div>
             
 <?php } ?>
 </div>

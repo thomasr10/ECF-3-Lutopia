@@ -460,7 +460,105 @@ body{
     gap: 50px; /* Espacement entre chaque rangée */
     width: 100%;
     margin-top: 50px;
-
+    #container_0, 
+    #container_1,
+    #container_4,
+    #container_6,
+    #container_8,
+    #container_10 {
+        width: 350px;
+        height: 300px;
+        display: flex;
+        justify-content: space-between;
+        position: relative; 
+        margin-top: 50px;
+    }
+        .images {
+          position: relative;
+          width: 152px;
+          height: 155px;
+          margin-left: 20px;
+      }
+  
+      .img2 {
+          position: absolute;
+          left: 0;
+          top: 28.45%;
+      }
+  
+      .img3 {
+          position: absolute;
+          left: 0;
+          top: 28.45%;
+          opacity: 0; 
+          transition: opacity 0.2s ease; 
+          pointer-events: none;
+      }
+  
+      .square {
+          position: absolute; 
+      }
+      .img4 {
+          top: 50px; 
+          left: 0; 
+      }
+  
+      .img5 {
+          left : 320px;
+          top: 70px; 
+      }
+    #container_2{
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: space-between;
+      position: relative; 
+      margin-top: 200px;
+      }
+  
+      .images {
+        position: relative;
+        /*margin-left: 50px;*/
+        }
+        .img6{
+          width: 152px;
+          height: 155px;
+          position: absolute;
+        }        
+        .img7 {
+          position: absolute;
+          left: 80px;
+          top: 39%;
+          transform: translateX(-5%);
+          width: 80px;
+          height: 95px;
+          }
+  
+        .img8 {
+          position: absolute;
+          left: 80px;
+          top: 39%;
+          opacity: 0; 
+          transform: translateX(-5%);
+          transition: opacity 0 .2s ease; 
+          pointer-events: none;
+          width: 80px;
+          height: 95px;
+          }
+  
+        .square {
+        position: absolute; 
+        }
+        .img9 {
+          top: 20px; 
+          left: 200px; 
+        }
+  
+        .img10 {
+          left : 200px;
+          top: 90px; 
+      }
+    }
     .booksContainer{
         display: flex;
         flex-direction: row; /* Affichage en ligne */
@@ -475,7 +573,7 @@ body{
             object-fit: cover;
         }
         .card{
-            margin: 150px 30px;
+            margin: 50px 30px;
             width: 276px;
             height: 380px;
             display: flex;
@@ -486,6 +584,7 @@ body{
             border-radius: 10px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
         }
+
         
 }
 
@@ -497,3 +596,4 @@ body{
   background-color: #fff;
   margin: 0 auto;
 }
+

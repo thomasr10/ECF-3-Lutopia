@@ -31,7 +31,7 @@ function displayNewBooks(age) {
          })
     })
 }
-if(selectChild !== null){
+/*if(selectChild !== null){
     
     displayNewBooks(selectChild);
     selectChild.addEventListener('change', function() {
@@ -39,7 +39,7 @@ if(selectChild !== null){
         displayNewBooks(selectChild);
     });
 
-}
+}*/
 
 
 let index = 0;
@@ -73,9 +73,8 @@ function prev() {
     }
 }
 
-
-document.getElementById('nextButton').addEventListener('click', next);
-document.getElementById('prevButton').addEventListener('click', prev);
+/*document.getElementById('nextButton').addEventListener('click', next);
+document.getElementById('prevButton').addEventListener('click', prev);*/
 
 
 
@@ -178,9 +177,86 @@ function sendChildValue(array){
 
 sendChildValue(ageArray);
 
-selectChild.addEventListener('change', function(event) {
+/*selectChild.addEventListener('change', function(event) {
     const selectedAge = event.target.value;
     const newArray = [selectedAge, ...ageArray.filter(age => age !== selectedAge)]
     sectionContainer.innerHTML = "";
     sendChildValue(newArray);
+});*/
+
+//Animations Cube"
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    gsap.registerPlugin(Flip);
+
+    const img2 = document.getElementsByClassName('img2')[0];
+    const img3 = document.getElementsByClassName('img3')[0];
+    const img4 = document.getElementsByClassName('img4')[0];
+    const img5 = document.getElementsByClassName('img5')[0];
+    const img6 = document.getElementsByClassName('img6')[0];
+    const img7 = document.getElementsByClassName('img7')[0];
+    const img8 = document.getElementsByClassName('img8')[0];
+    const img9 = document.getElementsByClassName('img9')[0];
+    const img10 = document.getElementsByClassName('img10')[0];
+
+    let hasFlipped1 = false; // Booléen pour le premier groupe (1-5)
+    let hasFlipped2 = false; // Booléen pour le deuxième groupe (6-10)
+
+    function handleMouseOverGroup1() {
+        img3.style.opacity = "1";
+        if (!hasFlipped1) {
+            swapImagesGroup1();  // Exécute Flip une seule fois pour le groupe 1
+        }
+    }
+
+    function handleMouseOutGroup1() {
+        img3.style.opacity = "0";
+        if (!hasFlipped1) {
+            resetImagesGroup1();  // Remet les images à leur place pour le groupe 1
+            hasFlipped1 = true;   // Désactive Flip pour le groupe 1
+        }
+    }
+
+    function handleMouseOverGroup2() {
+        img8.style.opacity = "1";
+        if (!hasFlipped2) {
+            swapImagesGroup2();  // Exécute Flip une seule fois pour le groupe 2
+        }
+    }
+
+    function handleMouseOutGroup2() {
+        img8.style.opacity = "0";
+        if (!hasFlipped2) {
+            resetImagesGroup2();  // Remet les images à leur place pour le groupe 2
+            hasFlipped2 = true;   // Désactive Flip pour le groupe 2
+        }
+    }
+
+    // Animations pour le premier groupe (img4 et img5)
+    function swapImagesGroup1() {
+        gsap.to(img4, { x: 280, duration: 1.5 });
+        gsap.to(img5, { x: -280, duration: 1.5 });
+    }
+
+    function resetImagesGroup1() {
+        gsap.to(img4, { x: 0, duration: 3.5 });
+        gsap.to(img5, { x: 0, duration: 3.5 });
+    }
+
+    // Animations pour le deuxième groupe (img9 et img10)
+    function swapImagesGroup2() {
+        gsap.to(img9, { y: 90, duration: 1.5 });
+        gsap.to(img10, { y: -70, duration: 1.5 });
+    }
+
+    function resetImagesGroup2() {
+        gsap.to(img9, { y: 0, duration: 3.5 });
+        gsap.to(img10, { y: 0, duration: 3.5 });
+    }
+
+    img2.addEventListener("mouseover", handleMouseOverGroup1);
+    img2.addEventListener("mouseout", handleMouseOutGroup1);
+    img7.addEventListener("mouseover", handleMouseOverGroup2);
+    img7.addEventListener("mouseout", handleMouseOutGroup2);
 });
