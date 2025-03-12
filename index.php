@@ -23,6 +23,9 @@ $router->map('GET', '/home-category-age/[i:age]', 'ControllerBook#homePage', 'ho
 $router->map('GET', '/type/[i:age]/[i:type]/[i:category]', 'ControllerBook#typeBook', 'typeBook');
 $router->map('POST', '/home-section', 'ControllerBook#displayBooks', 'display-books');
 
+//reservation
+$router->map('GET', '/[i:book]/[i:child]', 'ControllerChild#reservationBook', 'reservationBook');
+
 //show 1 book
 $router->map('GET', '/book/[i:id]', 'ControllerBook#showOneBook', 'showOneBook');
 

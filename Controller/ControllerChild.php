@@ -41,7 +41,6 @@ class ControllerChild {
             $model = new ModelChild();
             $id = $_SESSION['id'];
             $datas = $model->getChildByUser($id);
-
             require_once('./View/homepage.php');
         } else {
             $model = new ModelBook();
@@ -70,5 +69,12 @@ class ControllerChild {
         }
         
 
+    }
+
+    public function reservationBook(int $book, int $child){
+        global $router;
+        $model = new ModelChild();
+        $reservation = $model->newReservation($book, $child);   
+        json_encode($data = "echo 'ok';");
     }
 }

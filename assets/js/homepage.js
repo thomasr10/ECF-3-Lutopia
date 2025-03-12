@@ -1,6 +1,7 @@
 const selectChild = document.getElementById('select-child');
 let booksContainer = document.getElementById('booksContainer');
 const childOption = document.querySelectorAll('.child')
+const buttonBorrow = document.querySelectorAll('.button_borrow');
 // afficher les nouveautés en fonction de l'age de l'enfant séléctionné
 
 function displayNewBooks(age) {
@@ -31,15 +32,16 @@ function displayNewBooks(age) {
          })
     })
 }
-/*if(selectChild !== null){
+if(selectChild !== null){
     
     displayNewBooks(selectChild);
     selectChild.addEventListener('change', function() {
         sectionContainer.innerHTML = "";
         displayNewBooks(selectChild);
     });
-
-}*/
+    document.getElementById('nextButton').addEventListener('click', next);
+    document.getElementById('prevButton').addEventListener('click', prev);
+}
 
 
 let index = 0;
@@ -73,8 +75,7 @@ function prev() {
     }
 }
 
-/*document.getElementById('nextButton').addEventListener('click', next);
-document.getElementById('prevButton').addEventListener('click', prev);*/
+
 
 
 
@@ -90,7 +91,7 @@ document.getElementById('prevButton').addEventListener('click', prev);*/
 // Debut menu burger-------------------------------------------------------
 const menuToggle = document.querySelector('.menu-toggle');
 const navbar = document.querySelector('.navbar');
-console.log(navbar);
+// console.log(navbar);
 menuToggle.addEventListener('click', () => {
   navbar.classList.toggle('active');
 });
@@ -101,9 +102,15 @@ menuToggle.addEventListener('click', () => {
 
 
 const ageArray = [];
+const idArray = [];
 childOption.forEach(age => {
-    ageArray.push(age.value);
+    let split = age.value.split('-');
+    ageArray.push(split[0]);
+    idArray.push(split[1]);
 });
+console.log(ageArray);
+console.log(idArray);
+
 
 
 
@@ -111,7 +118,7 @@ const sectionContainer = document.getElementById('section-connected');
 
 function sendChildValue(array){
 
-    console.log(array)
+    // console.log(array)
     fetch('/home-section', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -119,7 +126,7 @@ function sendChildValue(array){
     })
     .then(response => response.json())
     .then(arrayObj => {
-
+        // console.log(arrayObj);
         let arrayId = [];
         for(let i = 0; i < arrayObj.length; i++){
              arrayId.push(arrayObj[i].id_age);
@@ -149,16 +156,21 @@ function sendChildValue(array){
                 const bookTitle = document.createElement('p');
                 bookImg.setAttribute('src', chunks[i][j].img)
                 bookTitle.textContent = chunks[i][j].title;
+
                 const descLink = document.createElement('a'); //ajouter le lien
-                const borrowLink = document.createElement('a');
+                const borrowLink = document.createElement('button');
                 const linkDiv1 = document.createElement('div');
                 const linkDiv2 = document.createElement('div');
+
                 descLink.classList.add("button_pink");
                 borrowLink.classList.add("button_borrow");
+
                 linkDiv1.append(descLink);
                 linkDiv2.append(borrowLink);
+
                 descLink.setAttribute('href', '#');
-                borrowLink.setAttribute('href', '#');
+                borrowLink.setAttribute('value', chunks[i][j].id_book + '/' + idArray[0]);
+
                 descLink.textContent = "Voir la fiche";
                 borrowLink.textContent = "Réserver";
 
@@ -174,89 +186,137 @@ function sendChildValue(array){
   
     };
 
+    
+if(selectChild !== null){
+    sendChildValue(ageArray);
+    buttonBorrow.addEventListener('click', (e) =>{
+        e.forEach(element => {
+            
+        });
+    });
+}
 
-sendChildValue(ageArray);
 
-/*selectChild.addEventListener('change', function(event) {
-    const selectedAge = event.target.value;
-    const newArray = [selectedAge, ...ageArray.filter(age => age !== selectedAge)]
-    sectionContainer.innerHTML = "";
-    sendChildValue(newArray);
-});*/
+if(selectChild !== null){   
+    selectChild.addEventListener('change', function(event) {
+        const selectedAge = event.target.value;
+        const newSplit = selectedAge.split('-');
+        const newAgeArray = newSplit[0];
+        const newId = newSplit[1]; 
+        console.log(newAgeArray);
+        
+        
+        const newArray = [newAgeArray, ...ageArray.filter(age => age !== newAgeArray)]
+        const newIdArray = [newId, ...idArray.filter(age => age !== newId)];
+
+        console.log(newArray);
+        console.log(newIdArray);
+        sectionContainer.innerHTML = "";
+        sendChildValue(newArray);
+        console.log(event.target);
+    });
+}
+
+
+//Reservation Child 
+
+
+function reservationChild(id_child, id_book){
+    // fetch(`/${id_child}/${id_book}`)
+    // .then(response => response.json())
+    // .then(data => {
+    //     if(data){
+    //         console.log('reservation ok');
+    //     } else {
+    //         console.log('erreur');
+    //     }
+    // });
+    
+}
+console.log(buttonBorrow)
+
+
+
+
+
+
+
+
 
 //Animations Cube"
 
+if(selectChild == null){    
+    document.addEventListener("DOMContentLoaded", function() {
+        gsap.registerPlugin(Flip);
 
-document.addEventListener("DOMContentLoaded", function() {
-    gsap.registerPlugin(Flip);
+        const img2 = document.getElementsByClassName('img2')[0];
+        const img3 = document.getElementsByClassName('img3')[0];
+        const img4 = document.getElementsByClassName('img4')[0];
+        const img5 = document.getElementsByClassName('img5')[0];
+        const img6 = document.getElementsByClassName('img6')[0];
+        const img7 = document.getElementsByClassName('img7')[0];
+        const img8 = document.getElementsByClassName('img8')[0];
+        const img9 = document.getElementsByClassName('img9')[0];
+        const img10 = document.getElementsByClassName('img10')[0];
 
-    const img2 = document.getElementsByClassName('img2')[0];
-    const img3 = document.getElementsByClassName('img3')[0];
-    const img4 = document.getElementsByClassName('img4')[0];
-    const img5 = document.getElementsByClassName('img5')[0];
-    const img6 = document.getElementsByClassName('img6')[0];
-    const img7 = document.getElementsByClassName('img7')[0];
-    const img8 = document.getElementsByClassName('img8')[0];
-    const img9 = document.getElementsByClassName('img9')[0];
-    const img10 = document.getElementsByClassName('img10')[0];
+        let hasFlipped1 = false; // Booléen pour le premier groupe (1-5)
+        let hasFlipped2 = false; // Booléen pour le deuxième groupe (6-10)
 
-    let hasFlipped1 = false; // Booléen pour le premier groupe (1-5)
-    let hasFlipped2 = false; // Booléen pour le deuxième groupe (6-10)
-
-    function handleMouseOverGroup1() {
-        img3.style.opacity = "1";
-        if (!hasFlipped1) {
-            swapImagesGroup1();  // Exécute Flip une seule fois pour le groupe 1
+        function handleMouseOverGroup1() {
+            img3.style.opacity = "1";
+            if (!hasFlipped1) {
+                swapImagesGroup1();  // Exécute Flip une seule fois pour le groupe 1
+            }
         }
-    }
 
-    function handleMouseOutGroup1() {
-        img3.style.opacity = "0";
-        if (!hasFlipped1) {
-            resetImagesGroup1();  // Remet les images à leur place pour le groupe 1
-            hasFlipped1 = true;   // Désactive Flip pour le groupe 1
+        function handleMouseOutGroup1() {
+            img3.style.opacity = "0";
+            if (!hasFlipped1) {
+                resetImagesGroup1();  // Remet les images à leur place pour le groupe 1
+                hasFlipped1 = true;   // Désactive Flip pour le groupe 1
+            }
         }
-    }
 
-    function handleMouseOverGroup2() {
-        img8.style.opacity = "1";
-        if (!hasFlipped2) {
-            swapImagesGroup2();  // Exécute Flip une seule fois pour le groupe 2
+        function handleMouseOverGroup2() {
+            img8.style.opacity = "1";
+            if (!hasFlipped2) {
+                swapImagesGroup2();  // Exécute Flip une seule fois pour le groupe 2
+            }
         }
-    }
 
-    function handleMouseOutGroup2() {
-        img8.style.opacity = "0";
-        if (!hasFlipped2) {
-            resetImagesGroup2();  // Remet les images à leur place pour le groupe 2
-            hasFlipped2 = true;   // Désactive Flip pour le groupe 2
+        function handleMouseOutGroup2() {
+            img8.style.opacity = "0";
+            if (!hasFlipped2) {
+                resetImagesGroup2();  // Remet les images à leur place pour le groupe 2
+                hasFlipped2 = true;   // Désactive Flip pour le groupe 2
+            }
         }
-    }
 
-    // Animations pour le premier groupe (img4 et img5)
-    function swapImagesGroup1() {
-        gsap.to(img4, { x: 280, duration: 1.5 });
-        gsap.to(img5, { x: -280, duration: 1.5 });
-    }
+        // Animations pour le premier groupe (img4 et img5)
+        function swapImagesGroup1() {
+            gsap.to(img4, { x: 280, duration: 1.5 });
+            gsap.to(img5, { x: -280, duration: 1.5 });
+        }
 
-    function resetImagesGroup1() {
-        gsap.to(img4, { x: 0, duration: 3.5 });
-        gsap.to(img5, { x: 0, duration: 3.5 });
-    }
+        function resetImagesGroup1() {
+            gsap.to(img4, { x: 0, duration: 3.5 });
+            gsap.to(img5, { x: 0, duration: 3.5 });
+        }
 
-    // Animations pour le deuxième groupe (img9 et img10)
-    function swapImagesGroup2() {
-        gsap.to(img9, { y: 90, duration: 1.5 });
-        gsap.to(img10, { y: -70, duration: 1.5 });
-    }
+        // Animations pour le deuxième groupe (img9 et img10)
+        function swapImagesGroup2() {
+            gsap.to(img9, { y: 90, duration: 1.5 });
+            gsap.to(img10, { y: -70, duration: 1.5 });
+        }
 
-    function resetImagesGroup2() {
-        gsap.to(img9, { y: 0, duration: 3.5 });
-        gsap.to(img10, { y: 0, duration: 3.5 });
-    }
+        function resetImagesGroup2() {
+            gsap.to(img9, { y: 0, duration: 3.5 });
+            gsap.to(img10, { y: 0, duration: 3.5 });
+        }
 
-    img2.addEventListener("mouseover", handleMouseOverGroup1);
-    img2.addEventListener("mouseout", handleMouseOutGroup1);
-    img7.addEventListener("mouseover", handleMouseOverGroup2);
-    img7.addEventListener("mouseout", handleMouseOutGroup2);
-});
+        img2.addEventListener("mouseover", handleMouseOverGroup1);
+        img2.addEventListener("mouseout", handleMouseOutGroup1);
+        img7.addEventListener("mouseover", handleMouseOverGroup2);
+        img7.addEventListener("mouseout", handleMouseOutGroup2);
+    });
+}

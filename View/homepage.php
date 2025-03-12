@@ -15,7 +15,7 @@ if(isset($_SESSION['id'])){
     <?php
     foreach($datas as $child){
     ?>
-    <option class="child" value="<?=date('Y')-$child->getBirth_date()->format('Y')?>"><?= $child->getName() ?></option>
+    <option class="child"  value="<?=date('Y')-$child->getBirth_date()->format('Y')?>-<?= $child->getId_child(); ?>"><?= $child->getName() ?></option>
     <?php
     }
     ?>
@@ -134,7 +134,7 @@ if(isset($_SESSION['id'])){
                     <img src="<?=$book->book->getImg_src()?>" alt="Couverture du livre <?=$book->book->getTitle()?>">
                     <p><?=$book->book->getTitle()?></p>
                     <button class="button_pink">voir la fiche</button>
-                    <button class="button_borrow">Réserver</button>
+                    <button class="button_borrow" >Réserver</button>
                 </div>
             
 <?php } ?>
