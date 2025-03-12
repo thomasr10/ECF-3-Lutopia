@@ -63,14 +63,6 @@ if(selectChild !== null){
         idArray.push(split[1]);
     });
 
-    console.log(buttonBorrow);
-    for (var i = 0; i< buttonBorrow.length; i++){
-        console.log(list[i]);
-        // item.addEventListener('click', (e) =>{
-        //     console.log('ok');
-        // });
-    }
-
     sendChildValue(ageArray);
     
     
