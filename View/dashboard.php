@@ -7,16 +7,68 @@ ob_start();
 ?>
 
 
+<body>
+
+
+    <section class="dasboard-container-global">
+
+
+
+
+
+
+
+        <section class="dashboard-container-left">
+            <div class="dashboard-menu">
+            <div class="dashboard-menu-link"><a href="">Gestion des livres</a></div>
+            <div class="dashboard-menu-link"><a href="">Gestion des utilisateurs</a></div>
+            <div class="dashboard-menu-link"><a href=""></a></div>
+            </div>
+
+        </section>
+
+
+
+
+
+        <section class="dashboard-container-right"></section>
+            <div class="identity"></div>
+                <div>
+                    <div>
+                        <form method="GET" action="/dashboard">
+                            <input type="text" name="searchAdminUser" id="searchAdminUser" value="">
+                            <input type="submit" value="🔍">
+                        </form>
+                        <div>
+                        champtexte
+                        </div>
+                    </div>
+                        
+                    
+                    <div>
+                    <select name="" id="" class = "">
+                    </div>
+                </div>
+            <div class="reservation"></div>
+            <div class="borrow"></div>
+
+
+
+
+
+
+
+    </section>
+    
+
+
 <h2>Bienvenue dans le dashboard !</h2>
 <li><a href="<?=$router->generate('logout') ?>">Se déconnecter</a></li>
-<form method="GET" action="/dashboard">
-    <input type="text" name="searchAdminUser" id="searchAdminUser" value="">
-    <input type="submit" value="🔍">
-</form>
+
 
 <?php if(isset($_GET['searchAdminUser']) && !empty($_GET['searchAdminUser'])){ 
         if(!isset($search)){
-            echo 'Aucune carte séléctionner';
+            echo 'Aucune carte sélectionnée';
         } else {
             ?> 
             <hr>  <!-- hr a supprimer -->
@@ -72,7 +124,7 @@ ob_start();
     
     ?>
 
-
+</body>
 
 <?php
 $content = ob_get_contents();
