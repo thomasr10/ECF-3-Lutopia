@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
     <link rel="stylesheet" href="<?=  ASSETS . 'css/style.css' ?>">
+    <link rel="shortcut icon" href="./uploads/autres/Logo-flat.svg" type="image/x-icon">
 </head>
 <body>
   <!-- LES FRONT : vous pouvez modifier la navbar. C'était juste pour tester les routes (il faudra bien les réutiliser si jamais vous faites des modif) -->
@@ -23,7 +24,7 @@
       <nav class ="nav">       
         <ul class = "navbar">
           <li><a href="<?= $router->generate('home')?>">Accueil</a></li>
-          <li><a href="#">Informations</a></li>
+          <li><a href="<?= $router->generate('infoPage')?>">Informations</a></li>
         <?php
         if(isset($_SESSION['id'])){
         ?>
