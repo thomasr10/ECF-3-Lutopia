@@ -17,7 +17,7 @@
     </button>
     
       <figure>
-        <img src="<?= UPLOADS . '/autre/Logo-flat.svg'?>" alt="Logo Lutopia">
+        <img src="<?= UPLOADS . '/autres/Logo-flat.svg'?>" alt="Logo Lutopia">
       </figure>
 
       <nav class ="nav">       
@@ -47,7 +47,7 @@
         <input type="text" name="query" placeholder="Rechercher..."      class="search-input" />
 
         <button type="submit" class="search-button">
-            <img src="<?= UPLOADS . 'autre/icon-loupe.svg'?>" alt="icone loupe">
+            <img src="<?= UPLOADS . 'autres/icon-loupe.svg'?>" alt="icone loupe">
         </button>
       </form>
 
