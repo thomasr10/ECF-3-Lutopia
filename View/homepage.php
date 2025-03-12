@@ -37,7 +37,7 @@ if(isset($_SESSION['id'])){
     <?php
     foreach($datas as $child){
     ?>
-    <option class="child" value="<?=date('Y')-$child->getBirth_date()->format('Y')?>"><?= $child->getName() ?></option>
+    <option class="child" value="<?=date('Y')-$child->getBirth_date()->format('Y')?>-<?= $child->getId_child(); ?>"><?= $child->getName() ?></option>
     <?php
     }
     ?>

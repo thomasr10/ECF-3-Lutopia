@@ -1,12 +1,13 @@
 const selectChild = document.getElementById('select-child');
 let booksContainer = document.getElementById('booksContainer');
 const childOption = document.querySelectorAll('.child')
+const buttonBorrow = document.getElementsByClassName('button_borrow');
 // afficher les nouveautés en fonction de l'age de l'enfant séléctionné
 
 function displayNewBooks(age) {
     let currentAge = age.value;
-
-    fetch(`/home-category-age/${currentAge}`)
+    let splitAge = currentAge.split('-');
+    fetch(`/home-category-age/${splitAge[0]}`)
     .then(response => response.json())
     .then(data => {
         let bookArticle = document.createElement('div');
@@ -41,18 +42,38 @@ if(selectChild !== null){
 
     selectChild.addEventListener('change', function(event) {
         const selectedAge = event.target.value;
-        const newArray = [selectedAge, ...ageArray.filter(age => age !== selectedAge)]
+        const newSplit = selectedAge.split('-');
+        const newAgeArray = newSplit[0];
+        const newId = newSplit[1]; 
+        
+        const newArray = [newAgeArray, ...ageArray.filter(age => age !== newAgeArray)]
+        const newIdArray = [newId, ...idArray.filter(age => age !== newId)];
+
+
         sectionContainer.innerHTML = "";
         sendChildValue(newArray);
     });
 
     const ageArray = [];
+    const idArray = [];
+
     childOption.forEach(age => {
-        ageArray.push(age.value);
+        let split = age.value.split('-');
+        ageArray.push(split[0]);
+        idArray.push(split[1]);
     });
 
-    sendChildValue(ageArray);
+    console.log(buttonBorrow);
+    for (var i = 0; i< buttonBorrow.length; i++){
+        console.log(list[i]);
+        // item.addEventListener('click', (e) =>{
+        //     console.log('ok');
+        // });
+    }
 
+    sendChildValue(ageArray);
+    
+    
     document.getElementById('nextButton').addEventListener('click', next);
     document.getElementById('prevButton').addEventListener('click', prev);
 
@@ -169,7 +190,7 @@ function sendChildValue(array){
                 bookImg.setAttribute('src', chunks[i][j].img)
                 bookTitle.textContent = chunks[i][j].title;
                 const descLink = document.createElement('a'); //ajouter le lien
-                const borrowLink = document.createElement('a');
+                const borrowLink = document.createElement('button');
                 const linkDiv1 = document.createElement('div');
                 const linkDiv2 = document.createElement('div');
                 descLink.classList.add("button_pink");
@@ -177,7 +198,8 @@ function sendChildValue(array){
                 linkDiv1.append(descLink);
                 linkDiv2.append(borrowLink);
                 descLink.setAttribute('href', '#');
-                borrowLink.setAttribute('href', '#');
+                borrowLink.setAttribute('type', 'button');
+                borrowLink.setAttribute('value', chunks[i][j].id_book);
                 descLink.textContent = "Voir la fiche";
                 borrowLink.textContent = "Réserver";
 
