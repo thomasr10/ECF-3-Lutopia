@@ -461,17 +461,14 @@ body{
     width: 100%;
     margin-top: 50px;
     #container_0, 
-    #container_1,
-    #container_4,
     #container_6,
-    #container_8,
-    #container_10 {
+    #container_8 {
         width: 350px;
-        height: 300px;
+        height: 200px;
         display: flex;
         justify-content: space-between;
         position: relative; 
-        margin-top: 50px;
+        margin-top: 30px;
     }
         .images {
           position: relative;
@@ -508,17 +505,18 @@ body{
           top: 70px; 
       }
     #container_2{
-      width: 300px;
-      height: 300px;
+      width: 350px;
+      height: 200px;
       display: flex;
       justify-content: space-between;
       position: relative; 
-      margin-top: 200px;
+      margin-top: 30px;
+      transform: translateX(150%);
       }
   
       .images {
         position: relative;
-        /*margin-left: 50px;*/
+        
         }
         .img6{
           width: 152px;
@@ -557,6 +555,47 @@ body{
         .img10 {
           left : 200px;
           top: 90px; 
+      }
+    #container_4{
+      width: 350px;
+      height: 200px;
+      display: flex;
+      justify-content: space-between;
+      position: relative; 
+      margin-top: 30px;
+      transform: translateX(250%);
+    }
+    .images {
+      position: relative;
+     
+      }
+      .img11{
+        position: absolute;
+      }
+      .img12{
+        position: absolute;
+          left: 200px;
+          top: 53%;
+          transform: translateX(-107%);
+        ;
+      }
+      .img13{
+        position: absolute;
+        top: 54%;
+        left: 61%;
+        opacity: 0; 
+        transition: opacity 0 .2s ease;
+        pointer-events: none;
+      }
+      .square {
+        position: absolute; 
+        }
+      .img14{
+        top: 50%;
+        left: 20%;
+      }
+      .img15{
+        transform: translateX(-65%);
       }
     }
     .booksContainer{

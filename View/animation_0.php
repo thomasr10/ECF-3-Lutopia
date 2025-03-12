@@ -1,4 +1,5 @@
-<div id="container_0">
+        
+        <div id="container_0" class="containerAll">
         <div class="cubesGsap">
         <img src="uploads/autres/age_0_1.webp" class="square img4">
         </div>
@@ -10,7 +11,7 @@
         <div class="cubesGsap">      
         <img src="uploads/autres/age_0_5.webp" class="square img5">
         </div>
-</div>
+        </div>
 
 
 

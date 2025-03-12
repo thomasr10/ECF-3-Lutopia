@@ -1,4 +1,4 @@
-<div id="container_2">
+<div id="container_2" class="containerAll">
         <div class="images">
         <img src="uploads/autres/age_2_3.webp" class="img6"alt="">
         <img src="uploads/autres/age_2_4.webp" class="img7" alt="" >
