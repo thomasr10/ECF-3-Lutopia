@@ -194,84 +194,97 @@ function sendChildValue(array){
     };
 
 
-
-//Animations Cube"
-
-
 document.addEventListener("DOMContentLoaded", function() {
     gsap.registerPlugin(Flip);
+    const containers = document.querySelectorAll('.containerAll');
 
-    const img2 = document.getElementsByClassName('img2')[0];
-    const img3 = document.getElementsByClassName('img3')[0];
-    const img4 = document.getElementsByClassName('img4')[0];
-    const img5 = document.getElementsByClassName('img5')[0];
-    const img6 = document.getElementsByClassName('img6')[0];
-    const img7 = document.getElementsByClassName('img7')[0];
-    const img8 = document.getElementsByClassName('img8')[0];
-    const img9 = document.getElementsByClassName('img9')[0];
-    const img10 = document.getElementsByClassName('img10')[0];
+    containers.forEach(container => {
+        // Groupe 1 (ex : container_0)
+        const img2 = container.querySelector('.img2');
+        const img3 = container.querySelector('.img3');
+        const img4 = container.querySelector('.img4');
+        const img5 = container.querySelector('.img5');
 
-    let hasFlipped1 = false; // Booléen pour le premier groupe (1-5)
-    let hasFlipped2 = false; // Booléen pour le deuxième groupe (6-10)
+        if (img2 && img3 && img4 && img5) {
+            let hasFlipped1 = false; // Pour éviter de refaire l'animation
 
-    function handleMouseOverGroup1() {
-        img3.style.opacity = "1";
-        if (!hasFlipped1) {
-            swapImagesGroup1();  // Exécute Flip une seule fois pour le groupe 1
+            function handleMouseOverGroup1() {
+                img3.style.opacity = "1";
+                if (!hasFlipped1) {
+                    gsap.to(img4, { x: 280, duration: 1.5 });
+                    gsap.to(img5, { x: -280, duration: 1.5 });
+                }
+            }
+
+            function handleMouseOutGroup1() {
+                img3.style.opacity = "0";
+                if (!hasFlipped1) {
+                    gsap.to(img4, { x: 0, duration: 3.5 });
+                    gsap.to(img5, { x: 0, duration: 3.5 });
+                    hasFlipped1 = true;
+                }
+            }
+
+            img2.addEventListener("mouseover", handleMouseOverGroup1);
+            img2.addEventListener("mouseout", handleMouseOutGroup1);
         }
-    }
 
-    function handleMouseOutGroup1() {
-        img3.style.opacity = "0";
-        if (!hasFlipped1) {
-            resetImagesGroup1();  // Remet les images à leur place pour le groupe 1
-            hasFlipped1 = true;   // Désactive Flip pour le groupe 1
+        // Groupe 2 (ex : container_2)
+        const img7 = container.querySelector('.img7');
+        const img8 = container.querySelector('.img8');
+        const img9 = container.querySelector('.img9');
+        const img10 = container.querySelector('.img10');
+
+        if (img7 && img8 && img9 && img10) {
+            let hasFlipped2 = false; // Pour éviter de refaire l'animation
+
+            function handleMouseOverGroup2() {
+                img8.style.opacity = "1";
+                if (!hasFlipped2) {
+                    gsap.to(img9, { y: 90, duration: 1.5 });
+                    gsap.to(img10, { y: -70, duration: 1.5 });
+                }
+            }
+
+            function handleMouseOutGroup2() {
+                img8.style.opacity = "0";
+                if (!hasFlipped2) {
+                    gsap.to(img9, { y: 0, duration: 3.5 });
+                    gsap.to(img10, { y: 0, duration: 3.5 });
+                    hasFlipped2 = true;
+                }
+            }
+
+            img7.addEventListener("mouseover", handleMouseOverGroup2);
+            img7.addEventListener("mouseout", handleMouseOutGroup2);
         }
-    }
+        // Groupe 3 container_4
 
-    function handleMouseOverGroup2() {
-        img8.style.opacity = "1";
-        if (!hasFlipped2) {
-            swapImagesGroup2();  // Exécute Flip une seule fois pour le groupe 2
-        }
-    }
+        const img12 = container.querySelector('.img12');
+        const img13 = container.querySelector('.img13');
+        const img14 = container.querySelector('.img14');
+        const img15 = container.querySelector('.img15');
+        console.log("Groupe 3 éléments :", { img12, img13, img14, img15 });
 
-    function handleMouseOutGroup2() {
-        img8.style.opacity = "0";
-        if (!hasFlipped2) {
-            resetImagesGroup2();  // Remet les images à leur place pour le groupe 2
-            hasFlipped2 = true;   // Désactive Flip pour le groupe 2
-        }
-    }
-
-    // Animations pour le premier groupe (img4 et img5)
-    function swapImagesGroup1() {
-        gsap.to(img4, { x: 280, duration: 1.5 });
-        gsap.to(img5, { x: -280, duration: 1.5 });
-    }
-
-    function resetImagesGroup1() {
-        gsap.to(img4, { x: 0, duration: 3.5 });
-        gsap.to(img5, { x: 0, duration: 3.5 });
-    }
-
-    // Animations pour le deuxième groupe (img9 et img10)
-    function swapImagesGroup2() {
-        gsap.to(img9, { y: 90, duration: 1.5 });
-        gsap.to(img10, { y: -70, duration: 1.5 });
-    }
-
-    function resetImagesGroup2() {
-        gsap.to(img9, { y: 0, duration: 3.5 });
-        gsap.to(img10, { y: 0, duration: 3.5 });
-    }
-
-    if(selectChild === null){
-        img2.addEventListener("mouseover", handleMouseOverGroup1);
-        img2.addEventListener("mouseout", handleMouseOutGroup1);
-        img7.addEventListener("mouseover", handleMouseOverGroup2);
-        img7.addEventListener("mouseout", handleMouseOutGroup2);        
-    }
-
-
+        if (img12 && img13 && img14 && img15) {
+            let hasFlipped3 = false;
+        
+            function handleMouseOverGroup3() {
+                img13.style.opacity = "1";
+                if (!hasFlipped3) {
+                    gsap.to(img14, { y: -100, duration: 1.5 });
+                    gsap.to(img15, { y: 70, duration: 1.5 });
+                }
+            }
+            function handleMouseOutGroup3() {
+                img13.style.opacity = "0";
+                if (!hasFlipped3) {
+                    gsap.to(img14, { y: 0, duration: 3.5 });
+                    gsap.to(img15, { y: 0, duration: 3.5 });
+                    hasFlipped3 = true;
+                }
+            }
+            img12.addEventListener("mouseover", handleMouseOverGroup3);
+            img12.addEventListener("mouseout", handleMouseOutGroup3);
+}});
 });

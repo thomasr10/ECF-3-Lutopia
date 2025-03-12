@@ -122,10 +122,11 @@ if(isset($_SESSION['id'])){
 <?php
     $count = 0;
     foreach(array_chunk($books, 4) as $chunk){
+    $animationIndex = $count;  
 ?>
 <!-- div qui comprend l'image du dé + la rangée de livres associé -->
         <div class="bookRowCubeAge">
-        <?php include "animation_{$count}.php"; ?>
+        <?php include "animation_{$animationIndex}.php" ?>
         <div>
 
 
@@ -143,7 +144,7 @@ if(isset($_SESSION['id'])){
 </div>
 <?php
         
-        $count++;
+        $count+=2;
     }
 ?>          
        </div> 
