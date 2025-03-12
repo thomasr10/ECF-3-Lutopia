@@ -12,7 +12,6 @@ function displayNewBooks(age) {
         let bookArticle = document.createElement('div');
         bookArticle.className = 'images';
         data.forEach(book => {
-
             let imgContainer = document.createElement('img');
             imgContainer.className = 'image';
             imgContainer.setAttribute('src', book.img);
@@ -31,7 +30,8 @@ function displayNewBooks(age) {
          })
     })
 }
-/*if(selectChild !== null){
+
+if(selectChild !== null){
     
     displayNewBooks(selectChild);
     selectChild.addEventListener('change', function() {
@@ -39,7 +39,25 @@ function displayNewBooks(age) {
         displayNewBooks(selectChild);
     });
 
-}*/
+    selectChild.addEventListener('change', function(event) {
+        const selectedAge = event.target.value;
+        const newArray = [selectedAge, ...ageArray.filter(age => age !== selectedAge)]
+        sectionContainer.innerHTML = "";
+        sendChildValue(newArray);
+    });
+
+    const ageArray = [];
+    childOption.forEach(age => {
+        ageArray.push(age.value);
+    });
+
+    sendChildValue(ageArray);
+
+    document.getElementById('nextButton').addEventListener('click', next);
+    document.getElementById('prevButton').addEventListener('click', prev);
+
+}
+
 
 
 let index = 0;
@@ -73,8 +91,6 @@ function prev() {
     }
 }
 
-/*document.getElementById('nextButton').addEventListener('click', next);
-document.getElementById('prevButton').addEventListener('click', prev);*/
 
 
 
@@ -90,9 +106,17 @@ document.getElementById('prevButton').addEventListener('click', prev);*/
 // Debut menu burger-------------------------------------------------------
 const menuToggle = document.querySelector('.menu-toggle');
 const navbar = document.querySelector('.navbar');
-console.log(navbar);
-menuToggle.addEventListener('click', () => {
-  navbar.classList.toggle('active');
+menuToggle.addEventListener("click", () => {
+    if (navbar.style.left === "0%") {
+      gsap.to(navbar, { left: "-80%", duration: 0.5, scale: 0 }); // Ferme le menu
+    } else {
+      gsap.to(navbar, {
+        left: "0%",
+        duration: 0.5,
+        scale: 1, // Ouvre le menu avec une échelle de 1
+        ease: "back.out", // Effet de rebond
+      });
+    }
 });
 
 // Fin menu burger-------------------------------------------------------
@@ -100,18 +124,13 @@ menuToggle.addEventListener('click', () => {
 
 
 
-const ageArray = [];
-childOption.forEach(age => {
-    ageArray.push(age.value);
-});
-
 
 
 const sectionContainer = document.getElementById('section-connected');
 
 function sendChildValue(array){
 
-    console.log(array)
+
     fetch('/home-section', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -174,8 +193,6 @@ function sendChildValue(array){
   
     };
 
-
-sendChildValue(ageArray);
 
 document.addEventListener("DOMContentLoaded", function() {
     gsap.registerPlugin(Flip);
