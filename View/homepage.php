@@ -10,16 +10,7 @@ ob_start();
 if(isset($_SESSION['id'])){
 ?>
 <div>
-    <span><?= $_SESSION['first-name']?></span> <!-- prénom du parent -->
-    <select name="select-child" id="select-child">
-    <?php
-    foreach($datas as $child){
-    ?>
-    <option class="child" value="<?=date('Y')-$child->getBirth_date()->format('Y')?>"><?= $child->getName() ?></option>
-    <?php
-    }
-    ?>
-    </select>
+
     <?php
     if(!empty($borrow)){
     ?>
@@ -42,10 +33,14 @@ if(isset($_SESSION['id'])){
    <div class = "child-select">
 
     
-    <select name="child" id="child" class = "select-child">
-        <option value="">Trouve ton prénom</option>
-        <option value=""></option>
-
+    <select name="select-child" id="select-child" class = "select-child">
+    <?php
+    foreach($datas as $child){
+    ?>
+    <option class="child" value="<?=date('Y')-$child->getBirth_date()->format('Y')?>"><?= $child->getName() ?></option>
+    <?php
+    }
+    ?>
     </select>
 
    </div>

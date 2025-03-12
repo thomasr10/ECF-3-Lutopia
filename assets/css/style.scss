@@ -169,6 +169,7 @@ figure {
 .child-select {
   display: flex;
   padding-left: 2rem;
+  vertical-align: middle;
 
 }
 .select-child {
@@ -176,11 +177,12 @@ figure {
   font-family: $prenoms-enfants;
   font-size: $para;
   background: transparent;
-  padding: 1rem 1rem;
+  padding: 0 5rem;
   border: transparent;
   background-color: $pastel-rose-200;
-  height: 55px;
-  border-radius: 8px;
+  height: 35px;
+  border-radius: 100px;
+  outline: none;
   
 }
 
