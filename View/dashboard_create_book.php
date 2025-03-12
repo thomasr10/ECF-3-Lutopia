@@ -6,19 +6,36 @@ $arrayJs = ["./assets/js/dashboard_create_book"];
 ob_start();
 ?>
 
-<div id="modal" class="modal">
-    <h2 id="modal-title"></h2>
-    <form name="add" id="add" method="POST">
+<div id="modal-author" class="modal">
+    <h2>Ajouter un(e) auteur(ice)</h2>
+    <form action="/dashboard-book">
         <div>
-            <label for="first-name">Prénom</label>
-            <input type="text" name="first-name" id="first-name" placeholder="Prénom" required>
+            <label for="author-first-name">Prénom</label>
+            <input type="text" name="author-first-name" id="author-first-name" placeholder="Prénom" required>
         </div>
         <div>
-            <label for="last-name">Nom de famille</label>
-            <input type="text" name="last-name" id="last-name" placeholder="Nom de famille" required>
+            <label for="author-last-name">Nom de famille</label>
+            <input type="text" name="author-last-name" id="author-last-name" placeholder="Nom de famille" required>
         </div>
         <div>
-            <input type="submit" name="submit-btn" id="submit-btn" value="Ajouter">
+            <input type="submit" name="add-author" id="add-author" value="Ajouter">
+        </div>
+    </form>
+</div>
+
+<div id="modal-illustrator" class="modal">
+    <h2>Ajouter un(e) illustrateur(ice)</h2>
+    <form action="/dashboard-book">
+        <div>
+            <label for="illustrator-first-name">Prénom</label>
+            <input type="text" name="illustrator-first-name" id="illustrator-first-name" placeholder="Prénom" required>
+        </div>
+        <div>
+            <label for="illustrator-last-name">Nom de famille</label>
+            <input type="text" name="illustrator-last-name" id="illustrator-last-name" placeholder="Nom de famille" required>
+        </div>
+        <div>
+            <input type="submit" name="add-illustrator" id="add-illustrator" value="Ajouter">
         </div>
     </form>
 </div>
@@ -37,12 +54,12 @@ ob_start();
         <div id="author-section">
             <label for="author">Auteur</label>
             <input type="text" name="author"  id="author" placeholder="Auteur" required>
-            <button id="author-btn" type="button">Ajouter un auteur</button>
+            <button id="author-btn" type="button">Ajouter un(e) auteur(ice)</button>
         </div>
         <div id="illustrator-section">
             <label for="illustrator">Illustrateur</label>
             <input type="text" name="illustrator"  id="illustrator" placeholder="Illustrateur" required>
-            <p>Créez l'illustrateur s'il n'existe pas</p>
+            <button id="illustrator-btn" type="button">Ajouter un(e) illustrateur(ice)</button>
         </div>
         <div>
             <label for="editor">Éditeur</label>

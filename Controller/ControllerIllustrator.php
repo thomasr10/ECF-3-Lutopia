@@ -22,4 +22,14 @@ class ControllerIllustrator {
         echo json_encode($arrayObj);
 
     }
+
+
+    public function addIllustrator(){
+        $a = file_get_contents('php://input');
+        $data = json_decode($a, true);
+        $model = new ModelIllustrator();
+        $model->addIllustrator($data['first-name'], $data['last-name']);
+
+        echo json_encode(["succes" => true]);
+    }
 }
