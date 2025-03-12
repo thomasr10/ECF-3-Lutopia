@@ -10,16 +10,7 @@ ob_start();
 if(isset($_SESSION['id'])){
 ?>
 <div>
-    <span><?= $_SESSION['first-name']?></span> <!-- prénom du parent -->
-    <select name="select-child" id="select-child">
-    <?php
-    foreach($datas as $child){
-    ?>
-    <option class="child" value="<?=date('Y')-$child->getBirth_date()->format('Y')?>"><?= $child->getName() ?></option>
-    <?php
-    }
-    ?>
-    </select>
+
     <?php
     if(!empty($borrow)){
     ?>
@@ -38,14 +29,22 @@ if(isset($_SESSION['id'])){
 
 <!-- début selection enfant et affichage de ses reservations -->
 <section class = "reservation">
+    <img src="uploads/autres/ours.svg" alt="icone d'ours">
    <div class = "child-select">
 
-
-
-
-
+    
+    <select name="select-child" id="select-child" class = "select-child">
+    <?php
+    foreach($datas as $child){
+    ?>
+    <option class="child" value="<?=date('Y')-$child->getBirth_date()->format('Y')?>"><?= $child->getName() ?></option>
+    <?php
+    }
+    ?>
+    </select>
 
    </div>
+   <div class= "padding-element2">
    <div class= "mini-book">
    <img src="uploads/bebe_mon_amour.webp" class ="mini-book-img" alt= "miniature du livre">
     <div class="mini-book-title">
@@ -53,6 +52,8 @@ if(isset($_SESSION['id'])){
       <a href="">
       <img id="close-button" src="uploads/autres/iconX.svg" class = "close-x-icon"alt="icone fermeture"></a>
     </div>
+    </div>
+    
    </div > 
 
 
