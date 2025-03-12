@@ -4,6 +4,8 @@ session_start();
 require_once('./vendor/autoload.php');
 require_once('./vendor/altorouter/altorouter/AltoRouter.php');
 
+require_once('./config/config.php');
+
 $router = new AltoRouter();
 
 // load .env files
@@ -47,6 +49,10 @@ $router->map('GET|POST', '/dashboard-book', 'ControllerBook#createBook', 'create
 //Chercher un auteur
 $router->map('POST', '/dashboard-search-author', 'ControllerAuthor#searchAuthor', 'search-author');
 $router->map('POST', '/dashboard-search-illustrator', 'ControllerIllustrator#searchIllustrator', 'search-illustrator');
+
+
+//Ajouter un auteur
+$router->map('POST', '/dashboard/add-author', 'ControllerAuthor#addAuthor', 'add-author');
 
 //route age
 $router->map('GET', '/age/[i:age]', 'ControllerBook#drawAge', 'drawAge');

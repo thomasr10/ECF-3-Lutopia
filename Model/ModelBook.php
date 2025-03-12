@@ -250,7 +250,7 @@ class ModelBook extends Model {
         return $arrayObj;
     }
 
-    public function addNewBook(int $isbn, string $title, string $editor, string $img_src, string $publication_date, string $edition_date, string $synopsis, int $i_type, int $id_age){
+    public function addNewBook(int $isbn, string $title, string $editor, string $img_src, string $publication_date, string $edition_date, string $synopsis, int $id_type, int $id_age){
         $req = $this->getDb()->prepare("INSERT INTO `book`(`isbn`, `title`, `editor`, `img_src`, `publication_date`, `edition_date`, `synopsis`, `id_type`, `id_age`) VALUES (:isbn, :title, :editor, :img_src, :publication_date, :edition_date, :synopsis, :id_type, :id_age)");
         $req->bindParam('isbn', $isbn, PDO::PARAM_INT);
         $req->bindParam('title', $title, PDO::PARAM_STR);
@@ -276,7 +276,7 @@ class ModelBook extends Model {
         $req->execute();
     }
 
-    public function addBookIllustrator(int $id_illustrator, int $id_book){
+    public function addBookIllustrator(int $id_book, int $id_illustrator){
         $req = $this->getDb()->prepare("INSERT INTO `book_illustrator`(`id_book`, `id_illustrator`) VALUES (:id_book, :id_illustrator)");
         $req->bindParam('id_book', $id_book, PDO::PARAM_INT);
         $req->bindParam('id_illustrator', $id_illustrator, PDO::PARAM_INT);
@@ -286,6 +286,13 @@ class ModelBook extends Model {
     public function addBookCategory(int $id_category, int $id_book){
         $req = $this->getDb()->prepare("INSERT INTO `book_category`(`id_category`, `id_book`) VALUES (:id_category, :id_book)");
         $req->bindParam('id_category', $id_category, PDO::PARAM_INT);
+        $req->bindParam('id_book', $id_book, PDO::PARAM_INT);
+        $req->execute();
+    }
+
+    public function addBookCopy(int $status, int $id_book){
+        $req =$this->getDb()->prepare("INSERT INTO `copy`(`state`, `id_book`) VALUES (:status, :id_book)");
+        $req->bindParam('status', $status, PDO::PARAM_INT);
         $req->bindParam('id_book', $id_book, PDO::PARAM_INT);
         $req->execute();
     }

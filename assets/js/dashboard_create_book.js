@@ -58,7 +58,7 @@ illustratorInput.addEventListener('input', function(){
     responseDiv.textContent = "";
     const searchIllustrator = illustratorInput.value;
 
-    if(searchIllustrator.length > 3){
+    if(searchIllustrator.length >= 3){
         fetch('/dashboard-search-illustrator', {
             method: 'POST',
             body: JSON.stringify(searchIllustrator),            
@@ -97,3 +97,110 @@ illustratorInput.addEventListener('input', function(){
         })
     }
 })
+
+
+// section catégories
+
+const category = document.getElementById('category');
+const category2 = document.getElementById('category-2');
+const category3 = document.getElementById('category-3');
+
+const arrayOptions = Array.from(category.options);
+const arrayOptions2 = Array.from(category2.options);
+const arrayOptions3 = Array.from(category3.options);
+
+if (category.value === "") {
+    category2.setAttribute('disabled', true);
+    category3.setAttribute('disabled', true);
+}
+
+category.addEventListener('change', function () {
+    category2.removeAttribute('disabled');
+    updateOptions();
+});
+
+category2.addEventListener('change', function () {
+    category3.removeAttribute('disabled');
+    updateOptions();
+});
+
+category3.addEventListener('change', function () {
+    updateOptions();
+});
+
+function updateOptions() {
+    let category1Value = category.value;
+    let category2Value = category2.value;
+    let category3Value = category3.value;
+
+    arrayOptions2.forEach(option => {
+        if (option.value === category1Value || option.value === category3Value) {
+            option.setAttribute('disabled', true);
+        } else {
+            option.removeAttribute('disabled');
+        }
+    });
+
+    arrayOptions3.forEach(option => {
+        if (option.value === category1Value || option.value === category2Value) {
+            option.setAttribute('disabled', true);
+        } else {
+            option.removeAttribute('disabled');
+        }
+    });
+
+    arrayOptions.forEach(option => {
+        if (option.value === category2Value || option.value === category3Value) {
+            option.setAttribute('disabled', true);
+        } else {
+            option.removeAttribute('disabled');
+        }
+    });
+
+    if (category2.value === "") {
+        category3.setAttribute('disabled', true);
+        category3.value = "";
+    }
+}
+
+
+
+// AJOUTER UN AUTEUR/ ILLUSTRATEUR
+
+const addAuthorBtn = document.getElementById('author-btn');
+const modal = document.getElementById('modal');
+const addForm = document.getElementById('add');
+const firstNameInput = document.getElementById('first-name');
+const lastNameInput = document.getElementById('last-name');
+const submitBtn = document.getElementById('submit-btn');
+
+
+
+addAuthorBtn.addEventListener('click', function(event){
+    modal.style.display = 'block';
+    const modalTitle = document.getElementById('modal-title');
+    modalTitle.textContent = 'Ajouter un(e) auteur(ice) !';
+
+    submitBtn.addEventListener('click', function(){
+        event.preventDefault();
+        let firstName = firstNameInput.value;
+        let lastName = lastNameInput.value;
+
+        fetch('/dashboard/add-author', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({"first-name": firstName, "last-name": lastName})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data){
+                modal.style.display = 'none';
+            }
+        })
+    })
+})
+
+
+

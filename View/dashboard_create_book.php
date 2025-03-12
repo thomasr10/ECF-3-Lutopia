@@ -1,10 +1,27 @@
 <?php
 $title = "Dashboard - Création d'un livre | Lutopia";
-$description = "Page de création d'un livre, sur le dashboard admin de Lutopia";
+$description = "Page de création d'un livre sur le dashboard admin de Lutopia";
 $pointSlash = "./";
 $arrayJs = ["./assets/js/dashboard_create_book"];
 ob_start();
 ?>
+
+<div id="modal" class="modal">
+    <h2 id="modal-title"></h2>
+    <form name="add" id="add" method="POST">
+        <div>
+            <label for="first-name">Prénom</label>
+            <input type="text" name="first-name" id="first-name" placeholder="Prénom" required>
+        </div>
+        <div>
+            <label for="last-name">Nom de famille</label>
+            <input type="text" name="last-name" id="last-name" placeholder="Nom de famille" required>
+        </div>
+        <div>
+            <input type="submit" name="submit-btn" id="submit-btn" value="Ajouter">
+        </div>
+    </form>
+</div>
 
 <div>
     <h2>Ajouter une oeuvre</h2>
@@ -20,7 +37,7 @@ ob_start();
         <div id="author-section">
             <label for="author">Auteur</label>
             <input type="text" name="author"  id="author" placeholder="Auteur" required>
-            <p>Créez l'auteur s'il n'existe pas</p>
+            <button id="author-btn" type="button">Ajouter un auteur</button>
         </div>
         <div id="illustrator-section">
             <label for="illustrator">Illustrateur</label>
@@ -43,10 +60,11 @@ ob_start();
             <label for="synopsis">Synopsis</label>
             <textarea name="synopsis" id="synopsis" placeholder="Synopsis"></textarea>
         </div>
-        <div>
+        <div id="category-section">
+            <!-- DIV A FLEX POUR AVOIR LES SELECTS SUR LA MEME LIGNE -->
             <label for="category">Catégorie</label>
-            <select name="category" id="category">
-                <option value="">Catégories</option>
+            <select name="category[]" id="category"> 
+                <option value=""></option>
                 <?php
                 foreach($categories as $category){
                 ?>
@@ -56,6 +74,26 @@ ob_start();
                 ?>
             </select>
             <p>Créez la catégories si elle n'existe pas</p>
+            <select name="category[]" id="category-2">
+            <option value=""></option>
+                <?php
+                foreach($categories as $category){
+                ?>
+                <option value="<?=$category->getId_category()?>"><?=$category->getCategory_name()?></option>
+                <?php
+                }
+                ?>
+            </select>
+            <select name="category[]" id="category-3">
+            <option value=""></option>
+                <?php
+                foreach($categories as $category){
+                ?>
+                <option value="<?=$category->getId_category()?>"><?=$category->getCategory_name()?></option>
+                <?php
+                }
+                ?>
+            </select>
         </div>
         <div>
             <label for="age">Tranche d'âge</label>
@@ -85,7 +123,7 @@ ob_start();
         </div>
         <div>
             <label for="copy">Nombre d'exemplaires</label>
-            <input type="number" placeholder="Nombre d'exemplaires" step=1>
+            <input type="number" name="copy" id="copy" placeholder="Nombre d'exemplaires" step=1>
         </div>
         <div>
             <label for="picture">Image du livre</label>

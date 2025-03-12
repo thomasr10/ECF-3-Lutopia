@@ -34,6 +34,71 @@ if(isset($_SESSION['id'])){
     }
     ?>
 </div>
+
+
+<!-- début selection enfant et affichage de ses reservations -->
+<section class = "reservation">
+   <div class = "child-select">
+
+
+
+
+
+
+   </div>
+   <div class= "mini-book">
+   <img src="uploads/bebe_mon_amour.webp" class ="mini-book-img" alt= "miniature du livre">
+    <div class="mini-book-title">
+      <a href="">Bébé mon amour</a>
+      <a href="">
+      <img id="close-button" src="uploads/autres/iconX.svg" class = "close-x-icon"alt="icone fermeture"></a>
+    </div>
+   </div > 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+<!-- fin selection enfant et affichage de ses reservations -->
 <!-- carroussel -->
 
 <div id="center">
