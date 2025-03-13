@@ -26,6 +26,9 @@ $router->map('POST', '/home-section', 'ControllerBook#displayBooks', 'display-bo
 //show 1 book
 $router->map('GET', '/book/[i:id]', 'ControllerBook#showOneBook', 'showOneBook');
 
+//reservation
+$router->map('GET', '/[i:book]/[i:child]', 'ControllerChild#reservationBook', 'reservationBook');
+
 //inscription
 $router->map('GET|POST', '/register', 'ControllerUser#register', 'register');
 $router->map('GET', '/confirmation/[i:id]', 'ControllerMail#sendMail', 'send-mail');
@@ -65,7 +68,8 @@ $router->map('GET', '/error404', 'ControllerUser#errorPage', 'errorPage');
 $router->map('GET', '/informations', 'ControllerUser#infoPage', 'infoPage');
 
 
-
+//search-bar
+$router->map('POST', '/search-book', 'ControllerBook#searchBook', 'search-book');
 
 
 

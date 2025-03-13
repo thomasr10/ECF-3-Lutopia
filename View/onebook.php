@@ -2,7 +2,7 @@
 
 $title = $bookInfo[0]->book->getTitle() . ' | Lutopia';
 $description = $bookInfo[0]->book->getSynopsis();
-$arrayJs;
+$arrayJs = ["../assets/js/search-bar.js"];
 $pointSlash = "../";
 
 ob_start();
@@ -10,7 +10,7 @@ ob_start();
 ?>
 
     <article>
-        <img src="../<?= $bookInfo[0]->book->getImg_Src() ?>" alt="" width="200px" height="200px"> <!-- image pour chaque livre --> 
+        <img src="../<?= $bookInfo[0]->book->getImg_Src() ?>" alt="Couverture du livre <?= $bookInfo[0]->book->getTitle() ?>"> <!-- image pour chaque livre --> 
         <h2><?= $bookInfo[0]->book->getTitle(); ?> </h2> <!-- titre  --> 
         <p><?= $bookInfo[0]->book->getSynopsis(); ?></p>
         <p> Auteur(s): <?= $bookInfo[0]->author ?> <!-- auteur  --> 

@@ -1,6 +1,6 @@
 <?php 
 $title = $ageInfos[0]->getFrom() . ' à ' . $ageInfos[0]->getTo() .' ans | Lutopia';
-$arrayJs = ["../assets/js/type.js"];
+$arrayJs = ["../assets/js/type.js", "../assets/js/search-bar.js"];
 $pointSlash = "../";
 ob_start();
 ?>

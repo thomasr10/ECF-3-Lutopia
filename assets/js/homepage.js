@@ -1,12 +1,13 @@
 const selectChild = document.getElementById('select-child');
 let booksContainer = document.getElementById('booksContainer');
 const childOption = document.querySelectorAll('.child')
+const buttonBorrow = document.querySelectorAll('.button_borrow');
 // afficher les nouveautés en fonction de l'age de l'enfant séléctionné
 
 function displayNewBooks(age) {
     let currentAge = age.value;
-
-    fetch(`/home-category-age/${currentAge}`)
+    let splitAge = currentAge.split('-');
+    fetch(`/home-category-age/${splitAge[0]}`)
     .then(response => response.json())
     .then(data => {
         let bookArticle = document.createElement('div');
@@ -31,6 +32,7 @@ function displayNewBooks(age) {
     })
 }
 
+
 if(selectChild !== null){
     
     displayNewBooks(selectChild);
@@ -41,18 +43,29 @@ if(selectChild !== null){
 
     selectChild.addEventListener('change', function(event) {
         const selectedAge = event.target.value;
-        const newArray = [selectedAge, ...ageArray.filter(age => age !== selectedAge)]
+        const newSplit = selectedAge.split('-');
+        const newAgeArray = newSplit[0];
+        const newId = newSplit[1]; 
+        
+        const newArray = [newAgeArray, ...ageArray.filter(age => age !== newAgeArray)]
+        const newIdArray = [newId, ...idArray.filter(age => age !== newId)];
+
+
         sectionContainer.innerHTML = "";
-        sendChildValue(newArray);
+        sendChildValue(newArray, newIdArray[0]);
     });
 
     const ageArray = [];
+    const idArray = [];
+
     childOption.forEach(age => {
-        ageArray.push(age.value);
+        let split = age.value.split('-');
+        ageArray.push(split[0]);
+        idArray.push(split[1]);
     });
 
-    sendChildValue(ageArray);
-
+    sendChildValue(ageArray, idArray[0]);
+    
     document.getElementById('nextButton').addEventListener('click', next);
     document.getElementById('prevButton').addEventListener('click', prev);
 
@@ -128,7 +141,7 @@ menuToggle.addEventListener("click", () => {
 
 const sectionContainer = document.getElementById('section-connected');
 
-function sendChildValue(array){
+function sendChildValue(array, id){
 
 
     fetch('/home-section', {
@@ -169,7 +182,7 @@ function sendChildValue(array){
                 bookImg.setAttribute('src', chunks[i][j].img)
                 bookTitle.textContent = chunks[i][j].title;
                 const descLink = document.createElement('a'); //ajouter le lien
-                const borrowLink = document.createElement('a');
+                const borrowLink = document.createElement('button');
                 const linkDiv1 = document.createElement('div');
                 const linkDiv2 = document.createElement('div');
                 descLink.classList.add("button_pink");
@@ -177,7 +190,18 @@ function sendChildValue(array){
                 linkDiv1.append(descLink);
                 linkDiv2.append(borrowLink);
                 descLink.setAttribute('href', '#');
-                borrowLink.setAttribute('href', '#');
+                borrowLink.setAttribute('type', 'button');
+                borrowLink.setAttribute('value', chunks[i][j].id_book);
+                
+                
+                borrowLink.addEventListener("click", () =>{
+                         reservationBook(borrowLink.value, id);
+                         const valider = document.createElement('p');
+                         valider.textContent = 'Réservation prise en compte';
+                         bookArticle.append(valider)
+                         linkDiv2.innerHTML = "";
+                });                                                                    // generer les boutons reserver
+                console.log(borrowLink.value)
                 descLink.textContent = "Voir la fiche";
                 borrowLink.textContent = "Réserver";
 
@@ -192,6 +216,20 @@ function sendChildValue(array){
     })
   
     };
+
+    
+    function reservationBook(book, id){
+        fetch(`/${book}/${id}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if(data == 'ok'){
+                console.log('reservation ok');
+            } else {
+                console.log('erreur de reservation');
+            }
+        });
+    }
 
 
 document.addEventListener("DOMContentLoaded", function() {
