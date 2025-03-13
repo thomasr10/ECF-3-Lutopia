@@ -659,7 +659,6 @@ body{
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        
 
 
 //MODAL AJOUT AUTEUR/ ILLUSTRATEUR MODIFIEZ LE 
@@ -671,4 +670,49 @@ body{
   background-color: #fff;
   margin: 0 auto;
 }
+
+//Page Age
+#titrePageAge h1{
+  margin-top: 40px;
+  font-family: "Lexend", sans-serif;
+  color: $primary-text-800;
+}
+#formFiltre{
+  display: flex;
+}
+select{
+  font-family: "Lexend", sans-serif;
+}
+  #filtre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+    font-family: "Lexend", sans-serif;
+  }
+    input{
+      margin: 20px;
+    }
+.categoryFiltre{
+  width: 50%; 
+  margin: 0 auto;
+  text-align: center;
+}
+#containerArticle{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) !important; 
+    grid-auto-rows: auto !important; 
+    grid-gap: 60px 60px !important; 
+    width: fit-content !important;
+    margin: 0 auto !important;
+}
+  .card h2{
+    
+    color:  $primary-text-800;
+    margin: 10px 0;
+   
+  }
+
+  
 

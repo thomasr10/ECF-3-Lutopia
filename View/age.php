@@ -5,10 +5,14 @@ $pointSlash = "../";
 ob_start();
 ?>
 <?= (isset($_SESSION['id'])) ? $_SESSION['first-name'] : '' ?>
+    <div id="titrePageAge">
     <h1>Tous les livres de <?=$ageInfos[0]->getFrom();?> à <?=$ageInfos[0]->getTo();?> ans</h1>
-            <form action="#">
+    </div>
+    <!-- filtre -->
+     <div id="formFiltre">
+            <form action="#" id="filtre">
                 <input id="page_age" type="hidden" value="<?= $ageInfos[0]->getId_age();?>">
-                <div>
+                <div class="selectionFiltre">
                     <label for="0">Voir tous</label>
                     <input type="radio" name="type" id="0">
                 </div>
@@ -19,8 +23,10 @@ ob_start();
                 </div>
                 <?php endforeach ?>
             </form>
-            <form action="#">
-                <label for="category"></label>
+    </div>
+    <!-- filtre catégories -->
+            <form action="#" class="categoryFiltre">
+                <label for="category" class="labelFiltre"></label>
                 <select name="category" default id="">
                     <option value="0">Toutes les catégories</option>
                     <?php foreach($categoryDatas as $category=>$categoryValue): ?>
@@ -31,11 +37,12 @@ ob_start();
         <div id="containerArticle">
             <?php foreach($datas as $key=>$value): ?>
                 <article>
-                    <img src="../<?= $datas[$key]->book->getImg_Src() ?>" alt="" width="200px" height="200px"> <!-- image pour chaque livre --> 
+                    <div class="card">
+                    <img src="../<?= $datas[$key]->book->getImg_Src() ?>" alt="" width="200px" height="200px"><!-- image pour chaque livre --> 
                     <h2><?= $datas[$key]->book->getTitle(); ?> </h2> <!-- titre  --> 
-                    <p> écrit par <?= $datas[$key]->author ?> <!-- auteur  --> 
-                    <p> illustrée par <?= $datas[$key]->illustrator ?> <!-- illustrateur  --> 
-                    <p>par les <?= $datas[$key]->book->getEditor();?></p> <!-- edition  --> 
+                    <button class="button_pink">voir la fiche</button>
+                    <button class="button_borrow">Réserver</button>   
+                </div>
                     
                 </article>
             <?php endforeach ?>
