@@ -71,4 +71,11 @@ class ControllerChild {
         
 
     }
+
+    public function reservationBook(int $book, int $child){
+        global $router;
+        $model = new ModelChild();
+        $reservation = $model->newReservation($book, $child);   
+        json_encode($data = "echo 'ok';");
+    }
 }

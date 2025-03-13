@@ -43,4 +43,11 @@ class ModelChild extends Model {
             $req->execute();
         }
     }
+
+    public function newReservation(int $book, int $child){
+        $req = $this->getDb()->prepare('INSERT INTO `reservation`(`reservation_date`, `id_child`, `id_book`) VALUES ( NOW(), :id_child, :id_book )');
+        $req->bindParam('id_child', $child, PDO::PARAM_STR);
+        $req->bindParam('id_book', $book, PDO::PARAM_STR);
+        $req->execute();
+    }
 }

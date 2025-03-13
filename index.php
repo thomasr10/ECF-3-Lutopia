@@ -26,6 +26,9 @@ $router->map('POST', '/home-section', 'ControllerBook#displayBooks', 'display-bo
 //show 1 book
 $router->map('GET', '/book/[i:id]', 'ControllerBook#showOneBook', 'showOneBook');
 
+//reservation
+$router->map('GET', '/[i:book]/[i:child]', 'ControllerChild#reservationBook', 'reservationBook');
+
 //inscription
 $router->map('GET|POST', '/register', 'ControllerUser#register', 'register');
 $router->map('GET', '/confirmation/[i:id]', 'ControllerMail#sendMail', 'send-mail');
