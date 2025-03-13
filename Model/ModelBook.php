@@ -297,4 +297,19 @@ class ModelBook extends Model {
         $req->execute();
     }
 
+
+    public function searchBook(string $data){
+        $search = $data . '%';
+        $req = $this->getDb()->prepare("SELECT `id_book`, `title` FROM `book` WHERE `title` LIKE :search");
+        $req->bindParam('search', $search, PDO::PARAM_STR);
+        $req->execute();
+
+        $arrayObj= [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayObj[] = new Book($data);
+        }
+
+        return $arrayObj;
+    }
 }

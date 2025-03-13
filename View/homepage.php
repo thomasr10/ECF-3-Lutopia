@@ -2,7 +2,7 @@
 
 $title = "Accueil | Lutopia";
 $description = "Page d'accueil de Lutopia";
-$arrayJs = ["./assets/js/homepage.js"];
+$arrayJs = ["./assets/js/homepage.js", "./assets/js/search-bar.js"];
 $pointSlash = "";
 ob_start();
 ?>
