@@ -11,11 +11,11 @@
   <!-- LES FRONT : vous pouvez modifier la navbar. C'était juste pour tester les routes (il faudra bien les réutiliser si jamais vous faites des modif) -->
   <header class = "header">
     <div class = "menu">
-    <button class="menu-toggle" aria-label="Menu burger">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
+      <button class="menu-toggle" aria-label="Menu burger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
     
       <figure>
         <img src="<?= UPLOADS . '/autres/Logo-flat.svg'?>" alt="Logo Lutopia">
@@ -43,17 +43,15 @@
       
       
       
-     
-      <form action="" method="GET" class="search-form">
-        <input type="text" name="query" placeholder="Rechercher..."      class="search-input" />
+     <div id="search-container">
+        <form method="GET" class="search-form">
+          <input type="text" name="query" id="query" placeholder="Rechercher..."      class="search-input" />
 
-        <button type="submit" class="search-button">
-            <img src="<?= UPLOADS . 'autres/icon-loupe.svg'?>" alt="icone loupe">
-        </button>
-      </form>
-
-
+          <button type="submit" class="search-button">
+              <img src="<?= UPLOADS . 'autres/icon-loupe.svg'?>" alt="icone loupe">
+          </button>
+        </form>      
+     </div>
     </div>
-   
   </header> 
 

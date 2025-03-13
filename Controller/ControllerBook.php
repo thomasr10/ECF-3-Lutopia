@@ -232,5 +232,24 @@ class ControllerBook {
             require_once('./View/dashboard_create_book.php');
         }
     }
+
+
+
+    public function searchBook(){
+        $a = file_get_contents('php://input');
+        $data = json_decode($a, true);
+
+        $model = new ModelBook();
+        $result = $model->searchBook($data);
+        $arrayObj = [];
+
+        foreach($result as $book){
+            $arrayObj[] = [
+                "id_book" => $book->getId_book(),
+                "title" => $book->getTitle()
+            ];
+        }
+        echo json_encode($arrayObj);
+    }
     
 }

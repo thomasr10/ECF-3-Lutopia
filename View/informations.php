@@ -2,7 +2,7 @@
 
 $title = 'Informations | Lutopia';
 $description = 'Informations page of Lutopia with many info of how this website work';
-$arrayJs;
+$arrayJs = ["./assets/js/search-bar.js"];
 $pointSlash = "";
 
 ob_start();

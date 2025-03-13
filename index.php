@@ -65,7 +65,8 @@ $router->map('GET', '/error404', 'ControllerUser#errorPage', 'errorPage');
 $router->map('GET', '/informations', 'ControllerUser#infoPage', 'infoPage');
 
 
-
+//search-bar
+$router->map('POST', '/search-book', 'ControllerBook#searchBook', 'search-book');
 
 
 

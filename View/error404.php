@@ -2,7 +2,7 @@
 
 $title = '404 | Lutopia';
 $description = 'Trying to access page that doesnt exist';
-$arrayJs;
+$arrayJs = ["./assets/js/search-bar.js"];
 $pointSlash = "";
 
 ob_start();
