@@ -13,7 +13,7 @@
                </ul>
             </div>
             <div>
-                <h3>Gestion des utilistaeurs</h3>
+                <h3>Gestion des utilisateurs</h3>
                 <ul>
                     <li><a href="<?= $router->generate('dashboard') ?>">Statistiques utilisateur</a></li>
                     <li><a href="">Ajouter un utilistaeur</a></li>
@@ -22,13 +22,13 @@
             </div>
             <div>
                 <ul>
-                    <li><a href="<?=$router->generate('logout') ?>">Se déconecter</a></li>
+                    <li><a href="<?=$router->generate('logout') ?>">Se déconnecter</a></li>
                 </ul>                
             </div>
         </nav>
     </div>
     <!-- style du content à faire directement sur la page concernée -->
-     <div>
+     <div class="content-side">
         <?= $content ?>
      </div>
 </section>

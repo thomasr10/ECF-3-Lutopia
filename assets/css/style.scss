@@ -890,16 +890,25 @@ select{
 
 
 
-// DASHBOARD
+// DASHBOARD----------------------------------------------------
 
 .dashboard {
   display: flex;
   width: 100%;
+  margin: 2rem 4rem;
 }
 .side-bar {
+  flex-direction: column;
   max-width: 320px;
   width: 100%;
   border: solid 3px red;
+}
+.side-bar > nav {
+  height: 90%;
+  width: 90%;
+  
+  
+
 }
 
 
