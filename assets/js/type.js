@@ -1,6 +1,7 @@
 const typeRadio = document.getElementsByName('type');
 const getPageAge = document.getElementById('page_age');
 const category = document.getElementsByTagName('select');
+const card = document.getElementsByClassName('card');
 
 let containerArticle = document.getElementById('containerArticle');
 
@@ -34,29 +35,38 @@ function showTypeBook(age, type, categoryId){
                 let authorContainer = document.createElement('p');
                 let illustrator = document.createElement('p');
                 let edition = document.createElement('p');
+                let buttonPink= document.createElement("button_pink");
+                let buttonBorrow=document.createElement("button_borrow");
 
 
 
-                containerArticle.append(bookArticle);
+
+
+                containerArticle.append(bookArticle);                
                 imgContainer.setAttribute('src', book.img);
                 bookArticle.append(imgContainer);
                 bookArticle.append(title);
-                bookArticle.append(authorContainer);
-                bookArticle.append(illustrator);
-                bookArticle.append(edition);
-                
+                bookArticle.classList.add('card');
+                bookArticle.append(buttonPink);
+                buttonPink.classList.add("button_pink");
+                buttonPink.textContent = "Voir la fiche";
+                bookArticle.append(buttonBorrow);
+                buttonBorrow.classList.add("button_borrow");
+                buttonBorrow.textContent = "Réserver";
 
                 title.append(book.title);
                 authorContainer.append("écrit par " + book.author);
                 illustrator.append("illustrée par " + book.illustrator);
                 edition.append("illustrée par " + book.editor);
 
-                //à enlever c juste pour pas que l'image soit BALEZE
-                imgContainer.style.width = 200 + 'px'
+               
+
+
 
                 
             });
         }
+       
     })
 }
 
@@ -68,6 +78,7 @@ for (let items of category) {
             typeId = 0;
         }
         showTypeBook(pageAge, typeId, categoryId);
+        
     });
 }
 
