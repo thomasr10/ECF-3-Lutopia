@@ -11,13 +11,7 @@ ob_start();
 
 
     <section class="dasboard-container-global">
-
-
-
-
-
-
-
+         
         <section class="dashboard-container-left">
             <div class="dashboard-menu">
             <div class="dashboard-menu-link"><a href="">Gestion des livres</a></div>
@@ -26,10 +20,6 @@ ob_start();
             </div>
 
         </section>
-
-
-
-
 
         <section class="dashboard-container-right"></section>
             <div class="identity"></div>
@@ -51,12 +41,6 @@ ob_start();
                 </div>
             <div class="reservation"></div>
             <div class="borrow"></div>
-
-
-
-
-
-
 
     </section>
     
