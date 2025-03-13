@@ -208,7 +208,9 @@ class ControllerBook {
                     $model->addBookAuthor(intval($_POST['id_author']), $id_book);
                     $model->addBookIllustrator($id_book, intval($_POST['id_illustrator']));
                     foreach($_POST['category'] as $category){
-                        $model->addBookCategory(intval($category), $id_book);
+                        if($category !== ""){
+                            $model->addBookCategory(intval($category), $id_book);
+                        }
                     }
                     $status = 0;
                     for($i = 0; $i < $_POST['copy']; $i++){
