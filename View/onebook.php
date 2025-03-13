@@ -2,7 +2,7 @@
 
 $title = $bookInfo[0]->book->getTitle() . ' | Lutopia';
 $description = $bookInfo[0]->book->getSynopsis();
-$arrayJs;
+$arrayJs = ["../assets/js/search-bar.js"];
 $pointSlash = "../";
 
 ob_start();
@@ -45,6 +45,7 @@ ob_start();
 
 
         </div>
+
     </article>
 </section>
 

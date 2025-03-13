@@ -75,7 +75,19 @@ class ControllerChild {
     public function reservationBook(int $book, int $child){
         global $router;
         $model = new ModelChild();
-        $reservation = $model->newReservation($book, $child);   
-        json_encode($data = "echo 'ok';");
+        header('Content-Type: application/json');
+        $already = $model->alreadyReserved($book, $child);
+        if($already == ''){
+            $maxRes = $model->maxReservation($child);
+            if($maxRes['max'] < 3){
+                $reservation = $model->newReservation($book, $child); 
+                echo json_encode("ok");
+            } else {
+                echo json_encode("max");
+            }
+        } else {
+            echo json_encode("already");
+        }
+        
     }
 }

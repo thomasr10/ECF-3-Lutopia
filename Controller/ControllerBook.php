@@ -208,7 +208,9 @@ class ControllerBook {
                     $model->addBookAuthor(intval($_POST['id_author']), $id_book);
                     $model->addBookIllustrator($id_book, intval($_POST['id_illustrator']));
                     foreach($_POST['category'] as $category){
-                        $model->addBookCategory(intval($category), $id_book);
+                        if($category !== ""){
+                            $model->addBookCategory(intval($category), $id_book);
+                        }
                     }
                     $status = 0;
                     for($i = 0; $i < $_POST['copy']; $i++){
@@ -224,13 +226,32 @@ class ControllerBook {
                 }
             }
         } else {
-
+            global $router;
             $model = new ModelBook();
             $categories = $model->getBookCategories();
             $ageRanges = $model->getBookAgeRanges();
             $types = $model->getBookTypes();
             require_once('./View/dashboard_create_book.php');
         }
+    }
+
+
+
+    public function searchBook(){
+        $a = file_get_contents('php://input');
+        $data = json_decode($a, true);
+
+        $model = new ModelBook();
+        $result = $model->searchBook($data);
+        $arrayObj = [];
+
+        foreach($result as $book){
+            $arrayObj[] = [
+                "id_book" => $book->getId_book(),
+                "title" => $book->getTitle()
+            ];
+        }
+        echo json_encode($arrayObj);
     }
     
 }
