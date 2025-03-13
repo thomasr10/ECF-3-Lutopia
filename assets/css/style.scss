@@ -681,7 +681,7 @@ body{
 // début détail livre onebook-------------------------------
 .onebook-global {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: $degrade-fond-definitif;
   display: flex;
   justify-content: center;
@@ -692,9 +692,10 @@ body{
  justify-content: space-around;
  align-items: center;
  height: 100%;
- 
-      @mixin tablet {
+
+      @include tablet {
         flex-direction: column;
+
 }
 
   figure {
@@ -718,14 +719,19 @@ body{
       text-align: center;
       width: 80%;
       margin-left: 2rem;
+
+        @include tablet {
+          width: 100%;
+          margin: 0 auto;
     }
 
     p {
       font-size: $para;
       text-align: left;
-      // padding-top: 1rem;
+
     }
 
+}
 }
 
 .onebook-synopsis {
@@ -733,6 +739,10 @@ body{
   text-align: center;
   padding-bottom: 2rem;
   margin-left: 2rem;
+  @include tablet {
+    margin: 0 auto;
+    text-align: center;
+}
 }
 .onebook-creator {
   font-weight: 700;
@@ -749,12 +759,23 @@ body{
   display: flex;
   width: 100%;
   justify-content: center;
+  @include tablet {
+    margin: 0 auto;
+    padding-left: 7rem;
+    
+}
 }
 .onebook-button-contain {
   width: 80%;
   display: flex;
   justify-content: center;
   padding-top: 4rem;
+
+    @include tablet {
+      margin: 0 auto;
+      padding-bottom: 3rem;
+      
+  }
 
 }
 .onebook-reserver {
@@ -772,6 +793,10 @@ body{
       border: 3px solid $stroke-gris-400;
       font-weight: 600;
     }
+    @include tablet {
+      margin: 0 auto;
+      
+}
 }
 
 

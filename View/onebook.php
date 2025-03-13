@@ -40,7 +40,7 @@ ob_start();
             <span class="onebook-subject"><?= $bookInfo[0]->book->getIsbn();?></span>
             </div>
             <div class="onebook-button-contain">
-                <button class = "onebook-reserver" type="button" id= "">Reserver</button>
+                <button class = "onebook-reserver" type="button" id= "">Réserver</button>
             </div>
 
 
