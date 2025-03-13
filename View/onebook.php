@@ -8,17 +8,46 @@ $pointSlash = "../";
 ob_start();
 
 ?>
-
+<section class="onebook-global">
     <article>
-        <img src="../<?= $bookInfo[0]->book->getImg_Src() ?>" alt="Couverture du livre <?= $bookInfo[0]->book->getTitle() ?>"> <!-- image pour chaque livre --> 
-        <h2><?= $bookInfo[0]->book->getTitle(); ?> </h2> <!-- titre  --> 
-        <p><?= $bookInfo[0]->book->getSynopsis(); ?></p>
-        <p> Auteur(s): <?= $bookInfo[0]->author ?> <!-- auteur  --> 
-        <p> Illustrateur(s):  <?= $bookInfo[0]->illustrator ?> <!-- illustrateur  --> 
-        <p> Maison d'édition:  <?= $bookInfo[0]->book->getEditor();?></p> <!-- edition  --> 
-        <p> Année de sortie:   <?= $bookInfo[0]->book->getPublication_date()->format('Y');?></p> <!-- date de sortie  --> 
-        <p> ISBN:   <?= $bookInfo[0]->book->getIsbn();?></p> <!-- date de sortie  --> 
+        <figure class = "onebook-img">
+            <img src="../<?= $bookInfo[0]   ->book->getImg_Src() ?>" alt="couverture du livre" > <!-- image   pour chaque livre --> 
+        </figure>
+        <div class="onebook-resume">
+
+            <h2><?= $bookInfo[0]->book->getTitle(); ?> </h2> <!-- titre  --> 
+            <p class = "onebook-synopsis"><?= $bookInfo[0]->book->getSynopsis(); ?></p>
+
+            <div class = "onebook-line">
+            <p class = "onebook-creator"> Auteur(s): </p> <!-- auteur  -->
+            <span class="onebook-subject"><?= $bookInfo[0]->author ?></span>
+            </div>
+
+            <div class = "onebook-line">
+            <p class = "onebook-creator"> Illustrateur(s):  </p> <!-- illustrateur  -->
+            <span class="onebook-subject"><?= $bookInfo[0]->illustrator ?></span>
+            </div>
+            <div class = "onebook-line">
+            <p class = "onebook-creator"> Maison d'édition:  </p> <!-- edition  -->
+            <span class="onebook-subject"><?= $bookInfo[0]->book->getEditor();?></span>
+            </div>
+            <div class = "onebook-line">
+            <p class = "onebook-creator"> Année de sortie:   </p> <!-- date de sortie  -->
+            <span class="onebook-subject"><?= $bookInfo[0]->book->getPublication_date()->format('Y');?></span>
+            </div> 
+            <div class = "onebook-line">
+            <p class = "onebook-creator"> ISBN:   </p> <!-- date de sortie  -->
+            <span class="onebook-subject"><?= $bookInfo[0]->book->getIsbn();?></span>
+            </div>
+            <div class="onebook-button-contain">
+                <button class = "onebook-reserver" type="button" id= "">Réserver</button>
+            </div>
+
+
+        </div>
+
     </article>
+</section>
 
 <?php 
 $content = ob_get_contents();
