@@ -8,7 +8,6 @@ ob_start();
 
 
 <h2>Bienvenue dans le dashboard !</h2>
-<li><a href="<?=$router->generate('logout') ?>">Se déconnecter</a></li>
 <form method="GET" action="/dashboard">
     <input type="text" name="searchAdminUser" id="searchAdminUser" value="">
     <input type="submit" value="🔍">
@@ -77,5 +76,5 @@ ob_start();
 <?php
 $content = ob_get_contents();
 ob_end_clean();
-require_once('./View/base_htmlA.php');
+require_once('./View/base_dashboard.php');
 

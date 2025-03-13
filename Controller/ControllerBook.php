@@ -226,7 +226,7 @@ class ControllerBook {
                 }
             }
         } else {
-
+            global $router;
             $model = new ModelBook();
             $categories = $model->getBookCategories();
             $ageRanges = $model->getBookAgeRanges();
