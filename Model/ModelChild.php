@@ -50,4 +50,23 @@ class ModelChild extends Model {
         $req->bindParam('id_book', $book, PDO::PARAM_STR);
         $req->execute();
     }
+
+    public function maxReservation(int $child){
+        $req = $this->getDb()->prepare("SELECT COUNT(*) AS 'max' FROM `reservation` WHERE `id_child` = :id_child");
+        $req->bindParam('id_child', $child, PDO::PARAM_INT);
+        $req->execute();
+        $max = $req->fetch(PDO::FETCH_ASSOC);
+        return $max;
+    }
+
+    public function alreadyReserved(int $book, int $child){
+        $req = $this->getDb()->prepare("SELECT `id_reservation`, `reservation_date`, `id_child`, `id_book` FROM `reservation` WHERE `id_child` = :id_child AND `id_book` = :id_book;");
+        $req->bindParam('id_child', $child, PDO::PARAM_INT);
+        $req->bindParam('id_book', $book, PDO::PARAM_INT);
+        $req->execute();
+        $arrayObj = [];
+        
+        $already = $req->fetch(PDO::FETCH_ASSOC);
+        return $already;
+    }
 }

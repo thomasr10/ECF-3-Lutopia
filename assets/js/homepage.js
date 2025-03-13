@@ -2,6 +2,7 @@ const selectChild = document.getElementById('select-child');
 let booksContainer = document.getElementById('booksContainer');
 const childOption = document.querySelectorAll('.child')
 const buttonBorrow = document.querySelectorAll('.button_borrow');
+const sliderContainer = document.getElementById('bookContainer');
 // afficher les nouveautés en fonction de l'age de l'enfant séléctionné
 
 function displayNewBooks(age) {
@@ -38,6 +39,7 @@ if(selectChild !== null){
     displayNewBooks(selectChild);
     selectChild.addEventListener('change', function() {
         sectionContainer.innerHTML = "";
+        booksContainer.innerHTML = "";
         displayNewBooks(selectChild);
     });
 
@@ -194,13 +196,13 @@ function sendChildValue(array, id){
                 borrowLink.setAttribute('value', chunks[i][j].id_book);
                 
                 
-                borrowLink.addEventListener("click", () =>{
-                         reservationBook(borrowLink.value, id);
-                         const valider = document.createElement('p');
-                         valider.textContent = 'Réservation prise en compte';
-                         bookArticle.append(valider)
-                         linkDiv2.innerHTML = "";
-                });                                                                    // generer les boutons reserver
+                borrowLink.addEventListener("click", () =>{         // generer les requetes pour les boutons reserver
+                    reservationBook(borrowLink.value, id);
+                    // const valider = document.createElement('p');
+                    // valider.textContent = 'Réservation prise en compte';
+                    // bookArticle.append(valider);
+                    // linkDiv2.innerHTML = "";
+                });                                                                    
                 console.log(borrowLink.value)
                 descLink.textContent = "Voir la fiche";
                 borrowLink.textContent = "Réserver";
@@ -218,13 +220,18 @@ function sendChildValue(array, id){
     };
 
     
-    function reservationBook(book, id){
+    function reservationBook(book, id){     //verification reservation 
         fetch(`/${book}/${id}`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
             if(data == 'ok'){
+                alert('Votre réservation à été prise en compte');
                 console.log('reservation ok');
+            } else if(data == 'max'){
+                alert('Vous avez atteint la limite de 3 réservations');
+            } else if(data == 'already'){
+                alert('Vous avez déjà réservé cet ouvrage');
             } else {
                 console.log('erreur de reservation');
             }
