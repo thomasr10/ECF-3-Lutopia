@@ -28,10 +28,8 @@ if(isset($_GET['id_book'])){
     <p>Date de publication : <?=$book[0]->book->getPublication_date()->format('d/m/Y') ?></p>
     <p>Date d'édition : <?=$book[0]->book->getEdition_date()->format('d/m/Y') ?></p>
     <p>Synopsis : <?=$book[0]->book->getSynopsis() ?></p>
-    <div>
-        <button id="modify-input" type="button">Modifier</button>
-        <button type="button">Voir les exemplaires</button>
-    </div>
+    <p>Nombre d'exemplaires : <?= count($copies)?></p>
+    <button id="modify-input" type="button">Modifier</button>
 </div>
 
 <div id="modal-modify-book" class="modal">
@@ -48,12 +46,10 @@ if(isset($_GET['id_book'])){
         <div id="author-section">
             <label for="author">Auteur</label>
             <input type="text" name="author"  id="author" value="<?=$book[0]->author ?>" required>
-            <button id="author-btn" type="button">Ajouter un(e) auteur(ice)</button>
         </div>
         <div id="illustrator-section">
             <label for="illustrator">Illustrateur</label>
             <input type="text" name="illustrator"  id="illustrator" value="<?=$book[0]->illustrator ?>" required>
-            <button id="illustrator-btn" type="button">Ajouter un(e) illustrateur(ice)</button>
         </div>
         <div>
             <label for="editor">Éditeur</label>
@@ -78,23 +74,7 @@ if(isset($_GET['id_book'])){
     </form>
 </div>
 
-<div id="modal-copies">
-    <!-- MODAL EXEMPLAIRES : contient tous les exemplaires -->
-     <h3>Nombre d'exemplaires : <?=count($copies) ?></h3>
 <?php
-foreach($copies as $copy){
-?>
-    <div>
-<!-- contient les infos d'un exemplaire -->
-        <p> <?=$copy->getId_copy() ?> </p>
-    </div>
-<?php
-}
-?>
-</div>
-
-<?php
-var_dump($copies);
 } else {
 
 }

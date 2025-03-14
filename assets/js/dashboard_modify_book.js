@@ -55,3 +55,13 @@ const modifyInput = document.getElementById('modify-input');
 modifyInput.addEventListener('click', function(){
     modalBook.style.display = 'block';
 })
+
+
+// AJOUTER UN  EXEMPLAIRE
+
+const addCopyInput = document.getElementById('add-copy');
+// const copyNumber = document.getElementById('copy-number');
+
+addCopyInput.addEventListener('click', function(){
+    fetch('/add-copy')
+})
