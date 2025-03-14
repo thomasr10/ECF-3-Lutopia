@@ -632,6 +632,87 @@ body{
       .img15{
         transform: translateX(-65%);
       }
+      .img24{
+        left: 20px;
+      }
+      .img24b{
+        top: 60px;
+        left: -40px;
+      }
+      .img25{
+        left: 330px;
+      }
+      .img25b{
+        top: 50px;
+        left: 280px;
+      }
+    #container_6{
+      width: 350px;
+      height: 200px;
+      display: flex;
+      justify-content: space-between;
+      position: relative; 
+      margin-top: 30px;
+    }
+    .images {
+      position: relative;
+     
+      }
+      .img16{
+        position: absolute;
+      }
+      .square {
+        position: absolute; 
+        }
+      .img17{
+        position: absolute;
+        right: 3px;
+      }
+      .img18{
+        position: absolute;
+        bottom: 40px;
+        left: 49px;
+        opacity: 0; 
+        transition: opacity 0 .2s ease;
+        pointer-events: none;
+      }
+      .img20{
+        top: 60px;
+        left: 300px;
+      }
+      .img20b{
+        left: 300px;
+      }
+    #container_8{
+        width: 350px;
+        height: 200px;
+        display: flex;
+        justify-content: space-between;
+        position: relative; 
+        margin-top: 30px;
+      }
+      .images{
+        position: relative;
+      }
+        .img22{
+          position: absolute;
+          left: -1px;
+          top: 72px;
+          width: 80px;
+        }
+        .square{
+          position: absolute;
+        }
+        .img23{
+          position: absolute;
+          width: 80px;
+          left: -1px;
+          top: 72px;
+          opacity: 0; 
+          transition: opacity 0 .2s ease;
+          pointer-events: none;
+        }
+
     }
     .booksContainer{
         display: flex;
