@@ -11,19 +11,7 @@ if(isset($_SESSION['id'])){
 ?>
 <div>
 
-    <?php
-    if(!empty($borrow)){
-    ?>
-    <!-- afficher les livres réservé -->
-    <?php
-    } else {
-    ?>
-    <div>
-        <p>Aucun livre réservé pour le moment</p>
-    </div>
-    <?php
-    }
-    ?>
+    
 </div>
 
 

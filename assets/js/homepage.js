@@ -3,6 +3,7 @@ let booksContainer = document.getElementById('booksContainer');
 const childOption = document.querySelectorAll('.child')
 const buttonBorrow = document.querySelectorAll('.button_borrow');
 const sliderContainer = document.getElementById('bookContainer');
+
 // afficher les nouveautés en fonction de l'age de l'enfant séléctionné
 
 function displayNewBooks(age) {
@@ -54,6 +55,7 @@ if(selectChild !== null){
 
 
         sectionContainer.innerHTML = "";
+        showReservation(newIdArray[0]);
         sendChildValue(newArray, newIdArray[0]);
     });
 
@@ -65,6 +67,7 @@ if(selectChild !== null){
         ageArray.push(split[0]);
         idArray.push(split[1]);
     });
+    showReservation(idArray[0]);
 
     sendChildValue(ageArray, idArray[0]);
     
@@ -144,8 +147,6 @@ menuToggle.addEventListener("click", () => {
 const sectionContainer = document.getElementById('section-connected');
 
 function sendChildValue(array, id){
-
-
     fetch('/home-section', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -236,6 +237,61 @@ function sendChildValue(array, id){
                 console.log('erreur de reservation');
             }
         });
+    }
+
+
+    function showReservation(id){
+        const resBox = document.querySelector('.reservation');
+        removeElementByClass('padding-element2');
+        fetch(`/${id}`)
+        .then(response => response.json())
+        .then(data => { 
+            if(data == "Aucune réservation"){
+                console.log("Aucune réservation")
+            } else {
+                data.forEach(element => {
+                    const divPadding = document.createElement('div');
+                    const divMiniBook = document.createElement('div');
+                    const divMiniBookTitle = document.createElement('div');
+                    const imgMiniBook = document.createElement('img');
+                    const alink = document.createElement('a');
+                    const aButton = document.createElement('a');
+                    const xIcon = document.createElement('img');
+
+
+                    console.log(element.img_src);
+                    divPadding.setAttribute("class", "padding-element2");
+                    divMiniBook.setAttribute("class", "mini-book");
+                    divMiniBookTitle.setAttribute("class", "mini-book-title");
+                    imgMiniBook.setAttribute("class", "mini-book-img");
+                    imgMiniBook.setAttribute("src", element.img_src);
+                    imgMiniBook.setAttribute("alt", "miniature du livre");
+
+
+                    alink.innerHTML = element.title;
+                    xIcon.setAttribute('id', 'close-button');
+                    xIcon.setAttribute('src', 'uploads/autres/iconX.svg');
+                    xIcon.setAttribute('class', 'close-x-icon');
+                    xIcon.setAttribute('alt', 'icone fermeture');
+
+
+                    resBox.append(divPadding);
+                    divPadding.append(divMiniBook);
+                    divMiniBook.append(imgMiniBook);
+                    divMiniBook.append(divMiniBookTitle);
+                    divMiniBookTitle.append(alink);
+                    divMiniBookTitle.append(aButton);
+                    aButton.append(xIcon);
+                });
+            }
+        });
+    }
+
+    function removeElementByClass(className){
+        let elements = document.getElementsByClassName(className);
+        while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+        }
     }
 
 
