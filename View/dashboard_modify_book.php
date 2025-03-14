@@ -78,12 +78,23 @@ if(isset($_GET['id_book'])){
     </form>
 </div>
 
-<div>
-    <!-- MODAL EXEMPLAIRES -->
-     
+<div id="modal-copies">
+    <!-- MODAL EXEMPLAIRES : contient tous les exemplaires -->
+     <h3>Nombre d'exemplaires : <?=count($copies) ?></h3>
+<?php
+foreach($copies as $copy){
+?>
+    <div>
+<!-- contient les infos d'un exemplaire -->
+        <p> <?=$copy->getId_copy() ?> </p>
+    </div>
+<?php
+}
+?>
 </div>
 
 <?php
+var_dump($copies);
 } else {
 
 }

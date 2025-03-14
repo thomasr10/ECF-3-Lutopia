@@ -270,7 +270,10 @@ class ControllerBook {
             if(!empty($_GET['title']) && !empty($_GET['id_book'])){
 
                 $id_book = intval($_GET['id_book']);
+                // affichage du livre
                 $book = $model->bookId($id_book);
+
+                $copies = $model->getCopiesOnIdBook($id_book);
             }
             require_once('./View/dashboard_modify_book.php');
         }
