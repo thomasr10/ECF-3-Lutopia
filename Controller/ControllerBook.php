@@ -236,7 +236,7 @@ class ControllerBook {
     }
 
 
-
+// livre dans la barre de recherche
     public function searchBook(){
         $a = file_get_contents('php://input');
         $data = json_decode($a, true);
@@ -278,5 +278,21 @@ class ControllerBook {
             require_once('./View/dashboard_modify_book.php');
         }
     }
-    
+
+    public function checkCopies(){
+        global $router;
+        $model = new ModelBook();
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+        } else {
+            if(!empty($_GET['title']) && !empty($_GET['id_book'])){
+
+                $id_book = intval($_GET['id_book']);
+                $copies = $model->getCopiesOnIdBook($id_book);
+            }
+            require_once('./View/dashboard_stock_book.php');
+        }
+    }
+
 }

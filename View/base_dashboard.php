@@ -10,6 +10,7 @@
                 <li class = "dashboard-link"><a href="">Statistiques livre</a></li>
                 <li class = "dashboard-link"><a href="<?= $router->generate('create-book') ?>">Ajouter un livre</a></li>
                 <li class = "dashboard-link"><a href="<?= $router->generate('modify-book') ?>">Modifier un livre</a></li>
+                <li class = "dashboard-link"><a href="<?= $router->generate('book-stock') ?>">Gestion du stock</a></li>
                </ul>
             </div>
             <div>

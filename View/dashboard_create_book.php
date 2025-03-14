@@ -1,7 +1,6 @@
 <?php
 $title = "Dashboard - Création d'un livre | Lutopia";
 $description = "Page de création d'un livre sur le dashboard admin de Lutopia";
-$pointSlash = "./";
 $arrayJs = ["./assets/js/dashboard_create_book"];
 ob_start();
 ?>
