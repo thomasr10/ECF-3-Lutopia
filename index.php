@@ -29,6 +29,7 @@ $router->map('GET', '/book/[i:id]', 'ControllerBook#showOneBook', 'showOneBook')
 //reservation
 $router->map('GET', '/[i:book]/[i:child]', 'ControllerChild#reservationBook', 'reservationBook');
 $router->map('GET', '/[i:child]', 'ControllerChild#showReservation', 'showReservation');
+$router->map('GET', '/remove/[i:reservation]', 'ControllerChild#removeReservation', 'removeReservation');
 
 //inscription
 $router->map('GET|POST', '/register', 'ControllerUser#register', 'register');

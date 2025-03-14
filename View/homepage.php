@@ -31,7 +31,7 @@ if(isset($_SESSION['id'])){
     ?>
     </select>
 
-   </div>
+   <!-- </div>
    <div class= "padding-element2">
    <div class= "mini-book">
    <img src="uploads/bebe_mon_amour.webp" class ="mini-book-img" alt= "miniature du livre">
@@ -40,7 +40,7 @@ if(isset($_SESSION['id'])){
       <a href="">
       <img id="close-button" src="uploads/autres/iconX.svg" class = "close-x-icon"alt="icone fermeture"></a>
     </div>
-    </div>
+    </div> -->
     
    </div > 
 
