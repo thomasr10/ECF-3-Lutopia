@@ -5,24 +5,24 @@
     <div class="side-bar">
         <nav>
             <div>
-               <h3>Gestion des livres</h3>
-               <ul>
-                <li><a href="">Statistiques livre</a></li>
-                <li><a href="<?= $router->generate('create-book') ?>">Ajouter un livre</a></li>
-                <li><a href="">Modifier un livre</a></li>
+               <h3 class = "dashboard-title">Gestion des livres</h3>
+               <ul class = "dashboard-list">
+                <li class = "dashboard-link"><a href="">Statistiques livre</a></li>
+                <li class = "dashboard-link"><a href="<?= $router->generate('create-book') ?>">Ajouter un livre</a></li>
+                <li class = "dashboard-link"><a href="">Modifier un livre</a></li>
                </ul>
             </div>
             <div>
-                <h3>Gestion des utilisateurs</h3>
-                <ul>
-                    <li><a href="<?= $router->generate('dashboard') ?>">Statistiques utilisateur</a></li>
-                    <li><a href="">Ajouter un utilistaeur</a></li>
-                    <li><a href="">Modifier un utilisateur</a></li>
+                <h3 class = "dashboard-title">Gestion des utilisateurs</h3>
+                <ul class = "dashboard-list">
+                    <li class = "dashboard-link"><a href="<?= $router->generate('dashboard') ?>">Statistiques utilisateur</a></li>
+                    <li class = "dashboard-link"><a href="">Ajouter un utilistaeur</a></li>
+                    <li class = "dashboard-link"><a href="">Modifier un utilisateur</a></li>
                 </ul>
             </div>
             <div>
                 <ul>
-                    <li><a href="<?=$router->generate('logout') ?>">Se déconnecter</a></li>
+                    <li class = "dashboard-link dashboard-deconnexion"><a href="<?=$router->generate('logout') ?>">Se déconnecter</a></li>
                 </ul>                
             </div>
         </nav>
