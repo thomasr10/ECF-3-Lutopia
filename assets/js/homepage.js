@@ -228,6 +228,7 @@ function sendChildValue(array, id){
             console.log(data);
             if(data == 'ok'){
                 alert('Votre réservation à été prise en compte');
+                showReservation(id);
                 console.log('reservation ok');
             } else if(data == 'max'){
                 alert('Vous avez atteint la limite de 3 réservations');
@@ -242,14 +243,14 @@ function sendChildValue(array, id){
 
     function showReservation(id){
         const resBox = document.querySelector('.reservation');
-        removeElementByClass('padding-element2');
+        removeElementByClass('padding-element2');       //suppression de l'affichage de chaque reservation en fonction de l'enfant choisi
         fetch(`/${id}`)
         .then(response => response.json())
         .then(data => { 
             if(data == "Aucune réservation"){
                 console.log("Aucune réservation")
             } else {
-                data.forEach(element => {
+                data.forEach(element => {   //création de chaque carte réservation avec l'arborescence css
                     const divPadding = document.createElement('div');
                     const divMiniBook = document.createElement('div');
                     const divMiniBookTitle = document.createElement('div');
@@ -258,8 +259,7 @@ function sendChildValue(array, id){
                     const aButton = document.createElement('a');
                     const xIcon = document.createElement('img');
 
-
-                    console.log(element.img_src);
+                    
                     divPadding.setAttribute("class", "padding-element2");
                     divMiniBook.setAttribute("class", "mini-book");
                     divMiniBookTitle.setAttribute("class", "mini-book-title");
@@ -273,6 +273,11 @@ function sendChildValue(array, id){
                     xIcon.setAttribute('src', 'uploads/autres/iconX.svg');
                     xIcon.setAttribute('class', 'close-x-icon');
                     xIcon.setAttribute('alt', 'icone fermeture');
+                    xIcon.setAttribute('value', element.id_reservation);
+
+                    xIcon.addEventListener("click", () =>{  
+                        removeReservation(element.id_reservation, id);
+                    });
 
 
                     resBox.append(divPadding);
@@ -292,6 +297,14 @@ function sendChildValue(array, id){
         while(elements.length > 0){
             elements[0].parentNode.removeChild(elements[0]);
         }
+    }
+
+    function removeReservation(id_reservation, id){
+        fetch(`/remove/${id_reservation}`)
+        .then(response => response.json())
+        .then(data => {  
+            showReservation(id);
+        });
     }
 
 

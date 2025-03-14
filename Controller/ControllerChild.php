@@ -114,4 +114,17 @@ class ControllerChild {
             echo json_encode("Aucune réservation");
         }
     }
+
+    public function removeReservation(int $reservation){
+        global $router;
+        $model = new ModelUser();
+        $remove = $model->deleteReservation($reservation);
+        header('Content-Type: application/json');
+        if($remove){
+            echo json_encode('ok');
+        } else {
+            echo json_encode('pas ok');
+        }
+        
+    }
 }
