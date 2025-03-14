@@ -315,6 +315,21 @@ class ModelBook extends Model {
 
 
 
+    public function getCopiesOnIdBook(int $id_book){
+        $req = $this->getDb()->prepare("SELECT `id_copy`, `state`, `id_book` FROM `copy` WHERE `id_book` = :id_book");
+        $req->bindParam('id_book', $id_book, PDO::PARAM_INT);
+        $req->execute();
+
+        $arrayObj = [];
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayObj[] = new Copy($data);
+        }
+
+        return $arrayObj;
+    }
+
+
+
     public function modifyBook(int $isbn, string $title, string $author, string $illustrator, string $editor, string $publication_date, string $edition_date, string $synopsis, int $id_book){
 
         $req = $this->getDb()->prepare("UPDATE `book` SET `isbn`= :isbn,`title`= :title,`editor`= :editor, `publication_date`= :publication_date,`edition_date`= :edition_date,`synopsis`= :synopsis WHERE `id_book` = :id_book");

@@ -28,7 +28,7 @@ class Copy {
         $this->state = $state;
     }
     public function setId_book($id_book){
-        $this->is_book = $id_book;
+        $this->id_book = $id_book;
     }
 
 
