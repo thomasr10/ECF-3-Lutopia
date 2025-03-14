@@ -9,7 +9,7 @@
                <ul>
                 <li><a href="">Statistiques livre</a></li>
                 <li><a href="<?= $router->generate('create-book') ?>">Ajouter un livre</a></li>
-                <li><a href="">Modifier un livre</a></li>
+                <li><a href="<?= $router->generate('modify-book') ?>">Modifier un livre</a></li>
                </ul>
             </div>
             <div>
