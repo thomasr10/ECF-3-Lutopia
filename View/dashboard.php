@@ -6,12 +6,21 @@ $pointSlash = "";
 ob_start();
 ?>
 
+<section class= "dash-accueil-global">
+    <article class="dash-accueil-identification">
+        <h2>UTILISATEUR</h2>
 
-<h2>Bienvenue dans le dashboard !</h2>
-<form method="GET" action="/dashboard">
-    <input type="text" name="searchAdminUser" id="searchAdminUser" value="">
-    <input type="submit" value="🔍">
-</form>
+        <div class = "dash-accueil-user">
+         
+         <form class="dash-accueil-form" method="GET" action="/dashboard">
+             <input type="text"name="searchAdminUser"           id="searchAdminUser" value="">
+             <button type="submit" >
+             <img src="uploads/autres/icon-loupe.svg" alt="">
+             </button>
+         </form>
+         
+        </div>
+    </article>
 
 <?php if(isset($_GET['searchAdminUser']) && !empty($_GET['searchAdminUser'])){ 
         if(!isset($search)){
@@ -41,7 +50,8 @@ ob_start();
            <?php endforeach;
            echo 3 - count($reservation). ' reservations restantes'; //nombre de réservation restante ?>
            <hr> <!-- hr a supprimer -->
-            <h2>Emprunt en cours</h2><hr><?php
+            <h2>Emprunt en cours</h2><hr>
+            <?php
             foreach($search as $key=>$value): ?>
                 <?=$search[$key]->getLast_Name() //NOM DE L'USER POUR CHAQUE EMPRUNT ?>
                 <article>
@@ -71,7 +81,7 @@ ob_start();
     
     ?>
 
-
+</section>
 
 <?php
 $content = ob_get_contents();
