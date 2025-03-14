@@ -69,4 +69,17 @@ class ModelChild extends Model {
         $already = $req->fetch(PDO::FETCH_ASSOC);
         return $already;
     }
+
+    public function getReservationChild(int $child){
+        $req = $this->getDb()->prepare("SELECT `reservation`.`id_reservation`, `reservation`.`reservation_date`, `reservation`.`id_child`, `reservation`.`id_book`, `book`.`title`, `book`.`publication_date`, `book`.`img_src` FROM `reservation` INNER JOIN `book` ON `reservation`.`id_book` =`book`.`id_book` WHERE `reservation`.`id_child` = :id_child;");
+        $req->bindParam('id_child', $child, PDO::PARAM_INT);
+        $req->execute();
+
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new ReservationDTO(new Reservation($data), $data['img_src']);
+        }
+        return $arrayobj;
+    }
 }
