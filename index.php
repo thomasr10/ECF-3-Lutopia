@@ -50,6 +50,10 @@ $router->map('GET|POST', '/dashboard', 'ControllerUser#dashboard', 'dashboard');
 
 //Créer un livre
 $router->map('GET|POST', '/dashboard-book', 'ControllerBook#createBook', 'create-book');
+
+//modifier un livre
+$router->map('GET|POST', '/dashboard-book/modify-book', 'ControllerBook#modifyBook', 'modify-book');
+
 //Chercher un auteur
 $router->map('POST', '/dashboard-search-author', 'ControllerAuthor#searchAuthor', 'search-author');
 $router->map('POST', '/dashboard-search-illustrator', 'ControllerIllustrator#searchIllustrator', 'search-illustrator');
