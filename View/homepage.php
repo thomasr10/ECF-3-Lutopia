@@ -123,8 +123,8 @@ if(isset($_SESSION['id'])){
                 <div class="card">
                     <img src="<?=$book->book->getImg_src()?>" alt="Couverture du livre <?=$book->book->getTitle()?>">
                     <p><?=$book->book->getTitle()?></p>
-                    <button class="button_pink">voir la fiche</button>
-                    <button class="button_borrow">Réserver</button>
+                    <a class="button_pink" href="/book/<?=$book->book->getId_book() ?>">Voir la fiche</a>
+                    <a class="button_borrow" href="/login">Réserver</a>
                 </div>
             
 <?php } ?>

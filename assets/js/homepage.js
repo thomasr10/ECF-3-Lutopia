@@ -4,6 +4,8 @@ const childOption = document.querySelectorAll('.child')
 const buttonBorrow = document.querySelectorAll('.button_borrow');
 const sliderContainer = document.getElementById('bookContainer');
 
+
+
 // afficher les nouveautés en fonction de l'age de l'enfant séléctionné
 
 function displayNewBooks(age) {
@@ -75,6 +77,8 @@ if(selectChild !== null){
     document.getElementById('prevButton').addEventListener('click', prev);
 
 }
+
+
 
 
 
@@ -192,7 +196,7 @@ function sendChildValue(array, id){
                 borrowLink.classList.add("button_borrow");
                 linkDiv1.append(descLink);
                 linkDiv2.append(borrowLink);
-                descLink.setAttribute('href', '#');
+                descLink.setAttribute('href', '/book/'+ chunks[i][j].id_book);
                 borrowLink.setAttribute('type', 'button');
                 borrowLink.setAttribute('value', chunks[i][j].id_book);
                 
@@ -307,173 +311,188 @@ function sendChildValue(array, id){
         });
     }
 
+if( selectChild == null){
 
-document.addEventListener("DOMContentLoaded", function() {
-    gsap.registerPlugin(Flip);
-    const containers = document.querySelectorAll('.containerAll');
+    //Redirection page age
 
-    containers.forEach(container => {
-        // Groupe 1 (ex : container_0)
-        const img2 = container.querySelector('.img2');
-        const img3 = container.querySelector('.img3');
-        const img4 = container.querySelector('.img4');
-        const img5 = container.querySelector('.img5');
+    const age0_2 = document.querySelector('.img2');
+    const age2_4 = document.querySelector('.img7');
+    const age4_6 = document.querySelector('.img12');
+    const age6_8 = document.querySelector('.img17');
+    const age8_10 = document.querySelector('.img22');
 
-        if (img2 && img3 && img4 && img5) {
-            let hasFlipped1 = false; // Pour éviter de refaire l'animation
+    age0_2.addEventListener('click', function(){document.location.href = "/age/1";});
+    age2_4.addEventListener('click', function(){document.location.href = "/age/2";});
+    age4_6.addEventListener('click', function(){document.location.href = "/age/3";});
+    age6_8.addEventListener('click', function(){document.location.href = "/age/4";});
+    age8_10.addEventListener('click', function(){document.location.href = "/age/5";});
 
-            function handleMouseOverGroup1() {
-                img3.style.opacity = "1";
-                if (!hasFlipped1) {
-                    gsap.to(img4, { x: 280, duration: 1.5 });
-                    gsap.to(img5, { x: -280, duration: 1.5 });
+    document.addEventListener("DOMContentLoaded", function() {
+        gsap.registerPlugin(Flip);
+        const containers = document.querySelectorAll('.containerAll');
+
+        containers.forEach(container => {
+            // Groupe 1 (ex : container_0)
+            const img2 = container.querySelector('.img2');
+            const img3 = container.querySelector('.img3');
+            const img4 = container.querySelector('.img4');
+            const img5 = container.querySelector('.img5');
+
+            if (img2 && img3 && img4 && img5) {
+                let hasFlipped1 = false; // Pour éviter de refaire l'animation
+
+                function handleMouseOverGroup1() {
+                    img3.style.opacity = "1";
+                    if (!hasFlipped1) {
+                        gsap.to(img4, { x: 280, duration: 1.5 });
+                        gsap.to(img5, { x: -280, duration: 1.5 });
+                    }
                 }
+
+                function handleMouseOutGroup1() {
+                    img3.style.opacity = "0";
+                    if (!hasFlipped1) {
+                        gsap.to(img4, { x: 0, duration: 3.5 });
+                        gsap.to(img5, { x: 0, duration: 3.5 });
+                        hasFlipped1 = true;
+                    }
+                }
+
+                img2.addEventListener("mouseover", handleMouseOverGroup1);
+                img2.addEventListener("mouseout", handleMouseOutGroup1);
             }
 
-            function handleMouseOutGroup1() {
-                img3.style.opacity = "0";
-                if (!hasFlipped1) {
-                    gsap.to(img4, { x: 0, duration: 3.5 });
-                    gsap.to(img5, { x: 0, duration: 3.5 });
-                    hasFlipped1 = true;
+            // Groupe 2 (ex : container_2)
+            const img7 = container.querySelector('.img7');
+            const img8 = container.querySelector('.img8');
+            const img9 = container.querySelector('.img9');
+            const img10 = container.querySelector('.img10');
+
+            if (img7 && img8 && img9 && img10) {
+                let hasFlipped2 = false; // Pour éviter de refaire l'animation
+
+                function handleMouseOverGroup2() {
+                    img8.style.opacity = "1";
+                    if (!hasFlipped2) {
+                        gsap.to(img9, { y: 90, duration: 1.5 });
+                        gsap.to(img10, { y: -70, duration: 1.5 });
+                    }
                 }
-            }
 
-            img2.addEventListener("mouseover", handleMouseOverGroup1);
-            img2.addEventListener("mouseout", handleMouseOutGroup1);
-        }
-
-        // Groupe 2 (ex : container_2)
-        const img7 = container.querySelector('.img7');
-        const img8 = container.querySelector('.img8');
-        const img9 = container.querySelector('.img9');
-        const img10 = container.querySelector('.img10');
-
-        if (img7 && img8 && img9 && img10) {
-            let hasFlipped2 = false; // Pour éviter de refaire l'animation
-
-            function handleMouseOverGroup2() {
-                img8.style.opacity = "1";
-                if (!hasFlipped2) {
-                    gsap.to(img9, { y: 90, duration: 1.5 });
-                    gsap.to(img10, { y: -70, duration: 1.5 });
+                function handleMouseOutGroup2() {
+                    img8.style.opacity = "0";
+                    if (!hasFlipped2) {
+                        gsap.to(img9, { y: 0, duration: 3.5 });
+                        gsap.to(img10, { y: 0, duration: 3.5 });
+                        hasFlipped2 = true;
+                    }
                 }
-            }
 
-            function handleMouseOutGroup2() {
-                img8.style.opacity = "0";
-                if (!hasFlipped2) {
-                    gsap.to(img9, { y: 0, duration: 3.5 });
-                    gsap.to(img10, { y: 0, duration: 3.5 });
-                    hasFlipped2 = true;
+                img7.addEventListener("mouseover", handleMouseOverGroup2);
+                img7.addEventListener("mouseout", handleMouseOutGroup2);
+            }
+            // Groupe 3 container_4
+
+            const img12 = container.querySelector('.img12');
+            const img13 = container.querySelector('.img13');
+            const img14 = container.querySelector('.img14');
+            const img15 = container.querySelector('.img15');
+            //console.log("Groupe 3 éléments :", { img12, img13, img14, img15 });
+
+            if (img12 && img13 && img14 && img15) {
+                let hasFlipped3 = false;
+            
+                function handleMouseOverGroup3() {
+                    img13.style.opacity = "1";
+                    if (!hasFlipped3) {
+                        gsap.to(img14, { y: -100, duration: 1.5 });
+                        gsap.to(img15, { y: 70, duration: 1.5 });
+                    }
                 }
+                function handleMouseOutGroup3() {
+                    img13.style.opacity = "0";
+                    if (!hasFlipped3) {
+                        gsap.to(img14, { y: 0, duration: 3.5 });
+                        gsap.to(img15, { y: 0, duration: 3.5 });
+                        hasFlipped3 = true;
+                    }
+                }
+                img12.addEventListener("mouseover", handleMouseOverGroup3);
+                img12.addEventListener("mouseout", handleMouseOutGroup3);
             }
+                //Groupe 4 container_6
 
-            img7.addEventListener("mouseover", handleMouseOverGroup2);
-            img7.addEventListener("mouseout", handleMouseOutGroup2);
-        }
-        // Groupe 3 container_4
+            const img17 = container.querySelector('.img17');
+            const img18 = container.querySelector('.img18');
+            const img19 = container.querySelector('.img19');
+            const img20 = container.querySelector('.img20');
+            const img20b = container.querySelector('.img20b');
 
-        const img12 = container.querySelector('.img12');
-        const img13 = container.querySelector('.img13');
-        const img14 = container.querySelector('.img14');
-        const img15 = container.querySelector('.img15');
-        //console.log("Groupe 3 éléments :", { img12, img13, img14, img15 });
+            if (img17 && img18 && img19 && img20 && img20b) {
+                let hasFlipped4 = false;
+            
+                function handleMouseOverGroup4() {
+                    img18.style.opacity = "1";
+                    if (!hasFlipped4) {
+                        let tl = gsap.timeline({ defaults: { duration: 1.3, ease: "power2.inOut" } });
 
-        if (img12 && img13 && img14 && img15) {
-            let hasFlipped3 = false;
+            tl.to(img20, { x: -50 }) // img20 va à gauche
+            .to(img20b, { x: 50 }, "-=1.2") // img21 va à droite (léger chevauchement)
+            .to(img20, { y: -60 }) // img20 monte
+            .to(img20b, { y: 70 }, "-=1.2") // img21 descend
+            .to(img20, { x: 5 }) // img20 retourne vers la droite
+            .to(img20b, { x: -10 }, "-=1.2"); // img21 va légèrement à gauche
         
-            function handleMouseOverGroup3() {
-                img13.style.opacity = "1";
-                if (!hasFlipped3) {
-                    gsap.to(img14, { y: -100, duration: 1.5 });
-                    gsap.to(img15, { y: 70, duration: 1.5 });
+                    }
                 }
-            }
-            function handleMouseOutGroup3() {
-                img13.style.opacity = "0";
-                if (!hasFlipped3) {
-                    gsap.to(img14, { y: 0, duration: 3.5 });
-                    gsap.to(img15, { y: 0, duration: 3.5 });
-                    hasFlipped3 = true;
+                function handleMouseOutGroup4() {
+                    img18.style.opacity = "0";
+                    if (!hasFlipped4) {
+                        gsap.to(img20, { x: 0, duration: 1 });
+                        gsap.to(img20b, { x: 3, duration: 1 });
+                        hasFlipped4 = true;
+                    }
                 }
+                img17.addEventListener("mouseover", handleMouseOverGroup4);
+                img17.addEventListener("mouseout", handleMouseOutGroup4);
             }
-            img12.addEventListener("mouseover", handleMouseOverGroup3);
-            img12.addEventListener("mouseout", handleMouseOutGroup3);
-        }
-            //Groupe 4 container_6
-
-        const img17 = container.querySelector('.img17');
-        const img18 = container.querySelector('.img18');
-        const img19 = container.querySelector('.img19');
-        const img20 = container.querySelector('.img20');
-        const img20b = container.querySelector('.img20b');
-
-        if (img17 && img18 && img19 && img20 && img20b) {
-            let hasFlipped4 = false;
         
-            function handleMouseOverGroup4() {
-                img18.style.opacity = "1";
-                if (!hasFlipped4) {
-                    let tl = gsap.timeline({ defaults: { duration: 1.3, ease: "power2.inOut" } });
+            //Groupe 5 container_8
+            const img21 = container.querySelector('.img21');
+            const img22 = container.querySelector('.img22');
+            const img23 = container.querySelector('.img23');
+            const img24 = container.querySelector('.img24');
+            const img24b = container.querySelector('.img24b');
+            const img25 = container.querySelector('.img25');
+            const img25b = container.querySelector('.img25b');
 
-        tl.to(img20, { x: -50 }) // img20 va à gauche
-          .to(img20b, { x: 50 }, "-=1.2") // img21 va à droite (léger chevauchement)
-          .to(img20, { y: -60 }) // img20 monte
-          .to(img20b, { y: 70 }, "-=1.2") // img21 descend
-          .to(img20, { x: 5 }) // img20 retourne vers la droite
-          .to(img20b, { x: -10 }, "-=1.2"); // img21 va légèrement à gauche
-      
+            if (img21 && img22 && img23 && img24 && img24b && img25 && img25b) {
+                let hasFlipped5 = false;
+            
+                function handleMouseOverGroup5() {
+                    img23.style.opacity = "1";
+                    if (!hasFlipped5) {
+                        gsap.to([img24,img24b,img25,img25b], { 
+                            rotation: 360, // Rotation complète
+                            transformOrigin: "center center", // Rotation autour de son centre
+                            duration: 1.5, 
+                            ease: "power2.inOut" 
+                        });
+                    }
                 }
-            }
-            function handleMouseOutGroup4() {
-                img18.style.opacity = "0";
-                if (!hasFlipped4) {
-                    gsap.to(img20, { x: 0, duration: 1 });
-                    gsap.to(img20b, { x: 3, duration: 1 });
-                    hasFlipped4 = true;
-                }
-            }
-            img17.addEventListener("mouseover", handleMouseOverGroup4);
-            img17.addEventListener("mouseout", handleMouseOutGroup4);
-        }
-    
-        //Groupe 5 container_8
-        const img21 = container.querySelector('.img21');
-        const img22 = container.querySelector('.img22');
-        const img23 = container.querySelector('.img23');
-        const img24 = container.querySelector('.img24');
-        const img24b = container.querySelector('.img24b');
-        const img25 = container.querySelector('.img25');
-        const img25b = container.querySelector('.img25b');
-
-        if (img21 && img22 && img23 && img24 && img24b && img25 && img25b) {
-            let hasFlipped5 = false;
-        
-            function handleMouseOverGroup5() {
-                img23.style.opacity = "1";
-                if (!hasFlipped5) {
+            
+                function handleMouseOutGroup5() {
+                    img23.style.opacity = "0";
                     gsap.to([img24,img24b,img25,img25b], { 
-                        rotation: 360, // Rotation complète
-                        transformOrigin: "center center", // Rotation autour de son centre
+                        rotation: 0, // Retour à l'état initial
                         duration: 1.5, 
-                        ease: "power2.inOut" 
+                        ease: "power2.inOut"  
                     });
+                    hasFlipped5 = true;
                 }
-            }
-        
-            function handleMouseOutGroup5() {
-                img23.style.opacity = "0";
-                gsap.to([img24,img24b,img25,img25b], { 
-                    rotation: 0, // Retour à l'état initial
-                    duration: 1.5, 
-                    ease: "power2.inOut"  
-                });
-                hasFlipped5 = true;
-            }
-            img22.addEventListener("mouseover", handleMouseOverGroup5);
-            img22.addEventListener("mouseout", handleMouseOutGroup5);
+                img22.addEventListener("mouseover", handleMouseOverGroup5);
+                img22.addEventListener("mouseout", handleMouseOutGroup5);
 
-        }
-})});
-
+            }
+    })});
+}
