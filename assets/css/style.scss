@@ -8,11 +8,16 @@
 @import 'layout/grid';
 @import 'layout/header';
 
-// * {
-// outline: 3px solid $stroke-gris-900 ;
-// }
-body {
+
+html, body{
   width: 100%;
+  height: 100%;
+
+}
+body{
+  background: linear-gradient(to top, #fcddec 0%,#ffe6c7 29.51%,#e8ffc4 50.77%,#fcddec 75.27%,#fffafb 97.01%);
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 // début header ------------------------------------
@@ -329,17 +334,7 @@ figure {
 
 
 
-html, body{
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
-}
-body{
-    background: linear-gradient(to top, #fcddec 0%,#ffe6c7 29.51%,#e8ffc4 50.77%,#fcddec 75.27%,#fffafb 97.01%);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
+
 //debut enfant-livre
 
 
