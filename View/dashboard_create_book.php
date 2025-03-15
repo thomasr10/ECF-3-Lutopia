@@ -40,7 +40,7 @@ ob_start();
 </div>
 
 <div>
-    <h2>Ajouter une oeuvre</h2>
+    <h1>Ajouter un livre</h1>
     <form action="/dashboard-book" method="POST" enctype="multipart/form-data">
         <div>
             <label for="isbn">Numéro ISBN</label>

@@ -49,9 +49,38 @@ searchInput.addEventListener('input', function(){
 
 
 const modifyBtnArray = document.querySelectorAll('.modify-btn');
+const confirmDeleteModal = document.querySelector('.modal'); 
 
 modifyBtnArray.forEach(btn => {
     btn.addEventListener('click', function(){
-        alert('test')
+        const idCopy = this.value;
+        const divParent = this.parentElement;
+        const select = divParent.querySelector('select[name="state"]');
+        const deleteBtn = divParent.querySelector('.delete-btn');
+        const validateBtn = divParent.querySelector('.validate-btn');
+
+        // faire apparaitre le select + bouton valider
+        select.removeAttribute('disabled');
+        deleteBtn.removeAttribute('disabled');
+        this.style.display = 'none';
+        validateBtn.classList.remove('hidden');
+
+
+        deleteBtn.addEventListener('click', function(){
+            confirmDeleteModal.style.display = 'block';
+            const confirmDeleteBtn = document.getElementById('confirm-delete');
+
+            confirmDeleteBtn.addEventListener('click', function(){
+                fetch(`/delete-book-copy/${idCopy}`)
+                .then(response => response.json())
+                .then(data => {
+                    if(data){
+                        //recharger la page après la suppression
+                        window.location.reload();
+                    }
+                })
+            })
+        })
+
     })
 })

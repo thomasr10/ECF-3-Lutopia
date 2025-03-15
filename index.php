@@ -81,6 +81,7 @@ $router->map('POST', '/search-book', 'ControllerBook#searchBook', 'search-book')
 
 //search-bar gestion de stock
 $router->map('POST', '/search-copies', 'ControllerBook#searchCopies', 'search-copies');
+$router->map('GET', '/delete-book-copy/[i:id]', 'ControllerCopy#deleteCopy', 'delete-copy');
 
 
 $match = $router->match();

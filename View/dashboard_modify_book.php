@@ -4,7 +4,7 @@ $description = "Modifier'un livre sur le dashboard admin de Lutopia";
 $arrayJs = ['../assets/js/dashboard_modify_book'];
 ob_start();
 ?>
-
+<h1>Modifier un livre</h1>
 <div id="search-form">
     <form method="GET" action="/dashboard-book/modify-book">
         <div id="book-datas">
