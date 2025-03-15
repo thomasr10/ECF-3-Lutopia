@@ -88,6 +88,43 @@ class ControllerChild {
         } else {
             echo json_encode("already");
         }
+    }
+
+    public function showReservation(int $child){
+        global $router;
+        $model = new ModelChild();
+        $show = $model->getReservationChild($child);
+        header('Content-Type: application/json');
+        
+
+        if($show){
+            foreach($show as $i=>$reservation){
+                $arrayObj[] = [
+                    "id_reservation" => $show[$i]->reservation->getId_reservation(), 
+                    "reservation_date" => $show[$i]->reservation->getResevation_date(), 
+                    "id_child" => $show[$i]->reservation->getId_child(), 
+                    "id_book" => $show[$i]->reservation->getId_book(), 
+                    "title" => $show[$i]->reservation->getTitle(), 
+                    "end_date" => $show[$i]->reservation->getEnd_date(), 
+                    "img_src" => $show[$i]->img_src 
+                ];
+            }
+            echo json_encode($arrayObj);
+        } else {
+            echo json_encode("Aucune réservation");
+        }
+    }
+
+    public function removeReservation(int $reservation){
+        global $router;
+        $model = new ModelUser();
+        $remove = $model->deleteReservation($reservation);
+        header('Content-Type: application/json');
+        if($remove){
+            echo json_encode('ok');
+        } else {
+            echo json_encode('pas ok');
+        }
         
     }
 }

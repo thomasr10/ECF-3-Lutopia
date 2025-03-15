@@ -197,7 +197,7 @@ class ControllerBook {
             if(!empty($_POST['isbn']) && !empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['illustrator']) && !empty($_POST['editor']) && !empty($_POST['publication_date']) && !empty($_POST['edition_date']) && !empty($_POST['synopsis']) && !empty($_POST['category']) && !empty($_POST['age']) && !empty($_POST['type']) && !empty($_FILES['picture']) && !empty($_POST['copy']) && !empty($_POST['id_author']) && !empty($_POST['id_illustrator'])){
 
                 //change img.ext
-                $fileName = str_replace([' ', 'é', 'è', 'à'], ['_', 'e', 'e', 'a'], strtolower($_POST['title']));
+                $fileName = str_replace([' ', '-', 'é', 'è', 'à'], ['_', '_', 'e', 'e', 'a'], strtolower($_POST['title']));
                 $_FILES['picture']['name'] = $fileName;
                 $img = $fileName . '.webp';
                 $path = '/uploads' . '/' . $img;
@@ -252,6 +252,31 @@ class ControllerBook {
             ];
         }
         echo json_encode($arrayObj);
+    }
+
+    public function modifyBook(){
+        global $router;
+        $model = new ModelBook();
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(isset($_POST['modify-book'])){
+                if(!empty($_POST['isbn']) && !empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['illustrator']) && !empty($_POST['editor']) && !empty($_POST['publication_date']) && !empty($_POST['edition_date']) && !empty($_POST['synopsis']) && !empty($_POST['id_book'])){
+                    var_dump($_POST);
+                    $model->modifyBook($_POST['isbn'], $_POST['title'], $_POST['author'], $_POST['illustrator'], $_POST['editor'], $_POST['publication_date'], $_POST['edition_date'], $_POST['synopsis'], $_POST['id_book']);
+                    header('Location: /dashboard-book/modify-book?title=' . $_POST['title'] . '&id_book=' . $_POST['id_book']);
+                }
+                
+            }
+        } else {
+            if(!empty($_GET['title']) && !empty($_GET['id_book'])){
+
+                $id_book = intval($_GET['id_book']);
+                // affichage du livre
+                $book = $model->bookId($id_book);
+
+                $copies = $model->getCopiesOnIdBook($id_book);
+            }
+            require_once('./View/dashboard_modify_book.php');
+        }
     }
     
 }

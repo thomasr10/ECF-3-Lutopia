@@ -28,6 +28,8 @@ $router->map('GET', '/book/[i:id]', 'ControllerBook#showOneBook', 'showOneBook')
 
 //reservation
 $router->map('GET', '/[i:book]/[i:child]', 'ControllerChild#reservationBook', 'reservationBook');
+$router->map('GET', '/[i:child]', 'ControllerChild#showReservation', 'showReservation');
+$router->map('GET', '/remove/[i:reservation]', 'ControllerChild#removeReservation', 'removeReservation');
 
 //inscription
 $router->map('GET|POST', '/register', 'ControllerUser#register', 'register');
@@ -49,6 +51,10 @@ $router->map('GET|POST', '/dashboard', 'ControllerUser#dashboard', 'dashboard');
 
 //Créer un livre
 $router->map('GET|POST', '/dashboard-book', 'ControllerBook#createBook', 'create-book');
+
+//modifier un livre
+$router->map('GET|POST', '/dashboard-book/modify-book', 'ControllerBook#modifyBook', 'modify-book');
+
 //Chercher un auteur
 $router->map('POST', '/dashboard-search-author', 'ControllerAuthor#searchAuthor', 'search-author');
 $router->map('POST', '/dashboard-search-illustrator', 'ControllerIllustrator#searchIllustrator', 'search-illustrator');
