@@ -1160,10 +1160,62 @@ select{
   font-size: $titre-h3;
   justify-content: space-around;
   align-items: center;
+  padding-top: 2rem;
 }
 .dash-accueil-form{
   @extend .search-form;
    
     
 }
+.dash-accueil-user-name {
+  font-size: $titre-h3;
+  padding-right: 3rem;
+}
+
+.dash-select-contain {
+  display: flex;
+  justify-content: center;
+  padding-top: 3rem;
+}
+.dash-select-child {
+  width: 40%;
+  outline: none;
+  font-size: $para;
+  background: transparent;
+  border: 2px solid $primary-text-800;
+  border-radius: 15px;
+  padding: 0.5rem 2rem; 
+}
+
+.dash-accueil-borrow {
+  width: 100%;
+  h2{
+    font-size: $titre-h3;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.dash-accueil-titlebook {
+  min-width: 40%;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 2px solid $stroke-marron-800;
+  font-weight: 600;
+}
+.dash-accueil-titlebook-container {
+  display: flex;
+  align-items: center;
+}
+
+.dash-date-color {
+  padding-left: 2rem;
+  span {
+    color: $pastel-vert-800;
+    font-weight: 600;
+  }
+   
+}
+
+
 

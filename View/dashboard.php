@@ -18,13 +18,20 @@ ob_start();
              <img src="uploads/autres/icon-loupe.svg" alt="">
              </button>
          </form>
-         
+         <div class="dash-accueil-user-name">
+            Famille Suricate
+         </div>
+        </div>
+        <div class="dash-select-contain">
+            <select name="id-child" id="id-child" class="dash-select-child">
+                <option value="choisir l'enfant">choisir l'enfant</option>
+            </select>
         </div>
     </article>
 
 <?php if(isset($_GET['searchAdminUser']) && !empty($_GET['searchAdminUser'])){ 
         if(!isset($search)){
-            echo 'Aucune carte séléctionner';
+            echo 'Aucune carte sélectionnée';
         } else {
             ?> 
             <hr>  <!-- hr a supprimer -->
@@ -43,6 +50,7 @@ ob_start();
                 echo 'indisponible retour prévu le ' . $avaibility[$key][0]->getEnd_date()->format('d-m-Y'); // information indisponibilité du livre
             }
            ?> 
+
            <form method="POST" action="/dashboard<?= '?searchAdminUser=' . $_GET['searchAdminUser'] ?>">
             <input type="hidden" name="id_reservation" value="<?= $avaibility[$key][0]->getId_reservation();?>">
             <input type="submit" name="cancel" value="Annuler">
@@ -50,28 +58,37 @@ ob_start();
            <?php endforeach;
            echo 3 - count($reservation). ' reservations restantes'; //nombre de réservation restante ?>
            <hr> <!-- hr a supprimer -->
-            <h2>Emprunt en cours</h2><hr>
+
+           <div class="dash-accueil-borrow">
+
+            <h2>Emprunt(s) en cours</h2><hr>
+
             <?php
             foreach($search as $key=>$value): ?>
-                <?=$search[$key]->getLast_Name() //NOM DE L'USER POUR CHAQUE EMPRUNT ?>
-                <article>
-                    <p>Livre : <?= $search[$key]->getTitle(); ?> </p>  <!-- titre de chaque livre emprunter -->
-                    <p>Emprunt de : <?= $search[$key]->getName(); ?> </p> <!-- nom de l'enfant de chaque livre emprunter -->
+                    <!-- <?=$search[$key]->getLast_Name() ?> -->
+                    <!-- NOM DE L'USER POUR CHAQUE EMPRUNT  -->
+
+                    <div class="dash-accueil-titlebook-container">
+                    <p class= "dash-accueil-titlebook" ><?= $search[$key]->getTitle(); ?> </p>  <!-- titre de chaque livre emprunter -->
+                    <!-- <p>Emprunt de : <?= $search[$key]->getName(); ?> </p> -->
+                     <!-- nom de l'enfant de chaque livre emprunter -->
                     
                     <form method="POST" action="/dashboard<?= '?searchAdminUser=' . $_GET['searchAdminUser'] ?>"> <!-- formulaire pour prolonger l'emprunt -->
-                        <p>A rendre avant le : <?= $search[$key]->getEnd_date()->format('d-m-Y'); ?> </p> <!-- date de fin de l'emprunt -->
+                        <p class="dash-date-color">A rendre avant le : <span><?= $search[$key]->getEnd_date()->format('d-m-Y');?></span></p> <!-- date de fin de l'emprunt -->
                         <input type="hidden" name="id_borrow" value="<?= $search[$key]->getId_borrow()?>">
+                    </div>
                         <input type="date" name="date_back" value="<?= $search[$key]->getEnd_date()->format('Y-m-d');?>"> <!-- input date pour prolonger l'emprunt -->
                         <input type="submit" name="prolong" value="Prolonger"> <!-- bouton qui prolonge l'emprunt -->
                     </form>
+
                     <form method="POST" action="/dashboard<?= '?searchAdminUser=' . $_GET['searchAdminUser'] ?>"> <!-- formulaire pour rendre un livre emprunter -->
                         <input type="hidden" name="id_borrow" value="<?= $search[$key]->getId_borrow()?>">
                         <input type="hidden" name="date_back" value="<?= $search[$key]->getEnd_date()->format('Y-m-d');?>">
                         <input type="submit" name="suppr" value="Rendre"> <!-- bouton rendre pour rendre un livre -->
                     </form>
                     <hr>
-                    
-                </article> 
+             
+
             <?php endforeach;
         } 
         
@@ -80,7 +97,7 @@ ob_start();
     }
     
     ?>
-
+</div>  
 </section>
 
 <?php
