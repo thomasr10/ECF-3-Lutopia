@@ -2292,3 +2292,47 @@ select{
     font-family: "Lexend", sans-serif;
     border: 1px solid #653F31; 
   }
+
+  //Login Admin
+#loginAdmin{
+  display: grid;
+  grid-template-columns: 30% 20%;
+  grid-gap: 10px;
+  font-family: "Lexend", sans-serif;
+}
+#loginAdmin>div{
+  display: contents;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+#loginAdmin>div>label{
+  grid-column: 1;
+  margin-left: 20px;
+  align-self: center;
+}
+#loginAdmin>div>input{
+  grid-column: 2; 
+  font-family: "Lexend", sans-serif;
+  border-radius: 20px;
+  width: 285px;
+  height: 40px;
+  text-align: center;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653F31; 
+}
+#loginAdmin>input{
+    grid-column: 2; 
+    font-family: "Lexend", sans-serif;
+    border-radius: 20px;
+    width: 285px;
+    height: 40px;
+    text-align: center;
+    font-family: "Lexend", sans-serif;
+    border: 1px solid #653F31; 
+}
+.center{
+  display: flex;
+  justify-content: center; 
+  place-items: center;
+ height: 100vh;
+}
