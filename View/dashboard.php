@@ -13,13 +13,13 @@ ob_start();
         <div class = "dash-accueil-user">
          
          <form class="dash-accueil-form" method="GET" action="/dashboard">
-             <input type="text"name="searchAdminUser"           id="searchAdminUser" value="">
+             <input type="text"name="searchAdminUser" id="searchAdminUser" value="" placeholder="entrez ici le n° d'abonné">
              <button type="submit" >
              <img src="uploads/autres/icon-loupe.svg" alt="">
              </button>
          </form>
          <div class="dash-accueil-user-name">
-         <?php if(!empty($search)){?> Famille <?php echo $search[0]->getLast_Name(); } ?>
+         <?php if(!empty($search)){?><span>FAMILLE : </span><?php echo $search[0]->getLast_Name(); } ?>
          </div>
         </div>
         <div class="dash-select-contain">
@@ -86,11 +86,13 @@ ob_start();
                         <input type="hidden" name="id_borrow" value="<?= $search[$key]->getId_borrow()?>">
                     </div>
                     <div class="dash-accueil-borrow-date">
+                        <div class="dash-accueil-date-container">
                         <input class="dash-date-choose" type="date" name="date_back" value="<?= $search[$key]->getEnd_date()->format('Y-m-d');?>"> <!-- input date pour prolonger l'emprunt -->
                         <input class="dash-date-prolong"  type="submit" name="prolong" value="Prolonger"> <!-- bouton qui prolonge l'emprunt -->
+                        </div>
                     </form>
 
-                    <form method="POST" action="/dashboard<?= '?searchAdminUser=' . $_GET['searchAdminUser'] ?>"> <!-- formulaire pour rendre un livre emprunter -->
+                    <form class="dash-accueil-borrow-rendre" method="POST" action="/dashboard<?= '?searchAdminUser=' . $_GET['searchAdminUser'] ?>"> <!-- formulaire pour rendre un livre emprunter -->
                         <input type="hidden" name="id_borrow" value="<?= $search[$key]->getId_borrow()?>">
                         <input type="hidden" name="date_back" value="<?= $search[$key]->getEnd_date()->format('Y-m-d');?>">
                         <input type="submit" name="suppr" value="Rendre"> <!-- bouton rendre pour rendre un livre -->
