@@ -1055,6 +1055,72 @@ select{
 // DASHBOARD----------------------------------------------------
 
 
+.dashboard {
+  display: flex;
+  width: 100%;
+  margin: 2rem 3rem;
+  font-family: "Lexend", sans-serif;
+  color: $primary-text-1100;
+}
+.side-bar {
+  flex-direction: column;
+  max-width: 430px;
+  width: 100%;
+  border: solid 3px $pastel-rose-300;
+  background-color: $pastel-rose-200;
+  border-radius: 8px;
+
+}
+.side-bar > nav {
+  height: 90%;
+  width: 90%;
+  padding: 2rem 0 2rem 2rem;
+  font-size: $titre-h3;
+}
+.dashboard-title {
+  font-weight: 700;
+
+}
+.dashboard-list {
+  padding: 1rem 0 1rem 0.5rem;
+
+}
+.dashboard-link {
+  padding: 0.5rem;
+}
+.dashboard-link > a {
+  text-decoration: none;
+  line-height: 1.5rem;
+  color: $primary-text-900;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  padding: 0 1rem;
+
+      &:hover{
+        border: 2px solid $primary-text-900;
+      }
+      &:active{
+        border: 2px solid $primary-text-900;
+        font-weight: 600;
+      }
+
+}
+.dashboard-deconnexion {
+  display: flex;
+}
+.dashboard-deconnexion >a  {
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  border: 3px solid transparent;
+  &:hover{
+    border: 3px solid $primary-text-900;
+    background-color: $pastel-rose-400;
+  }
+  &:active{
+    border: 3px solid $primary-text-900;
+    font-weight: 600;
+  }
+}
 
 
 
@@ -2124,66 +2190,6 @@ input {
   font-family: "Lexend", sans-serif;
   color: $primary-text-1100;
 }
-.side-bar {
-  flex-direction: column;
-  max-width: 430px;
-  width: 100%;
-  border: solid 3px $pastel-rose-300;
-  background-color: $pastel-rose-200;
-  border-radius: 8px;
-  
-}
-.side-bar > nav {
-  height: 90%;
-  width: 90%;
-  padding: 2rem 0 2rem 2rem;
-  font-size: $titre-h3;
-}
-.dashboard-title {
-  font-weight: 700;
-
-}
-.dashboard-list {
-  padding: 1rem 0 1rem 0.5rem;
-  
-}
-.dashboard-link {
-  padding: 0.5rem;
-}
-.dashboard-link > a {
-  text-decoration: none;
-  line-height: 1.5rem;
-  color: $primary-text-900;
-  border: 2px solid transparent;
-  border-radius: 20px;
-  padding: 0 1rem;
-    
-      &:hover{
-        border: 2px solid $primary-text-900;
-      }
-      &:active{
-        border: 2px solid $primary-text-900;
-        font-weight: 600;
-      }
-    
-}
-.dashboard-deconnexion {
-  display: flex;
-}
-.dashboard-deconnexion >a  {
-  margin: 0 auto;
-  padding: 0.5rem 1rem;
-  border: 3px solid transparent;
-  &:hover{
-    border: 3px solid $primary-text-900;
-    background-color: $pastel-rose-400;
-  }
-  &:active{
-    border: 3px solid $primary-text-900;
-    font-weight: 600;
-  }
-}
-
 
 .page.turn img {
       width: 100%;
@@ -2858,7 +2864,8 @@ input {
 
 
 
-
+//DASHBOARD SUITE
+//DASHBOARD SUITE
 
 
 
