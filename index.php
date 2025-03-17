@@ -85,6 +85,11 @@ $router->map('GET', '/delete-book-copy/[i:id]', 'ControllerCopy#deleteCopy', 'de
 $router->map('POST', '/update-state', 'ControllerCopy#updateState', 'update-state');
 $router->map('POST', '/add-copies', 'ControllerCopy#addCopies', 'add-copies');
 
+
+// Statistiques livres
+
+$router->map('GET', '/stat-books','ControllerBook#getStatsBook', 'get-stats');
+
 $match = $router->match();
 
 if(is_array($match)){

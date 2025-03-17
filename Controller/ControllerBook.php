@@ -295,4 +295,11 @@ class ControllerBook {
         }
     }
 
+
+    public function getStatsBook(){
+        global $router;
+
+        require_once('./View/dashboard_stat_book.php');
+    }
+
 }

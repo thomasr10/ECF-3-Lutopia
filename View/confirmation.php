@@ -2,7 +2,6 @@
 
 $title = "Confirmation | Lutopia";
 $description = "Page d'envoie de mail pour la confirmation d'inscription à Lutopia";
-$pointSlash = "";
 ob_start();
 
 ?>

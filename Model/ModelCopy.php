@@ -19,7 +19,7 @@ class ModelCopy extends Model {
 
 
     public function addCopies(int $id_book){
-        $req = $this->getDb()->prepare("INSERT INTO `copy`(`state`, `id_book`) VALUES (1, :id_book)");
+        $req = $this->getDb()->prepare("INSERT INTO `copy`(`state`, `id_book`) VALUES (0, :id_book)");
         $req->bindParam('id_book', $id_book, PDO::PARAM_INT);
         $req->execute();
     }
