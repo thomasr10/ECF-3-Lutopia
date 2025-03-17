@@ -6,8 +6,8 @@ $arrayJs = ["./assets/js/register.js"];
 $pointSlash = "";
 ob_start();
 ?>
-<div>
-    <p>Au moins un des enfants dépasse l'âge requis pour valider l'inscription. Pour rappel l'âge maximum est 12 ans.</p>
+<div id="messageErreur">
+    <p>Au moins un des enfants dépasse l'âge requis pour valider l'inscription.<br><br> Pour rappel l'âge maximum est de 12 ans.</p>
 </div>
 <form action="/register-child" method="POST">
     <div id="child-section">
@@ -19,7 +19,7 @@ ob_start();
             <input type="button" id="add-child" value="Ajouter un enfant">           
         </div>
     </div>
-    <div>
+    <div id="submit">
         <input type="submit" value="Inscription">
     </div>
 </form>

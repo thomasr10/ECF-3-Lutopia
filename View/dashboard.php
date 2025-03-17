@@ -106,4 +106,4 @@ ob_start();
 $content = ob_get_contents();
 ob_end_clean();
 require_once('./View/base_dashboard.php');
-
+?>

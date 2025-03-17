@@ -29,6 +29,7 @@ $router->map('GET', '/book/[i:id]', 'ControllerBook#showOneBook', 'showOneBook')
 //reservation
 $router->map('GET', '/[i:book]/[i:child]', 'ControllerChild#reservationBook', 'reservationBook');
 $router->map('GET', '/[i:child]', 'ControllerChild#showReservation', 'showReservation');
+$router->map('GET', '/remove/[i:reservation]', 'ControllerChild#removeReservation', 'removeReservation');
 
 //inscription
 $router->map('GET|POST', '/register', 'ControllerUser#register', 'register');
@@ -45,11 +46,17 @@ $router->map('GET|POST', '/register-child', 'ControllerChild#registerChild', 're
 //bibliotequaire
 $router->map('GET|POST', '/login-admin', 'ControllerUser#loginAdmin', 'loginAdmin');
 $router->map('GET|POST', '/dashboard', 'ControllerUser#dashboard', 'dashboard');
+// gestion du stock
 
+$router->map('GET|POST', '/dashboard-book/book-stock', 'ControllerBook#checkCopies', 'book-stock');
 
 
 //Créer un livre
 $router->map('GET|POST', '/dashboard-book', 'ControllerBook#createBook', 'create-book');
+
+//modifier un livre
+$router->map('GET|POST', '/dashboard-book/modify-book', 'ControllerBook#modifyBook', 'modify-book');
+
 //Chercher un auteur
 $router->map('POST', '/dashboard-search-author', 'ControllerAuthor#searchAuthor', 'search-author');
 $router->map('POST', '/dashboard-search-illustrator', 'ControllerIllustrator#searchIllustrator', 'search-illustrator');
@@ -72,7 +79,9 @@ $router->map('GET', '/informations', 'ControllerUser#infoPage', 'infoPage');
 //search-bar
 $router->map('POST', '/search-book', 'ControllerBook#searchBook', 'search-book');
 
-
+//search-bar gestion de stock
+$router->map('POST', '/search-copies', 'ControllerBook#searchCopies', 'search-copies');
+$router->map('GET', '/delete-book-copy/[i:id]', 'ControllerCopy#deleteCopy', 'delete-copy');
 
 
 $match = $router->match();

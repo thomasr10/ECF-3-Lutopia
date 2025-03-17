@@ -300,7 +300,7 @@ class ModelBook extends Model {
 
     public function searchBook(string $data){
         $search = $data . '%';
-        $req = $this->getDb()->prepare("SELECT `id_book`, `title` FROM `book` WHERE `title` LIKE :search");
+        $req = $this->getDb()->prepare("SELECT `id_book`, `title` FROM `book` WHERE `title` LIKE :search OR `isbn` LIKE :search");
         $req->bindParam('search', $search, PDO::PARAM_STR);
         $req->execute();
 
@@ -312,4 +312,37 @@ class ModelBook extends Model {
 
         return $arrayObj;
     }
+
+
+
+    public function getCopiesOnIdBook(int $id_book){
+        $req = $this->getDb()->prepare("SELECT `id_copy`, `state`, `id_book` FROM `copy` WHERE `id_book` = :id_book");
+        $req->bindParam('id_book', $id_book, PDO::PARAM_INT);
+        $req->execute();
+
+        $arrayObj = [];
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayObj[] = new Copy($data);
+        }
+
+        return $arrayObj;
+    }
+
+
+
+    public function modifyBook(int $isbn, string $title, string $author, string $illustrator, string $editor, string $publication_date, string $edition_date, string $synopsis, int $id_book){
+
+        $req = $this->getDb()->prepare("UPDATE `book` SET `isbn`= :isbn,`title`= :title,`editor`= :editor, `publication_date`= :publication_date,`edition_date`= :edition_date,`synopsis`= :synopsis WHERE `id_book` = :id_book");
+
+        $req->bindParam('isbn', $isbn, PDO::PARAM_INT);
+        $req->bindParam('title', $title, PDO::PARAM_STR);
+        $req->bindParam('editor', $editor, PDO::PARAM_STR);
+        $req->bindParam('publication_date', $publication_date, PDO::PARAM_STR);
+        $req->bindParam('edition_date', $edition_date, PDO::PARAM_STR);
+        $req->bindParam('synopsis', $synopsis, PDO::PARAM_STR);
+        $req->bindParam('id_book', $id_book, PDO::PARAM_INT);
+        $req->execute();
+    }
+
+
 }

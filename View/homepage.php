@@ -31,7 +31,7 @@ if(isset($_SESSION['id'])){
     ?>
     </select>
 
-   </div>
+   <!-- </div>
    <div class= "padding-element2">
    <div class= "mini-book">
    <img src="uploads/bebe_mon_amour.webp" class ="mini-book-img" alt= "miniature du livre">
@@ -40,7 +40,7 @@ if(isset($_SESSION['id'])){
       <a href="">
       <img id="close-button" src="uploads/autres/iconX.svg" class = "close-x-icon"alt="icone fermeture"></a>
     </div>
-    </div>
+    </div> -->
     
    </div > 
 
@@ -123,8 +123,8 @@ if(isset($_SESSION['id'])){
                 <div class="card">
                     <img src="<?=$book->book->getImg_src()?>" alt="Couverture du livre <?=$book->book->getTitle()?>">
                     <p><?=$book->book->getTitle()?></p>
-                    <button class="button_pink">voir la fiche</button>
-                    <button class="button_borrow">Réserver</button>
+                    <a class="button_pink" href="/book/<?=$book->book->getId_book() ?>">Voir la fiche</a>
+                    <a class="button_borrow" href="/login">Réserver</a>
                 </div>
             
 <?php } ?>
