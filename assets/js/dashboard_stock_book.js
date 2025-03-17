@@ -84,3 +84,8 @@ modifyBtnArray.forEach(btn => {
 
     })
 })
+
+
+// CHANGER L'ETAT DES EXEMPLAIRES
+
+const stateInputArray = document.querySelectorAll('[name="state"]');
