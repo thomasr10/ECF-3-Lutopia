@@ -46,10 +46,15 @@ figure {
     height: 80%;
   }
 }
-
+.nav {
+  @include tablet{
+    display: none;
+  }
+}
 
 .navbar {
   display: flex;
+
   @include tablet {
     flex-direction: column;
     width: 80%;
