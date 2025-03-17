@@ -22,7 +22,7 @@ searchInput.addEventListener('input', function(){
 
             data.forEach(book => {
                 const listBook = document.createElement('li');
-                listBook.textContent = book.title;
+                listBook.textContent = book.title + ', par ' + book.author;
                 listBook.setAttribute('id', book.id_book);
                 list.append(listBook);
 

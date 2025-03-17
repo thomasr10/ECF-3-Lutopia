@@ -247,8 +247,9 @@ class ControllerBook {
 
         foreach($result as $book){
             $arrayObj[] = [
-                "id_book" => $book->getId_book(),
-                "title" => $book->getTitle()
+                "id_book" => $book->book->getId_book(),
+                "title" => $book->book->getTitle(),
+                "author" => $book->author
             ];
         }
         echo json_encode($arrayObj);
