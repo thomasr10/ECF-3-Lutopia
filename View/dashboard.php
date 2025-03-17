@@ -19,7 +19,7 @@ ob_start();
              </button>
          </form>
          <div class="dash-accueil-user-name">
-            Famille Suricate
+            Famille <?=$search[0]->getLast_Name() ?>
          </div>
         </div>
         <div class="dash-select-contain">
@@ -44,11 +44,13 @@ ob_start();
            <?php 
            if($avaibility[$key][0]->getEnd_date()->format('Y-m-d') < $date){ // if bouton disponible ou else affichage indisponible
                 echo '<form method="POST" action="/dashboard?searchAdminUser=' . $_GET['searchAdminUser'] . '">                                
-                        <input type="submit" value="Disponible">     
-                     </form>' ;
+                        <input type="submit" value="Disponible"> ' ;
             } else {
-                echo 'indisponible retour prévu le ' . $avaibility[$key][0]->getEnd_date()->format('d-m-Y'); // information indisponibilité du livre
+                echo '
+                <form method="POST" action="/dashboard?searchAdminUser=' . $_GET['searchAdminUser'] . '"> 
+                <input class = "dash-disabled" type="submit" disabled value="Indisponible"> '; // information indisponibilité du livre
             }
+            echo '</form>';
            ?> 
 
            <form method="POST" action="/dashboard<?= '?searchAdminUser=' . $_GET['searchAdminUser'] ?>">
