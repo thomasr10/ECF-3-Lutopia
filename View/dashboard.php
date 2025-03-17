@@ -19,7 +19,7 @@ ob_start();
              </button>
          </form>
          <div class="dash-accueil-user-name">
-            Famille <?=$search[0]->getLast_Name() ?>
+         <?php if(!empty($search)){?> Famille <?php echo $search[0]->getLast_Name(); } ?>
          </div>
         </div>
         <div class="dash-select-contain">
