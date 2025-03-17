@@ -6,13 +6,13 @@ ob_start();
 ?>
 <h1>Modifier un livre</h1>
 <div id="search-form">
-    <form method="GET" action="/dashboard-book/modify-book">
+    <form method="GET" action="/dashboard-book/modify-book" class="accueil-form">
         <div id="book-datas">
             <label for="title">Rechercher par titre ou ISBN</label>
             <input type="text" id="title" name="title" placeholder="Rechercher par titre ou ISBN" required>
         </div>
         <div>
-            <input type="submit" value="🔍">
+            <button type="submit">valider<img src="/uploads/autres/icon-loupe.svg"></button>
         </div>
     </form>    
 </div>
@@ -20,9 +20,9 @@ ob_start();
 <?php
 if(isset($_GET['id_book'])){
 ?>
-<div>
+<div id="resultatSearchForm">
     <img src="<?= $book[0]->book->getImg_src() ?>" alt="Couverture du livre <?=$book[0]->book->getTitle() ?>" width="200px">
-    <p>Titre : <?=$book[0]->book->getTitle() ?></p>
+    <p class="titreBleuGras">Titre : <?=$book[0]->book->getTitle() ?></p>
     <p>Isbn : <?=$book[0]->book->getIsbn() ?></p>
     <p>Éditeur : <?=$book[0]->book->getEditor() ?></p>
     <p>Date de publication : <?=$book[0]->book->getPublication_date()->format('d/m/Y') ?></p>
@@ -34,8 +34,9 @@ if(isset($_GET['id_book'])){
 
 <div id="modal-modify-book" class="modal">
 <!-- Modification livre -->
-    <form action="/dashboard-book/modify-book" method="POST">
-    <div>
+    <form action="/dashboard-book/modify-book" method="POST" class="formModalMB">
+        <div id="close"><img src="<?= UPLOADS ?>autres/cancel.webp" alt="croix"></div>
+        <div>
             <label for="isbn">Numéro ISBN</label>
             <input type="number" name="isbn"  id="isbn" value="<?=$book[0]->book->getIsbn() ?>" required>
         </div>
@@ -63,9 +64,9 @@ if(isset($_GET['id_book'])){
             <label for="edition_date">Date d'édition</label>
             <input type="date" name="edition_date"  id="edition_date" value="<?=$book[0]->book->getEdition_date()->format('Y-m-d')?>" required>
         </div>
-        <div>
+        <div id="textAearaMB">
             <label for="synopsis">Synopsis</label>
-            <textarea name="synopsis" id="synopsis" ><?=$book[0]->book->getSynopsis() ?></textarea>
+            <textarea name="synopsis" id="synopsis" rows="6"><?=$book[0]->book->getSynopsis() ?></textarea>
         </div>
         <div>
             <input type="hidden" name="id_book" value="<?= $book[0]->book->getId_book()?>">
