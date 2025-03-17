@@ -2185,12 +2185,6 @@ input {
     z-index: 999;}
   }
 
-  width: 100%;
-  margin: 2rem 3rem;
-  font-family: "Lexend", sans-serif;
-  color: $primary-text-1100;
-}
-
 .page.turn img {
       width: 100%;
       height: 100%;
@@ -2866,6 +2860,13 @@ input {
 
 //DASHBOARD SUITE
 //DASHBOARD SUITE
+
+// gestion du stock
+
+// Class ajoutée par thomas, ne pas enlever svp
+.hidden {
+  display: none;
+}
 
 
 

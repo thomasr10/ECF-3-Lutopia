@@ -46,7 +46,9 @@ $router->map('GET|POST', '/register-child', 'ControllerChild#registerChild', 're
 //bibliotequaire
 $router->map('GET|POST', '/login-admin', 'ControllerUser#loginAdmin', 'loginAdmin');
 $router->map('GET|POST', '/dashboard', 'ControllerUser#dashboard', 'dashboard');
+// gestion du stock
 
+$router->map('GET|POST', '/dashboard-book/book-stock', 'ControllerBook#checkCopies', 'book-stock');
 
 
 //Créer un livre
@@ -77,7 +79,9 @@ $router->map('GET', '/informations', 'ControllerUser#infoPage', 'infoPage');
 //search-bar
 $router->map('POST', '/search-book', 'ControllerBook#searchBook', 'search-book');
 
-
+//search-bar gestion de stock
+$router->map('POST', '/search-copies', 'ControllerBook#searchCopies', 'search-copies');
+$router->map('GET', '/delete-book-copy/[i:id]', 'ControllerCopy#deleteCopy', 'delete-copy');
 
 
 $match = $router->match();
