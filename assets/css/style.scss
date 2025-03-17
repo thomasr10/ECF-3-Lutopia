@@ -750,11 +750,13 @@ figure {
 .modal {
   display: none;
   height: 400px;
-  max-width: 400px;
-  width: 100%;
+  max-width: 800px;
+  width: 800px;
   background-color: #fff;
   margin: 0 auto;
 }
+
+
 
 
 
@@ -2169,11 +2171,11 @@ select{
   text-align: center; /* Centrer le texte et les éléments */
 }
 
-label {
+.contenu>div>label {
   font-family: "Lexend", sans-serif;
 }
 
-input {
+.contenu>div>input {
   border-radius: 20px;
   width: 285px;
   height: 40px;
@@ -3574,3 +3576,136 @@ article h2{
   text-align: center;
   margin: 20px 0;
 }
+
+//Dashboard Modify Livres
+body{
+  height: 200vh;
+}
+#search-form{
+  margin: 40px 0;
+}
+.accueil-form {
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+  margin-left: 100px;
+}
+.book-datas{
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  height: 56px;
+}
+  button{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: $primary-text-200;
+    border-radius: 20px;
+    width: auto;
+    height: 40px;
+    padding: 0 15px;
+    justify-content: center;
+    font-family: "Lexend", sans-serif;
+    border: 1px solid #653F31; 
+  }
+  .book-datas>img{
+    display: inline-block;
+    width: 150px;
+    height: auto;
+    }
+  
+  #resultatSearchForm{
+    line-height: 2;
+    display: grid;
+    grid-template-columns: 40% 40%;
+    grid-template-rows: auto;
+    height: 100%;
+  }
+  #resultatSearchForm>img{
+  grid-column: 1;
+  grid-area: 1 / 1 / 7 / 2;
+  align-self: center;
+  margin: 0 auto;
+  @include desktop{ 
+    margin: 30px;
+  }
+  }
+  #resultatSearchForm>p{
+  grid-column: 2;
+  }
+  .titreBleuGras{
+    color: $primary-text-800;
+    font-weight: 550;
+    font-size: $titre-h3;
+  }
+  #modify-input{
+    grid-column: 2;
+    width: 200px;
+    height: 40px;
+  }
+#modal-modify-book{
+  width: 35rem;
+  height: auto;
+  position: absolute;
+  left:47%;
+  top: 260px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px solid $pastel-rose-300;
+  background-color: $stroke-gris-100;
+  @include desktop{
+    left: 54%;
+  }
+}
+#modal-modify-book>form{
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: auto;
+}
+#modal-modify-book form div{
+  display: contents;
+}
+
+#modal-modify-book>form>div>label{
+  grid-column: 1;
+  align-self: center;
+}
+#modal-modify-book>form>div>input{
+  grid-column: 2;
+  border-radius: 20px;
+  width: 285px;
+  height: 40px;
+  text-align: center;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653F31; 
+}
+
+#modal-modify-book form textarea{
+  grid-column: 2;
+  margin-left: 20px;
+  border-radius: 20px;
+  width: 300px;
+  height: auto;
+  font-family: "Lexend", sans-serif;
+  padding: 10px;
+}
+
+
+#modal-modify-book> .formModalMB{
+  width: 500px;
+}
+
+#textAearaMB>textarea{
+  margin-left: 20px;
+  border-radius: 20px;
+  width: 300px;
+  height: auto;
+  font-family: "Lexend", sans-serif;
+  padding: 10px;
+}
+#modal-modify-book>form>#close>img{
+  width: 25px;
+  height: auto;
+}
+
