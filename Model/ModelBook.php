@@ -300,14 +300,21 @@ class ModelBook extends Model {
 
     public function searchBook(string $data){
         $search = $data . '%';
-        $req = $this->getDb()->prepare("SELECT `id_book`, `title` FROM `book` WHERE `title` LIKE :search OR `isbn` LIKE :search");
+        $req = $this->getDb()->prepare("SELECT `book`.`id_book`, `book`.`title`, CONCAT(`author`.`first_name`, ' ', `author`.`last_name`) AS 'author', CONCAT(`illustrator`.`first_name`, ' ', `illustrator`.`last_name`) AS 'illustrator' FROM `book` 
+        INNER JOIN `book_author` ON `book`.`id_book` = `book_author`.`id_book`
+        INNER JOIN `author` ON `book_author`.`id_author` = `author`.`id_author`
+        INNER JOIN `book_illustrator` ON `book`.`id_book` = `book_illustrator`.`id_book`
+        INNER JOIN `illustrator` ON `book_illustrator`.`id_illustrator` = `illustrator`.`id_illustrator`
+        WHERE `book`.`title` LIKE :search
+        OR `book`.`isbn` LIKE :search
+        OR CONCAT(`author`.`first_name`, ' ', `author`.`last_name`) LIKE :search;");
         $req->bindParam('search', $search, PDO::PARAM_STR);
         $req->execute();
 
         $arrayObj= [];
 
         while($data = $req->fetch(PDO::FETCH_ASSOC)){
-            $arrayObj[] = new Book($data);
+            $arrayObj[] = new BookDTO(new Book($data), $data['author'], $data['illustrator']);
         }
 
         return $arrayObj;
