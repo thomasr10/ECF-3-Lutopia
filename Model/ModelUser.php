@@ -148,4 +148,111 @@ class ModelUser extends Model {
         $req->bindParam('end_date', $end_date, PDO::PARAM_STR);
         $req->execute();
     }
+
+    public function getBorrowByUser(int $id, int $filter){
+        if($filter == 0){
+            $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`id_user` = :id AND `borrow`.`status` = '0';"); //AND `borrow`.`status` = '0' A AJOUTER AVEC LA BDD <--
+        }
+        if($filter == 1){
+            $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`id_user` = :id AND `borrow`.`status` = '0' ORDER BY `borrow`.`end_date` DESC;"); //AND `borrow`.`status` = '0' A AJOUTER AVEC LA BDD <--
+        }
+        if($filter == 2){
+            $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`id_user` = :id AND `borrow`.`status` = '0' ORDER BY `borrow`.`start_date` DESC;"); //AND `borrow`.`status` = '0' A AJOUTER AVEC LA BDD <--
+        }
+        if($filter == 3){
+            $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`id_user` = :id AND `borrow`.`status` = '0' ORDER BY `book`.`title` ASC;"); //AND `borrow`.`status` = '0' A AJOUTER AVEC LA BDD <--
+        }
+        
+        $req->bindParam('id', $id, PDO::PARAM_INT);
+        $req->execute();
+
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Borrow($data);
+        }
+        return $arrayobj;
+    }
+    public function getBorrowByUserHistory(int $id, int $filter){
+        if($filter == 0){
+            $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`id_user` = :id AND `borrow`.`status` = '1';"); 
+        }
+        if($filter == 1){
+            $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`id_user` = :id AND `borrow`.`status` = '1' ORDER BY `borrow`.`end_date` DESC;"); 
+        }
+        if($filter == 2){
+            $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`id_user` = :id AND `borrow`.`status` = '1' ORDER BY `borrow`.`start_date` DESC;"); 
+        }
+        if($filter == 3){
+            $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`id_user` = :id AND `borrow`.`status` = '1' ORDER BY `book`.`title` ASC;");
+        }
+        $req->bindParam('id', $id, PDO::PARAM_INT);
+        $req->execute();
+
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Borrow($data);
+        }
+        return $arrayobj;
+    }
+
+    public function getReservationByUser(int $id, int $filter){
+        if($filter == 0){
+            $req = $this->getDb()->prepare("SELECT `reservation`.`id_reservation`, `reservation`.`reservation_date`, `reservation`.`id_child`, `reservation`.`id_book`, `book`.`title`, `child`.`name` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `reservation` ON `child`.`id_child` = `reservation`.`id_child` INNER JOIN `book` ON `reservation`.`id_book` = `book`.`id_book` WHERE `user`.`id_user` = :id;");
+        }
+        if($filter == 1){
+            $req = $this->getDb()->prepare("SELECT `reservation`.`id_reservation`, `reservation`.`reservation_date`, `reservation`.`id_child`, `reservation`.`id_book`, `book`.`title`, `child`.`name` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `reservation` ON `child`.`id_child` = `reservation`.`id_child` INNER JOIN `book` ON `reservation`.`id_book` = `book`.`id_book` WHERE `user`.`id_user` = :id;");
+        }
+        if($filter == 2){
+            $req = $this->getDb()->prepare("SELECT `reservation`.`id_reservation`, `reservation`.`reservation_date`, `reservation`.`id_child`, `reservation`.`id_book`, `book`.`title`, `child`.`name` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `reservation` ON `child`.`id_child` = `reservation`.`id_child` INNER JOIN `book` ON `reservation`.`id_book` = `book`.`id_book` WHERE `user`.`id_user` = :id ORDER BY `reservation`.`reservation_date` DESC;");
+        }
+        if($filter == 3){
+            $req = $this->getDb()->prepare("SELECT `reservation`.`id_reservation`, `reservation`.`reservation_date`, `reservation`.`id_child`, `reservation`.`id_book`, `book`.`title`, `child`.`name` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `reservation` ON `child`.`id_child` = `reservation`.`id_child` INNER JOIN `book` ON `reservation`.`id_book` = `book`.`id_book` WHERE `user`.`id_user` = :id; ORDER BY `book`.`title` ASC");
+        }
+        
+        $req->bindParam('id', $id, PDO::PARAM_INT);
+        $req->execute();
+
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new ReservationDTE(new Reservation($data), $data['name']);
+        }
+        return $arrayobj;
+    }
+
+    public function getInfoChildByUser(int $id){
+        $req = $this->getDb()->prepare("SELECT `id_child`, `id_user`, `name`, `birth_date` FROM `child` WHERE `id_user` = :id;");
+        $req->bindParam('id', $id, PDO::PARAM_INT);
+        $req->execute();
+
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Child($data);
+        }
+        return $arrayobj;
+    }
+
+
+
+    //parameter
+    public function updateInfo(int $id, string $firstname, string $lastname, string $email){
+        $req = $this->getDb()->prepare("UPDATE `user` SET `first_name`= :firstname ,`last_name`= :lastname,`email`= :email WHERE `id_user` = :id_user");
+        $req->bindParam('firstname', $firstname, PDO::PARAM_STR);
+        $req->bindParam('lastname', $lastname, PDO::PARAM_STR);
+        $req->bindParam('email', $email, PDO::PARAM_STR);
+        $req->bindParam('id_user', $id, PDO::PARAM_INT);
+        $req->execute();
+    }
+
+    public function getPasswordUser(int $id){
+        $req = $this->getDb()->prepare("SELECT `id_user`, `first_name`, `last_name`, `email`, `password`, `role`, `status`, `token`, `token_limit`, `signin_date` FROM `user` WHERE `id_user` = :id");
+        $req->bindParam('id', $id, PDO::PARAM_INT);
+        $req->execute();
+
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+        return ($data) ? new User($data) : null;
+    }
 }
