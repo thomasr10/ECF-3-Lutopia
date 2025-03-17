@@ -21,7 +21,7 @@
         <img src="<?= UPLOADS . '/autres/Logo-flat.svg'?>" alt="Logo Lutopia">
       </figure>
 
-      <nav class ="nav">       
+      <!-- <nav class ="nav">        -->
         <ul class = "navbar">
           <li><a href="<?= $router->generate('home')?>">Accueil</a></li>
           <li><a href="<?= $router->generate('infoPage')?>">Informations</a></li>
@@ -39,7 +39,7 @@
         }
         ?>
         </ul>
-      </nav> 
+      <!-- </nav>  -->
       
       
       

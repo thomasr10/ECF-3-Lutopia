@@ -199,13 +199,13 @@ class ControllerUser {
                 $avaibility = [];
                 foreach($reservation as $key=>$value){
                    array_push($avaibility, $model->getAvailability($reservation[$key]->getId_book()));
-                    var_dump($avaibility[$key][0]->getEnd_date()->format('Y-m-d'));
+
                 }
                 
-                var_dump($avaibility);
+                
                 $date = new DateTime();
                 $date = $date->format('Y-m-d');
-                var_dump($date);
+                
             }
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel'])){
                 $model = new ModelUser();
