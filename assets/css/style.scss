@@ -3421,5 +3421,43 @@ input {
   display: flex;
   justify-content: center; 
   place-items: center;
- height: 100vh;
+  height: 100vh;
+}
+
+//Informations
+article{
+  font-family: "Lexend", sans-serif;
+  margin: 0 100px;
+  line-height: 1.5;
+}
+  .titre{
+  font-size: $titre-h3;
+  color: $primary-text-800;
+  text-align: center;
+  margin: 50px 0;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+  .semi-bold{
+    font-weight: 550;
+    font-style: italic;
+  }
+  .soulign{
+    text-decoration: underline;
+  }
+  .adress{
+    text-align: center;
+  }
+  .rejoindre{
+    margin: 50px 0;
+    text-align: center;
+    font-size: $titre-h3;
+  }
+article p{
+    font-size: $titre-h4;
+}
+article h2{
+  font-size: $titre-h3;
+  color: $primary-text-800;
+  text-align: center;
+  margin: 20px 0;
 }
