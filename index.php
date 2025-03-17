@@ -79,9 +79,10 @@ $router->map('GET', '/informations', 'ControllerUser#infoPage', 'infoPage');
 //search-bar
 $router->map('POST', '/search-book', 'ControllerBook#searchBook', 'search-book');
 
-//search-bar gestion de stock
+//gestion de stock
 $router->map('POST', '/search-copies', 'ControllerBook#searchCopies', 'search-copies');
 $router->map('GET', '/delete-book-copy/[i:id]', 'ControllerCopy#deleteCopy', 'delete-copy');
+$router->map('POST', '/update-state', 'ControllerCopy#updateState', 'update-state');
 
 
 $match = $router->match();
