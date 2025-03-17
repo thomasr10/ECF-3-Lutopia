@@ -65,20 +65,28 @@ modifyBtnArray.forEach(btn => {
         this.style.display = 'none';
         validateBtn.classList.remove('hidden');
 
+        validateBtn.addEventListener('click', function(){
+            window.location.reload();
+        })
 
+        // suppression de la copie (appelle la fonction deleteCopy())
         deleteBtn.addEventListener('click', function(){
             confirmDeleteModal.style.display = 'block';
             const confirmDeleteBtn = document.getElementById('confirm-delete');
+            
+            confirmDeleteBtn.addEventListener('click', () => deleteCopy(idCopy));
+        })
 
-            confirmDeleteBtn.addEventListener('click', function(){
-                fetch(`/delete-book-copy/${idCopy}`)
-                .then(response => response.json())
-                .then(data => {
-                    if(data){
-                        //recharger la page après la suppression
-                        window.location.reload();
-                    }
-                })
+
+        // update état 
+
+        const stateInputArray = document.querySelectorAll('[name="state"]');
+        
+
+        stateInputArray.forEach(btn => {
+            btn.addEventListener('change', function(){
+                const state = btn.value;
+                validateBtn.addEventListener('click', () => updateCopy(idCopy, state))
             })
         })
 
@@ -86,6 +94,29 @@ modifyBtnArray.forEach(btn => {
 })
 
 
-// CHANGER L'ETAT DES EXEMPLAIRES
+function deleteCopy(id){
+    fetch(`/delete-book-copy/${id}`)
+    .then(response => response.json())
+    .then(data => {
+        if(data){
+        //recharger la page après la suppression
+            window.location.reload();
+        }
+    })
+}
 
-const stateInputArray = document.querySelectorAll('[name="state"]');
+
+function updateCopy(id, state){
+    fetch('/update-state', {
+        method: 'POST',
+        body: JSON.stringify({id_copy: id, state: state})
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data){
+        //recharger la page après la suppression
+            window.location.reload();
+        }
+    })
+
+}
