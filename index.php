@@ -83,7 +83,7 @@ $router->map('POST', '/search-book', 'ControllerBook#searchBook', 'search-book')
 $router->map('POST', '/search-copies', 'ControllerBook#searchCopies', 'search-copies');
 $router->map('GET', '/delete-book-copy/[i:id]', 'ControllerCopy#deleteCopy', 'delete-copy');
 $router->map('POST', '/update-state', 'ControllerCopy#updateState', 'update-state');
-
+$router->map('POST', '/add-copies', 'ControllerCopy#addCopies', 'add-copies');
 
 $match = $router->match();
 

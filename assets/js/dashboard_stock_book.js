@@ -49,7 +49,7 @@ searchInput.addEventListener('input', function(){
 
 
 const modifyBtnArray = document.querySelectorAll('.modify-btn');
-const confirmDeleteModal = document.querySelector('.modal'); 
+const confirmDeleteModal = document.getElementById('modal-delete-copy'); 
 
 modifyBtnArray.forEach(btn => {
     btn.addEventListener('click', function(){
@@ -119,4 +119,32 @@ function updateCopy(id, state){
         }
     })
 
+}
+
+
+// AJOUTER DES EXEMPLAIRES
+
+const addCopiesBtn = document.getElementById('add-copies-btn');
+const addCopiesModal = document.getElementById('modal-add-copies');
+const submitNewCopies = document.getElementById('add-new-copies');
+
+addCopiesBtn.addEventListener('click', function(){
+    addCopiesModal.style.display = 'block';
+    const idBook = submitNewCopies.value;
+    submitNewCopies.addEventListener('click', () => addNewCopies(idBook));
+})
+
+function addNewCopies(id){
+    const value = document.getElementById('add-copies').value;
+    
+    fetch('/add-copies', {
+        method: 'POST',
+        body: JSON.stringify({copy_number: value, id_book: id})
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data){
+            window.location.reload();
+        }
+    })
 }
