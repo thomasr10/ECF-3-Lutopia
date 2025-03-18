@@ -51,14 +51,16 @@ class ControllerUser {
                                 $_SESSION['last-name'] = $_POST['name'];
                                 $_SESSION['full-name'] = $_POST['first-name'] . ' ' . $_POST['name'];  
                                 
-                                if($years !== null){
-                                    $modelChild->newChild($id, $arrayChild);                   
-                                    header('Location: /confirmation/' . $id);
-                                    exit();
-
-                                } else {
-                                   header('Location: /register-child');
+                                foreach($years as $year){
+                                    if($year !== null){
+                                        $modelChild->newChild($id, $arrayChild);                    
+                                    } else {
+                                       header('Location: /register-child');
+                                       exit();
+                                    }
                                 }
+                                header('Location: /confirmation/' . $id);
+                                exit();
                             } else {
                                 $message = "Problème lors de l'inscription";
                                 require_once('./View/register.php');
@@ -331,6 +333,108 @@ class ControllerUser {
             require_once('./View/parameter.php');
         } else {
             header('Location: /');
+        }
+    }
+
+
+    public function registerUserFromDashboard(){
+        global $router;
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(!empty($_POST['first-name']) && !empty($_POST['last-name']) && !empty($_POST['email']) && !empty($_POST['child-name']) && !empty($_POST['child-birth'])){
+                $model = new ModelUser();
+                $user = $model->checkUser($_POST['email']);
+
+                if($user){
+                    $message = "Adresse mail déjà existante";
+                    require_once('./View/register.php');
+
+                } else {
+                    
+                    if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                        $id = $model->addUserFromDashboard($_POST['first-name'], $_POST['last-name'], $_POST['email']);
+
+                        if($id){
+                            //generate card with id , first name and name
+                            $card = strtoupper(substr($_POST['first-name'], 0, 2)) . $id . strtoupper(substr($_POST['last-name'], 0, 2));
+                            $model->updateUser($card, $id);
+                            $arrayChild = [];
+
+                            for($i = 0; $i < count($_POST['child-name']); $i++){
+                                $arrayChild[] = [
+                                    "name" => $_POST['child-name'][$i],
+                                    "birth" => $_POST['child-birth'][$i]
+                                ];
+                            }
+                            var_dump($arrayChild);
+                            //check child age  
+                            $modelChild = new ModelChild();
+                            $diff = 10;
+                            $years = $modelChild->yearDiff($arrayChild, $diff);
+                            // si age validé -> insert child
+
+                            $_SESSION['id_user'] = $id;
+                            foreach($years as $year){
+                                if($year !== null){
+                                    $modelChild->newChild($id, $arrayChild);                    
+                                } else {
+                                   header('Location: /register-child');
+                                   exit();
+                                }
+                            }
+
+                            header('Location: /dashboard-validate-user/' . $id);
+                            exit();
+                            
+                        } else {
+                            $message = 'Problème survenu lors de l\'inscription';
+                            require_once('./View/dashboard_create_user.php');   
+                        }
+
+                    } else {
+                        $message = 'Adresse mail invalide';
+                        require_once('./View/dashboard_create_user.php');            
+                    }
+
+               
+                }
+
+                
+                
+            } else {
+                $message = 'Veuillez remplir tous les champs.';
+                require_once('./View/dashboard_create_user.php');
+            }
+        } else {
+            require_once('./View/dashboard_create_user.php');
+        }
+    }
+
+
+    public function createPassword(int $id){
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(!empty($_POST['password']) && !empty($_POST['confpassword'])){
+                
+                $pattern = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[?.!+*-_&*]).{8,}$/";
+
+                if($_POST['password'] === $_POST['confpassword'] && preg_match($pattern, $_POST['password'])){
+                    
+                    $hashed_pass = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+                    $model = new ModelUser();
+                    $model->createPassword($hashed_pass, $id);
+                    
+                    header('Location: /login');
+                    exit();
+
+                } else {
+                    $message = 'Mot de passe différents ou insuffisants';
+                    require('./View/create_password.php');
+                }
+            }
+
+        } else {
+
+            require('./View/create_password.php');
         }
     }
 }

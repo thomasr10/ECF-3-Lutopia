@@ -262,4 +262,35 @@ class ModelUser extends Model {
         $req->bindParam('id', $id, PDO::PARAM_INT);
         $req->execute();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function addUserFromDashboard(string $first_name, string $last_name, string $email){
+        $req = $this->getDb()->prepare("INSERT INTO `user`(`first_name`, `last_name`, `email`, `role`, `status`, `token`, `token_limit`, `signin_date`, `card`) VALUES (:first_name, :last_name, :email, 0, 0, '', '', NOW(), '')");
+        $req->bindParam('first_name', $first_name, PDO::PARAM_STR);
+        $req->bindParam('last_name', $last_name, PDO::PARAM_STR);
+        $req->bindParam('email', $email, PDO::PARAM_STR);
+        $req->execute();
+
+        $id = $this->getDb()->lastInsertId();
+        return $id;
+    }
+
+
+    public function createPassword(string $password, int $id){
+        $req = $this->getDb()->prepare("UPDATE `user` SET `password`=:pass, `status`=1 WHERE `id_user` = :id");
+        $req->bindParam('pass', $password, PDO::PARAM_STR);
+        $req->bindParam('id', $id, PDO::PARAM_INT);
+        $req->execute();
+    }
 }
