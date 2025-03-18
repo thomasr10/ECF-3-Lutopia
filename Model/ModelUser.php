@@ -293,4 +293,13 @@ class ModelUser extends Model {
         $req->bindParam('id', $id, PDO::PARAM_INT);
         $req->execute();
     }
+
+    public function getUserByCard(string $search){
+        $req = $this->getDb()->prepare("SELECT `id_user`, `first_name`, `last_name`, `email`, `password`, `role`, `status`, `token`, `token_limit`, `signin_date`, `card` FROM `user` WHERE `card` = :search");
+        $req->bindParam('search', $search, PDO::PARAM_STR);
+        $req->execute();
+
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+        return $user = ($data) ?  new User($data) : null;
+    }
 }
