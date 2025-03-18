@@ -255,4 +255,11 @@ class ModelUser extends Model {
         $data = $req->fetch(PDO::FETCH_ASSOC);
         return ($data) ? new User($data) : null;
     }
+
+    public function updatePassword(string $pass, int $id){
+        $req = $this->getDb()->prepare("UPDATE `user` SET `password`=:pass WHERE `id_user` = :id;");
+        $req->bindParam('pass', $pass, PDO::PARAM_STR);
+        $req->bindParam('id', $id, PDO::PARAM_INT);
+        $req->execute();
+    }
 }

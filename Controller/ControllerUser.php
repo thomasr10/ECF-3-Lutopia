@@ -311,13 +311,18 @@ class ControllerUser {
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['changepass'])){
                 if(!empty($_POST['latepass']) && !empty($_POST['newpass']) && !empty($_POST['newpass2'])){
                     $passverify = $model->getPasswordUser($_SESSION['id']);
-                    
+                    if($passverify && password_verify($_POST['latepass'], $passverify->getPassword())){
                         $pattern = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[?.!+*-_&*]).{8,}$/";
                         if($_POST['newpass'] === $_POST['newpass2'] && preg_match($pattern, $_POST['newpass'])){
-                            
+                            $hash = password_hash($_POST['newpass'], PASSWORD_BCRYPT);
+                            $updatePass = $model->updatePassword($hash, $_SESSION['id']);
+                            $message = "Mise à jour avec succès!";
                         } else {
-                            $message = "Mot de pass incorrect";  
+                            $message = "Mot de passe incorrect";  
                         }
+                    } else {
+                        $message = "Mot de passe incorrect";
+                    }
                 } else {
                     $message = "Des champs sont vides"; 
                 }
