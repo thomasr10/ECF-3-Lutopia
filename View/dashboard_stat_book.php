@@ -7,6 +7,16 @@ ob_start();
 
 <section class="dash-statbook-globalcontainer">
     <h2>Statistiques livres</h2>
+    <div class="dash-form-container">
+    <form method="GET" class="dash-statbook-search">
+          <input type="text" name="" id="" placeholder="Rechercher..." />
+
+          <button type="submit" class="">
+              <img src="<?= UPLOADS . 'autres/icon-loupe.svg'?>" alt="icone loupe">
+          </button>
+        </form> 
+    </div>
+     
     <Article class="dash-statbook-container">
         <table class="dash-statbook-table">
             <thead class="dash-statbook-header">
