@@ -302,4 +302,27 @@ class ModelUser extends Model {
         $data = $req->fetch(PDO::FETCH_ASSOC);
         return $user = ($data) ?  new User($data) : null;
     }
+
+    public function updateUserInfos(array $newInfos, int $id_user){
+        $query = "UPDATE `user` SET ";
+        // requete à changer si y a le temps => mettre des "?" pour éviter les variables
+
+        $lastKey = array_key_last($newInfos);
+
+        // boucler pour concaténer la clé/ valeur à la requête
+        foreach($newInfos as $key => $value){
+            
+            if($key !== $lastKey){
+                $query .= '`' . $key . '`' . ' = ' . '"' . $value .'"' . ',';
+            } else {
+                $query .= '`' . $key . '`' . ' = ' . '"' . $value .'"';
+            }
+        }
+
+        $query .= (' WHERE `id_user` = :id_user');
+        var_dump($query);
+        $req = $this->getDb()->prepare($query);
+        $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
+        $req->execute();
+    }
 }
