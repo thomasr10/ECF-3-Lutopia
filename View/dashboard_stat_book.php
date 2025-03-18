@@ -1,6 +1,6 @@
 <?php
 $title = "Statistiques livre | Lutopia";
-$description = "Page dde consultation des statistiques liées aux livres sur le dashboard admin de Lutopia";
+$description = "Page de consultation des statistiques liées aux livres sur le dashboard admin de Lutopia";
 ob_start();
 
 ?>

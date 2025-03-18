@@ -18,18 +18,23 @@ class ModelChild extends Model {
 
 // CHECK IF AGE IS VALID 
     public function yearDiff(array $arrayChild, int $diff){
-        $years;
+        $years = [];
         foreach($arrayChild as $child){
+            // année de naissance de l'enfant
             $year1 = date('Y', strtotime($child['birth']));
+            // année en cours
             $year2 = date('Y');
 
+            // si un user a rentré une date dans le futur
             if($year1 > $year2){
                 return false;
             } else {
-                $years = (abs($year1 - $year2) < $diff) ? abs($year1 - $year2) : null;
-                return $years;                
+                // sinon, check si l'enfant a -10ans
+                $years[] = (abs($year1 - $year2) < $diff) ? abs($year1 - $year2) : null;
+                                
             }
         }
+        return $years;
     }
 
     public function newChild(int $id, array $arrayChild){

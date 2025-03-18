@@ -17,7 +17,7 @@
                 <h3 class = "dashboard-title">Gestion des utilisateurs</h3>
                 <ul class = "dashboard-list">
                     <li class = "dashboard-link"><a href="<?= $router->generate('dashboard') ?>">Statistiques utilisateur</a></li>
-                    <li class = "dashboard-link"><a href="">Ajouter un utilistaeur</a></li>
+                    <li class = "dashboard-link"><a href="<?=$router->generate('register-from-dashboard')?>">Ajouter un utilistaeur</a></li>
                     <li class = "dashboard-link"><a href="">Modifier un utilisateur</a></li>
                 </ul>
             </div>
