@@ -4628,6 +4628,7 @@ grid-template-rows: auto;
   text-align: center;
   font-family: "Lexend", sans-serif;
   border: 1px solid #653F31; 
+  margin-top: 10px;
 }
 
 #modal-modify-book form textarea{
@@ -4860,6 +4861,10 @@ grid-template-rows: auto;
   height: auto;
   left: 50%;
   transform: translateX(50%);
+  @include desktop{
+    left:0;
+    transform:none
+  }
   
 }
 #createBook>form{
@@ -4954,3 +4959,505 @@ grid-template-rows: auto;
   background-color: $pastel-vert-200;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//DASHBOARD STOCK BOOK
+#titreBookStock{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#titreBookStock>h3{
+  font-weight: 550;
+}
+#dashboardStock{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#modal-add-copies{
+  display:block;
+  text-align: center;
+}
+
+#modal-add-copies>h2{
+  font-size: $titre-h3;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  color: $primary-text-800;
+  margin-bottom: 20px;
+}
+#modal-add-copies>p{
+  margin-bottom: 20px;
+}
+#modal-add-copies>form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#modal-add-copies>form>label{
+  margin-bottom: 20px;
+}
+#modal-add-copies>#cancel{
+  margin: 20px;
+  cursor: pointer;
+}
+#modal-delete-copy{
+  display:block;
+  text-align: center;
+  position: relative;
+}
+#modal-delete-copy>#flexModal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#modal-delete-copy>#flexModal>p{
+  margin-top: 40px;
+}
+#modal-delete-copy>#flexModal>button{
+  margin-top: 20px;
+}
+#modal-delete-copy>#cancel2{
+  margin: 20px;
+  cursor: pointer;
+}
