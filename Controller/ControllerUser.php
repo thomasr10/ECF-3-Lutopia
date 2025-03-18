@@ -191,11 +191,18 @@ class ControllerUser {
     public function dashboard(){
         if(isset($_SESSION['role'])){
             global $router;
-
+            
             if(isset($_GET['searchAdminUser'])){
                 $model = new ModelUser();
-                $search = $model->getBorrowByCard($_GET['searchAdminUser']);
-                $reservation = $model->getReservationByCard($_GET['searchAdminUser']);
+                $child = $model->getChildByCard($_GET['searchAdminUser']);
+                if(!isset($_POST['id-child'])){
+                    $_POST['id-child'] = (string)$child[0]->getId_child();
+                }
+
+                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
+                
+                $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']);
+
                 $avaibility = [];
                 foreach($reservation as $key=>$value){
                    array_push($avaibility, $model->getAvailability($reservation[$key]->getId_book()));
@@ -210,28 +217,34 @@ class ControllerUser {
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel'])){
                 $model = new ModelUser();
                 $search2 = $model->deleteReservation($_POST['id_reservation']);
-                $reservation = $model->getReservationByCard($_GET['searchAdminUser']);
+                $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']);
                 $avaibility = [];
                 foreach($reservation as $key=>$value){
                    array_push($avaibility, $model->getAvailability($reservation[$key]->getId_book()));
                     var_dump($avaibility[$key][0]->getEnd_date()->format('Y-m-d'));
                 }
-                $search = $model->getBorrowByCard($_GET['searchAdminUser']);
+                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
             }
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prolong'])){
                 $model = new ModelUser();
                 $search2 = $model->updateBorrow($_POST['id_borrow'], $_POST['date_back']);
-                $search = $model->getBorrowByCard($_GET['searchAdminUser']);
+                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
             }
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['suppr'])){
                 $model = new ModelUser();
                 $search2 = $model->deleteBorrow($_POST['id_borrow'], $_POST['date_back']);
-                $search = $model->getBorrowByCard($_GET['searchAdminUser']);
+                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
             }
             require_once('./View/dashboard.php');
         } else {
             header('Location: /');
         }
+    }
+
+    public function dashboardChild($child){
+        global $router;
+        header('Content-Type: application/json');
+        json_encode($child);
     }
 
     public function logout(){

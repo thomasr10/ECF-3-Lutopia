@@ -50,6 +50,7 @@ $router->map('GET|POST', '/profil/parameter', 'ControllerUser#profilParameter', 
 //bibliotequaire
 $router->map('GET|POST', '/login-admin', 'ControllerUser#loginAdmin', 'loginAdmin');
 $router->map('GET|POST', '/dashboard', 'ControllerUser#dashboard', 'dashboard');
+$router->map('GET|POST', '/dashboard/[i:child]', 'ControllerUser#dashboardChild', 'dashboardChild');
 // gestion du stock
 
 $router->map('GET|POST', '/dashboard-book/book-stock', 'ControllerBook#checkCopies', 'book-stock');
