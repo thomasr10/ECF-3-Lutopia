@@ -39,7 +39,7 @@ ob_start();
     </form>
 </div>
 
-<div>
+<div id="createBook">
     <h1>Ajouter un livre</h1>
     <form action="/dashboard-book" method="POST" enctype="multipart/form-data">
         <div>
@@ -72,9 +72,9 @@ ob_start();
             <label for="edition_date">Date d'édition</label>
             <input type="date" name="edition_date"  id="edition_date" placeholder="Synopsis" required>
         </div>
-        <div>
+        <div id="synopsis">
             <label for="synopsis">Synopsis</label>
-            <textarea name="synopsis" id="synopsis" placeholder="Synopsis"></textarea>
+            <textarea name="synopsis" id="synopsis" placeholder="Synopsis" rows="10"></textarea>
         </div>
         <div id="category-section">
             <!-- DIV A FLEX POUR AVOIR LES SELECTS SUR LA MEME LIGNE -->
@@ -111,7 +111,7 @@ ob_start();
                 ?>
             </select>
         </div>
-        <div>
+        <div id="trancheAge">
             <label for="age">Tranche d'âge</label>
             <select name="age" id="age">
                 <option value="">Tranche d'âge</option>
@@ -124,7 +124,7 @@ ob_start();
                 ?>
             </select>
         </div>
-        <div>
+        <div id="typeLivre">
             <label for="type">Type de livre</label>
             <select name="type" id="type">
                 <option value="">Type de livre</option>
@@ -141,11 +141,13 @@ ob_start();
             <label for="copy">Nombre d'exemplaires</label>
             <input type="number" name="copy" id="copy" placeholder="Nombre d'exemplaires" step=1>
         </div>
-        <div>
+        <div id="dlPicture">
             <label for="picture">Image du livre</label>
             <input type="file" accept="image/webp, image/png, image/jpeg, image/jpg" name="picture"  id="picture" placeholder="Synopsis" required>
+            <p>Taille minimale d’image: 300*300 pixels<br>
+            Formats acceptés : jpeg, bmp, webp</p>
         </div>
-        <div>
+        <div id="submit">
             <input type="submit" value="Ajouter le livre">
         </div>
     </form>
