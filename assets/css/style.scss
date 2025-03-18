@@ -3485,11 +3485,14 @@ body{
   gap: 10px; 
   margin-left: 100px;
 }
-.book-datas{
-  display: flex;
-  flex-direction: column;
-  width: 360px;
-  height: 56px;
+#search-form>form>#book-datas>input{
+  font-family: "Lexend", sans-serif;
+  border-radius: 20px;
+  width: 285px;
+  height: 40px;
+  text-align: center;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653F31; 
 }
   button{
     display: flex;
@@ -3503,6 +3506,7 @@ body{
     justify-content: center;
     font-family: "Lexend", sans-serif;
     border: 1px solid #653F31; 
+    cursor: pointer;
   }
   .book-datas>img{
     display: inline-block;
@@ -3538,6 +3542,7 @@ body{
     grid-column: 2;
     width: 200px;
     height: 40px;
+    cursor: pointer;
   }
 #modal-modify-book{
   width: 35rem;
@@ -3602,5 +3607,6 @@ grid-template-rows: auto;
 #modal-modify-book>form>#close>img{
   width: 25px;
   height: auto;
+  cursor: pointer;
 }
 

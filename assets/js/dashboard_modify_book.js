@@ -52,6 +52,15 @@ searchInput.addEventListener('input', function(){
 const modalBook = document.getElementById('modal-modify-book');
 const modifyInput = document.getElementById('modify-input');
 
+
 modifyInput.addEventListener('click', function(){
     modalBook.style.display = 'block';
+})
+
+//Close Button
+
+const cancel = document.getElementById('cancel');
+
+cancel.addEventListener('click', function(){
+    modalBook.style.display = 'none';
 })

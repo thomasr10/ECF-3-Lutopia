@@ -35,7 +35,7 @@ if(isset($_GET['id_book'])){
 <div id="modal-modify-book" class="modal">
 <!-- Modification livre -->
     <form action="/dashboard-book/modify-book" method="POST" class="formModalMB">
-        <div id="close"><img src="<?= UPLOADS ?>autres/cancel.webp" alt="croix"></div>
+        <div id="cancel"><img src="<?= UPLOADS ?>autres/cancel.webp" alt="croix"></div>
         <div>
             <label for="isbn">Numéro ISBN</label>
             <input type="number" name="isbn"  id="isbn" value="<?=$book[0]->book->getIsbn() ?>" required>
