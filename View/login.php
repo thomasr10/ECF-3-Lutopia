@@ -8,7 +8,7 @@ ob_start();
 <div>
    <?= (isset($message)) ? $message : '' ?> 
 </div>
-<div id="grid">
+<div id="gridLogin">
 <form action="/login" method="POST" id="colonne1">
     <div class="contenu">
     <div>

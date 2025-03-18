@@ -1007,31 +1007,37 @@ select {
 }
 
 //CONNECTION
-#grid {
+#gridLogin {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   height: 100vh;
 }
 
-#colonne1 {
+#gridLogin>#colonne1 {
   grid-column: 1;
   background-color: #fff;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center; 
 }
 
-.contenu {
+#gridLogin>#colonne1>.contenu {
   text-align: center; /* Centrer le texte et les éléments */
 }
-
-label {
+.contenu > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+#gridLogin>#colonne1>.contenu>label {
   font-family: "Lexend", sans-serif;
+  margin-bottom: 5px;
 }
 
 
-input {
+#gridLogin>#colonne1>.contenu>input {
   border-radius: 20px;
   width: 285px;
   height: 40px;
