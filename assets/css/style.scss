@@ -4653,3 +4653,89 @@ grid-template-rows: auto;
   height: auto;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// DEBUT-DASHBOARD STAT BOOK-------------------------------------------------------
+
+.dash-statbook-globalcontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  
+  
+  h2 {
+    padding-top: 2rem;
+    font-size: $titre-h2;
+    text-align: center;
+  }
+}
+.dash-statbook-container {
+  width: 90%;
+  padding-top: 5rem;
+  margin: 0 auto;
+  display: flex;
+  // justify-content: center;
+
+}
+.dash-statbook-table {
+  border-collapse: collapse;
+  width: 100%;
+
+
+}
+.table, th, td {
+  border: 2px solid;
+}
+.dash-statbook-header {
+
+}
+.dash-statbook-body {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FIN-DASHBOARD STAT BOOK---------------------------------------------------------
