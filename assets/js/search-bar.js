@@ -20,7 +20,7 @@ searchBar.addEventListener('input', function(){
                 linkBook.setAttribute('href', '/book/' + book.id_book);
                 listBook.append(linkBook);
 
-                linkBook.textContent = book.title;
+                linkBook.textContent = book.title + ', par ' + book.author ;
                 list.append(listBook);
                 responseDiv.append(list);
                 searchContainer.append(responseDiv);

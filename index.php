@@ -43,6 +43,10 @@ $router->map('GET|POST', '/login', 'ControllerUser#login', 'login');
 $router->map('GET', '/logout', 'ControllerUser#logout', 'logout');
 $router->map('GET|POST', '/register-child', 'ControllerChild#registerChild', 'register-child');
 
+//utilisateur
+$router->map('GET|POST', '/profil', 'ControllerUser#showProfil', 'showProfil');
+$router->map('GET|POST', '/profil/parameter', 'ControllerUser#profilParameter', 'profilParameter');
+
 //bibliotequaire
 $router->map('GET|POST', '/login-admin', 'ControllerUser#loginAdmin', 'loginAdmin');
 $router->map('GET|POST', '/dashboard', 'ControllerUser#dashboard', 'dashboard');
@@ -79,10 +83,16 @@ $router->map('GET', '/informations', 'ControllerUser#infoPage', 'infoPage');
 //search-bar
 $router->map('POST', '/search-book', 'ControllerBook#searchBook', 'search-book');
 
-//search-bar gestion de stock
+//gestion de stock
 $router->map('POST', '/search-copies', 'ControllerBook#searchCopies', 'search-copies');
 $router->map('GET', '/delete-book-copy/[i:id]', 'ControllerCopy#deleteCopy', 'delete-copy');
+$router->map('POST', '/update-state', 'ControllerCopy#updateState', 'update-state');
+$router->map('POST', '/add-copies', 'ControllerCopy#addCopies', 'add-copies');
 
+
+// Statistiques livres
+
+$router->map('GET', '/stat-books','ControllerBook#getStatsBook', 'get-stats');
 
 $match = $router->match();
 

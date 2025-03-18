@@ -7,7 +7,7 @@
             <div>
                <h3 class = "dashboard-title">Gestion des livres</h3>
                <ul class = "dashboard-list">
-                <li class = "dashboard-link"><a href="">Statistiques livre</a></li>
+                <li class = "dashboard-link"><a href="<?= $router->generate('get-stats') ?>">Statistiques livre</a></li>
                 <li class = "dashboard-link"><a href="<?= $router->generate('create-book') ?>">Ajouter un livre</a></li>
                 <li class = "dashboard-link"><a href="<?= $router->generate('modify-book') ?>">Modifier un livre</a></li>
                 <li class = "dashboard-link"><a href="<?= $router->generate('book-stock') ?>">Gestion du stock</a></li>

@@ -22,7 +22,7 @@ searchInput.addEventListener('input', function(){
 
             data.forEach(book => {
                 const listBook = document.createElement('li');
-                listBook.textContent = book.title;
+                listBook.textContent = book.title + ', par ' + book.author;
                 listBook.setAttribute('id', book.id_book);
                 list.append(listBook);
 
@@ -49,7 +49,7 @@ searchInput.addEventListener('input', function(){
 
 
 const modifyBtnArray = document.querySelectorAll('.modify-btn');
-const confirmDeleteModal = document.querySelector('.modal'); 
+const confirmDeleteModal = document.getElementById('modal-delete-copy'); 
 
 modifyBtnArray.forEach(btn => {
     btn.addEventListener('click', function(){
@@ -65,20 +65,28 @@ modifyBtnArray.forEach(btn => {
         this.style.display = 'none';
         validateBtn.classList.remove('hidden');
 
+        validateBtn.addEventListener('click', function(){
+            window.location.reload();
+        })
 
+        // suppression de la copie (appelle la fonction deleteCopy())
         deleteBtn.addEventListener('click', function(){
             confirmDeleteModal.style.display = 'block';
             const confirmDeleteBtn = document.getElementById('confirm-delete');
+            
+            confirmDeleteBtn.addEventListener('click', () => deleteCopy(idCopy));
+        })
 
-            confirmDeleteBtn.addEventListener('click', function(){
-                fetch(`/delete-book-copy/${idCopy}`)
-                .then(response => response.json())
-                .then(data => {
-                    if(data){
-                        //recharger la page après la suppression
-                        window.location.reload();
-                    }
-                })
+
+        // update état 
+
+        const stateInputArray = document.querySelectorAll('[name="state"]');
+        
+
+        stateInputArray.forEach(btn => {
+            btn.addEventListener('change', function(){
+                const state = btn.value;
+                validateBtn.addEventListener('click', () => updateCopy(idCopy, state))
             })
         })
 
@@ -86,6 +94,57 @@ modifyBtnArray.forEach(btn => {
 })
 
 
-// CHANGER L'ETAT DES EXEMPLAIRES
+function deleteCopy(id){
+    fetch(`/delete-book-copy/${id}`)
+    .then(response => response.json())
+    .then(data => {
+        if(data){
+        //recharger la page après la suppression
+            window.location.reload();
+        }
+    })
+}
 
-const stateInputArray = document.querySelectorAll('[name="state"]');
+
+function updateCopy(id, state){
+    fetch('/update-state', {
+        method: 'POST',
+        body: JSON.stringify({id_copy: id, state: state})
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data){
+        //recharger la page après la suppression
+            window.location.reload();
+        }
+    })
+
+}
+
+
+// AJOUTER DES EXEMPLAIRES
+
+const addCopiesBtn = document.getElementById('add-copies-btn');
+const addCopiesModal = document.getElementById('modal-add-copies');
+const submitNewCopies = document.getElementById('add-new-copies');
+
+addCopiesBtn.addEventListener('click', function(){
+    addCopiesModal.style.display = 'block';
+    const idBook = submitNewCopies.value;
+    submitNewCopies.addEventListener('click', () => addNewCopies(idBook));
+})
+
+function addNewCopies(id){
+    const value = document.getElementById('add-copies').value;
+    
+    fetch('/add-copies', {
+        method: 'POST',
+        body: JSON.stringify({copy_number: value, id_book: id})
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data){
+            window.location.reload();
+        }
+    })
+}

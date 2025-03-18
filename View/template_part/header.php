@@ -28,7 +28,7 @@
         <?php
         if(isset($_SESSION['id'])){
         ?>
-          <li><a href="#">Mon profil</a></li>
+          <li><a href="<?= $router->generate('showProfil')?>">Mon profil</a></li>
           <li><a href="<?=$router->generate('logout') ?>">Se déconnecter</a></li>
         <?php
         } else {

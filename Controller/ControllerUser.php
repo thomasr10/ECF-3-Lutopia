@@ -250,4 +250,82 @@ class ControllerUser {
         global $router;
         require_once('./View/informations.php');
     }
+
+    public function showProfil(){
+        global $router;
+        $model = new ModelUser();
+        if(isset($_SESSION['id'])){
+            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel'])){
+                $delete = $model->deleteReservation($_POST['id_reservation']);
+            }
+            if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['tri']) && $_GET['tri'] != 0){
+                if($_GET['tri'] == 1){
+                    $info = $model->getInfoChildByUser($_SESSION['id'], $_GET['tri']);
+                    $borrow = $model->getBorrowByUser($_SESSION['id'], $_GET['tri']);
+                    $borrowHistory = $model->getBorrowByUserHistory($_SESSION['id'], $_GET['tri']);
+                    $reservation = $model->getReservationByUser($_SESSION['id'], $_GET['tri']);
+                }
+                if($_GET['tri'] == 2){
+                    $info = $model->getInfoChildByUser($_SESSION['id'], $_GET['tri']);
+                    $borrow = $model->getBorrowByUser($_SESSION['id'], $_GET['tri']);
+                    $borrowHistory = $model->getBorrowByUserHistory($_SESSION['id'], $_GET['tri']);
+                    $reservation = $model->getReservationByUser($_SESSION['id'], $_GET['tri']);
+                }
+                if($_GET['tri'] == 3){
+                    $info = $model->getInfoChildByUser($_SESSION['id'], $_GET['tri']);
+                    $borrow = $model->getBorrowByUser($_SESSION['id'], $_GET['tri']);
+                    $borrowHistory = $model->getBorrowByUserHistory($_SESSION['id'], $_GET['tri']);
+                    $reservation = $model->getReservationByUser($_SESSION['id'], $_GET['tri']);
+                }
+            } else {
+                $info = $model->getInfoChildByUser($_SESSION['id']);
+                $borrow = $model->getBorrowByUser($_SESSION['id'], 0);
+                $borrowHistory = $model->getBorrowByUserHistory($_SESSION['id'], 0);
+                $reservation = $model->getReservationByUser($_SESSION['id'], 0);
+            }
+            require_once('./View/profil.php');
+        } else {
+            header('Location: /');
+        }
+    }
+
+    public function profilParameter(){
+        global $router;
+        $model = new ModelUser();
+        $user = $model->getNewUser($_SESSION['id']);
+        if(isset($_SESSION['id'])){
+            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['changeinfo'])){
+                if(!empty($_POST['first-name']) && !empty($_POST['last-name']) && !empty($_POST['email'])){
+                    if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                        $updateInfo = $model->updateInfo($_SESSION['id'], $_POST['first-name'], $_POST['last-name'], $_POST['email']);  
+                        $user = $model->getNewUser($_SESSION['id']);
+                        $message = "Info mise à jour avec succès"; 
+                    } else {
+                        $message = "L'email n'est pas au bon format"; 
+                    }
+                } else {
+                    $message = "Des champs sont vides"; 
+                }
+            }
+
+            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['changepass'])){
+                if(!empty($_POST['latepass']) && !empty($_POST['newpass']) && !empty($_POST['newpass2'])){
+                    $passverify = $model->getPasswordUser($_SESSION['id']);
+                    
+                        $pattern = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[?.!+*-_&*]).{8,}$/";
+                        if($_POST['newpass'] === $_POST['newpass2'] && preg_match($pattern, $_POST['newpass'])){
+                            
+                        } else {
+                            $message = "Mot de pass incorrect";  
+                        }
+                } else {
+                    $message = "Des champs sont vides"; 
+                }
+            }
+
+            require_once('./View/parameter.php');
+        } else {
+            header('Location: /');
+        }
+    }
 }
