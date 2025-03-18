@@ -3,6 +3,7 @@
 $title = "Dashboard | Lutopia";
 $description = "Page dashboard de Lutopia";
 $pointSlash = "";
+$arrayJs = ["./assets/js/dashboard_user_stat.js"];
 ob_start();
 ?>
 
@@ -22,14 +23,29 @@ ob_start();
          <?php if(!empty($search)){?><span>FAMILLE : </span><?php echo $search[0]->getLast_Name(); } ?>
          </div>
         </div>
-        <div class="dash-select-contain">
+        <!-- <div class="dash-select-contain">
             <select name="id-child" id="id-child" class="dash-select-child">
                 <option value="choisir l'enfant">choisir l'enfant</option>
             </select>
         </div>
-    </article>
+    </article> -->
 
 <?php if(isset($_GET['searchAdminUser']) && !empty($_GET['searchAdminUser'])){ 
+ ?>
+<div class="dash-select-contain">
+        
+            <form id="child" method="POST" action="/dashboard?searchAdminUser=<?= $_GET['searchAdminUser'] ?>">
+                <select name="id-child" id="id-child" class="dash-select-child">
+                    <?php foreach($child as $key=>$value): ?>
+                        <option <?php if(isset($_POST['id-child']) && $_POST['id-child'] == $child[$key]->getId_child()){ echo 'selected'; }?> value="<?= $child[$key]->getId_child()?>"><?= $child[$key]->getName()?></option>
+                        
+                    <?php endforeach ?>
+                </select>
+                <!-- <input type="submit" value="Filtrer"> -->
+            </form>   
+        </div>
+    </article>
+<?php
         if(!isset($search)){
             echo 'Aucune carte sélectionnée';
         } else {
