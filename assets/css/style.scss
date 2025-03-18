@@ -727,6 +727,7 @@ select {
 }
 .side-bar {
   flex-direction: column;
+  position: sticky;
   max-width: 430px;
   width: 100%;
   border: solid 3px $pastel-rose-300;
@@ -2987,8 +2988,7 @@ select{
   }
 }
 
-  background: linear-gradient(135deg, rgba(252,221,236,1) 0%, rgba(255,230,199,1) 27%, rgba(232,255,196,1) 54%, rgba(252,221,236,1) 80%, rgba(255,250,251,1) 100%);
-}
+
 @keyframes bookOpen {
   30% { z-index: 999 }
   100% {  transform: rotateY(180deg);
@@ -4523,7 +4523,7 @@ article h2 {
 
 //Dashboard Modify Livres
 body{
-  height: 200vh;
+  height: 100%;
 }
 #search-form{
   margin: 40px 0;
