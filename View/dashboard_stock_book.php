@@ -29,7 +29,7 @@ ob_start();
 <!-- Début de la page (code au dessus = modal) -->
 <div>
     <div id="search-form">
-        <form method="GET" action="/dashboard-book/book-stock">
+        <form method="GET" action="/dashboard-book/book-stock" class="accueil-form>
             <div id="book-datas">
                 <label for="title">Rechercher par titre ou ISBN</label>
                 <input type="text" id="title" name="title" placeholder="Rechercher par titre ou ISBN" required>
