@@ -18,7 +18,7 @@ ob_start();
               <th scope="col" class = "statbook-borrow">Emprunts</th>  
             </thead>
             <tbody class="dash-statbook-body">
-                <td class="dash-statbook-cellule">test1</td>
+                <td class="dash-statbook-cellule">tchoupi a la ferme</td>
                  <!-- cellules titre livre -->
                 <td class="dash-statbook-cellule">test2</td>
                 <!-- cellules Id -->
