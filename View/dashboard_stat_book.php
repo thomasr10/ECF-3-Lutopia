@@ -8,18 +8,26 @@ ob_start();
 
 <section class="dash-statbook-globalcontainer">
     <h2>Statistiques livres</h2>
-    <div class="dash-form-container">
-    <form method="GET" class="dash-statbook-search">
-          <input class ="input-correction" type="text" name="" id="" placeholder="Rechercher..." />
-          <button type="submit" class="">
-              <img src="<?= UPLOADS . 'autres/icon-loupe.svg'?>" alt="icone loupe">
-          </button>
-    </form> 
+    <div>
+        <div class="dash-form-container" id="form-container">
+            <form method="GET" class="dash-statbook-search">
+                <input class ="input-correction" type="text" name="book" id="search" placeholder="Rechercher..." />
+                <button type="submit" class="">
+                    <img src="<?= UPLOADS . 'autres/icon-loupe.svg'?>" alt="icone loupe">
+                </button>
+            </form> 
+        </div>
+        <div>
         <select name="year" id="year">
-            <option value=""></option>
-        </select>
-        <button type="reset">Réinitialiser</button>
+                <option value="0">Depuis Toujours</option>
+                <option value="1">2025</option>
+                <option value="2">2024</option>
+                <option value="3">2023</option>
+                <option value="4">2022</option>
+            </select>
+        </div>        
     </div>
+
      
     <Article class="dash-statbook-container">
         <table class="dash-statbook-table">
@@ -29,28 +37,48 @@ ob_start();
               <th scope="col" class = "statbook-author">Auteur</th>  
               <th scope="col" class = "statbook-age">Age</th>  
               <th scope="col" class = "statbook-type">Type</th>  
-              <th scope="col" class = "statbook-borrow">Emprunts</th>  
+              <th scope="col" class = "statbook-borrow">Emprunts ↓</th>  
             </thead>
             <?php
-            foreach($books as $book){
+            if(isset($_GET['book'])){
             ?>
-            <tbody class="dash-statbook-body">
-                <td class="dash-statbook-cellule"><?=$book->book->getTitle()?></td>
-                 <!-- cellules titre livre -->
-                <td class="dash-statbook-cellule"><?=$book->book->getId_book()?></td>
-                <!-- cellules Id -->
-                <td class="dash-statbook-cellule"><?=$book->author?></td>
-                <!-- cellules Auteurs -->
-                <td class="dash-statbook-cellule" value="<?=$book->age->getId_age()?>"><?=$book->age->getFrom()?>-<?=$book->age->getTo()?></td>
-                <!-- cellules Ages -->
-                <td class="dash-statbook-cellule"><?=$book->type->getType_name()?></td>
-                <!-- cellules Types -->
-                <td class="dash-statbook-cellule"><?=$book->count_borrow?></td>
-                <!-- cellules emprunts -->
-            </tbody>
+                <tbody class="dash-statbook-body">
+                    <td class="dash-statbook-cellule title-cell"><?=$book->book->getTitle()?></td>
+                    <!-- cellules titre livre -->
+                    <td class="dash-statbook-cellule id-cell"><?=$book->book->getId_book()?></td>
+                    <!-- cellules Id -->
+                    <td class="dash-statbook-cellule author-cell"><?=$book->author?></td>
+                    <!-- cellules Auteurs -->
+                    <td class="dash-statbook-cellule age-cell" value="<?=$book->age->getId_age()?>"><?=$book->age->getFrom()?>-<?=$book->age->getTo()?></td>
+                    <!-- cellules Ages -->
+                    <td class="dash-statbook-cellule type-cell"><?=$book->type->getType_name()?></td>
+                    <!-- cellules Types -->
+                    <td class="dash-statbook-cellule count-cell"><?=$book->count_borrow?></td>
+                    <!-- cellules emprunts -->
+                </tbody>
             <?php
+            } else {
+                foreach($books as $book){
+                ?>
+                <tbody class="dash-statbook-body">
+                    <td class="dash-statbook-cellule title-cell"><?=$book->book->getTitle()?></td>
+                    <!-- cellules titre livre -->
+                    <td class="dash-statbook-cellule id-cell"><?=$book->book->getId_book()?></td>
+                    <!-- cellules Id -->
+                    <td class="dash-statbook-cellule author-cell"><?=$book->author?></td>
+                    <!-- cellules Auteurs -->
+                    <td class="dash-statbook-cellule age-cell" value="<?=$book->age->getId_age()?>"><?=$book->age->getFrom()?>-<?=$book->age->getTo()?></td>
+                    <!-- cellules Ages -->
+                    <td class="dash-statbook-cellule type-cell"><?=$book->type->getType_name()?></td>
+                    <!-- cellules Types -->
+                    <td class="dash-statbook-cellule count-cell"><?=$book->count_borrow?></td>
+                    <!-- cellules emprunts -->
+                </tbody>
+            <?php
+                }
             }
-            ?>
+            ?>                
+            
         </table>
     </Article>  
 </section>
