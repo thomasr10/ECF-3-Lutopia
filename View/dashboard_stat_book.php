@@ -34,7 +34,7 @@ ob_start();
                 <!-- cellules Id -->
                 <td class="dash-statbook-cellule">test3</td>
                 <!-- cellules Auteurs -->
-                <td class="dash-statbook-cellule">test4</td>
+                <td class="dash-statbook-cellule">2-6</td>
                 <!-- cellules Ages -->
                 <td class="dash-statbook-cellule">test5</td>
                 <!-- cellules Types -->
