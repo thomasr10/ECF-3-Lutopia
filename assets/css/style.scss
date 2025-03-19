@@ -76,9 +76,7 @@ figure {
     z-index: 1000;
   }
 
-  // &.active {
-  //   display: flex;
-  // }
+
 
   li {
     font-size: $titre-h3;
@@ -836,7 +834,7 @@ select {
   padding-top: 3rem;
 }
 .dash-select-child {
-  width: 40%;
+  width: 200px;
   outline: none;
   font-size: $para;
   background: transparent;
@@ -1768,7 +1766,6 @@ select{
 
 
   
-// DASHBOARD----------------------------------------------------
 // BASE DASHBOARD-----------------------------------------------
 
 .dashboard {
@@ -1855,92 +1852,6 @@ select{
 
 
 
-// DASHBOARD ACCUEIL----------------------------------------------------
-
-
-.dash-accueil-global {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: $primary-text-900;
-
-}
-
-.dash-accueil-identification {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-    h2{
-      font-size: $titre-h2;
-    }
-}
-.dash-accueil-user {
-  display: flex;
-  font-size: $titre-h3;
-  justify-content: space-around;
-  align-items: center;
-  padding-top: 2rem;
-}
-.dash-accueil-form{
-  @extend .search-form;
-   
-    
-}
-.dash-accueil-user-name {
-  font-size: $titre-h3;
-  padding-right: 3rem;
-}
-
-.dash-select-contain {
-  display: flex;
-  justify-content: center;
-  padding-top: 3rem;
-}
-.dash-select-child {
-  width: 40%;
-  outline: none;
-  font-size: $para;
-  background: transparent;
-  border: 2px solid $primary-text-800;
-  border-radius: 15px;
-  padding: 0.5rem 2rem; 
-}
-
-.dash-accueil-borrow {
-  width: 100%;
-  h2{
-    font-size: $titre-h3;
-    font-weight: 600;
-    text-align: center;
-  }
-}
-
-.dash-accueil-titlebook {
-  min-width: 40%;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  border: 2px solid $stroke-marron-800;
-  font-weight: 600;
-}
-.dash-accueil-titlebook-container {
-  display: flex;
-  align-items: center;
-}
-
-.dash-date-color {
-  padding-left: 2rem;
-  span {
-    color: $pastel-vert-800;
-    font-weight: 600;
-  }
-   
-}
-.dash-disabled {
-  color: blue;
-  border: none;
-}
 
 
 
@@ -4910,6 +4821,150 @@ grid-template-rows: auto;
   justify-self: center;
   background-color: $pastel-vert-200;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// DEBUT-DASHBOARD STAT BOOK-------------------------------------------------------
+
+.dash-statbook-globalcontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  
+  
+  h2 {
+    padding: 3rem 0;
+    font-size: $titre-h2;
+    text-align: center;
+  }
+}
+.dash-statbook-container {
+  width: 100%;
+  padding-top: 3rem;
+  margin: 0 auto;
+  display: flex;
+}
+.dash-statbook-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 3px solid $pastel-rose-400;
+}
+.table, th, td {
+  border: 2px solid $pastel-rose-300;
+}
+
+
+.dash-statbook-header {
+  background: $pastel-rose-200;
+  color: $primary-text-900;
+  font-weight: 600;
+  height: 2.5rem;
+    .statbook-title {
+      width: 40%;
+    }
+    .statbook-author {
+      width: 30%;
+    }
+    .statbook-type{
+      width: 20%;
+    }
+}
+
+
+.dash-statbook-body {
+  color: $primary-text-800;
+  height: 2rem;
+  
+}
+.dash-statbook-cellule {
+  padding-left: 0.3rem;
+}
+.dash-form-container {
+  width: 100%;
+  display: flex;
+  
+}
+.dash-statbook-search {
+  width: 60;
+  display: flex;
+  justify-content: space-around;
+
+
+    input {
+      padding: 0 0 ;
+      border: none;
+      color: $primary-text-800;
+      border: 3px solid transparent;
+      font-family: "Lexend";
+      font-size: $para;
+      background-color:$primary-text-200;
+      outline: none;
+      &:hover {
+        border: 3px solid $primary-text-800;
+      }
+    }
+    button {
+      padding:0 0;
+      background: transparent;
+      border: none;
+      border: 3px solid $primary-text-800;
+      display: flex;
+      justify-content: center;
+      img {
+        cursor: pointer;
+        border-radius: 100%;
+        padding: 0 1rem;
+        
+      }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FIN-DASHBOARD STAT BOOK---------------------------------------------------------
 
 #createBook>form>#illustrator-section>button{
   grid-column: 2;
