@@ -1310,6 +1310,23 @@ h1 {
   height: 200px;
   object-fit: cover;
 }
+.flip-contain {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+.flip-front,
+.flip-back {
+  position: absolute;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  backface-visibility: hidden;
+}
+.flip-back {
+  background: $degrade-footerTop;
+}
 
 //MODAL AJOUT AUTEUR/ ILLUSTRATEUR MODIFIEZ LE
 .modal {
