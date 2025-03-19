@@ -300,6 +300,8 @@ class ControllerBook {
     public function getStatsBook(){
         global $router;
 
+        $model = new ModelBook();
+        $books = $model->getBestSellers();
         require_once('./View/dashboard_stat_book.php');
     }
 
