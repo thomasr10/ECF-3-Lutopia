@@ -2,9 +2,6 @@ const selectChild = document.getElementById('select-child');
 const childOption = document.querySelectorAll('.child');
 const buttonReserv = document.querySelector('.onebook-reserver');
 
-
-
-
 const ageArray = [];
 const idArray = [];
 
@@ -14,16 +11,11 @@ childOption.forEach(age => {
     idArray.push(split[1]);
 });
 
-console.log(buttonReserv.target);
-console.log(idArray[0])
-
 buttonReserv.addEventListener('click', () => {
     reservationBook(buttonReserv.value, idArray[0]);
 }, {once: true});
 
 
-console.log(selectChild.selectedOptions[0].value);
-// 
 selectChild.addEventListener('change', function(event) {
     
     const selectedAge = event.target.value;
@@ -41,30 +33,10 @@ selectChild.addEventListener('change', function(event) {
     buttonReserv.addEventListener('click', () => {
         reservationBook(buttonReserv.value, newIdArray[0]);
     }, {once: true});
-    // userReservation(newIdArray[0])
     
 });
 
-// if(childOption[0].value == selectChild.selectedOptions[0].value){
-//     userReservation(idArray[0]);
-// }
-
-
 showReservation(idArray[0]);
-
-
-
-// if(selectChild.selectedOptions.value == selectedAge){
-    
-// }
-
-
-// function userReservation(id){
-//     buttonReserv.addEventListener('click', () => {
-//         reservationBook(buttonReserv.value, id);
-//     });
-// }
-
 
 function reservationBook(book, id){     //verification reservation 
     fetch(`/${book}/${id}`)
@@ -95,9 +67,6 @@ function showReservation(id){
         if(data == "Aucune réservation"){
             console.log("Aucune réservation")
         } else {
-            // buttonReserv.addEventListener('click', () => {
-            //     reservationBook(buttonReserv.value, id);
-            // }, {once: true});
             data.forEach(element => {   //création de chaque carte réservation avec l'arborescence css
 
 
