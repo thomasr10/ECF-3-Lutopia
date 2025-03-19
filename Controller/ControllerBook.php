@@ -42,6 +42,11 @@ class ControllerBook {
     public function drawAge(int $age){
         global $router;
         $model = new ModelBook();
+        if(isset($_SESSION['id'])){
+            $modelchild = new ModelChild();
+            $id = $_SESSION['id'];
+            $datasChild = $modelchild->getChildByUser($id);
+        }
         $datas = $model->drawAge($age);
         $ageInfos = $model->getAgeInfo($age);
         $radioDatas = $model->radioBookType();
