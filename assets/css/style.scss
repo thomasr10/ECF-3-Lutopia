@@ -965,7 +965,7 @@ select {
 }
 .dash-date-choose {
   cursor: pointer;
-  max-width: 30%;
+  width: 40%;
   padding: 0.5rem 1rem;
   border-radius: 10px;
   border: 2px solid $stroke-marron-800;
@@ -976,17 +976,20 @@ select {
 .dash-date-prolong {
   cursor: pointer;
   border: none;
-  max-width: 17%;
   padding: 0.5rem 1rem;
   border-radius: 10px;
   border: 2px solid $pastel-vert-800;
   font-weight: 600;
   color: $primary-text-900;
   background-color: $pastel-vert-400;
-  margin-left: 6rem;
+  margin-left: 10rem;
+  @media (max-width: 1600px) { 
+    margin-left: 5rem;
+   }
   &:hover {
     background-color: $pastel-vert-300;
   }
+
 }
 .dash-accueil-borrow-rendre {
   max-width: 13%;
@@ -1030,12 +1033,15 @@ label {
 }
 
 
-input {
+.input-correction {
   border-radius: 20px;
   width: 285px;
   height: 40px;
   text-align: center;
 }
+
+
+
 
 
 

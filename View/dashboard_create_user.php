@@ -12,15 +12,15 @@ ob_start();
     <form action="/dashboard/create-user" method="POST">
         <div>
             <label for="first-name">Prénom</label>
-            <input type="text" name="first-name" id="first-name" placeholder="Prénom" required>
+            <input class = "input-correction" type="text" name="first-name" id="first-name" placeholder="Prénom" required>
         </div>
         <div>
             <label for="last-name">Nom</label>
-            <input type="text" name="last-name" id="last-name" placeholder="Nom" required>
+            <input class = "input-correction" type="text" name="last-name" id="last-name" placeholder="Nom" required>
         </div>
         <div>
             <label for="email">Adresse mail</label>
-            <input type="email" placeholder="Votre adresse mail" name="email" id="email" required>
+            <input class = "input-correction" type="email" placeholder="Votre adresse mail" name="email" id="email" required>
         </div>
         <div id="child-section">
             <div>
@@ -32,7 +32,7 @@ ob_start();
             </div>
         </div>
         <div>
-            <input type="submit" value="Valider">
+            <input class = "input-correction" type="submit" value="Valider">
         </div>
     </form>
 </div>

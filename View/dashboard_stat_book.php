@@ -9,7 +9,7 @@ ob_start();
     <h2>Statistiques livres</h2>
     <div class="dash-form-container">
     <form method="GET" class="dash-statbook-search">
-          <input type="text" name="" id="" placeholder="Rechercher..." />
+          <input class ="input-correction" type="text" name="" id="" placeholder="Rechercher..." />
 
           <button type="submit" class="">
               <img src="<?= UPLOADS . 'autres/icon-loupe.svg'?>" alt="icone loupe">
