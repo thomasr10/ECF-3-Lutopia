@@ -104,14 +104,14 @@ ob_start();
                     <div class="dash-accueil-borrow-date">
                         <div class="dash-accueil-date-container">
                         <input class="dash-date-choose" type="date" name="date_back" value="<?= $search[$key]->getEnd_date()->format('Y-m-d');?>"> <!-- input date pour prolonger l'emprunt -->
-                        <input class="dash-date-prolong"  type="submit" name="prolong" value="Prolonger"> <!-- bouton qui prolonge l'emprunt -->
+                        <input class="dash-date-prolong "  type="submit" name="prolong" value="Prolonger"> <!-- bouton qui prolonge l'emprunt -->
                         </div>
                     </form>
 
                     <form class="dash-accueil-borrow-rendre" method="POST" action="/dashboard<?= '?searchAdminUser=' . $_GET['searchAdminUser'] ?>"> <!-- formulaire pour rendre un livre emprunter -->
                         <input type="hidden" name="id_borrow" value="<?= $search[$key]->getId_borrow()?>">
                         <input type="hidden" name="date_back" value="<?= $search[$key]->getEnd_date()->format('Y-m-d');?>">
-                        <input type="submit" name="suppr" value="Rendre"> <!-- bouton rendre pour rendre un livre -->
+                        <input class = "input-correction " type="submit" name="suppr" value="Rendre"> <!-- bouton rendre pour rendre un livre -->
                     </form>
                     
                     </div>
