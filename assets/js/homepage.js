@@ -214,7 +214,8 @@ function sendChildValue(array, id){
                     break;
             
             }
-            switch (numeroDe) {
+            switch (numeroDe) {     //affichage des dé en fonction de l'age et du switch au dessus puis addeventlistener pour redirection on click
+                                    // tous le html de chaque animation et écris car je n'arrivais pas a include un fichier php en javascript
                 case 1:
                     const include1 = `<div id="container_0" class="containerAll">
                                             <div class="cubesGsap">
@@ -364,7 +365,7 @@ function sendChildValue(array, id){
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            if(data == 'ok'){
+            if(data == 'ok'){       //condition pour chaque cas d'une réservation 
                 alert('Votre réservation à été prise en compte');
                 showReservation(id);
                 console.log('reservation ok');
@@ -413,7 +414,7 @@ function sendChildValue(array, id){
                     xIcon.setAttribute('alt', 'icone fermeture');
                     xIcon.setAttribute('value', element.id_reservation);
 
-                    xIcon.addEventListener("click", () =>{  
+                    xIcon.addEventListener("click", () =>{              //add eventlistener popur la suppression d'une réservation
                         removeReservation(element.id_reservation, id);
                     });
 
@@ -430,18 +431,18 @@ function sendChildValue(array, id){
         });
     }
 
-    function removeElementByClass(className){
+    function removeElementByClass(className){       //class pour supprimer des élement par classname
         let elements = document.getElementsByClassName(className);
         while(elements.length > 0){
             elements[0].parentNode.removeChild(elements[0]);
         }
     }
 
-    function removeReservation(id_reservation, id){
+    function removeReservation(id_reservation, id){     //remove reservation function et affichage des réservation
         fetch(`/remove/${id_reservation}`)
         .then(response => response.json())
         .then(data => {  
-            showReservation(id);
+            showReservation(id);    //affichage des reservation
         });
     }
 
@@ -455,11 +456,11 @@ if( selectChild == null){
     const age6_8 = document.querySelector('.img17');
     const age8_10 = document.querySelector('.img22');
 
-    age0_2.addEventListener('click', function(){document.location.href = "/age/1";});
+    age0_2.addEventListener('click', function(){document.location.href = "/age/1";});   //redirection page par age pour chaque dé
     age2_4.addEventListener('click', function(){document.location.href = "/age/2";});
-    age4_6.addEventListener('click', function(){document.location.href = "/age/3";});
+    age4_6.addEventListener('click', function(){document.location.href = "/age/3";});   //redirection page par age pour chaque dé
     age6_8.addEventListener('click', function(){document.location.href = "/age/4";});
-    age8_10.addEventListener('click', function(){document.location.href = "/age/5";});
+    age8_10.addEventListener('click', function(){document.location.href = "/age/5";});  //redirection page par age pour chaque dé
 
     document.addEventListener("DOMContentLoaded", function() {
         gsap.registerPlugin(Flip);
