@@ -2710,28 +2710,31 @@ select{
 
 
 
-//CONNECTION
+//CONNECTION LOGIN
 #grid {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-  height: 100vh;
+  height: 31.25rem;
+  //height: 100vh;
 }
 
 #colonne1 {
   grid-column: 1;
   background-color: #fff;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
 .contenu {
-  text-align: center; /* Centrer le texte et les éléments */
+  text-align:center; 
 }
 
 .contenu>div>label {
   font-family: "Lexend", sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-bottom:20px;
 }
 
 .contenu>div>input {
@@ -2741,6 +2744,7 @@ select{
   text-align: center;
   font-family: "Lexend", sans-serif;
   border: 1px solid #653F31; 
+  margin-bottom: 20px;
 }
 
 #colonne2 {
@@ -4082,7 +4086,7 @@ select{
   transition: opacity 1s ease-in-out;
 }
 
-//Register
+//Register 
 
 #register {
   display: grid;
