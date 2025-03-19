@@ -33,7 +33,7 @@ class ModelUser extends Model {
     }
 
     public function getNewUser(int $id){
-        $req =$this->getDb()->prepare("SELECT `id_user`, `first_name`, `last_name`,`email`, `password`, `token` FROM `user` WHERE `id_user` = :id");
+        $req =$this->getDb()->prepare("SELECT `id_user`, `first_name`, `last_name`,`email`, `password`, `token`, `card` FROM `user` WHERE `id_user` = :id");
         $req->bindParam('id', $id, PDO::PARAM_INT);
         $req->execute();
 
@@ -306,6 +306,38 @@ class ModelUser extends Model {
         $req = $this->getDb()->prepare("UPDATE `user` SET `password`=:pass, `status`=1 WHERE `id_user` = :id");
         $req->bindParam('pass', $password, PDO::PARAM_STR);
         $req->bindParam('id', $id, PDO::PARAM_INT);
+        $req->execute();
+    }
+
+    public function getUserByCard(string $search){
+        $req = $this->getDb()->prepare("SELECT `id_user`, `first_name`, `last_name`, `email`, `password`, `role`, `status`, `token`, `token_limit`, `signin_date`, `card` FROM `user` WHERE `card` = :search");
+        $req->bindParam('search', $search, PDO::PARAM_STR);
+        $req->execute();
+
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+        return $user = ($data) ?  new User($data) : null;
+    }
+
+    public function updateUserInfos(array $newInfos, int $id_user){
+        $query = "UPDATE `user` SET ";
+        // requete à changer si y a le temps => mettre des "?" pour éviter les variables
+
+        $lastKey = array_key_last($newInfos);
+
+        // boucler pour concaténer la clé/ valeur à la requête
+        foreach($newInfos as $key => $value){
+            
+            if($key !== $lastKey){
+                $query .= '`' . $key . '`' . ' = ' . '"' . $value .'"' . ',';
+            } else {
+                $query .= '`' . $key . '`' . ' = ' . '"' . $value .'"';
+            }
+        }
+
+        $query .= (' WHERE `id_user` = :id_user');
+        var_dump($query);
+        $req = $this->getDb()->prepare($query);
+        $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
         $req->execute();
     }
 }

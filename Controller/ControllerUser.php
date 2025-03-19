@@ -450,4 +450,190 @@ class ControllerUser {
             require('./View/create_password.php');
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function updateUser(){
+        global $router;
+        $model = new ModelUser();
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(isset($_POST['update-user'])){
+                // je me sers de cette méthode pour récupérer les infos de la bdd
+                $user = $model->getNewUser($_POST['id_user']);
+
+                $currentInfos = [
+                    "first_name" => $user->getFirst_name(),
+                    "last_name" => $user->getLast_name(),
+                    "email" => $user->getEmail()
+                ];
+
+                // je récupère la valeur des inputs 
+                $infoForm = [
+                    "first_name" => $_POST['first-name'],
+                    "last_name" => $_POST['last-name'],
+                    "email" => $_POST['email']
+                ];
+
+                // j'initialise un tableau pour stocker les infos modifiées
+                $newInfos = [];
+
+                foreach($currentInfos as $key => $value){
+                    if($infoForm[$key] !== $currentInfos[$key]){
+                        $newInfos[$key] = $infoForm[$key];
+                    }
+                }
+                
+                $model->updateUserInfos($newInfos, $_POST['id_user']);
+                header('Location: /dashboard/update-user?user-card=' . $user->getCard());
+            }
+        } else {
+            if(isset($_GET['user-card'])){
+                $user = $model->getUserByCard($_GET['user-card']);
+                
+                if($user){
+                    $model = new ModelChild();
+                    $children = $model->getChildByUser($user->getId_user());
+                }
+            }
+            
+            require_once('./View/dashboard_update_user.php');
+        }
+    }
 }
