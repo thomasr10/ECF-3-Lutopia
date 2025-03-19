@@ -4,7 +4,6 @@ $arrayJs = ["../assets/js/type.js", "../assets/js/search-bar.js"];
 $pointSlash = "../";
 ob_start();
 ?>
-<?= (isset($_SESSION['id'])) ? $_SESSION['first-name'] : '' ?>
     <div id="titrePageAge">
     <h1>Tous les livres de <?=$ageInfos[0]->getFrom();?> à <?=$ageInfos[0]->getTo();?> ans</h1>
     </div>

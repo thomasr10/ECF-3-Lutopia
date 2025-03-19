@@ -104,6 +104,9 @@ $router->map('GET|POST', '/dashboard/create-user', 'ControllerUser#registerUserF
 $router->map('GET', '/dashboard-validate-user/[i:id]', 'ControllerMail#confirmRegisterFromDashboard');
 $router->map('GET|POST', '/create-password/[i:id]', 'ControllerUser#createPassword', 'create-password');
 
+// modifier/ supprimer user
+
+$router->map('GET|POST', '/dashboard/update-user', 'ControllerUser#updateUser', 'update-user');
 
 
 

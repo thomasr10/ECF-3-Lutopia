@@ -92,6 +92,15 @@ class ControllerBook {
 
     public function showOneBook(int $id){
         global $router;
+
+        $modelChild = new ModelChild();         //show reservation
+        if(isset($_SESSION['id'])){
+            $idSess = $_SESSION['id'];
+            $datas = $modelChild->getChildByUser($idSess);
+        }
+
+
+
         $model = new ModelBook();
         $bookInfo = $model->bookId($id);
         if(empty($bookInfo)){
@@ -300,6 +309,8 @@ class ControllerBook {
     public function getStatsBook(){
         global $router;
 
+        $model = new ModelBook();
+        $books = $model->getBestSellers();
         require_once('./View/dashboard_stat_book.php');
     }
 
