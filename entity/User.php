@@ -11,6 +11,7 @@ class User {
     private $status;
     private $token;
     private $signing_date;
+    private $card;
 
     
     public function __construct(array $datas){
@@ -56,7 +57,9 @@ class User {
     public function getSigning_date(){
         return $this->signing_date;
     }
-
+    public function getCard(){
+        return $this->card;
+    }
 
 
 // SETTERS
@@ -86,5 +89,8 @@ class User {
     }
     public function setSigning_date(string $signing_date){
         $this->signing_date = new DateTime($signing_date);
+    }
+    public function setCard(string $card){
+        $this->card = $card;
     }
 }

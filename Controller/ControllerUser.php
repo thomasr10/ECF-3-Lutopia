@@ -608,7 +608,7 @@ class ControllerUser {
                 }
                 
                 $model->updateUserInfos($newInfos, $_POST['id_user']);
-                header('Location: /dashboard/update-user/' . $user->getCard()); // a corriger
+                header('Location: /dashboard/update-user?user-card=' . $user->getCard());
             }
         } else {
             if(isset($_GET['user-card'])){
