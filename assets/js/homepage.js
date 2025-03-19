@@ -178,7 +178,7 @@ function sendChildValue(array, id){
             div.classList.add('booksContainer');
             sectionContainer.append(divCube);
             let numeroDe;
-            switch (array[i]) {
+            switch (array[i]) {         // séléction des dé en fonction de l'age de l'enfant
                 case "0":
                     numeroDe = 1;
                     break;
