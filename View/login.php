@@ -33,7 +33,7 @@ ob_start();
   <span class="page turn"></span>
   <span class="page turn"></span>
   <span class="page turn"></span>
-  <span class="page turn"><img src="uploads/autres/Group 116.png"></span>
+  <span class="page turn"><img src="uploads/autres/Bienvenue.webp"></span>
   <span class="page turn"><img src="uploads/le_voyage_magique_de_timothee.webp"></span>
   <span class="page turn"></span>
   <span class="cover"></span>
