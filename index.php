@@ -50,6 +50,7 @@ $router->map('GET|POST', '/profil/parameter', 'ControllerUser#profilParameter', 
 //bibliotequaire
 $router->map('GET|POST', '/login-admin', 'ControllerUser#loginAdmin', 'loginAdmin');
 $router->map('GET|POST', '/dashboard', 'ControllerUser#dashboard', 'dashboard');
+$router->map('GET|POST', '/dashboard/[i:child]', 'ControllerUser#dashboardChild', 'dashboardChild');
 // gestion du stock
 
 $router->map('GET|POST', '/dashboard-book/book-stock', 'ControllerBook#checkCopies', 'book-stock');
@@ -94,6 +95,22 @@ $router->map('POST', '/add-copies', 'ControllerCopy#addCopies', 'add-copies');
 
 $router->map('GET', '/stat-books','ControllerBook#getStatsBook', 'get-stats');
 
+
+// Création user dashboard
+$router->map('GET|POST', '/dashboard/create-user', 'ControllerUser#registerUserFromDashboard', 'register-from-dashboard');
+
+// mail validation user :
+
+$router->map('GET', '/dashboard-validate-user/[i:id]', 'ControllerMail#confirmRegisterFromDashboard');
+$router->map('GET|POST', '/create-password/[i:id]', 'ControllerUser#createPassword', 'create-password');
+
+
+
+
+
+
+
+
 $match = $router->match();
 
 if(is_array($match)){
@@ -101,7 +118,7 @@ if(is_array($match)){
     
     $obj = new $controller();
     
-    if(is_callable(array($obj, $action))){
+;    if(is_callable(array($obj, $action))){
         call_user_func_array(array($obj, $action), $match['params']);
         
     }

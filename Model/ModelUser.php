@@ -89,9 +89,23 @@ class ModelUser extends Model {
         }
     }
 
-    public function getReservationByCard(string $card){
-        $req = $this->getDb()->prepare("SELECT `reservation`.`id_reservation`, `reservation`.`reservation_date`, `reservation`.`id_child`, `reservation`.`id_book`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `reservation` ON `child`.`id_child` = `reservation`.`id_child` INNER JOIN `book` ON `reservation`.`id_book` = `book`.`id_book` WHERE `user`.`card` = :card;");
+    public function getChildByCard(string $card){
+        $req = $this->getDb()->prepare("SELECT `child`.`id_child`, `child`.`id_user`, `child`.`name`, `child`.`birth_date` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` WHERE `user`.`card` = :card;");
+        $req->bindParam(':card', $card, PDO::PARAM_STR);
+        $req->execute();
+
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Child($data);
+        }
+        return $arrayobj;
+    }
+
+    public function getReservationByCard(string $card, string $child){
+        $req = $this->getDb()->prepare("SELECT `reservation`.`id_reservation`, `reservation`.`reservation_date`, `reservation`.`id_child`, `reservation`.`id_book`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `reservation` ON `child`.`id_child` = `reservation`.`id_child` INNER JOIN `book` ON `reservation`.`id_book` = `book`.`id_book` WHERE `user`.`card` = :card AND `child`.`id_child` = :child;");
         $req->bindParam('card', $card, PDO::PARAM_STR);
+        $req->bindParam('child', $child, PDO::PARAM_STR);
         $req->execute();
 
         $arrayobj = [];
@@ -122,9 +136,10 @@ class ModelUser extends Model {
 
     }
 
-    public function getBorrowByCard(string $card){
-        $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`card` = :card;"); //AND `borrow`.`status` = '0' A AJOUTER AVEC LA BDD <--
+    public function getBorrowByCard(string $card,  string $child){
+        $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`card` = :card AND `child`.`id_child` =:child;"); //AND `borrow`.`status` = '0' A AJOUTER AVEC LA BDD <--
         $req->bindParam('card', $card, PDO::PARAM_STR);
+        $req->bindParam('child', $child, PDO::PARAM_STR);
         $req->execute();
 
         $arrayobj = [];
@@ -254,5 +269,43 @@ class ModelUser extends Model {
 
         $data = $req->fetch(PDO::FETCH_ASSOC);
         return ($data) ? new User($data) : null;
+    }
+
+    public function updatePassword(string $pass, int $id){
+        $req = $this->getDb()->prepare("UPDATE `user` SET `password`=:pass WHERE `id_user` = :id;");
+        $req->bindParam('pass', $pass, PDO::PARAM_STR);
+        $req->bindParam('id', $id, PDO::PARAM_INT);
+        $req->execute();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function addUserFromDashboard(string $first_name, string $last_name, string $email){
+        $req = $this->getDb()->prepare("INSERT INTO `user`(`first_name`, `last_name`, `email`, `role`, `status`, `token`, `token_limit`, `signin_date`, `card`) VALUES (:first_name, :last_name, :email, 0, 0, '', '', NOW(), '')");
+        $req->bindParam('first_name', $first_name, PDO::PARAM_STR);
+        $req->bindParam('last_name', $last_name, PDO::PARAM_STR);
+        $req->bindParam('email', $email, PDO::PARAM_STR);
+        $req->execute();
+
+        $id = $this->getDb()->lastInsertId();
+        return $id;
+    }
+
+
+    public function createPassword(string $password, int $id){
+        $req = $this->getDb()->prepare("UPDATE `user` SET `password`=:pass, `status`=1 WHERE `id_user` = :id");
+        $req->bindParam('pass', $password, PDO::PARAM_STR);
+        $req->bindParam('id', $id, PDO::PARAM_INT);
+        $req->execute();
     }
 }

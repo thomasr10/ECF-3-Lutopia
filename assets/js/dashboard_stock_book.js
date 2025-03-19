@@ -129,10 +129,13 @@ const addCopiesModal = document.getElementById('modal-add-copies');
 const submitNewCopies = document.getElementById('add-new-copies');
 
 addCopiesBtn.addEventListener('click', function(){
+    if(addCopiesModal.style.display ==='none'){
     addCopiesModal.style.display = 'block';
-    const idBook = submitNewCopies.value;
-    submitNewCopies.addEventListener('click', () => addNewCopies(idBook));
-})
+    //const idBook = submitNewCopies.value;
+    //submitNewCopies.addEventListener('click', () => addNewCopies(idBook));
+} else{
+    addCopiesModal.style.display ='none'
+}})
 
 function addNewCopies(id){
     const value = document.getElementById('add-copies').value;
@@ -148,3 +151,14 @@ function addNewCopies(id){
         }
     })
 }
+
+const cancel = document.getElementById('cancel');
+
+cancel.addEventListener(('click'), function(){
+    addCopiesModal.style.display = 'none';
+})
+const cancel2 = document.getElementById('cancel2');
+
+cancel2.addEventListener(('click'), function(){
+    confirmDeleteModal.style.display = 'none';
+})
