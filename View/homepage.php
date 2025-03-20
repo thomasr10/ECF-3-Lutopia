@@ -2,7 +2,7 @@
 
 $title = "Accueil | Lutopia";
 $description = "Page d'accueil de Lutopia";
-$arrayJs = ["./assets/js/homepage.js", "./assets/js/search-bar.js"];
+$arrayJs = ["./assets/js/homepage.js", "./assets/js/search-bar.js","./assets/js/flipCard.js"];
 $pointSlash = "";
 ob_start();
 ?>
@@ -41,7 +41,7 @@ if(isset($_SESSION['id'])){
       <img id="close-button" src="uploads/autres/iconX.svg" class = "close-x-icon"alt="icone fermeture"></a>
     </div>
     </div> -->
-    
+    <script src="./assets/js/flipCard.js"></script>
    </div > 
 
 
@@ -121,7 +121,10 @@ if(isset($_SESSION['id'])){
 <div class="booksContainer">          
 <?php foreach($chunk as $book){?>
                 <div class="card">
-                    <img src="<?=$book->book->getImg_src()?>" alt="Couverture du livre <?=$book->book->getTitle()?>">
+                    <div class = "flip-contain">
+                        <img class = "flip-front" src="<?=$book->book->getImg_src()?>" alt="Couverture du livre <?=$book->book->getTitle()?>">
+                        <div class= "flip-back" ></div>
+                    </div>
                     <p><?=$book->book->getTitle()?></p>
                     <a class="button_pink" href="/book/<?=$book->book->getId_book() ?>">Voir la fiche</a>
                     <a class="button_borrow" href="/login">Réserver</a>
@@ -137,6 +140,8 @@ if(isset($_SESSION['id'])){
 ?>          
        </div> 
 <?php } ?>
+<script type="module" src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 
 <?php 
 $content = ob_get_contents();
