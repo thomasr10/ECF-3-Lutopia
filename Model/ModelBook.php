@@ -420,4 +420,36 @@ class ModelBook extends Model {
         return ($data) ? new BookResa(new Book($data), new Age($data), new Type($data), $data['author'], $data['count_borrow']) : null;
     }
 
+
+
+    public function getTopBookOnYear(string $year){
+        
+        $date1 = $year . '/01/01';
+        $date2 = $year . '/12/31';
+
+        $req = $this->getDb()->prepare("SELECT COUNT(DISTINCT `borrow`.`id_copy`) AS 'count_borrow', `book`.`id_book`, `book`.`isbn`, `book`.`title`, `book`.`editor`, `book`.`img_src`, `book`.`publication_date`, `book`.`edition_date`, `book`.`synopsis`, `book`.`id_type`, `book`.`id_age`, CONCAT(`author`.`first_name`, ' ', `author`.`last_name`) AS 'author', `age`.`from`, `age`.`to`, `type`.`type_name`
+        FROM `book`
+        INNER JOIN `book_author` ON `book`.`id_book` = `book_author`.`id_book`
+        INNER JOIN `author` ON `book_author`.`id_author` = `author`.`id_author`
+        INNER JOIN `age` ON `book`.`id_age` = `age`.`id_age`
+        LEFT JOIN `copy` ON `book`.`id_book` = `copy`.`id_book`
+        LEFT JOIN `borrow` ON `copy`.`id_copy` = `borrow`.`id_copy`
+        INNER JOIN `type` ON `book`.`id_type` = `type`.`id_type`
+        WHERE `borrow`.`start_date` >= :date1 AND `borrow`.`start_date` <= :date2
+        GROUP BY `book`.`id_book`
+        ORDER BY count_borrow ASC
+        LIMIT 20");
+
+        $req->bindParam('date1', $date1, PDO::PARAM_STR);
+        $req->bindParam('date2', $date2, PDO::PARAM_STR);
+        $req->execute();
+
+        $arrayObj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayObj[] = new BookResa(new Book($data), new Age($data), new Type($data), $data['author'], $data['count_borrow']);
+        }
+
+        return $arrayObj;
+    }
 }
