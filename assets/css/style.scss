@@ -174,11 +174,22 @@ figure {
   align-items: center;
   justify-content: left;
   padding-left: 4rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  @include tablet {
+    flex-direction: column;
+  }
 }
+.ours-icon{
+  @include tablet {
+    display: none;
+  }
+}
+
 // selection enfant
 .child-select {
   display: flex;
-  padding-left: 2rem;
+  padding-left: 1rem;
   vertical-align: middle;
 }
 .select-child {
@@ -186,7 +197,7 @@ figure {
   font-family: $prenoms-enfants;
   font-size: $para;
   background: transparent;
-  padding: 0 5rem;
+  padding: 0 3rem;
   border: transparent;
   background-color: $pastel-rose-200;
   height: 35px;
@@ -195,8 +206,20 @@ figure {
 }
 
 // reservation
+.MiniBookContainer {
+  display: flex;
+  @include desktop {
+    flex-direction: column;
+    margin: 2rem 4rem;
+  }
+}
+
+
 .padding-element2 {
-  padding: 0 2rem;
+  padding: 0 1rem;
+  @include desktop {
+    padding-bottom: 0.5rem;
+  }
 }
 
 .mini-book-img {
@@ -213,6 +236,9 @@ figure {
   background-color: $pastel-vert-300;
   padding: 0 1rem;
   border-radius: 20px;
+  @include desktop {
+    justify-content: left;
+  }
 }
 
 .mini-book-title {
@@ -220,12 +246,14 @@ figure {
   justify-items: center;
   align-content: center;
   padding-left: 0.5rem;
+
 }
 .mini-book-title > a {
   text-decoration: none;
   color: $primary-text-1000;
   font-family: "Lexend";
   line-height: 40px;
+  word-spacing: -0.1rem;
 }
 .close-x-icon {
   vertical-align: middle;
