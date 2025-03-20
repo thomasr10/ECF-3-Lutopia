@@ -170,7 +170,7 @@ function showTypeBook(age, type, categoryId){
         } else {
             data.forEach(book => {
                 let bookArticle = document.createElement('article');
-                let title = document.createElement('h2')
+                let title = document.createElement('p')
                 let imgContainer = document.createElement('img');
                 let authorContainer = document.createElement('p');
                 let illustrator = document.createElement('p');

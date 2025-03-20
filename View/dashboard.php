@@ -14,7 +14,7 @@ ob_start();
         <div class = "dash-accueil-user">
          
          <form class="dash-accueil-form" method="GET" action="/dashboard">
-             <input type="text"name="searchAdminUser" id="searchAdminUser" value="" placeholder="entrez ici le n° d'abonné">
+             <input type="text"name="searchAdminUser" id="searchAdminUser" value="" placeholder="entrez ici le n° d'abonné" required>
              <button type="submit" >
              <img src="uploads/autres/icon-loupe.svg" alt="">
              </button>
@@ -61,8 +61,9 @@ ob_start();
            <p><?= $reservation[$key]->getTitle(); ?></p> <!-- titre de chaque livre réserver -->
            <?php 
            if($avaibility[$key][0]->getEnd_date()->format('Y-m-d') < $date){ // if bouton disponible ou else affichage indisponible
-                echo '<form class= "dash-form-reserv" method="POST" action="/dashboard?searchAdminUser=' . $_GET['searchAdminUser'] . '">                                
-                        <button class = "dash-dispo" type="submit" value="Disponible">Disponible
+                echo '<form class= "dash-form-reserv" method="POST" action="/dashboard?searchAdminUser=' . $_GET['searchAdminUser'] . '">
+                        <input type="hidden" name="reservation_id" value="' . $avaibility[$key][0]->getId_reservation() . '">                               
+                        <button class = "dash-dispo" type="submit" name="toBorrow">Disponible
                           <img src="uploads/autres/keyboard_return.svg" alt="">
                         </button> ' ;
             } else {

@@ -72,7 +72,7 @@ if(isset($_SESSION['id'])){
             <?php foreach($datas as $key=>$value): ?>
                 <article class="card">
                     <img src="../<?= $datas[$key]->book->getImg_Src() ?>" alt="" width="200px" height="200px"><!-- image pour chaque livre --> 
-                    <h2><?= $datas[$key]->book->getTitle(); ?> </h2> <!-- titre  --> 
+                    <p><?= $datas[$key]->book->getTitle(); ?> </p> <!-- titre  --> 
                     <a href="/book/<?= $datas[$key]->book->getId_book(); ?>" class="button_pink">voir la fiche</a>
                     <button class="button_borrow" value="<?= $datas[$key]->book->getId_book(); ?>">Réserver</button>   
                 </article>

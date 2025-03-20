@@ -210,12 +210,21 @@ class ControllerUser {
                    array_push($avaibility, $model->getAvailability($reservation[$key]->getId_book()));
 
                 }
-                
+            
                 
                 $date = new DateTime();
                 $date = $date->format('Y-m-d');
                 
             }
+            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toBorrow'])){
+                $model = new ModelUser();
+                $getResInfo = $model->reservationToBorrow($_POST['reservation_id']);
+                $insertBorrow = $model->createBorrow($_POST['id-child'], $getResInfo[0]->id_copy);
+                $search2 = $model->deleteReservation($_POST['reservation_id']);
+                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
+                $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']);
+            }
+
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel'])){
                 $model = new ModelUser();
                 $search2 = $model->deleteReservation($_POST['id_reservation']);
@@ -223,7 +232,6 @@ class ControllerUser {
                 $avaibility = [];
                 foreach($reservation as $key=>$value){
                    array_push($avaibility, $model->getAvailability($reservation[$key]->getId_book()));
-                    var_dump($avaibility[$key][0]->getEnd_date()->format('Y-m-d'));
                 }
                 $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
             }
