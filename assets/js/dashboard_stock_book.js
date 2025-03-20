@@ -131,8 +131,8 @@ const submitNewCopies = document.getElementById('add-new-copies');
 addCopiesBtn.addEventListener('click', function(){
     if(addCopiesModal.style.display ==='none'){
     addCopiesModal.style.display = 'block';
-    //const idBook = submitNewCopies.value;
-    //submitNewCopies.addEventListener('click', () => addNewCopies(idBook));
+    const idBook = submitNewCopies.value;
+    submitNewCopies.addEventListener('click', () => addNewCopies(idBook));
 } else{
     addCopiesModal.style.display ='none'
 }})
