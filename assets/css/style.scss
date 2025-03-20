@@ -5307,20 +5307,7 @@ article h2 {
     height: 40px;
     cursor: pointer;
   }
-#modal-modify-book{
-  width: 35rem;
-  height: auto;
-  position: absolute;
-  left:53%;
-  top: 260px;
-  padding: 20px;
-  border-radius: 20px;
-  border: 2px solid $pastel-rose-300;
-  background-color: $stroke-gris-100;
-  @include desktop{
-    left: 58%;
-  }
-}
+
 #modal-modify-book>form{
 display: grid;
 grid-template-columns: repeat(2, 1fr);
@@ -5333,7 +5320,7 @@ grid-template-rows: auto;
 #modal-modify-book>form>div>label{
   grid-column: 1;
   align-self: center;
-  border-bottom: 1px solid #e0e0e0; /* Bordure en bas */
+  border-bottom: 1px solid #e0e0e0; 
   padding-bottom: 4px;
 }
 #modal-modify-book>form>div>input{
@@ -5375,6 +5362,67 @@ grid-template-rows: auto;
   height: auto;
   cursor: pointer;
 }
+// Fond grisé et modal
+// Overlay pour fond grisé
+#modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
+
+// Modal
+#modal-modify-book {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 35rem;
+  height: auto;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px solid $pastel-rose-300;
+  background-color: $stroke-gris-100;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  #cancel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+
+    img {
+      width: 25px;
+      height: auto;
+    }
+  }
+}
+
+// Affichage de l'overlay et du modal actif
+#modal-overlay.active,
+#modal-modify-book.active {
+  opacity: 1;
+  visibility: visible ;
+  
+}
+
+
 
 
 
