@@ -126,23 +126,23 @@ function prev() {
 
 
 // Debut menu burger-------------------------------------------------------
-const menuToggle = document.querySelector('.menu-toggle');
-const navbar = document.querySelector('.navbar');
+// const menuToggle = document.querySelector('.menu-toggle');
+// const navbar = document.querySelector('.navbar');
 
-menuToggle.addEventListener("click", () => {
-    if (navbar.style.left === "0%") {
-      gsap.to(navbar, { left: "-80%", duration: 0.5, scale: 1 }); // Ferme le menu
+// menuToggle.addEventListener("click", () => {
+//     if (navbar.style.left === "0%") {
+//       gsap.to(navbar, { left: "-80%", duration: 0.5, scale: 1 }); // Ferme le menu
     
-    } else {
-      gsap.to(navbar, {
-        left: "0%",
-        duration: 0.5,
-        scale: 1, // Ouvre le menu avec une échelle de 1
-        ease: "back.out", // Effet de rebond
-      });
+//     } else {
+//       gsap.to(navbar, {
+//         left: "0%",
+//         duration: 0.5,
+//         scale: 1, // Ouvre le menu avec une échelle de 1
+//         ease: "back.out", // Effet de rebond
+//       });
     
-    }
-});
+//     }
+// });
 
 // Fin menu burger-------------------------------------------------------
 // afficher des propositions de livres
@@ -169,11 +169,147 @@ function sendChildValue(array, id){
         uniqueId = Array.from(new Set(arrayId));
 
         for(let i = 0; i < uniqueId.length; i ++){
+            console.log(array[i]);
+            const divCube = document.createElement('div');
+            divCube.setAttribute('id', `cube-${i}`);
             let div = document.createElement('div');
             div.setAttribute('id', `div-${i}`);
             div.classList.add('row-container');
             div.classList.add('booksContainer');
-            sectionContainer.append(div);
+            sectionContainer.append(divCube);
+            let numeroDe;
+            switch (array[i]) {         // séléction des dé en fonction de l'age de l'enfant
+                case "0":
+                    numeroDe = 1;
+                    break;
+                case "1":
+                    numeroDe = 1;
+                    break;
+                case "2":
+                    numeroDe = 1;
+                    break;
+                case "3":
+                    numeroDe = 2;
+                    break;
+                case "4":
+                    numeroDe = 2;
+                    break;
+                case "5":
+                    numeroDe = 3;
+                    break;
+                case "6":
+                    numeroDe = 3;
+                    break;
+                case "7":
+                    numeroDe = 4;
+                    break;
+                case "8":
+                    numeroDe = 4;
+                    break;
+                case "9":
+                    numeroDe = 5;
+                    break;
+                case "10":
+                    numeroDe = 5;
+                    break;
+            
+            }
+            switch (numeroDe) {
+                case 1:
+                    const include1 = `<div id="container_0" class="containerAll">
+                                            <div class="cubesGsap">
+                                            <img src="uploads/autres/age_0_1.webp" class="square img4">
+                                            </div>
+                                            <div class="images">
+                                            <img src="uploads/autres/age_0_2.webp" class="img1"alt="">
+                                            <img src="uploads/autres/age_0_3.webp" class="img2" alt="" >
+                                            <img src="uploads/autres/age_0_4.webp" class="img3"alt="">
+                                            </div>
+                                            <div class="cubesGsap">      
+                                            <img src="uploads/autres/age_0_5.webp" class="square img5">
+                                            </div>
+                                        </div>`;
+                    divCube.innerHTML = include1;
+                    const age0_2 = document.querySelector('.img2');
+                    age0_2.addEventListener('click', function(){document.location.href = "/age/1";});
+                    break;
+                case 2:
+                    const include2 = `<div id="container_2" class="containerAll">
+                                            <div class="images">
+                                            <img src="uploads/autres/age_2_3.webp" class="img6"alt="">
+                                            <img src="uploads/autres/age_2_4.webp" class="img7" alt="" >
+                                            <img src="uploads/autres/age_2_5.png" class="img8"alt="">
+                                            </div>
+                                            <div class="cubesGsap">
+                                            <img src="uploads/autres/age_2_1.webp" class="square img9">    
+                                            <img src="uploads/autres/age_2_2.webp" class="square img10">
+                                            </div>
+                                        </div>`;
+                    divCube.innerHTML = include2;
+                    const age2_4 = document.querySelector('.img7');
+                    age2_4.addEventListener('click', function(){document.location.href = "/age/2";});
+                    break;
+                case 3:
+                    const include3 = `<div id="container_4" class="containerAll">
+                                        <div class="cubesGsap">
+                                                <img src="uploads/autres/age_4_4.webp" class="square img14">
+                                                </div>
+                                                <div class="images">
+                                                <img src="uploads/autres/age_4_1.webp" class="img11" alt="">
+                                                <img src="uploads/autres/age_4_2.webp" class="img12" alt="" >
+                                                <img src="uploads/autres/age_4_3.webp" class="img13" alt="">
+                                                </div>
+                                                <div class="cubesGsap">      
+                                                <img src="uploads/autres/age_4_5.webp" class="square img15">
+                                                </div>
+                                        </div>`;
+                    divCube.innerHTML = include3;
+                    const age4_6 = document.querySelector('.img12');
+                    age4_6.addEventListener('click', function(){document.location.href = "/age/3";});
+                    break;
+                case 4:
+                    const include4 = `<div id="container_6" class="containerAll">
+                                            <div class="cubesGsap">
+                                            <img src="uploads/autres/age_6_5.webp" class="square img19">
+                                            </div>
+                                            <div class="images">
+                                            <img src="uploads/autres/age_6_1.webp" class="img16" alt="">
+                                            <img src="uploads/autres/age_6_2.webp" class="img17" alt="" >
+                                            <img src="uploads/autres/age_6_4.webp" class="img18" alt="">
+                                            </div>
+                                            <div class="cubesGsap">      
+                                            <img src="uploads/autres/age_6_6.webp" class="square img20">
+                                            <img src="uploads/autres/age_6_7.webp" class="square img20b">
+                                            </div>
+                                    </div>`;
+                    divCube.innerHTML = include4;
+                    const age6_8 = document.querySelector('.img17');
+                    age6_8.addEventListener('click', function(){document.location.href = "/age/4";});
+                    break;
+                case 5:
+                    const include5 = `<div id="container_8" class="containerAll">
+                                    <div class="cubesGsap">
+                                            <img src="uploads/autres/age_8_4.webp" class="square img24">
+                                            <img src="uploads/autres/age_8_4.webp" class="square img24b">
+                                            </div>
+                                            <div class="images">
+                                            <img src="uploads/autres/age_8_1.webp" class="img21"alt="">
+                                            <img src="uploads/autres/age_8_2.webp" class="img22" alt="" >
+                                            <img src="uploads/autres/age_8_3.webp" class="img23"alt="">
+                                            </div>
+                                            <div class="cubesGsap">      
+                                            <img src="uploads/autres/age_8_5.webp" class="square img25">
+                                            <img src="uploads/autres/age_8_5.webp" class="square img25b">
+                                            </div>
+                                    </div>`;
+                    divCube.innerHTML = include5;
+                    const age8_10 = document.querySelector('.img22');
+                    age8_10.addEventListener('click', function(){document.location.href = "/age/5";});
+                    break;
+            }
+
+            divCube.append(div);
+            
         }
 
         const rowContainers = document.querySelectorAll('.row-container');
@@ -206,12 +342,7 @@ function sendChildValue(array, id){
                 
                 borrowLink.addEventListener("click", () =>{         // generer les requetes pour les boutons reserver
                     reservationBook(borrowLink.value, id);
-                    // const valider = document.createElement('p');
-                    // valider.textContent = 'Réservation prise en compte';
-                    // bookArticle.append(valider);
-                    // linkDiv2.innerHTML = "";
                 });                                                                    
-                console.log(borrowLink.value)
                 descLink.textContent = "Voir la fiche";
                 borrowLink.textContent = "Réserver";
 

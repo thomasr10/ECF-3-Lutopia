@@ -35,8 +35,8 @@ function showTypeBook(age, type, categoryId){
                 let authorContainer = document.createElement('p');
                 let illustrator = document.createElement('p');
                 let edition = document.createElement('p');
-                let buttonPink= document.createElement("button_pink");
-                let buttonBorrow=document.createElement("button_borrow");
+                let buttonPink = document.createElement("button");
+                let buttonBorrow = document.createElement("button");
 
 
 

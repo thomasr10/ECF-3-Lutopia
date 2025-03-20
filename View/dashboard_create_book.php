@@ -143,7 +143,7 @@ ob_start();
         </div>
         <div id="dlPicture">
             <label for="picture">Image du livre</label>
-            <input type="file" accept="image/webp, image/png, image/jpeg, image/jpg" name="picture"  id="picture" placeholder="Synopsis" required>
+            <input class = "input-correction" type="file" accept="image/webp, image/png, image/jpeg, image/jpg" name="picture"  id="picture" placeholder="Synopsis" required>
             <p>Taille minimale d’image: 300*300 pixels<br>
             Formats acceptés : jpeg, bmp, webp</p>
         </div>

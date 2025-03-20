@@ -94,7 +94,7 @@ $router->map('POST', '/add-copies', 'ControllerCopy#addCopies', 'add-copies');
 // Statistiques livres
 
 $router->map('GET', '/stat-books','ControllerBook#getStatsBook', 'get-stats');
-
+$router->map('GET', '/stat-books/borrow-sortZ-A', 'ControllerBook#getStatsBookCountBorrowSortByAz');
 
 // Création user dashboard
 $router->map('GET|POST', '/dashboard/create-user', 'ControllerUser#registerUserFromDashboard', 'register-from-dashboard');
@@ -104,6 +104,9 @@ $router->map('GET|POST', '/dashboard/create-user', 'ControllerUser#registerUserF
 $router->map('GET', '/dashboard-validate-user/[i:id]', 'ControllerMail#confirmRegisterFromDashboard');
 $router->map('GET|POST', '/create-password/[i:id]', 'ControllerUser#createPassword', 'create-password');
 
+// modifier/ supprimer user
+
+$router->map('GET|POST', '/dashboard/update-user', 'ControllerUser#updateUser', 'update-user');
 
 
 

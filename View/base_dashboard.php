@@ -18,7 +18,7 @@
                 <ul class = "dashboard-list">
                     <li class = "dashboard-link"><a href="<?= $router->generate('dashboard') ?>">Statistiques utilisateur</a></li>
                     <li class = "dashboard-link"><a href="<?=$router->generate('register-from-dashboard')?>">Ajouter un utilisateur</a></li>
-                    <li class = "dashboard-link"><a href="">Modifier un utilisateur</a></li>
+                    <li class = "dashboard-link"><a href="<?=$router->generate('update-user')?>">Modifier un utilisateur</a></li>
                 </ul>
             </div>
             <div>

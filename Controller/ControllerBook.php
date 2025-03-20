@@ -42,6 +42,11 @@ class ControllerBook {
     public function drawAge(int $age){
         global $router;
         $model = new ModelBook();
+        if(isset($_SESSION['id'])){
+            $modelchild = new ModelChild();
+            $id = $_SESSION['id'];
+            $datasChild = $modelchild->getChildByUser($id);
+        }
         $datas = $model->drawAge($age);
         $ageInfos = $model->getAgeInfo($age);
         $radioDatas = $model->radioBookType();
@@ -92,6 +97,15 @@ class ControllerBook {
 
     public function showOneBook(int $id){
         global $router;
+
+        $modelChild = new ModelChild();         //show reservation
+        if(isset($_SESSION['id'])){
+            $idSess = $_SESSION['id'];
+            $datas = $modelChild->getChildByUser($idSess);
+        }
+
+
+
         $model = new ModelBook();
         $bookInfo = $model->bookId($id);
         if(empty($bookInfo)){
@@ -299,8 +313,45 @@ class ControllerBook {
 
     public function getStatsBook(){
         global $router;
+        $model = new ModelBook();
+
+        if(isset($_GET['book'])){
+            $book = $model->getBookOnSearch($_GET['book']);
+        } else {
+            
+            $books = $model->getBestSellers();            
+        }
 
         require_once('./View/dashboard_stat_book.php');
     }
 
+
+    public function getStatsBookCountBorrowSortByAz(){
+        $model = new ModelBook();
+        $books = $model->getBookCountBorrowSortByZa();
+
+        $arrayObj = [];
+
+        foreach($books as $i => $book){
+            $arrayObj[] = [
+                "id_book" => $books[$i]->book->getId_book(),
+                "isbn" => $books[$i]->book->getIsbn(),
+                "title" => $books[$i]->book->getTitle(),
+                "editor" => $books[$i]->book->getEditor(),
+                "img" => $books[$i]->book->getImg_src(),
+                "publication_date" => $books[$i]->book->getPublication_date(), 
+                "edition_date" => $books[$i]->book->getEdition_date(),
+                "synopsis" => $books[$i]->book->getSynopsis(),
+                "id_type" => $books[$i]->book->getId_type(),
+                "id_age" => $books[$i]->book->getId_age(),
+                "from" => $books[$i]->age->getFrom(),
+                "to" => $books[$i]->age->getTo(),
+                "type_name" => $books[$i]->type->getType_name(),
+                "author" => $books[$i]->author,
+                "count_borrow" => $books[$i]->count_borrow,
+            ];
+        }
+
+        echo json_encode($arrayObj);
+    }
 }
