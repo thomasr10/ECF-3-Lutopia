@@ -31,7 +31,7 @@ if(isset($_GET['id_book'])){
     <p>Nombre d'exemplaires : <?= count($copies)?></p>
     <button id="modify-input" type="button">Modifier</button>
 </div>
-
+<div id="modal-overlay"></div>
 <div id="modal-modify-book" class="modal">
 <!-- Modification livre -->
     <form action="/dashboard-book/modify-book" method="POST" class="formModalMB">
