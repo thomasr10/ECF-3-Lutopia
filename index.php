@@ -95,6 +95,7 @@ $router->map('POST', '/add-copies', 'ControllerCopy#addCopies', 'add-copies');
 
 $router->map('GET', '/stat-books','ControllerBook#getStatsBook', 'get-stats');
 $router->map('GET', '/stat-books/borrow-sortZ-A', 'ControllerBook#getStatsBookCountBorrowSortByAz');
+$router->map('POST', '/stat-book-top/select-year', 'ControllerBook#getTopBookOnYear');
 
 // Création user dashboard
 $router->map('GET|POST', '/dashboard/create-user', 'ControllerUser#registerUserFromDashboard', 'register-from-dashboard');

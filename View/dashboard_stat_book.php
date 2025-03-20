@@ -7,7 +7,16 @@ ob_start();
 ?>
 
 <section class="dash-statbook-globalcontainer">
-    <h2>Statistiques livres</h2>
+    <div>
+        <h2>Statistiques livres</h2>
+        <?php
+            if(!isset($_GET['book'])){
+            ?>
+            <?php
+            }
+            ?>          
+    </div>
+
     <div>
         <div class="dash-form-container" id="form-container">
             <form method="GET" class="dash-statbook-search">
@@ -20,24 +29,32 @@ ob_start();
         <div>
         <select name="year" id="year">
                 <option value="0">Depuis Toujours</option>
-                <option value="1">2025</option>
-                <option value="2">2024</option>
-                <option value="3">2023</option>
-                <option value="4">2022</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
             </select>
-        </div>        
+        </div>
+        <?php
+        if(isset($_GET['book'])){
+        ?>
+        <div><a href="<?= $router->generate('get-stats')?>">Retour</a></div>
+        <?php
+        }
+        ?>  
     </div>
 
      
     <Article class="dash-statbook-container">
         <table class="dash-statbook-table">
+        <caption id="sub-title">Les 20 livres les plus empruntés</caption>
             <thead class="dash-statbook-header">
               <th scope="col" class = "statbook-title">Titre du livre</th>  
               <th scope="col" class = "statbook-id">Id</th>  
               <th scope="col" class = "statbook-author">Auteur</th>  
               <th scope="col" class = "statbook-age">Age</th>  
               <th scope="col" class = "statbook-type">Type</th>  
-              <th scope="col" class = "statbook-borrow">Emprunts ↓</th>  
+              <th scope="col" class = "<?= isset($_GET['book']) ? '' : 'statbook-borrow' ?>">Emprunts <?= isset($_GET['book']) ? '' : '↓' ?></th>  
             </thead>
             <?php
             if(isset($_GET['book'])){
