@@ -63,7 +63,8 @@ ob_start();
            if(!empty($copyDispo[$key])){ // if bouton disponible ou else affichage indisponible
                 echo '<form class= "dash-form-reserv" method="POST" action="/dashboard?searchAdminUser=' . $_GET['searchAdminUser'] . '">
                         <input type="hidden" name="reservation_id" value="' . $reservation[$key]->getId_reservation() . '">                               
-                        <input type="hidden" name="copy_id" value="' . $copyDispo[$key] . '">                               
+                        <input type="hidden" name="copy_id" value="' . $copyDispo[$key] . '">
+                        <input type="hidden" name="child_id" value="' . $_POST['id-child'] . '">                               
                         <button class = "dash-dispo" type="submit" name="toBorrow">Disponible
                           <img src="uploads/autres/keyboard_return.svg" alt="">
                         </button> ' ;

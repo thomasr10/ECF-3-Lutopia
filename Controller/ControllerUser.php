@@ -225,7 +225,7 @@ class ControllerUser {
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toBorrow'])){
                 $model = new ModelUser();
                 $getResInfo = $model->reservationToBorrow($_POST['reservation_id']);
-                $insertBorrow = $model->createBorrow($_POST['id-child'], $_POST['copy_id']);
+                $insertBorrow = $model->createBorrow($_POST['child_id'], $_POST['copy_id']);
                 $search2 = $model->deleteReservation($_POST['reservation_id']);
                 $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
                 $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']);

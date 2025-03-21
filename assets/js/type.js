@@ -22,10 +22,11 @@ childOption.forEach(age => {
     idArray.push(split[1]);
 });
 
+
 buttonBorrowSelect.forEach(element => {
-    element.addEventListener('click', () => {
+    element.addEventListener('click', function listener1(){
             reservationBook(element.value, idArray[0]);
-        }, {once: true});
+    });
 });
 
 selectChild.addEventListener('change', function(event) {
@@ -44,10 +45,11 @@ selectChild.addEventListener('change', function(event) {
 
     
     showReservation(newIdArray[0]);
+
     buttonBorrowSelect.forEach(element => {
         element.addEventListener('click', () => {
                 reservationBook(element.value, newIdArray[0]);
-            }, {once: true});
+        });
     });
 });
 
