@@ -59,11 +59,16 @@ modifyBtnArray.forEach(btn => {
         const deleteBtn = divParent.querySelector('.delete-btn');
         const validateBtn = divParent.querySelector('.validate-btn');
 
+
         // faire apparaitre le select + bouton valider
         select.removeAttribute('disabled');
         deleteBtn.removeAttribute('disabled');
         this.style.display = 'none';
         validateBtn.classList.remove('hidden');
+        const modal2 = document.getElementById("modal-delete-copy");
+        const overlay2 = document.createElement("div");
+        overlay.id = "modal-overlay2";
+        document.body.appendChild(overlay);
 
         validateBtn.addEventListener('click', function(){
             window.location.reload();
@@ -72,9 +77,21 @@ modifyBtnArray.forEach(btn => {
         // suppression de la copie (appelle la fonction deleteCopy())
         deleteBtn.addEventListener('click', function(){
             confirmDeleteModal.style.display = 'block';
+            modal2.classList.add("active");
+            overlay2.classList.add("active");
             const confirmDeleteBtn = document.getElementById('confirm-delete');
             
             confirmDeleteBtn.addEventListener('click', () => deleteCopy(idCopy));
+            const closeModalBtn = document.getElementById("cancel2");
+
+            const closeModal2 = () => {
+                modal2.classList.remove("active");
+                overlay2.classList.remove("active");
+            };
+        
+            closeModalBtn.addEventListener("click", closeModal2);
+            overlay.addEventListener("click", closeModal2);
+
         })
 
 
@@ -127,10 +144,15 @@ function updateCopy(id, state){
 const addCopiesBtn = document.getElementById('add-copies-btn');
 const addCopiesModal = document.getElementById('modal-add-copies');
 const submitNewCopies = document.getElementById('add-new-copies');
+const overlay = document.createElement("div");
+    overlay.id = "modal-overlay";
+    document.body.appendChild(overlay);
 
 addCopiesBtn.addEventListener('click', function(){
     if(addCopiesModal.style.display ==='none'){
     addCopiesModal.style.display = 'block';
+    addCopiesModal.classList.add("active");
+    overlay.classList.add("active");
     const idBook = submitNewCopies.value;
     submitNewCopies.addEventListener('click', () => addNewCopies(idBook));
 } else{
@@ -139,7 +161,7 @@ addCopiesBtn.addEventListener('click', function(){
 
 function addNewCopies(id){
     const value = document.getElementById('add-copies').value;
-    
+
     fetch('/add-copies', {
         method: 'POST',
         body: JSON.stringify({copy_number: value, id_book: id})
@@ -156,9 +178,13 @@ const cancel = document.getElementById('cancel');
 
 cancel.addEventListener(('click'), function(){
     addCopiesModal.style.display = 'none';
+    addCopiesModal.classList.remove("active");
+    overlay.classList.remove("active");
 })
-const cancel2 = document.getElementById('cancel2');
+/*const cancel2 = document.getElementById('cancel2');
 
 cancel2.addEventListener(('click'), function(){
     confirmDeleteModal.style.display = 'none';
-})
+})*/
+
+

@@ -87,4 +87,28 @@ class ModelChild extends Model {
         }
         return $arrayobj;
     }
+
+
+    public function updateChild(array $newInfos, int $id_child){
+        $query = "UPDATE `child` SET ";
+        // requete à changer si y a le temps => mettre des "?" pour éviter les variables
+
+        $lastKey = array_key_last($newInfos);
+
+        // boucler pour concaténer la clé/ valeur à la requête
+        foreach($newInfos as $key => $value){
+            
+            if($key !== $lastKey){
+                $query .= '`' . $key . '`' . ' = ' . '"' . $value .'"' . ',';
+            } else {
+                $query .= '`' . $key . '`' . ' = ' . '"' . $value .'"';
+            }
+        }
+
+        $query .= (' WHERE `id_child` = :id_child');
+        var_dump($query);
+        $req = $this->getDb()->prepare($query);
+        $req->bindParam('id_child', $id_child, PDO::PARAM_INT);
+        $req->execute();
+    }
 }
