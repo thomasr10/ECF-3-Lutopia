@@ -21,7 +21,7 @@ ob_start();
 <div class ="modal" id="modal-add-copies" style="display: none">
     <div id="cancel"><img src="<?= UPLOADS ?>autres/cancel.webp" alt="croix"></div>
     <!-- titre du livre -->
-    <h2><?= $_GET['title'] ?? 'erreur'?></h2>
+    <h2><?= $_GET['title']?></h2>
     <p>Combien d'exemplaires souhaitez-vous ajouter ?</p>
     <form>
         <label for="add-copies">Nombre d'exemplaires à ajouter</label>
