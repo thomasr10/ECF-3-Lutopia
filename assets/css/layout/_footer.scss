@@ -1,0 +1,245 @@
+/* === Footer principal avec disposition en grille === */
+.footer {
+    font-family: "Lexend", sans-serif;
+    display: grid; /* Utilise CSS Grid pour organiser les éléments */
+    grid-template-columns: repeat(3, 1fr); /* Crée 3 colonnes de largeur égale */
+    gap: 20px; /* Espace de 20px entre les colonnes */
+    padding: 20px; /* Espace intérieur de 20px autour du footer */
+    background: linear-gradient(to bottom, #cbb5b5 0%, #9f8585 100%); /* Dégradé du haut vers le bas */
+}
+
+/* === Sections individuelles du footer === */
+.footer-section,
+.footer-section2,
+.footer-section3 {
+    padding: 10px; /* Espace intérieur de 10px dans chaque section */
+}
+
+/* === Titre spécifique dans la section 3 === */
+.footer-section3 h4 {
+    margin-bottom: 20px; /* Espace sous le titre */
+}
+
+/* === Style général des titres dans toutes les sections === */
+.footer-section h4,
+.footer-section2 h4,
+.footer-section3 h4 {
+    font-size: 1.8rem; /* Taille de police agrandie pour les titres */
+    margin-bottom: 15px; /* Espace sous le titre */
+}
+
+/* === Deuxième titre dans la section 2, avec style réduit === */
+.footer-section2 h4:nth-of-type(2) {
+    font-size: 1.2rem; /* Taille de police réduite */
+    font-weight: normal; /* Texte non gras */
+}
+
+/* === Paragraphes dans la section 1 === */
+.footer-section p {
+    margin-bottom: 10px; /* Espace sous chaque paragraphe */
+}
+
+/* === Icônes accompagnant l'adresse ou d'autres infos === */
+.icon-address {
+    margin-right: 10px; /* Espace entre l’icône et le texte */
+    vertical-align: middle; /* Alignement vertical avec le texte */
+    font-size: 16px; /* Taille de l’icône */
+    color: #333; /* Couleur foncée de l’icône */
+}
+
+/* === Texte mis en évidence (ex : numéro ou mail) === */
+.highlight {
+    font-size: 1.2rem; /* Taille un peu plus grande */
+    font-weight: bold; /* Texte en gras */
+    color: #222; /* Couleur sombre */
+    margin-bottom: 15px; /* Espace dessous */
+}
+
+/* === Groupe d’informations de contact (email, tél) === */
+.contact-group {
+    margin-bottom: 15px; /* Espace entre les groupes */
+}
+
+/* === Conteneur des icônes de réseaux sociaux === */
+.social-icons {
+    display: flex; /* Alignement horizontal */
+    justify-content: flex-start; /* Aligné à gauche */
+    gap: 10px; /* Espace entre chaque icône */
+}
+
+/* === Lien autour de chaque icône sociale === */
+.social-icons a {
+    text-decoration: none; /* Supprime le soulignement */
+    color: #333; /* Couleur par défaut de l’icône */
+    font-size: 24px; /* Taille de l’icône */
+    transition: color 0.3s ease, transform 0.3s ease; /* Animation douce au survol */
+}
+
+/* === Effet au survol des liens sociaux === */
+.social-icons a:hover {
+    color: #555; /* Change la couleur au survol */
+    transform: scale(1.2); /* Zoom léger sur l’icône */
+}
+
+/* === Style des balises <i> des icônes sociales === */
+.social-icons i {
+    font-size: 24px; /* Taille de l’icône */
+    margin-left: 20px; /* Espace à gauche */
+    margin-bottom: 20px; /* Espace en dessous */
+    margin-top: 30px; /* Espace au-dessus */
+    transition: color 0.3s ease, transform 0.3s ease; /* Animation sur couleur et zoom */
+}
+
+/* === Couleurs spécifiques par plateforme === */
+.social-icons i.fa-facebook {
+    color: #1877F2; /* Bleu Facebook */
+}
+
+.social-icons i.fa-x-twitter {
+    color: #1DA1F2; /* Bleu Twitter/X */
+}
+
+.social-icons i.fa-youtube {
+    color: #FF0000; /* Rouge YouTube */
+}
+
+.social-icons i.fa-instagram {
+    color: #E4405F; /* Rose Instagram */
+}
+
+/* === Survol des icônes sociales === */
+.social-icons i:hover {
+    transform: scale(1.2); /* Zoom léger */
+    color: #555; /* Change la couleur */
+}
+
+/* === Formulaire de newsletter (section inscription) === */
+#newsletter-form {
+    margin-top: 15px; /* Espace au-dessus du formulaire */
+}
+
+/* === Champ email dans le formulaire === */
+#newsletter-form input[type="email"] {
+    width: calc(100% - 20px); /* Prend toute la largeur, moins les padding */
+    padding: 10px; /* Espace intérieur */
+    margin-bottom: 10px; /* Espace sous le champ */
+    border: 1px solid #ccc; /* Bord gris clair */
+    border-radius: 5px; /* Coins arrondis */
+}
+
+/* === Bouton du formulaire === */
+#newsletter-form button {
+    width: 100%; /* Prend toute la largeur dispo */
+    max-width: 300px; /* Largeur maximale */
+    padding: 15px; /* Espace intérieur */
+    background: linear-gradient(to bottom, #cbb5b5 0%, #9f8585 100%); /* Dégradé */
+    cursor: pointer; /* Curseur pointeur */
+    transition: background 0.3s ease; /* Animation de fond */
+    color: #222; /* Couleur du texte */
+    border: #222; /* ⚠️ Ceci ne fait rien. Devrait être `1px solid #222` */
+    border-radius: 15px; /* Coins très arrondis */
+    margin-top: 50px; /* Grand espace au-dessus */
+}
+
+/* === Survol du bouton === */
+#newsletter-form button:hover {
+    background: linear-gradient(to bottom, #9f8585 0%, #cbb5b5 100%); /* Inverse le dégradé */
+}
+
+/* === Liens tout en bas du footer === */
+.bottom-links {
+    display: flex; /* Alignement horizontal */
+    justify-content: space-between; /* Espace égal entre les liens */
+    padding: 10px 20px; /* Espace intérieur horizontal et vertical */
+    text-align: center; /* Centre le texte */
+    margin: 0 auto; /* Centre le conteneur */
+    width: 100%; /* Prend toute la largeur */
+}
+
+/* === Style des liens du bas === */
+.bottom-links a {
+    display: inline-block; /* Permet d'ajouter des marges */
+    margin: 0 10px; /* Espace entre les liens */
+    color: #222222; /* Couleur sombre */
+    text-decoration: none; /* Pas de soulignement */
+    font-size: 1.2rem; /* Taille moyenne */
+}
+
+/* === Survol des liens du bas === */
+.bottom-links a:hover {
+    color: #555; /* Couleur plus claire au survol */
+}
+
+/* === Responsive : Adaptation pour écran ≤ 768px === */
+@media (max-width: 768px) {
+    .footer {
+        grid-template-columns: 1fr; /* Passe à une seule colonne */
+        gap: 30px; /* Plus d’espace entre les blocs */
+        text-align: center; /* Centre le texte */
+    }
+
+    .icon-address {
+        font-size: 14px; /* Réduit la taille de l’icône */
+        margin-right: 8px; /* Réduit l’espace */
+    }
+
+    .faq-title {
+        font-size: 1rem; /* Réduit la taille des titres */
+    }
+
+    .social-icons {
+        justify-content: center; /* Centre les icônes sociales */
+        margin-bottom: 20px; /* Espace en dessous */
+    }
+
+    .footer-section p {
+        margin-bottom: 8px; /* Réduction de l’espace entre paragraphes */
+    }
+
+    .contact-group {
+        margin-bottom: 15px; /* Maintient l’espacement entre les groupes */
+    }
+
+    .bottom-links a {
+        font-size: 1rem; /* Réduction de la taille de la police */
+        margin: 0 5px; /* Réduction de l’espacement horizontal */
+    }
+}
+
+@media (min-width: 1200px) {
+    .footer {
+        padding: 40px;
+        gap: 40px;
+    }
+
+    #newsletter-form button {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    #newsletter-form button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .social-icons a {
+        font-size: 20px;
+    }
+
+    .footer-section h4,
+    .footer-section2 h4,
+    .footer-section3 h4 {
+        font-size: 1.4rem;
+    }
+
+    .bottom-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bottom-links a {
+        margin: 5px 0;
+    }
+}
+
