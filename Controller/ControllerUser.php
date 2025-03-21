@@ -616,9 +616,11 @@ class ControllerUser {
         
         $modelUser = new ModelUser();
         $modelChild = new ModelChild();
+        $diff = 10;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            if(isset($_POST['update-user'])){
+
+            if(isset($_POST['update-user']) && !isset($_POST['new-child-name'])){
                 // je me sers de ces méthodes pour récupérer les infos de la bdd
                 $user = $modelUser->getNewUser($_POST['id_user']);
                 $children = $modelChild->getChildByUser($user->getId_user());
@@ -688,20 +690,38 @@ class ControllerUser {
                 if(count($newInfosChildren) > 0){
                     for($i = 0; $i < count($newInfosChildren); $i++){
                         $modelChild->updateChild($newInfosChildren[$i], $children[$i]->getId_child());                    
-                    }         
-                    header('Location: /dashboard/update-user?user-card=' . $user->getCard());
+                    }
+                    header('Location: /dashboard/update-user?user-card=' . $user->getCard()); 
+                    
                 } else {
-                    header('Location: /dashboard/update-user?user-card=' . $user->getCard());                    
+                    header('Location: /dashboard/update-user?user-card=' . $user->getCard()); 
+                                       
                 } 
-
+                $newChild = [];
                 // condition pour que la requete s'effectue que s'il y a des nouvelles infos
                 if(count($newInfosUser) > 0){
                     $modelUser->updateUserInfos($newInfosUser, $_POST['id_user']);
-                    header('Location: /dashboard/update-user?user-card=' . $user->getCard());                    
+                    header('Location: /dashboard/update-user?user-card=' . $user->getCard());              
                 } else {
-                    header('Location: /dashboard/update-user?user-card=' . $user->getCard());                    
+                    header('Location: /dashboard/update-user?user-card=' . $user->getCard());
+                                       
                 }
-
+                
+            } else {
+                if(isset($_POST['new-child-name'])){
+                    $user = $modelUser->getNewUser($_POST['id_user']);
+                    $newChild[] = [
+                        "name" => $_POST['new-child-name'],
+                        "birth" => $_POST['new-child-date']
+                    ];
+                    $years = $modelChild->yearDiff($newChild, $diff);
+        
+                    if($years !== null){
+                        $modelChild->newChild($user->getId_user(), $newChild);
+                        header('Location: /dashboard/update-user?user-card=' . $user->getCard());
+                        exit();             
+                    }
+                }
             }
         } else {
             if(isset($_GET['user-card'])){

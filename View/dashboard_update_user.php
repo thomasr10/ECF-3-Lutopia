@@ -1,9 +1,17 @@
 <?php
 $title = "Modifier utilisateur | Lutopia";
 $description = "Page de modification d'un utilisateur sur le dashboard admin de Lutopia";
+$arrayJs = ['../assets/js/dashboard_update_user.js'];
 ob_start();
 
 ?>
+
+<div class="modal" id="delete-child-modal">
+    <p>Êtes-vous sûr(e) de vouloir supprimer cet enfant ?</p>
+    <button type="button" id="confirm-delete-child">Confirmer</button>
+</div>
+
+
 <h1>Modifier un utilisateur</h1>
 <div class = "dash-accueil-user">   
     <form class="dash-accueil-form" method="GET" action="/dashboard/update-user">
@@ -36,8 +44,8 @@ if(!empty($user) && !empty($children)){
         <!-- div en dessous à flex pour aligner le prénom et la date comme sur figma -->
         <div>
             <div>
-                <!-- bouton en dessous : trouver l'image du figma -->
-                <button type="button">Supprimer</button>
+                <!-- bouton en dessous : trouver l'image du figma. Gardez bien la value et la class si vous changez le bouton -->
+                <button class="delete-child-btn" value="<?= $child->getId_child() ?>" type="button">Supprimer</button>
                 <label for="child-name">Prénom</label>
                 <input type="text" value="<?=$child->getName()?>" name="child-name[]" id="child-name">
                 <input type="hidden" name="id_child[]" id="id_child" value="<?=$child->getId_child()?>">
@@ -45,9 +53,13 @@ if(!empty($user) && !empty($children)){
             <div>
                 <label for="child-birth">Date de naissance</label>
                 <input type="date" name="child-birth[]" id="child-birth" value="<?=$child->getBirth_date()->format('Y-m-d')?>">
-            </div>            
+            </div>        
         </div>
     <?php } ?>
+    <div>
+        <div id="add-child"></div>
+        <button id="add-child-btn" type="button">Ajouter un enfant</button>
+    </div>  
     <div>
         <input type="submit" value="Valider les modifications" name="update-user">
         <input type="reset" value="Annuler les modifications">

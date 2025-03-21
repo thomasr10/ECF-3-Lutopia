@@ -368,7 +368,7 @@ class ModelUser extends Model {
         }
 
         $query .= (' WHERE `id_user` = :id_user');
-        var_dump($query);
+        
         $req = $this->getDb()->prepare($query);
         $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
         $req->execute();

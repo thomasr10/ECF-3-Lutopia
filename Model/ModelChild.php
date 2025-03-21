@@ -106,8 +106,14 @@ class ModelChild extends Model {
         }
 
         $query .= (' WHERE `id_child` = :id_child');
-        var_dump($query);
+        
         $req = $this->getDb()->prepare($query);
+        $req->bindParam('id_child', $id_child, PDO::PARAM_INT);
+        $req->execute();
+    }
+
+    public function deleteChild(int $id_child){
+        $req = $this->getDb()->prepare("DELETE FROM `child` WHERE `id_child` = :id_child");
         $req->bindParam('id_child', $id_child, PDO::PARAM_INT);
         $req->execute();
     }
