@@ -14,7 +14,7 @@ ob_start();
         <div class = "dash-accueil-user">
          
          <form class="dash-accueil-form" method="GET" action="/dashboard">
-             <input type="text"name="searchAdminUser" id="searchAdminUser" value="" placeholder="entrez ici le n° d'abonné">
+             <input type="text"name="searchAdminUser" id="searchAdminUser" value="" placeholder="entrez ici le n° d'abonné" required>
              <button type="submit" >
              <img src="uploads/autres/icon-loupe.svg" alt="">
              </button>
@@ -60,9 +60,12 @@ ob_start();
            <div class="dash-accueil-reserv-contain">
            <p><?= $reservation[$key]->getTitle(); ?></p> <!-- titre de chaque livre réserver -->
            <?php 
-           if($avaibility[$key][0]->getEnd_date()->format('Y-m-d') < $date){ // if bouton disponible ou else affichage indisponible
-                echo '<form class= "dash-form-reserv" method="POST" action="/dashboard?searchAdminUser=' . $_GET['searchAdminUser'] . '">                                
-                        <button class = "dash-dispo" type="submit" value="Disponible">Disponible
+           if(!empty($copyDispo[$key])){ // if bouton disponible ou else affichage indisponible
+                echo '<form class= "dash-form-reserv" method="POST" action="/dashboard?searchAdminUser=' . $_GET['searchAdminUser'] . '">
+                        <input type="hidden" name="reservation_id" value="' . $reservation[$key]->getId_reservation() . '">                               
+                        <input type="hidden" name="copy_id" value="' . $copyDispo[$key] . '">
+                        <input type="hidden" name="child_id" value="' . $_POST['id-child'] . '">                               
+                        <button class = "dash-dispo" type="submit" name="toBorrow">Disponible
                           <img src="uploads/autres/keyboard_return.svg" alt="">
                         </button> ' ;
             } else {
@@ -74,7 +77,7 @@ ob_start();
            ?> 
 
            <form method="POST" action="/dashboard<?= '?searchAdminUser=' . $_GET['searchAdminUser'] ?>">
-            <input type="hidden" name="id_reservation" value="<?= $avaibility[$key][0]->getId_reservation();?>">
+            <input type="hidden" name="id_reservation" value="<?= $reservation[$key]->getId_reservation();?>">
             <input class= "dash-input-annuler" type="submit" name="cancel" value="Annuler">
            </form>
            </div>
