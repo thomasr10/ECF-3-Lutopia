@@ -206,9 +206,15 @@ class ControllerUser {
                 $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']);
 
                 $avaibility = [];
-                foreach($reservation as $key=>$value){
-                   array_push($avaibility, $model->getAvailability($reservation[$key]->getId_book()));
-
+                $copyDispo = [];
+                foreach($reservation as $book=>$value){
+                   $avaibility = $model->getAvailability($reservation[$book]->getId_book());
+                   foreach($avaibility as $key=>$value){
+                        $copy = $model->getBorrowCopy($avaibility[$key]->getId_copy());
+                        if(empty($copy)){
+                            $copyDispo[$book] =  $avaibility[$key]->getId_copy();        
+                        }
+                   } 
                 }
             
                 
@@ -219,7 +225,7 @@ class ControllerUser {
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toBorrow'])){
                 $model = new ModelUser();
                 $getResInfo = $model->reservationToBorrow($_POST['reservation_id']);
-                $insertBorrow = $model->createBorrow($_POST['id-child'], $getResInfo[0]->id_copy);
+                $insertBorrow = $model->createBorrow($_POST['id-child'], $_POST['copy_id']);
                 $search2 = $model->deleteReservation($_POST['reservation_id']);
                 $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
                 $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']);
@@ -230,8 +236,15 @@ class ControllerUser {
                 $search2 = $model->deleteReservation($_POST['id_reservation']);
                 $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']);
                 $avaibility = [];
-                foreach($reservation as $key=>$value){
-                   array_push($avaibility, $model->getAvailability($reservation[$key]->getId_book()));
+                $copyDispo = [];
+                foreach($reservation as $book=>$value){
+                   $avaibility = $model->getAvailability($reservation[$book]->getId_book());
+                   foreach($avaibility as $key=>$value){
+                        $copy = $model->getBorrowCopy($avaibility[$key]->getId_copy());
+                        if(empty($copy)){
+                            $copyDispo[$book] =  $avaibility[$key]->getId_copy();        
+                        }
+                   } 
                 }
                 $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
             }

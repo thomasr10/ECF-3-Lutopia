@@ -60,9 +60,10 @@ ob_start();
            <div class="dash-accueil-reserv-contain">
            <p><?= $reservation[$key]->getTitle(); ?></p> <!-- titre de chaque livre réserver -->
            <?php 
-           if($avaibility[$key][0]->getEnd_date()->format('Y-m-d') < $date){ // if bouton disponible ou else affichage indisponible
+           if(!empty($copyDispo[$key])){ // if bouton disponible ou else affichage indisponible
                 echo '<form class= "dash-form-reserv" method="POST" action="/dashboard?searchAdminUser=' . $_GET['searchAdminUser'] . '">
-                        <input type="hidden" name="reservation_id" value="' . $avaibility[$key][0]->getId_reservation() . '">                               
+                        <input type="hidden" name="reservation_id" value="' . $reservation[$key]->getId_reservation() . '">                               
+                        <input type="hidden" name="copy_id" value="' . $copyDispo[$key] . '">                               
                         <button class = "dash-dispo" type="submit" name="toBorrow">Disponible
                           <img src="uploads/autres/keyboard_return.svg" alt="">
                         </button> ' ;
@@ -75,7 +76,7 @@ ob_start();
            ?> 
 
            <form method="POST" action="/dashboard<?= '?searchAdminUser=' . $_GET['searchAdminUser'] ?>">
-            <input type="hidden" name="id_reservation" value="<?= $avaibility[$key][0]->getId_reservation();?>">
+            <input type="hidden" name="id_reservation" value="<?= $reservation[$key]->getId_reservation();?>">
             <input class= "dash-input-annuler" type="submit" name="cancel" value="Annuler">
            </form>
            </div>
