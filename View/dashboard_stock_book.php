@@ -11,14 +11,14 @@ ob_start();
     <div id="cancel2"><img src="<?= UPLOADS ?>autres/cancel.webp" alt="croix"></div>
     <div id="flexModal">
     <p>Êtes-vous sûr(e) de vouloir supprimer cet exemplaire ?</p>
-    <button id="confirm-delete" type="button">Confirmer</button>
+    <button class="button_punk" id="confirm-delete" type="button">Confirmer</button>
     </div>
 </div>
 
 
 <!-- AJOUT DES COPIES -->
 
-<div class ="modal" id="modal-add-copies" style="display: none">
+<div class ="modal" id="modal-add-copies" style="display: none" class="modal-add-copies">
     <div id="cancel"><img src="<?= UPLOADS ?>autres/cancel.webp" alt="croix"></div>
     <!-- titre du livre -->
     <h2><?= $_GET['title']?></h2>
@@ -32,14 +32,14 @@ ob_start();
 
 <!-- Début de la page (code au dessus = modal) -->
 <div>
-<div id="search-form">
+<div id="search-form" class="search-formStock">
     <form method="GET" action="/dashboard-book/book-stock" class="accueil-form">
         <div id="book-datas">
             <label for="title">Rechercher par titre ou ISBN</label>
             <input type="text" id="title" name="title" placeholder="Rechercher par titre ou ISBN" required>
         </div>
         <div>
-            <button type="submit">valider<img src="/uploads/autres/icon-loupe.svg"></button>
+            <button class="button_punk" type="submit">valider</button>
         </div>
     </form>    
 </div>
@@ -48,7 +48,7 @@ ob_start();
     if(isset($copies)){
     ?>
         <div id="titreBookStock">
-            <button type="button" id="add-copies-btn" class="button_pink">Ajouter un exemplaire</button>
+            <button type="button" id="add-copies-btn" class="button_punk">Ajouter un exemplaire</button>
             <h3>Titre : <?= $_GET['title'] ?></h3>
             <p>Nombre d'exemplaire(s) : <?= count($copies)?></p>
         </div>
@@ -87,9 +87,9 @@ ob_start();
                     break;
             }
             ?>
-            <button value="<?= $copy->getId_copy()?>" class="button_pink modify-btn" type="button">Modifier</button>
+            <button value="<?= $copy->getId_copy()?>" class="button_punk modify-btn" type="button">Modifier</button>
             <button class="delete-btn" type="button" disabled="true">Supprimer</button>
-            <button class="button_pink hidden validate-btn" type="button">Valider</button>            
+            <button class="button_punk hidden validate-btn" type="button">Valider</button>            
         </div>
 
         <?php

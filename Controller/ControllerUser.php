@@ -225,7 +225,7 @@ class ControllerUser {
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toBorrow'])){
                 $model = new ModelUser();
                 $getResInfo = $model->reservationToBorrow($_POST['reservation_id']);
-                $insertBorrow = $model->createBorrow($_POST['id-child'], $_POST['copy_id']);
+                $insertBorrow = $model->createBorrow($_POST['child_id'], $_POST['copy_id']);
                 $search2 = $model->deleteReservation($_POST['reservation_id']);
                 $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
                 $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']);
@@ -613,44 +613,102 @@ class ControllerUser {
 
     public function updateUser(){
         global $router;
-        $model = new ModelUser();
+        
+        $modelUser = new ModelUser();
+        $modelChild = new ModelChild();
+
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(isset($_POST['update-user'])){
-                // je me sers de cette méthode pour récupérer les infos de la bdd
-                $user = $model->getNewUser($_POST['id_user']);
+                // je me sers de ces méthodes pour récupérer les infos de la bdd
+                $user = $modelUser->getNewUser($_POST['id_user']);
+                $children = $modelChild->getChildByUser($user->getId_user());
 
-                $currentInfos = [
+                // je crée un tabeleau associatif avec les infos du users
+                $currentUserInfos = [
                     "first_name" => $user->getFirst_name(),
                     "last_name" => $user->getLast_name(),
                     "email" => $user->getEmail()
                 ];
 
-                // je récupère la valeur des inputs 
-                $infoForm = [
+                $currentChildInfos = [];
+
+                // je crée un tabeleau de tableaux associatifs avec les infos des mioches
+
+                foreach($children as $child){
+                    $currentChildInfos[] = [
+                        "name" => $child->getName(),
+                        "birth_date" => $child->getBirth_date()->format('Y-m-d')
+                    ];
+                }
+
+                // je récupère la valeur des inputs liés aux users
+                $infoUserForm = [
                     "first_name" => $_POST['first-name'],
                     "last_name" => $_POST['last-name'],
                     "email" => $_POST['email']
                 ];
 
-                // j'initialise un tableau pour stocker les infos modifiées
-                $newInfos = [];
+                // pareil pour les enfants
+                
+                $infoChildForm = [];
 
-                foreach($currentInfos as $key => $value){
-                    if($infoForm[$key] !== $currentInfos[$key]){
-                        $newInfos[$key] = $infoForm[$key];
+                foreach($_POST['child-name'] as $key => $value){
+                    $infoChildForm[] = [
+                        "name" => $_POST['child-name'][$key],
+                        "birth_date" => $_POST['child-birth'][$key]
+                    ];
+                }
+
+                // j'initialise un tableau pour stocker les infos modifiées du user
+                $newInfosUser = [];
+                // pareil pour les mioches
+                $newInfosChildren = [];
+
+                //  je boucle sur le tableau currentUserInfos pour comparer ses valeurs et celles de infoUserForm
+                foreach($currentUserInfos as $key => $value){
+                    if($infoUserForm[$key] !== $currentUserInfos[$key]){
+                        $newInfosUser[$key] = $infoUserForm[$key];
                     }
                 }
-                
-                $model->updateUserInfos($newInfos, $_POST['id_user']);
-                header('Location: /dashboard/update-user?user-card=' . $user->getCard());
+
+
+                //  en gros c le meme principe que pour le user sauf un peu différent car là j'ai un tableau de tableaux associatifs
+
+                for($i = 0; $i < count($currentChildInfos); $i++){
+                    foreach($currentChildInfos[$i] as $key => $value){
+                        if($currentChildInfos[$i][$key] !== $infoChildForm[$i][$key]){
+                            $newInfosChildren[$i][$key] = $infoChildForm[$i][$key];
+                        }
+                    }
+                }
+
+
+                // je boucle pour envoyer au model les infos d'un enfant à la fois
+                // condition pour que la requete s'effectue que s'il y a des nouvelles infos
+                if(count($newInfosChildren) > 0){
+                    for($i = 0; $i < count($newInfosChildren); $i++){
+                        $modelChild->updateChild($newInfosChildren[$i], $children[$i]->getId_child());                    
+                    }         
+                    header('Location: /dashboard/update-user?user-card=' . $user->getCard());
+                } else {
+                    header('Location: /dashboard/update-user?user-card=' . $user->getCard());                    
+                } 
+
+                // condition pour que la requete s'effectue que s'il y a des nouvelles infos
+                if(count($newInfosUser) > 0){
+                    $modelUser->updateUserInfos($newInfosUser, $_POST['id_user']);
+                    header('Location: /dashboard/update-user?user-card=' . $user->getCard());                    
+                } else {
+                    header('Location: /dashboard/update-user?user-card=' . $user->getCard());                    
+                }
+
             }
         } else {
             if(isset($_GET['user-card'])){
-                $user = $model->getUserByCard($_GET['user-card']);
+                $user = $modelUser->getUserByCard($_GET['user-card']);
                 
                 if($user){
-                    $model = new ModelChild();
-                    $children = $model->getChildByUser($user->getId_user());
+                    $children = $modelChild->getChildByUser($user->getId_user());
                 }
             }
             

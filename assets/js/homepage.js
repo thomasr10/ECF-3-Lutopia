@@ -322,11 +322,17 @@ function sendChildValue(array, id){
         for(let i = 0; i < chunks.length; i++){
             for(let j = 0; j < chunks[i].length; j++){
                 const bookArticle = document.createElement('article');
+                const flipContain = document.createElement('div');
+                flipContain.classList.add('flip-contain');
+
                 bookArticle.classList.add('card');
                 rowContainers[i].append(bookArticle);
                 const bookImg = document.createElement('img');
                 const bookTitle = document.createElement('p');
-                bookImg.setAttribute('src', chunks[i][j].img)
+                bookImg.setAttribute('src', chunks[i][j].img);
+                bookImg.classList.add('flip-front');
+                const flipBack = document.createElement('div');
+                flipBack.classList.add("flip-back");
                 bookTitle.textContent = chunks[i][j].title;
                 const descLink = document.createElement('a'); //ajouter le lien
                 const borrowLink = document.createElement('button');
@@ -346,8 +352,9 @@ function sendChildValue(array, id){
                 });                                                                    
                 descLink.textContent = "Voir la fiche";
                 borrowLink.textContent = "Réserver";
-
-                bookArticle.append(bookImg);
+                flipContain.append(bookImg);
+                bookArticle.append(flipContain);
+                flipContain.append(flipBack);
                 bookArticle.append(bookTitle);
                 bookArticle.append(linkDiv1);
                 bookArticle.append(linkDiv2);
