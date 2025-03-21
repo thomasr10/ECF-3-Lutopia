@@ -136,8 +136,28 @@ class ModelUser extends Model {
 
     }
 
+    public function reservationToBorrow(int $id_reservation){
+        $req = $this->getDb()->prepare("SELECT `reservation`.`id_reservation`, `reservation`.`reservation_date`, `reservation`.`id_child`, `reservation`.`id_book`, `copy`.`id_copy` FROM `reservation` INNER JOIN `book` ON `reservation`.`id_book` = `book`.`id_book` INNER JOIN `copy` ON `book`.`id_book` = `copy`.`id_book` INNER JOIN `borrow` ON `copy`.`id_copy` = `borrow`.`id_copy` WHERE `id_reservation` = :id AND `borrow`.`status` = 1 AND `borrow`.`end_date` < NOW() LIMIT 1;");
+        $req->bindParam('id', $id_reservation, PDO::PARAM_INT);
+        $req->execute();
+
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new ReservationDTO2(new Reservation($data), $data['id_copy']);
+        }
+        return $arrayobj;
+    }
+
+    public function createBorrow(int $id_child, int $id_copy){
+        $req = $this->getDb()->prepare("INSERT INTO `borrow`(`start_date`, `end_date`, `id_child`, `id_copy`, `status`) VALUES (NOW(), NOW() + INTERVAL 15 DAY, :child , :copy , 0);");
+        $req->bindParam('child', $id_child, PDO::PARAM_INT);
+        $req->bindParam('copy', $id_copy, PDO::PARAM_INT);
+        $req->execute();
+    }
+
     public function getBorrowByCard(string $card,  string $child){
-        $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`card` = :card AND `child`.`id_child` =:child;"); //AND `borrow`.`status` = '0' A AJOUTER AVEC LA BDD <--
+        $req = $this->getDb()->prepare("SELECT `user`.`card`,`user`.`last_name`, `child`.`name`, `borrow`.`start_date`, `borrow`.`end_date`, `borrow`.`id_borrow` ,`copy`.`id_copy`, `book`.`title` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `borrow` ON `child`.`id_child` = `borrow`.`id_child` INNER JOIN `copy` ON `copy`.`id_copy` = `borrow`.`id_copy` INNER JOIN `book` ON `book`.`id_book` = `copy`.`id_book` WHERE `user`.`card` = :card AND `child`.`id_child` =:child AND `borrow`.`status` = '0';"); //AND `borrow`.`status` = '0' A AJOUTER AVEC LA BDD <--
         $req->bindParam('card', $card, PDO::PARAM_STR);
         $req->bindParam('child', $child, PDO::PARAM_STR);
         $req->execute();
