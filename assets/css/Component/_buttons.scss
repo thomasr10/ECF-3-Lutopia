@@ -17,7 +17,46 @@
   color: $primary-text-900;
   background-color: $stroke-gris-200;
   padding: 0.6rem 1rem;
+  border: 1px solid #653F31;
+  font-family: "Lexend", sans-serif;
+  font-size: $para;
+  border-radius: 20px;
   margin: 0 auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.delete-btn{
+  width: auto;
+  align-content: center;
+  text-decoration: none;
+  color: $primary-text-900;
+  background-color: $stroke-gris-200;
+  padding: 0.6rem 1rem;
+  border: 1px solid #653F31;
+  font-family: "Lexend", sans-serif;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.button_punk {
+  width: auto;
+  text-decoration: none;
+  color: $primary-text-900;
+  background-color: $pastel-rose-200;
+  border-radius: 20px;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653F31;
+  font-size: 14px;
+  padding: 0.4rem 1rem;
+  //margin: 0 auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.button_sorrow {
+  width: 78%;
+  align-content: center;
+  text-decoration: none;
+  color: $primary-text-900;
+  background-color: $stroke-gris-200;
+  padding: 0.6rem 1rem;
+  border: 1px solid #653F31;
   font-family: "Lexend", sans-serif;
   font-size: $para;
   border-radius: 20px;
