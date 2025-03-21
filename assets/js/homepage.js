@@ -388,6 +388,8 @@ function sendChildValue(array, id){
             if(data == "Aucune réservation"){
                 console.log("Aucune réservation")
             } else {
+                const divMiniBookContainer = document.createElement('div');
+                divMiniBookContainer.setAttribute("class", "MiniBookContainer");
                 data.forEach(element => {   //création de chaque carte réservation avec l'arborescence css
                     const divPadding = document.createElement('div');
                     const divMiniBook = document.createElement('div');
@@ -418,7 +420,8 @@ function sendChildValue(array, id){
                     });
 
 
-                    resBox.append(divPadding);
+                    resBox.append(divMiniBookContainer);
+                    divMiniBookContainer.append(divPadding);
                     divPadding.append(divMiniBook);
                     divMiniBook.append(imgMiniBook);
                     divMiniBook.append(divMiniBookTitle);

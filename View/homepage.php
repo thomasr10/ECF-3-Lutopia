@@ -17,7 +17,8 @@ if(isset($_SESSION['id'])){
 
 <!-- début selection enfant et affichage de ses reservations -->
 <section class = "reservation">
-    <img src="uploads/autres/ours.svg" alt="icone d'ours">
+
+    <img class = "ours-icon" src="uploads/autres/ours.svg" alt="icone d'ours">
    <div class = "child-select">
 
     
