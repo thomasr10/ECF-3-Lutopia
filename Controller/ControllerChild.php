@@ -127,4 +127,20 @@ class ControllerChild {
         }
         
     }
+
+
+
+
+
+    public function deleteChild(){
+        $a = file_get_contents('php://input');
+        $id_child = json_decode($a, true);
+        
+        $model = new ModelChild();
+        $model->deleteChild($id_child);
+
+        $data = ["success" => true];
+
+        echo json_encode($data);
+    }
 }
