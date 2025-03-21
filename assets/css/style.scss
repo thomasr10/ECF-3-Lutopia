@@ -1326,7 +1326,10 @@ h1 {
   backface-visibility: hidden;
 }
 .flip-back {
-  background: $degrade-footerTop;
+  background: $degrade-header-variant;
+  padding: 2rem 0.5rem;
+  color: $primary-text-900;
+  border: 1px solid $stroke-gris-400;
 }
 
 //MODAL AJOUT AUTEUR/ ILLUSTRATEUR MODIFIEZ LE

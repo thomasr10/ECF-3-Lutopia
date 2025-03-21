@@ -123,7 +123,7 @@ if(isset($_SESSION['id'])){
                 <div class="card">
                     <div class = "flip-contain">
                         <img class = "flip-front" src="<?=$book->book->getImg_src()?>" alt="Couverture du livre <?=$book->book->getTitle()?>">
-                        <div class= "flip-back" ></div>
+                        <div class= "flip-back" ><?=$book->book->getSynopsis()?></div>
                     </div>
                     <p><?=$book->book->getTitle()?></p>
                     <a class="button_pink" href="/book/<?=$book->book->getId_book() ?>">Voir la fiche</a>
@@ -140,7 +140,7 @@ if(isset($_SESSION['id'])){
 ?>          
        </div> 
 <?php } ?>
-<script type="module" src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<!-- <script type="module" src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 
 <?php 
