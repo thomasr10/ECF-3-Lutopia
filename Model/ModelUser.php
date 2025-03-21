@@ -123,17 +123,30 @@ class ModelUser extends Model {
     }
 
     public function getAvailability(int $book){
-        $req = $this->getDb()->prepare("SELECT `user`.`card`, `reservation`.`id_reservation`, `reservation`.`reservation_date`, `reservation`.`id_child`, `reservation`.`id_book`, `book`.`title`, `borrow`.`end_date` FROM `user` INNER JOIN `child` ON `user`.`id_user` = `child`.`id_user` INNER JOIN `reservation` ON `child`.`id_child` = `reservation`.`id_child` INNER JOIN `book` ON `reservation`.`id_book` = `book`.`id_book` INNER JOIN `copy` ON `book`.`id_book` = `copy`.`id_book` INNER JOIN `borrow` ON `copy`.`id_copy` = `borrow`.`id_copy` WHERE `book`.`id_book` = :book ORDER BY `borrow`.`end_date` DESC LIMIT 1;");
+        $req = $this->getDb()->prepare("SELECT `id_copy`, `state`, `id_book` FROM `copy` WHERE `id_book` = :book;");
         $req->bindParam('book', $book, PDO::PARAM_INT);
         $req->execute();
 
         $arrayobj = [];
 
         while($data = $req->fetch(PDO::FETCH_ASSOC)){
-            $arrayobj[] = new Reservation($data);
+            $arrayobj[] = new Copy($data);
         }
         return $arrayobj;
 
+    }
+
+    public function getBorrowCopy(int $copy){
+        $req = $this->getDb()->prepare("SELECT `id_borrow`, `start_date`, `end_date`, `id_child`, `id_copy`, `status` FROM `borrow` WHERE `id_copy` = :copy AND `status` = 0;");
+        $req->bindParam('copy', $copy, PDO::PARAM_INT);
+        $req->execute();
+
+        $arrayobj = [];
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayobj[] = new Borrow($data);
+        }
+        return $arrayobj;
     }
 
     public function reservationToBorrow(int $id_reservation){
