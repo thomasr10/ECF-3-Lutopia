@@ -1,6 +1,7 @@
 const searchBar = document.getElementById('query');
 const searchContainer = document.getElementById('search-container');
 const responseDiv = document.createElement('div');
+responseDiv.classList.add('result-searchbar-container')
 
 searchBar.addEventListener('input', function(){
     const search = searchBar.value;
