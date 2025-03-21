@@ -6,6 +6,9 @@ require_once('./vendor/altorouter/altorouter/AltoRouter.php');
 
 require_once('./config/config.php');
 
+require_once './Controller/ControllerFooter.php';
+require_once './Controller/ControllerNewsletter.php';
+
 $router = new AltoRouter();
 
 // load .env files
@@ -128,4 +131,18 @@ if(is_array($match)){
 
 } else {
     header('Location: /error404');
+}
+
+// Footer and Newsletter handling
+$path = $_SERVER['REQUEST_URI'];  // Get the current URL path
+
+if ($path === '/newsletter') {
+    // Handle newsletter subscription
+    $newsletter = new NewsletterController();
+    $newsletter->subscribe();  // Calls the subscribe method in your NewsletterController
+    exit;  // Stop further execution after newsletter logic
+} else {
+    // Handle footer rendering for all other pages
+    $footer = new FooterController();
+    $footer->render();  // Calls the render method in your FooterController
 }
