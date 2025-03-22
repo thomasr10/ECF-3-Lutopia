@@ -1533,20 +1533,16 @@ article h2 {
 #createBook {
   width: 750px;
   height: auto;
-  left: 50%;
-  transform: translateX(50%);
-  @include desktop {
-    left: 0;
-    transform: none;
-  }
+  
 }
 #createBook > form {
   width: 750px;
   height: auto;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   margin-top: 40px;
   row-gap: 10px;
+  margin: 0 auto;
 }
 #createBook > h1 {
   font-size: $titre-h2;
@@ -1574,6 +1570,7 @@ article h2 {
   border: 1px solid #653f31;
   align-self: center;
   justify-self: center;
+  margin-bottom: 20px;;
 }
 #createBook > form > #author-section > button {
   grid-column: 2;
@@ -4077,21 +4074,18 @@ grid-template-rows: auto;
 
 //CreateBook
 #createBook{
-  width: 750px;
+  width: 100%;
   height: auto;
-  left: 50%;
-  transform: translateX(50%);
-  @include desktop{
-    left:0;
-    transform:none
-  }
+  //left: 50%;
+  //transform: translateX(50%);
+
   
 }
 #createBook>form{
   width: 750px;
   height: auto;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   margin-top: 40px;
   row-gap: 10px;
 }
@@ -4149,7 +4143,17 @@ grid-template-rows: auto;
   justify-self: center; 
   background-color: $pastel-vert-200;
 }
-
+#author-section>#author-btn{
+  grid-column: 2;
+  width: 285px;
+  height: 40px;
+  border-radius: 20px;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653F31;
+  align-self: center;
+  justify-self: center; 
+  background-color: $pastel-vert-200;
+}
 #synopsis > textarea {
   border-radius: 10px;
   width: 300px;
@@ -4186,10 +4190,13 @@ grid-template-rows: auto;
 #dlPicture>p{
   grid-column: 2;
   text-align: center;
+  font-style: oblique;
+  margin-bottom: 20px;
 }
 #submit>input{
-  background-color: $pastel-vert-200;
+  background-color: $pastel-vert-300;
 }
+
 
 
 
