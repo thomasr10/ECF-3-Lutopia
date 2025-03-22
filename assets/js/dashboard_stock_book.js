@@ -1,6 +1,7 @@
 const searchInput = document.getElementById('title');
 const searchForm = document.getElementById('search-form');
 const responseDiv = document.createElement('div');
+responseDiv.id = 'listBook';
 const bookDatas = document.getElementById('book-datas'); // pour mettre l'input caché avec l'id du livre récupéré en grâce au fetch
 searchForm.append(responseDiv);
 
@@ -63,7 +64,7 @@ modifyBtnArray.forEach(btn => {
         // faire apparaitre le select + bouton valider
         select.removeAttribute('disabled');
         deleteBtn.removeAttribute('disabled');
-        this.style.display = 'none';
+        this.style.visibility = 'hidden';
         validateBtn.classList.remove('hidden');
         const modal2 = document.getElementById("modal-delete-copy");
         const overlay2 = document.createElement("div");
@@ -147,7 +148,7 @@ const submitNewCopies = document.getElementById('add-new-copies');
 const overlay = document.createElement("div");
     overlay.id = "modal-overlay";
     document.body.appendChild(overlay);
-
+if(addCopiesBtn){
 addCopiesBtn.addEventListener('click', function(){
     if(addCopiesModal.style.display ==='none'){
     addCopiesModal.style.display = 'block';
@@ -157,7 +158,7 @@ addCopiesBtn.addEventListener('click', function(){
     submitNewCopies.addEventListener('click', () => addNewCopies(idBook));
 } else{
     addCopiesModal.style.display ='none'
-}})
+}})}
 
 function addNewCopies(id){
     const value = document.getElementById('add-copies').value;
