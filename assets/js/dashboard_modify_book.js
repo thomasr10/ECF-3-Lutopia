@@ -1,6 +1,7 @@
 const searchInput = document.getElementById('title');
 const searchForm = document.getElementById('search-form');
 const responseDiv = document.createElement('div');
+responseDiv.id = 'listBook';
 const bookDatas = document.getElementById('book-datas'); // pour mettre l'input caché avec l'id du livre récupéré en grâce au fetch
 searchForm.append(responseDiv);
 
@@ -51,22 +52,25 @@ searchInput.addEventListener('input', function(){
 
 const modalBook = document.getElementById('modal-modify-book');
 const modifyInput = document.getElementById('modify-input');
-
-
+if(modifyInput){
 modifyInput.addEventListener('click', function(){
+
     modalBook.style.display = 'block';
-})
+  
+})}
 
 //Close Button
 
 const cancel = document.getElementById('cancel');
-
+if(cancel){
 cancel.addEventListener('click', function(){
     modalBook.style.display = 'none';
-})
+})}
 
 //modalModel
-document.addEventListener("DOMContentLoaded", () => {
+
+if (modalBook) {
+    document.addEventListener("DOMContentLoaded", () => {
     //modifier l'id en fonction du besoin modalModel- what you want
     const modal = document.getElementById("modal-modify-book");
     const overlay = document.createElement("div");
@@ -90,5 +94,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeModalBtn.addEventListener("click", closeModal);
     overlay.addEventListener("click", closeModal);
-});
+})};
 //..............................................................
