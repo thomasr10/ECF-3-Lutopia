@@ -1389,6 +1389,168 @@ article h2 {
 
 
 
+//DASHBOARD STOCK BOOK
+
+//CreateBook
+#createBook {
+  width: 750px;
+  height: auto;
+  
+}
+#createBook > form {
+  width: 750px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 40px;
+  row-gap: 10px;
+  margin: 0 auto;
+}
+#createBook > h1 {
+  font-size: $titre-h2;
+  color: $primary-text-800;
+  grid-column: span 2;
+  text-align: center;
+}
+#createBook > form > div {
+  display: contents;
+}
+#createBook > form > div > label {
+  grid-column: 1;
+  align-self: center;
+  border-bottom: 1px solid #e0e0e0; /* Bordure en bas */
+  padding-bottom: 4px;
+}
+#createBook > form > div > input {
+  grid-column: 2;
+  font-family: "Lexend", sans-serif;
+  border-radius: 20px;
+  width: 285px;
+  height: 40px;
+  text-align: center;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653f31;
+  align-self: center;
+  justify-self: center;
+  margin-bottom: 20px;;
+}
+#createBook > form > #author-section > button {
+  grid-column: 2;
+  width: 285px;
+  height: 40px;
+  align-self: center;
+  justify-self: center;
+  background-color: $pastel-vert-200;
+}
+
+// DEBUT-DASHBOARD STAT BOOK-------------------------------------------------------
+
+.dash-statbook-globalcontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    padding: 3rem 0;
+    font-size: $titre-h2;
+    text-align: center;
+  }
+}
+.dash-statbook-container {
+  width: 100%;
+  padding-top: 3rem;
+  margin: 0 auto;
+  display: flex;
+}
+.dash-statbook-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 3px solid $pastel-rose-400;
+}
+.table,
+th,
+td {
+  border: 2px solid $pastel-rose-300;
+}
+
+.dash-statbook-header {
+  background: $pastel-rose-200;
+  color: $primary-text-900;
+  font-weight: 600;
+  height: 2.5rem;
+  .statbook-title {
+    width: 40%;
+  }
+  .statbook-author {
+    width: 30%;
+  }
+  .statbook-type {
+    width: 20%;
+  }
+}
+
+.dash-statbook-cellule {
+  padding-left: 0.3rem;
+}
+.dash-statbook-body {
+  color: $primary-text-800;
+  height: 2rem;
+  :nth-child(2) {
+    text-align: center;
+    padding: 0;
+  }
+  :nth-child(4) {
+    padding: 0;
+  }
+  :nth-child(6) {
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.dash-form-container {
+  width: 100%;
+  display: flex;
+}
+.dash-statbook-search {
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+
+  input {
+    padding: 0 0;
+    border: none;
+    color: $primary-text-800;
+    border: 3px solid transparent;
+    font-family: "Lexend";
+    font-size: $para;
+    background-color: $primary-text-200;
+    outline: none;
+    &:hover {
+      border: 3px solid $primary-text-800;
+    }
+  }
+  button {
+    padding: 0 0;
+    background: transparent;
+    border: none;
+    // border: 3px solid $primary-text-800;
+    display: flex;
+    justify-content: center;
+    img {
+      cursor: pointer;
+      border-radius: 100%;
+      padding: 0.3rem 0.3rem;
+      border: 3px solid transparent;
+      background-color: $primary-text-200;
+      &:hover {
+        background-color: $pastel-vert-300;
+        border: 3px solid $primary-text-800;
+      }
+    }
+  }
+}
+
 // FIN-DASHBOARD STAT BOOK---------------------------------------------------------
 
 
@@ -3793,21 +3955,18 @@ grid-template-rows: auto;
 
 //CreateBook
 #createBook{
-  width: 750px;
+  width: 100%;
   height: auto;
-  left: 50%;
-  transform: translateX(50%);
-  @include desktop{
-    left:0;
-    transform:none
-  }
+  //left: 50%;
+  //transform: translateX(50%);
+
   
 }
 #createBook>form{
   width: 750px;
   height: auto;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   margin-top: 40px;
   row-gap: 10px;
 }
@@ -3865,7 +4024,17 @@ grid-template-rows: auto;
   justify-self: center; 
   background-color: $pastel-vert-200;
 }
-
+#author-section>#author-btn{
+  grid-column: 2;
+  width: 285px;
+  height: 40px;
+  border-radius: 20px;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653F31;
+  align-self: center;
+  justify-self: center; 
+  background-color: $pastel-vert-200;
+}
 #synopsis > textarea {
   border-radius: 10px;
   width: 300px;
@@ -3902,10 +4071,13 @@ grid-template-rows: auto;
 #dlPicture>p{
   grid-column: 2;
   text-align: center;
+  font-style: oblique;
+  margin-bottom: 20px;
 }
 #submit>input{
-  background-color: $pastel-vert-200;
+  background-color: $pastel-vert-300;
 }
+
 
 
 
