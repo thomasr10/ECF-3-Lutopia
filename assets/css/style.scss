@@ -606,7 +606,7 @@ h1 {
 .modal {
   display: none;
   height: 400px;
-  max-width: 400px;
+  max-width: 600px;
   width: 100%;
   background-color: #fff;
   margin: 0 auto;
@@ -834,9 +834,8 @@ select {
   }
 }
 .content-side {
-  width: 100%;
-  margin-left: 3rem;
-}
+  margin: 0 auto;
+  }
 
 // DASHBOARD ACCUEIL----------------------------------------------------
 
@@ -1388,144 +1387,7 @@ article h2 {
   margin: 20px 0;
 }
 
-//Dashboard Modify Livres
 
-#search-form {
-  margin: 40px 0;
-}
-.accueil-form {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-  // margin-left: 100px;
-}
-#search-form > form > #book-datas > input {
-  font-family: "Lexend", sans-serif;
-  border-radius: 20px;
-  width: 285px;
-  height: 40px;
-  text-align: center;
-  font-family: "Lexend", sans-serif;
-  border: 1px solid #653f31;
-}
-#search-form > form > div > .db-modify-valider {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background-color: $pastel-vert-300;
-  border-radius: 20px;
-  width: auto;
-  height: 40px;
-  padding: 0 15px;
-  justify-content: center;
-  font-family: "Lexend", sans-serif;
-  border: 1px solid #653f31;
-  cursor: pointer;
-}
-.book-datas > img {
-  display: inline-block;
-  width: 150px;
-  height: auto;
-}
-
-#resultatSearchForm {
-  line-height: 2;
-  display: grid;
-  grid-template-columns: 40% 40%;
-  grid-template-rows: auto;
-  height: 100%;
-}
-#resultatSearchForm > img {
-  grid-column: 1;
-  grid-area: 1 / 1 / 7 / 2;
-  align-self: center;
-  margin: 0 auto;
-  @include desktop {
-    margin: 30px;
-  }
-}
-#resultatSearchForm > p {
-  grid-column: 2;
-}
-.titreBleuGras {
-  color: $primary-text-800;
-  font-weight: 550;
-  font-size: $titre-h3;
-}
-#modify-input {
-  grid-column: 2;
-  width: 200px;
-  height: 40px;
-  cursor: pointer;
-}
-#modal-modify-book {
-  width: 35rem;
-  height: auto;
-  position: absolute;
-  left: 53%;
-  top: 260px;
-  padding: 20px;
-  border-radius: 20px;
-  border: 2px solid $pastel-rose-300;
-  background-color: $stroke-gris-100;
-  @include desktop {
-    left: 58%;
-  }
-}
-#modal-modify-book > form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
-}
-#modal-modify-book form div {
-  display: contents;
-}
-
-#modal-modify-book > form > div > label {
-  grid-column: 1;
-  align-self: center;
-  border-bottom: 1px solid #e0e0e0; /* Bordure en bas */
-  padding-bottom: 4px;
-}
-#modal-modify-book > form > div > input {
-  grid-column: 2;
-  border-radius: 20px;
-  width: 285px;
-  height: 40px;
-  text-align: center;
-  font-family: "Lexend", sans-serif;
-  border: 1px solid #653f31;
-  margin-top: 10px;
-}
-
-#modal-modify-book form textarea {
-  grid-column: 2;
-  margin-left: 20px;
-  border-radius: 20px;
-  width: 300px;
-  height: auto;
-  font-family: "Lexend", sans-serif;
-  padding: 10px;
-}
-
-#modal-modify-book > .formModalMB {
-  width: 500px;
-}
-
-#textAearaMB > textarea {
-  margin-left: 20px;
-  border-radius: 20px;
-  width: 300px;
-  height: auto;
-  font-family: "Lexend", sans-serif;
-  padding: 10px;
-}
-#modal-modify-book > form > #close > img {
-  width: 25px;
-  height: auto;
-  cursor: pointer;
-}
 
 //DASHBOARD STOCK BOOK
 
@@ -3689,17 +3551,23 @@ article h2 {
   margin: 20px 0;
 }
 
-//Dashboard Modify Livres
 
+
+//Dashboard Modify Livres
 #search-form{
   margin: 40px 0;
 }
-  .accueil-form {
+#search-form>.accueil-form {
   display: flex;
   flex-direction: row;
   align-items: center; 
   gap: 10px; 
   // margin-left: 100px;
+}
+#listBook{
+   margin-top: 40px;
+   display: flex;
+   justify-content: center;
 }
 #search-form>form>#book-datas>input{
   font-family: "Lexend", sans-serif;
@@ -3723,6 +3591,7 @@ article h2 {
     font-family: "Lexend", sans-serif;
     border: 1px solid #653F31; 
     cursor: pointer;
+    margin-left: 20px;
   }
   .book-datas>img{
     display: inline-block;
@@ -3742,6 +3611,7 @@ article h2 {
   grid-area: 1 / 1 / 7 / 2;
   align-self: center;
   margin: 0 auto;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   @include desktop{ 
     margin: 30px;
   }
@@ -3759,14 +3629,22 @@ article h2 {
     width: 200px;
     height: 40px;
     cursor: pointer;
+    border-radius: 20px;
+    width: 285px;
+    height: 40px;
+    text-align: center;
+    font-family: "Lexend", sans-serif;
+    border: 1px solid #653F31; 
+    pointer-events: auto !important;
   }
 
 #modal-modify-book>form{
 display: grid;
 grid-template-columns: repeat(2, 1fr);
 grid-template-rows: auto;
+
 }
-#modal-modify-book form div{
+#modal-modify-book>form>div{
   display: contents;
 }
 
@@ -3787,23 +3665,22 @@ grid-template-rows: auto;
   margin-top: 10px;
 }
 
-#modal-modify-book form textarea{
+#modal-modify-book>form>textarea{
   grid-column: 2;
   margin-left: 20px;
   border-radius: 20px;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   height: auto;
   font-family: "Lexend", sans-serif;
-  padding: 10px;
 }
 
 
 #modal-modify-book> .formModalMB{
-  width: 500px;
+  width: 100%;
 }
 
 #textAearaMB>textarea{
-  margin-left: 20px;
   border-radius: 20px;
   width: 300px;
   height: auto;
@@ -3836,7 +3713,7 @@ grid-template-rows: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
-  width: 35rem;
+  width: 100%;
   height: auto;
   padding: 20px;
   border-radius: 20px;
@@ -3874,6 +3751,10 @@ grid-template-rows: auto;
   visibility: visible ;
   
 }
+
+
+
+
 
 
 
@@ -4786,9 +4667,15 @@ grid-template-rows: auto;
 .search-formStock>.accueil-form{
   display: flex;
   flex-direction: row;
-  
+  }
+#book-datas{
+  margin: 0 auto;
+}
+.accueil-form>div>.button_punk{
+  margin-left: 20px;
 }
 #book-datas>input{
+  margin-left: 20px;
   width: auto;
   min-width: 15rem;
   align-content: center;
@@ -4817,6 +4704,7 @@ grid-template-rows: auto;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 #modal-add-copies {
   position: fixed;
@@ -4867,9 +4755,9 @@ grid-template-rows: auto;
   margin: 20px 0;
   text-align: center;
 }
-#book-datas{
-  margin: 0 auto;
-}
+// #book-datas{
+  // margin: 0 auto;
+// }
 #modal-add-copies > #cancel {
   margin: 20px;
   cursor: pointer;

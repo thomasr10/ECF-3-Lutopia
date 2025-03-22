@@ -70,7 +70,7 @@ if(isset($_GET['id_book'])){
         </div>
         <div>
             <input type="hidden" name="id_book" value="<?= $book[0]->book->getId_book()?>">
-            <input type="submit" name="modify-book" value="Valider">
+            <input id="modify_book"type="submit" name="modify-book" value="Valider">
         </div>
     </form>
 </div>

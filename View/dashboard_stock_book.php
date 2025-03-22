@@ -39,7 +39,7 @@ ob_start();
             <input type="text" id="title" name="title" placeholder="Rechercher par titre ou ISBN" required>
         </div>
         <div>
-            <button class="button_punk" type="submit">valider</button>
+        <button class = "db-modify-valider" type="submit">valider<img src="/uploads/autres/icon-loupe.svg"></button>
         </div>
     </form>    
 </div>
