@@ -2193,7 +2193,12 @@ article h2 {
   grid-template-rows: auto;
   height: 100%;
   margin-top: 3rem;
-  
+  @include mobile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 #grid>form{
   grid-column: 1;
@@ -2233,6 +2238,9 @@ article h2 {
   width: 27.75rem;   
   height: 18.75rem; 
   perspective: 105rem; 
+  @include mobile{
+    display: none;
+  }
 }
 
 .cover {
