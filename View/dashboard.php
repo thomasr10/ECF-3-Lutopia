@@ -124,7 +124,7 @@ ob_start();
         } 
         
     } else {
-        echo 'Aucune carte séléctionner';  //texte si aucune carte n'est entrer mais que le formaire est quand même envoyer
+        echo 'Aucune carte séléctionnée';  //texte si aucune carte n'est entrer mais que le formaire est quand même envoyer
     }
     
     ?>

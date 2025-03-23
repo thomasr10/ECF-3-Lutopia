@@ -2636,3 +2636,53 @@ td {
 th {
   background-color: #f2f2f2;
 }
+
+// DEBUT DASHBOARD-CREATE-USER-----------------------
+.create-user-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  h1 {
+    font-size: $titre-h2;
+    color: $primary-text-900;
+    margin-bottom: 3rem;
+  }
+}
+
+.create-user-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 70%;
+}
+.child-section {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+.create-user-entry {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  input {
+    padding: 0.3rem 1rem;
+    background-color: $primary-text-300;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    color: $primary-text-900;
+    &:hover {
+      border: 2px solid $primary-text-900;
+    }
+  }
+}
+.create-user-input {
+  padding: 0.3rem 1rem;
+  background-color: $primary-text-300;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  color: $primary-text-900;
+  &:hover {
+    border: 2px solid $primary-text-900;
+  }
+}
+// FIN DASHBOARD-CREATE-USER-----------------------
