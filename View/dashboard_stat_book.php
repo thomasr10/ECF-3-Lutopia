@@ -20,12 +20,12 @@ ob_start();
     <div>
         <div class="dash-form-container" id="form-container">
             <form method="GET" class="dash-statbook-search">
-                <input class ="input-correction" type="text" name="book" id="search" placeholder="Rechercher..." />
+                <input class ="input-correction" type="text" name="book" id="search" placeholder="  Rechercher..." />
                 <button type="submit" class="">
                     <img src="<?= UPLOADS . 'autres/icon-loupe.svg'?>" alt="icone loupe">
                 </button>
             </form> 
-        </div>
+        
         <div>
         <select name="year" id="year">
                 <option value="0">Depuis Toujours</option>
@@ -34,6 +34,7 @@ ob_start();
                 <option value="2023">2023</option>
                 <option value="2022">2022</option>
             </select>
+        </div>
         </div>
         <?php
         if(isset($_GET['book'])){
@@ -47,7 +48,7 @@ ob_start();
      
     <Article class="dash-statbook-container">
         <table class="dash-statbook-table">
-        <caption id="sub-title">Les 20 livres les plus empruntés</caption>
+        <caption id="sub-title">Les 20 livres les plus empruntés : </caption>
             <thead class="dash-statbook-header">
               <th scope="col" class = "statbook-title">Titre du livre</th>  
               <th scope="col" class = "statbook-id">Id</th>  
