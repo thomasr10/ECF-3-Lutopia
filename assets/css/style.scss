@@ -22,6 +22,7 @@ body {
   background-attachment: fixed;
 }
 
+
 // début header ------------------------------------
 .header {
   box-shadow: 10px 5px 5px rgba(241, 159, 159, 0.2);
@@ -29,18 +30,30 @@ body {
   display: flex;
   width: 100%;
   height: 167px;
-  justify-content: center;
+  justify-content: space-between;
   background: $degrade-header-variant;
+  margin-bottom: 50px;
   @include tablet {
     height: 120px;
+    width: 100%;
+  }
+  @include mobile {
+    height: 100px;
+    width: 100%; 
+    justify-content: center;
   }
 }
-* .menu {
+  .menu {
   display: flex;
   height: 100%;
   width: 90%;
   justify-content: space-between;
   align-items: center;
+  @include mobile{
+    width:100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 figure {
@@ -48,6 +61,8 @@ figure {
   img {
     height: 80%;
   }
+  display: flex; /* Pour gérer l'alignement du logo */
+  align-items: center;
 }
 .nav {
   @include tablet {
@@ -119,7 +134,7 @@ figure {
     padding: 0.2rem 1rem;
   }
   @include tablet {
-    padding: 0;
+    padding: 0.2rem;
   }
 
   &:hover {
@@ -297,6 +312,34 @@ figure {
 
 // fin enfant-livre ------------------------------------------------------------------------------------------------
 // début animation dés
+@media screen and (max-width: 750px) {
+  #section-container .images, #section-connected .images  {
+      display: none !important;
+      visibility: hidden;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      margin: -0.9375rem;
+      padding: 0;
+  }
+  .images>img{
+    display: none;
+  }
+ #container_0{
+  display: none;
+ }
+
+}
+#bookRowCubeAge{
+  width: 100%;
+  @include mobile{
+display:none;
+  }
+  #section-container,
+#section-connected{
+  display: none;
+}
+}
 #center {
   position: relative;
   display: flex;
@@ -309,6 +352,7 @@ h1 {
   text-align: center;
   width: 100%;
 }
+
 #bookContainer {
   position: relative;
   max-width: 1150px;
@@ -355,7 +399,29 @@ h1 {
   align-items: center;
   gap: 50px; 
   width: 100%;
-  margin-top: 50px;
+  margin: 0 auto;
+  @include mobile{
+    display: block;
+  }
+  .age-label {
+    display: none;
+    width: 10rem;
+    height: 40px;
+    background-color: $pastel-vert-400; 
+    border-radius: 20px;
+    text-align: center;
+    align-content: center;
+    font-family: "Lexend", sans-serif;
+    margin: 0 auto;
+    transition: 1s ease-in-out;
+    cursor:pointer;
+    @include mobile{
+      display:block;
+    }
+}
+.age-label:hover{
+  background-color: $pastel-vert-200;
+}
   #container_0,
   #container_6,
   #container_8 {
@@ -365,12 +431,13 @@ h1 {
     justify-content: space-between;
     position: relative;
     margin-top: 30px;
+    margin: 0 auto;
   }
   .images {
     position: relative;
     width: 152px;
     height: 155px;
-    margin-left: 20px;
+    //margin-left: 20px;
   }
 
   .img2 {
@@ -407,7 +474,7 @@ h1 {
     justify-content: space-between;
     position: relative;
     margin-top: 30px;
-    transform: translateX(150%);
+    margin: 0 auto;
   }
 
   .images {
@@ -422,7 +489,7 @@ h1 {
     position: absolute;
     left: 80px;
     top: 39%;
-    transform: translateX(-5%);
+    margin:0 auto;
     width: 80px;
     height: 95px;
   }
@@ -457,8 +524,8 @@ h1 {
     display: flex;
     justify-content: space-between;
     position: relative;
-    margin-top: 30px;
-    transform: translateX(250%);
+    margin:0 auto;
+    ;
   }
   .images {
     position: relative;
@@ -511,6 +578,7 @@ h1 {
     justify-content: space-between;
     position: relative;
     margin-top: 30px;
+    margin:0 auto;
   }
   .images {
     position: relative;
@@ -547,6 +615,7 @@ h1 {
     justify-content: space-between;
     position: relative;
     margin-top: 30px;
+    margin:0 auto;
   }
   .images {
     position: relative;
@@ -575,8 +644,24 @@ h1 {
   flex-direction: row; 
   flex-wrap: nowrap;
   justify-content: center;
-  gap: 60px;
+  gap: 30px;
   width: auto;
+  @include mobile{
+    flex-direction: column; // Passer en colonne sur mobile
+    align-items: center; // Centrer les cartes
+  }
+  #insteadContainer_0{
+    display:none;
+    @include mobile{
+      display: block;
+    }
+  }
+}
+.card{
+  width:15rem;
+  @include mobile{
+    margin: 50px 40px;
+  }
 }
 .card img {
   width: 200px;
