@@ -7,7 +7,7 @@ $pointSlash = "";
 ob_start();
 ?>
 <?php
-if(isset($_SESSION['id'])){
+if(isset($_SESSION['id']) && $_SESSION['role'] == 0){
 ?>
 <div>
 

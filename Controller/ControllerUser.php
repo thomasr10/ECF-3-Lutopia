@@ -127,6 +127,7 @@ class ControllerUser {
                     $_SESSION['first-name'] = $user->getFirst_name();
                     $_SESSION['last-name'] = $user->getLast_name();
                     $_SESSION['full-name'] = $user->getFirst_Name() . ' ' . $user->getLast_Name();
+                    $_SESSION['role'] = $user->getRole();
 
                     if(isset($_POST['Check1'])){
                         setcookie("remember_mail", $_POST['email'], time() + 3600*24*30);

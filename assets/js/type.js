@@ -29,29 +29,29 @@ buttonBorrowSelect.forEach(element => {
     });
 });
 
-selectChild.addEventListener('change', function(event) {
+// selectChild.addEventListener('change', function(event) {
     
-    const selectedAge = event.target.value;
-    const newSplit = selectedAge.split('-');
-    const newAgeArray = newSplit[0];
-    const newId = newSplit[1]; 
+//     const selectedAge = event.target.value;
+//     const newSplit = selectedAge.split('-');
+//     const newAgeArray = newSplit[0];
+//     const newId = newSplit[1]; 
     
-    const newArray = [newAgeArray, ...ageArray.filter(age => age !== newAgeArray)]
-    const newIdArray = [newId, ...idArray.filter(age => age !== newId)];
+//     const newArray = [newAgeArray, ...ageArray.filter(age => age !== newAgeArray)]
+//     const newIdArray = [newId, ...idArray.filter(age => age !== newId)];
 
-    console.log(newArray);
-    console.log(newIdArray);
+//     console.log(newArray);
+//     console.log(newIdArray);
 
 
     
-    showReservation(newIdArray[0]);
+//     showReservation(newIdArray[0]);
 
-    buttonBorrowSelect.forEach(element => {
-        element.addEventListener('click', () => {
-                reservationBook(element.value, newIdArray[0]);
-        });
-    });
-});
+//     buttonBorrowSelect.forEach(element => {
+//         element.addEventListener('click', () => {
+//                 reservationBook(element.value, newIdArray[0]);
+//         });
+//     });
+// });
 
 
 
@@ -94,11 +94,11 @@ function showReservation(id){
                 const divMiniBook = document.createElement('div');
                 const divMiniBookTitle = document.createElement('div');
                 const imgMiniBook = document.createElement('img');
+
                 const alink = document.createElement('a');
                 const aButton = document.createElement('a');
                 const xIcon = document.createElement('img');
 
-                
                 divPadding.setAttribute("class", "padding-element2");
                 divMiniBook.setAttribute("class", "mini-book");
                 divMiniBookTitle.setAttribute("class", "mini-book-title");
@@ -109,7 +109,7 @@ function showReservation(id){
 
                 alink.innerHTML = element.title;
                 xIcon.setAttribute('id', 'close-button');
-                xIcon.setAttribute('src', '../uploads/autres/iconX.svg');
+                xIcon.setAttribute('src', '../../uploads/autres/iconX.svg');
                 xIcon.setAttribute('class', 'close-x-icon');
                 xIcon.setAttribute('alt', 'icone fermeture');
                 xIcon.setAttribute('value', element.id_reservation);
@@ -118,8 +118,8 @@ function showReservation(id){
                     removeReservation(element.id_reservation, id);
                 });
 
-
-                resBox.append(divPadding);
+                
+                resBox.append(divPadding);       
                 divPadding.append(divMiniBook);
                 divMiniBook.append(imgMiniBook);
                 divMiniBook.append(divMiniBookTitle);
@@ -127,6 +127,13 @@ function showReservation(id){
                 divMiniBookTitle.append(aButton);
                 aButton.append(xIcon);
             });
+            
+            const aBack = document.createElement('a'); // a link pour le retour a la homepage
+            aBack.setAttribute("href", "/");
+            aBack.innerHTML = "Changer d'enfant";
+
+            resBox.append(aBack); 
+
         }
     });
 }
@@ -206,7 +213,9 @@ function showTypeBook(age, type, categoryId){
                 illustrator.append("illustrée par " + book.illustrator);
                 edition.append("illustrée par " + book.editor);
 
-               
+                buttonBorrow.addEventListener('click', function listener1(){
+                    reservationBook(buttonBorrow.value, idArray[0]);
+                });
 
 
 
@@ -225,7 +234,6 @@ for (let items of category) {
             typeId = 0;
         }
         showTypeBook(pageAge, typeId, categoryId);
-        
     });
 }
 

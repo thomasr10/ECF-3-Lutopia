@@ -232,7 +232,7 @@ function sendChildValue(array, id){
                                         </div>`;
                     divCube.innerHTML = include1;
                     const age0_2 = document.querySelector('.img2');
-                    age0_2.addEventListener('click', function(){document.location.href = "/age/1";});
+                    age0_2.addEventListener('click', function(){document.location.href = "/age/1/" + id;});
                     break;
                 case 2:
                     const include2 = `<div id="container_2" class="containerAll">
@@ -248,7 +248,7 @@ function sendChildValue(array, id){
                                         </div>`;
                     divCube.innerHTML = include2;
                     const age2_4 = document.querySelector('.img7');
-                    age2_4.addEventListener('click', function(){document.location.href = "/age/2";});
+                    age2_4.addEventListener('click', function(){document.location.href = "/age/2/" + id;});
                     break;
                 case 3:
                     const include3 = `<div id="container_4" class="containerAll">
@@ -266,7 +266,7 @@ function sendChildValue(array, id){
                                         </div>`;
                     divCube.innerHTML = include3;
                     const age4_6 = document.querySelector('.img12');
-                    age4_6.addEventListener('click', function(){document.location.href = "/age/3";});
+                    age4_6.addEventListener('click', function(){document.location.href = "/age/3/" + id;});
                     break;
                 case 4:
                     const include4 = `<div id="container_6" class="containerAll">
@@ -285,7 +285,7 @@ function sendChildValue(array, id){
                                     </div>`;
                     divCube.innerHTML = include4;
                     const age6_8 = document.querySelector('.img17');
-                    age6_8.addEventListener('click', function(){document.location.href = "/age/4";});
+                    age6_8.addEventListener('click', function(){document.location.href = "/age/4/" + id;});
                     break;
                 case 5:
                     const include5 = `<div id="container_8" class="containerAll">
@@ -305,7 +305,7 @@ function sendChildValue(array, id){
                                     </div>`;
                     divCube.innerHTML = include5;
                     const age8_10 = document.querySelector('.img22');
-                    age8_10.addEventListener('click', function(){document.location.href = "/age/5";});
+                    age8_10.addEventListener('click', function(){document.location.href = "/age/5/" + id;});
                     break;
             }
 

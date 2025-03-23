@@ -72,7 +72,7 @@ $router->map('POST', '/dashboard/add-author', 'ControllerAuthor#addAuthor', 'add
 $router->map('POST', '/dashboard/add-illustrator', 'ControllerIllustrator#addIllustrator', 'add-illustrator');
 
 //route age
-$router->map('GET', '/age/[i:age]', 'ControllerBook#drawAge', 'drawAge');
+$router->map('GET', '/age/[i:age]/[i:idchild]?', 'ControllerBook#drawAge', 'drawAge');
 
 //route 404 error
 $router->map('GET', '/error404', 'ControllerUser#errorPage', 'errorPage');
