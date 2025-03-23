@@ -9,7 +9,10 @@ ob_start();
 <?php
 if(isset($_SESSION['id'])){
 ?>
+<div>
 
+    
+</div>
 
 
 <!-- début selection enfant et affichage de ses reservations -->
@@ -88,6 +91,14 @@ if(isset($_SESSION['id'])){
 <!-- fin selection enfant et affichage de ses reservations -->
 <!-- carroussel -->
 
+<div id="center">
+    <h1>Les dernières sorties</h1>
+    <div id="bookContainer"></div>
+    <div class="buttons">
+        <button class="button" id="prevButton"><img src="/uploads/autres/buttonCarrousselLeft.webp" alt="button left"> </button>
+        <button class="button" id="nextButton"><img src="/uploads/autres/buttonCarrousselRight.png" alt="button right"></button>
+    </div>
+</div>
 
 <div id="section-connected"></div>
 

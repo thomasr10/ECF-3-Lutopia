@@ -20,7 +20,6 @@ body {
   );
   background-repeat: no-repeat;
   background-attachment: fixed;
-  
 }
 
 // début header ------------------------------------
@@ -366,7 +365,6 @@ h1 {
     justify-content: space-between;
     position: relative;
     margin-top: 30px;
-    margin-left: 100px;
   }
   .images {
     position: relative;
@@ -513,7 +511,6 @@ h1 {
     justify-content: space-between;
     position: relative;
     margin-top: 30px;
-    margin-left: 200px;
   }
   .images {
     position: relative;
@@ -550,7 +547,6 @@ h1 {
     justify-content: space-between;
     position: relative;
     margin-top: 30px;
-    margin: 0 auto;
   }
   .images {
     position: relative;
@@ -579,9 +575,8 @@ h1 {
   flex-direction: row; 
   flex-wrap: nowrap;
   justify-content: center;
-  gap: 40px;
-  width: 80%;
-  margin: 0 auto;
+  gap: 60px;
+  width: auto;
 }
 .card img {
   width: 200px;
