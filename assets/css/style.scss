@@ -8,7 +8,6 @@
 @import "layout/grid";
 @import "layout/header";
 
-
 body {
   background: linear-gradient(
     to top,
@@ -166,16 +165,15 @@ figure {
   }
 }
 .result-searchbar-container {
- margin: 0.5rem 1rem;
+  margin: 0.5rem 1rem;
 
- 
   ul {
     display: flex;
     flex-direction: column;
     padding: 1rem 1rem;
     background-color: $primary-text-200;
     border-radius: 15px;
-    
+
     li {
       padding-bottom: 0.4rem;
       a {
@@ -188,7 +186,6 @@ figure {
     }
   }
 }
-
 
 // fin header -----------------------------
 // -----------debut selection enfant et affichage de ses reservations --------------------
@@ -204,7 +201,7 @@ figure {
     flex-direction: column;
   }
 }
-.ours-icon{
+.ours-icon {
   @include tablet {
     display: none;
   }
@@ -238,7 +235,6 @@ figure {
   }
 }
 
-
 .padding-element2 {
   padding: 0 1rem;
   @include desktop {
@@ -270,7 +266,6 @@ figure {
   justify-items: center;
   align-content: center;
   padding-left: 0.5rem;
-
 }
 .mini-book-title > a {
   text-decoration: none;
@@ -350,10 +345,10 @@ h1 {
 #section-connected {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 50px; 
+  gap: 50px;
   width: 100%;
   margin-top: 50px;
   #container_0,
@@ -572,7 +567,7 @@ h1 {
 }
 .booksContainer {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   gap: 60px;
@@ -600,6 +595,10 @@ h1 {
 }
 .flip-back {
   background: $degrade-footerTop;
+  padding: 2rem 0.5rem 1rem 0.5rem;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
 }
 // fin animation dés
 //MODAL AJOUT AUTEUR/ ILLUSTRATEUR MODIFIEZ LE
@@ -835,7 +834,7 @@ select {
 }
 .content-side {
   margin: 0 auto;
-  }
+}
 
 // DASHBOARD ACCUEIL----------------------------------------------------
 
@@ -1063,7 +1062,7 @@ select {
 
 #grid2 {
   display: grid;
-  grid-template-columns: 50% 1fr; 
+  grid-template-columns: 50% 1fr;
   grid-template-rows: auto;
   gap: 100px;
   font-family: "Lexend", sans-serif;
@@ -1072,18 +1071,17 @@ select {
 }
 
 #register {
-  grid-column: 1 ; /* Fais en sorte que le formulaire prenne 2 colonnes */
+  grid-column: 1; /* Fais en sorte que le formulaire prenne 2 colonnes */
   display: grid;
   grid-template-columns: 1fr 1fr; /* Deux colonnes à l'intérieur */
-  
 }
 
-#register>label {
+#register > label {
   grid-column: 1;
   align-self: center;
 }
 
-#register>input {
+#register > input {
   grid-column: 2;
   font-family: "Lexend", sans-serif;
   border-radius: 20px;
@@ -1119,7 +1117,8 @@ select {
   background-color: #36354e;
   transform: rotateY(0deg);
 }
-.cover, .page {
+.cover,
+.page {
   position: absolute;
   padding: 1rem;
   height: 100%;
@@ -1387,15 +1386,12 @@ article h2 {
   margin: 20px 0;
 }
 
-
-
 //DASHBOARD STOCK BOOK
 
 //CreateBook
 #createBook {
   width: 750px;
   height: auto;
-  
 }
 #createBook > form {
   width: 750px;
@@ -1432,7 +1428,7 @@ article h2 {
   border: 1px solid #653f31;
   align-self: center;
   justify-self: center;
-  margin-bottom: 20px;;
+  margin-bottom: 20px;
 }
 #createBook > form > #author-section > button {
   grid-column: 2;
@@ -1553,801 +1549,6 @@ td {
 
 // FIN-DASHBOARD STAT BOOK---------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //CONNECTION LOGIN
 #grid {
   display: grid;
@@ -2355,34 +1556,31 @@ td {
   grid-template-rows: auto;
   height: 100%;
   margin-top: 3rem;
-  
 }
-#grid>form{
+#grid > form {
   grid-column: 1;
 }
 
 .contenu {
-  text-align: center; 
+  text-align: center;
 }
 
-.contenu>div>label {
+.contenu > div > label {
   font-family: "Lexend", sans-serif;
   display: flex;
   justify-content: center;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 }
 
-.contenu>div>input {
+.contenu > div > input {
   border-radius: 20px;
   width: 285px;
   height: 40px;
   text-align: center;
   font-family: "Lexend", sans-serif;
-  border: 1px solid #653F31; 
+  border: 1px solid #653f31;
   margin-bottom: 20px;
 }
-
-
 
 #book2 {
   grid-column: 2;
@@ -2392,9 +1590,9 @@ td {
   // left: 50%;
   // right: 0;
   // margin: auto;
-  width: 27.75rem;   
-  height: 18.75rem; 
-  perspective: 105rem; 
+  width: 27.75rem;
+  height: 18.75rem;
+  perspective: 105rem;
 }
 
 .cover {
@@ -2402,8 +1600,8 @@ td {
   transform: rotateY(0deg);
 }
 .page {
-  top: 0.375rem; 
-  left: 0.375rem; 
+  top: 0.375rem;
+  left: 0.375rem;
   background-color: #e9e6c4;
   transform: rotateY(0deg);
   text-align: right;
@@ -2414,7 +1612,8 @@ td {
   height: 18rem;
 }
 
-.cover, .page {
+.cover,
+.page {
   position: absolute;
   padding: 1rem;
   transform-origin: 100% 0;
@@ -2463,16 +1662,36 @@ td {
     rgba(255, 250, 251, 1) 100%
   );
 
-  background: linear-gradient(135deg, rgba(252,221,236,1) 0%, rgba(255,230,199,1) 27%, rgba(232,255,196,1) 54%, rgba(252,221,236,1) 80%, rgba(255,250,251,1) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(252, 221, 236, 1) 0%,
+    rgba(255, 230, 199, 1) 27%,
+    rgba(232, 255, 196, 1) 54%,
+    rgba(252, 221, 236, 1) 80%,
+    rgba(255, 250, 251, 1) 100%
+  );
 }
 .page:nth-of-type(2) {
   animation-delay: 0.33s;
-  background: linear-gradient(135deg, rgba(252,221,236,1) 0%, rgba(255,230,199,1) 27%, rgba(232,255,196,1) 54%, rgba(252,221,236,1) 80%, rgba(255,250,251,1) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(252, 221, 236, 1) 0%,
+    rgba(255, 230, 199, 1) 27%,
+    rgba(232, 255, 196, 1) 54%,
+    rgba(252, 221, 236, 1) 80%,
+    rgba(255, 250, 251, 1) 100%
+  );
 }
 .page:nth-of-type(3) {
   animation-delay: 0.66s;
-  background: linear-gradient(135deg, rgba(252,221,236,1) 0%, rgba(255,230,199,1) 27%, rgba(232,255,196,1) 54%, rgba(252,221,236,1) 80%, rgba(255,250,251,1) 100%);
-
+  background: linear-gradient(
+    135deg,
+    rgba(252, 221, 236, 1) 0%,
+    rgba(255, 230, 199, 1) 27%,
+    rgba(232, 255, 196, 1) 54%,
+    rgba(252, 221, 236, 1) 80%,
+    rgba(255, 250, 251, 1) 100%
+  );
 }
 .page:nth-of-type(4) {
   animation: bookOpen150deg 3s forwards;
@@ -2541,48 +1760,66 @@ td {
   }
 }
 
-
 @keyframes bookOpen {
-  30% { z-index: 999 }
-  100% {  transform: rotateY(180deg);
-    z-index: 999;}
+  30% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(180deg);
+    z-index: 999;
+  }
 }
 @keyframes bookCover {
-  30% { z-index: 999 }
-  100% {  transform: rotateY(180deg);
-    z-index: 1;}
+  30% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
 }
 @keyframes bookOpen150deg {
-  30% { z-index: 999 }
-  100% {  transform: rotateY(150deg);
-    z-index: 999;}
+  30% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(150deg);
+    z-index: 999;
+  }
 }
 @keyframes bookOpen55deg {
-  30% { z-index: 999 }
-  100% {  transform: rotateY(55deg);
-    z-index: 999;}
+  30% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(55deg);
+    z-index: 999;
+  }
 }
 @keyframes bookOpen30deg {
-  50% { z-index: 999 }
-  100% {  transform: rotateY(30deg);
-    z-index: 999;}
+  50% {
+    z-index: 999;
   }
+  100% {
+    transform: rotateY(30deg);
+    z-index: 999;
+  }
+}
 
 .page.turn img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 1; 
-  }
-.page .turn> p{
-  
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+.page .turn > p {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotateY(180deg); 
+  transform: translate(-50%, -50%) rotateY(180deg);
   font-size: 2rem;
   font-family: "Lexend", sans-serif;
   font-weight: bold;
@@ -2592,926 +1829,6 @@ td {
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //Informations
 article {
@@ -3551,121 +1868,118 @@ article h2 {
   margin: 20px 0;
 }
 
-
-
 //Dashboard Modify Livres
-#search-form{
+#search-form {
   margin: 40px 0;
 }
-#search-form>.accueil-form {
+#search-form > .accueil-form {
   display: flex;
   flex-direction: row;
-  align-items: center; 
-  gap: 10px; 
+  align-items: center;
+  gap: 10px;
   // margin-left: 100px;
 }
-#listBook{
-   margin-top: 40px;
-   display: flex;
-   justify-content: center;
+#listBook {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
 }
-#search-form>form>#book-datas>input{
+#search-form > form > #book-datas > input {
   font-family: "Lexend", sans-serif;
   border-radius: 20px;
   width: 285px;
   height: 40px;
   text-align: center;
   font-family: "Lexend", sans-serif;
-  border: 1px solid #653F31; 
+  border: 1px solid #653f31;
 }
-#search-form>form>div>.db-modify-valider {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background-color:$pastel-vert-300;
-    border-radius: 20px;
-    width: auto;
-    height: 40px;
-    padding: 0 15px;
-    justify-content: center;
-    font-family: "Lexend", sans-serif;
-    border: 1px solid #653F31; 
-    cursor: pointer;
-    margin-left: 20px;
-  }
-  .book-datas>img{
-    display: inline-block;
-    width: 150px;
-    height: auto;
-    }
-  
-  #resultatSearchForm{
-    line-height: 2;
-    display: grid;
-    grid-template-columns: 40% 40%;
-    grid-template-rows: auto;
-    height: 100%;
-  }
-  #resultatSearchForm>img{
+#search-form > form > div > .db-modify-valider {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: $pastel-vert-300;
+  border-radius: 20px;
+  width: auto;
+  height: 40px;
+  padding: 0 15px;
+  justify-content: center;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653f31;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.book-datas > img {
+  display: inline-block;
+  width: 150px;
+  height: auto;
+}
+
+#resultatSearchForm {
+  line-height: 2;
+  display: grid;
+  grid-template-columns: 40% 40%;
+  grid-template-rows: auto;
+  height: 100%;
+}
+#resultatSearchForm > img {
   grid-column: 1;
   grid-area: 1 / 1 / 7 / 2;
   align-self: center;
   margin: 0 auto;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  @include desktop{ 
+  @include desktop {
     margin: 30px;
   }
-  }
-  #resultatSearchForm>p{
-  grid-column: 2;
-  }
-  .titreBleuGras{
-    color: $primary-text-800;
-    font-weight: 550;
-    font-size: $titre-h3;
-  }
-  #modify-input{
-    grid-column: 2;
-    width: 200px;
-    height: 40px;
-    cursor: pointer;
-    border-radius: 20px;
-    width: 285px;
-    height: 40px;
-    text-align: center;
-    font-family: "Lexend", sans-serif;
-    border: 1px solid #653F31; 
-    pointer-events: auto !important;
-  }
-
-#modal-modify-book>form{
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-grid-template-rows: auto;
-
 }
-#modal-modify-book>form>div{
+#resultatSearchForm > p {
+  grid-column: 2;
+}
+.titreBleuGras {
+  color: $primary-text-800;
+  font-weight: 550;
+  font-size: $titre-h3;
+}
+#modify-input {
+  grid-column: 2;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 285px;
+  height: 40px;
+  text-align: center;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653f31;
+  pointer-events: auto !important;
+}
+
+#modal-modify-book > form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+}
+#modal-modify-book > form > div {
   display: contents;
 }
 
-#modal-modify-book>form>div>label{
+#modal-modify-book > form > div > label {
   grid-column: 1;
   align-self: center;
-  border-bottom: 1px solid #e0e0e0; 
+  border-bottom: 1px solid #e0e0e0;
   padding-bottom: 4px;
 }
-#modal-modify-book>form>div>input{
+#modal-modify-book > form > div > input {
   grid-column: 2;
   border-radius: 20px;
   width: 285px;
   height: 40px;
   text-align: center;
   font-family: "Lexend", sans-serif;
-  border: 1px solid #653F31; 
+  border: 1px solid #653f31;
   margin-top: 10px;
 }
 
-#modal-modify-book>form>textarea{
+#modal-modify-book > form > textarea {
   grid-column: 2;
   margin-left: 20px;
   border-radius: 20px;
@@ -3675,19 +1989,18 @@ grid-template-rows: auto;
   font-family: "Lexend", sans-serif;
 }
 
-
-#modal-modify-book> .formModalMB{
+#modal-modify-book > .formModalMB {
   width: 100%;
 }
 
-#textAearaMB>textarea{
+#textAearaMB > textarea {
   border-radius: 20px;
   width: 300px;
   height: auto;
   font-family: "Lexend", sans-serif;
   padding: 10px;
 }
-#modal-modify-book>form>#close>img{
+#modal-modify-book > form > #close > img {
   width: 25px;
   height: auto;
   cursor: pointer;
@@ -3748,221 +2061,19 @@ grid-template-rows: auto;
 #modal-overlay.active,
 #modal-modify-book.active {
   opacity: 1;
-  visibility: visible ;
-  
+  visibility: visible;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //DASHBOARD STOCK BOOK
 
-
-
-
-
 //CreateBook
-#createBook{
+#createBook {
   width: 100%;
   height: auto;
   //left: 50%;
   //transform: translateX(50%);
-
-  
 }
-#createBook>form{
+#createBook > form {
   width: 750px;
   height: auto;
   display: grid;
@@ -3970,22 +2081,22 @@ grid-template-rows: auto;
   margin-top: 40px;
   row-gap: 10px;
 }
-#createBook>h1{
-  font-size:$titre-h2;
-  color:$primary-text-800;
+#createBook > h1 {
+  font-size: $titre-h2;
+  color: $primary-text-800;
   grid-column: span 2;
   text-align: center;
 }
-#createBook>form>div{
+#createBook > form > div {
   display: contents;
 }
-#createBook>form>div>label{
+#createBook > form > div > label {
   grid-column: 1;
   align-self: center;
   border-bottom: 1px solid #e0e0e0; /* Bordure en bas */
   padding-bottom: 4px;
 }
-#createBook>form>div>input{
+#createBook > form > div > input {
   grid-column: 2;
   font-family: "Lexend", sans-serif;
   border-radius: 20px;
@@ -3993,11 +2104,11 @@ grid-template-rows: auto;
   height: 40px;
   text-align: center;
   font-family: "Lexend", sans-serif;
-  border: 1px solid #653F31;
+  border: 1px solid #653f31;
   align-self: center;
   justify-self: center;
 }
-#createBook>form>#author-section>button{
+#createBook > form > #author-section > button {
   grid-column: 2;
   width: 285px;
   height: 40px;
@@ -4013,26 +2124,26 @@ grid-template-rows: auto;
   justify-self: center;
   background-color: $pastel-vert-200;
 }
-#createBook>form>#illustrator-section>button{
+#createBook > form > #illustrator-section > button {
   grid-column: 2;
   width: 285px;
   height: 40px;
   border-radius: 20px;
   font-family: "Lexend", sans-serif;
-  border: 1px solid #653F31;
+  border: 1px solid #653f31;
   align-self: center;
-  justify-self: center; 
+  justify-self: center;
   background-color: $pastel-vert-200;
 }
-#author-section>#author-btn{
+#author-section > #author-btn {
   grid-column: 2;
   width: 285px;
   height: 40px;
   border-radius: 20px;
   font-family: "Lexend", sans-serif;
-  border: 1px solid #653F31;
+  border: 1px solid #653f31;
   align-self: center;
-  justify-self: center; 
+  justify-self: center;
   background-color: $pastel-vert-200;
 }
 #synopsis > textarea {
@@ -4064,42 +2175,19 @@ grid-template-rows: auto;
   text-align: center;
 }
 
-  #dlPicture>input{
+#dlPicture > input {
   align-content: center;
   padding: 5px;
 }
-#dlPicture>p{
+#dlPicture > p {
   grid-column: 2;
   text-align: center;
   font-style: oblique;
   margin-bottom: 20px;
 }
-#submit>input{
+#submit > input {
   background-color: $pastel-vert-300;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // DEBUT-DASHBOARD STAT BOOK-------------------------------------------------------
 
@@ -4108,8 +2196,6 @@ grid-template-rows: auto;
   display: flex;
   flex-direction: column;
 
-  
-  
   h2 {
     padding: 3rem 0;
     font-size: $titre-h2;
@@ -4127,25 +2213,26 @@ grid-template-rows: auto;
   width: 100%;
   border: 3px solid $pastel-rose-400;
 }
-.table, th, td {
+.table,
+th,
+td {
   border: 2px solid $pastel-rose-300;
 }
-
 
 .dash-statbook-header {
   background: $pastel-rose-200;
   color: $primary-text-900;
   font-weight: 600;
   height: 2.5rem;
-    .statbook-title {
-      width: 40%;
-    }
-    .statbook-author {
-      width: 30%;
-    }
-    .statbook-type{
-      width: 20%;
-    }
+  .statbook-title {
+    width: 40%;
+  }
+  .statbook-author {
+    width: 30%;
+  }
+  .statbook-type {
+    width: 20%;
+  }
 }
 
 .dash-statbook-cellule {
@@ -4154,15 +2241,15 @@ grid-template-rows: auto;
 .dash-statbook-body {
   color: $primary-text-800;
   height: 2rem;
-  :nth-child(2){
+  :nth-child(2) {
     text-align: center;
     padding: 0;
   }
-  :nth-child(4){
+  :nth-child(4) {
     text-align: center;
     padding: 0;
   }
-  :nth-child(6){
+  :nth-child(6) {
     padding: 0;
     text-align: center;
   }
@@ -4171,510 +2258,66 @@ grid-template-rows: auto;
 .dash-form-container {
   width: 100%;
   display: flex;
-  
 }
 .dash-statbook-search {
   width: 40%;
   display: flex;
   justify-content: space-around;
 
-
-    input {
-      padding: 0 0 ;
-      border: none;
-      color: $primary-text-800;
+  input {
+    padding: 0 0;
+    border: none;
+    color: $primary-text-800;
+    border: 3px solid transparent;
+    font-family: "Lexend";
+    font-size: $para;
+    background-color: $primary-text-200;
+    outline: none;
+    &:hover {
+      border: 3px solid $primary-text-800;
+    }
+  }
+  button {
+    padding: 0 0;
+    background: transparent;
+    border: none;
+    // border: 3px solid $primary-text-800;
+    display: flex;
+    justify-content: center;
+    img {
+      cursor: pointer;
+      border-radius: 100%;
+      padding: 0.3rem 0.3rem;
       border: 3px solid transparent;
-      font-family: "Lexend";
-      font-size: $para;
-      background-color:$primary-text-200;
-      outline: none;
+      background-color: $primary-text-200;
       &:hover {
+        background-color: $pastel-vert-300;
         border: 3px solid $primary-text-800;
       }
     }
-    button {
-      padding:0 0;
-      background: transparent;
-      border: none;
-      // border: 3px solid $primary-text-800;
-      display: flex;
-      justify-content: center;
-      img {
-        cursor: pointer;
-        border-radius: 100%;
-        padding: 0.3rem 0.3rem;
-        border: 3px solid transparent;
-        background-color:$primary-text-200;
-        &:hover {
-          background-color: $pastel-vert-300;
-          border: 3px solid $primary-text-800
-        }
-      }
-    }
+  }
 }
 // FIN-DASHBOARD STAT BOOK---------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //DASHBOARD STOCK BOOK
-.search-formStock{
-  display:flex;
+.search-formStock {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 40px 0;
 }
-.search-formStock>.accueil-form{
+.search-formStock > .accueil-form {
   display: flex;
   flex-direction: row;
-  }
-#book-datas{
+}
+#book-datas {
   margin: 0 auto;
 }
-.accueil-form>div>.button_punk{
+.accueil-form > div > .button_punk {
   margin-left: 20px;
 }
-#book-datas>input{
+#book-datas > input {
   margin-left: 20px;
   width: auto;
   min-width: 15rem;
@@ -4683,7 +2326,7 @@ grid-template-rows: auto;
   color: $primary-text-900;
   background-color: $stroke-gris-200;
   padding: 0.6rem 1rem;
-  border: 1px solid #653F31;
+  border: 1px solid #653f31;
   font-family: "Lexend", sans-serif;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -4723,7 +2366,6 @@ grid-template-rows: auto;
   visibility: hidden;
   transition: opacity 0.3s ease, transform 0.3s ease;
 
-
   &.active {
     opacity: 1;
     visibility: visible;
@@ -4747,7 +2389,7 @@ grid-template-rows: auto;
   justify-content: center;
   align-items: center;
 }
-#modal-add-copies>form>input{
+#modal-add-copies > form > input {
   width: auto;
   min-width: 15rem;
   padding: 10px;
@@ -4756,7 +2398,7 @@ grid-template-rows: auto;
   text-align: center;
 }
 // #book-datas{
-  // margin: 0 auto;
+// margin: 0 auto;
 // }
 #modal-add-copies > #cancel {
   margin: 20px;
@@ -4772,13 +2414,12 @@ grid-template-rows: auto;
   padding: 20px;
   border-radius: 20px;
   border: 2px solid $pastel-rose-300;
-  background-color: $stroke-gris-100 ;
+  background-color: $stroke-gris-100;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   opacity: 0;
-  visibility: hidden ;
+  visibility: hidden;
   transition: opacity 0.3s ease, transform 0.3s ease;
-
 
   &.active {
     opacity: 1;
@@ -4802,10 +2443,10 @@ grid-template-rows: auto;
 }
 
 //PROFIL UTILISATEUR
-.marginProfil{
+.marginProfil {
   margin: 0 2.5rem;
 }
-#headProfil{
+#headProfil {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -4814,34 +2455,34 @@ grid-template-rows: auto;
   font-size: $titre-h3;
   font-family: "Lexend", sans-serif;
 }
-#headProfil>h2{
+#headProfil > h2 {
   font-size: $titre-h2;
   color: $primary-text-800;
   font-family: "Lexend", sans-serif;
   margin: 20px 0;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
-#headProfil>a{
+#headProfil > a {
   text-decoration: none;
   color: #000;
 }
-#headProfil>a:hover{
+#headProfil > a:hover {
   color: $pastel-vert-400;
   transition: 1s ease-in-out;
 }
-#headProfil>form{
+#headProfil > form {
   margin-top: 40px;
 }
-#headProfil>form>select{
+#headProfil > form > select {
   width: 285px;
   height: 40px;
   border-radius: 20px;
   font-family: "Lexend", sans-serif;
-  border: 1px solid #653F31;
+  border: 1px solid #653f31;
   text-align: center;
   color: $primary-text-800;
 }
-#headProfil>form>input{
+#headProfil > form > input {
   height: 40px;
   width: auto;
   padding: 5px;
@@ -4849,7 +2490,7 @@ grid-template-rows: auto;
   font-family: "Lexend", sans-serif;
 }
 
-#informationProfil{
+#informationProfil {
   width: 400px;
   display: flex;
   flex-direction: row;
@@ -4857,13 +2498,13 @@ grid-template-rows: auto;
   justify-content: space-between;
   margin-top: 40px;
 }
-#informationProfil>p:first-child{
+#informationProfil > p:first-child {
   font-size: 1.2rem;
   font-weight: 350;
   font-family: "Lexend", sans-serif;
   color: $primary-text-800;
 }
-#informationProfil>.enfants{
+#informationProfil > .enfants {
   font-size: 1.2rem;
   font-family: "Lexend", sans-serif;
   width: auto;
@@ -4876,19 +2517,19 @@ grid-template-rows: auto;
   align-items: center;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
-#reservationProfil{
+#reservationProfil {
   margin-top: 40px;
 }
-#reservationProfil>p:first-child{
+#reservationProfil > p:first-child {
   font-size: 1.2rem;
   font-weight: 350;
   font-family: "Lexend", sans-serif;
   color: $primary-text-800;
   margin-bottom: 2.5rem;
 }
-#listeresaProfilContainer{
+#listeresaProfilContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
   column-gap: 20px;
   width: 80%;
@@ -4901,59 +2542,60 @@ grid-template-rows: auto;
   border-radius: 20px;
   background-color: $pastel-rose-200;
 }
-.listeresaProfil>p{
+.listeresaProfil > p {
   font-family: "Lexend", sans-serif;
-  margin-top:10px;
+  margin-top: 10px;
 }
-.titreListe{
+.titreListe {
   font-family: "Lexend", sans-serif;
-  margin-top:10px;
+  margin-top: 10px;
   color: $primary-text-900;
 }
-.listeresaProfil>form>input{
+.listeresaProfil > form > input {
   margin: 0.625rem;
   width: auto;
   padding: 0.625rem;
   background-color: $pastel-vert-100;
 }
-#empruntProfil{
+#empruntProfil {
   margin-top: 50px;
 }
-#empruntProfil>p:first-child{
+#empruntProfil > p:first-child {
   font-size: 1.2rem;
   font-weight: 350;
   font-family: "Lexend", sans-serif;
   color: $primary-text-800;
   margin-bottom: 2.5rem;
 }
-.pasderesaProfil{
+.pasderesaProfil {
   font-family: "Lexend", sans-serif;
   font-size: $para;
 }
-#empruntContainer{
+#empruntContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
   column-gap: 20px;
   width: 80%;
   height: 10rem;
 }
-#borrowHistory>.article{
+#borrowHistory > .article {
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
 }
-.headArticle{
+.headArticle {
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
 }
-.article>.name, .title{
+.article > .name,
+.title {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-#borrowHistory>p:first-child{
+#borrowHistory > p:first-child {
   font-size: 1.2rem;
   font-weight: 350;
   font-family: "Lexend", sans-serif;
@@ -4967,7 +2609,8 @@ table {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-th, td {
+th,
+td {
   border: 1px solid black;
   padding: 15px;
   text-align: left;
