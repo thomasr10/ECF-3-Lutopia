@@ -100,11 +100,7 @@ function showReservation(id){
                 aButton.append(xIcon);
             });
             
-            const aBack = document.createElement('a'); // a link pour le retour a la homepage
-            aBack.setAttribute("href", "/");
-            aBack.innerHTML = "Changer d'enfant";
-
-            resBox.append(aBack); 
+            
 
         }
     });
