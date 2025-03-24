@@ -16,6 +16,10 @@ Lutopia is a magical library designed just for young readers, from newborns to 1
 
 ## ⚙️ Steps to get into the project
 
+### Figma
+
+https://www.figma.com/design/Ynh4zoEWGmVc1ZeAQ1G9bS/ECF3?node-id=3371-20&t=9uiNtpotgbWyFVTc-0
+
 ### Create a virtual host
 
 - Virtual host name : lutopia
@@ -25,10 +29,6 @@ Lutopia is a magical library designed just for young readers, from newborns to 1
 
 ```
 composer install
-```
-
-```
-npm install gsap
 ```
 
 ### Create a .env file

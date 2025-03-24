@@ -62,7 +62,6 @@ class ControllerBook {
 
     public function typeBook(int $age, int $type, int $category){
 
-        // if($category == 0){
             $model = new ModelBook();
             $typeBook = $model->getTypeBook($age, $type, $category);
 
@@ -90,10 +89,6 @@ class ControllerBook {
             } else {
                 echo json_encode("Aucun livre trouvé pour se type");
             }
-
-        // }else {
-            
-        // }
     }
 
     public function showOneBook(int $id){
@@ -155,58 +150,6 @@ class ControllerBook {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function createBook(){
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(!empty($_POST['isbn']) && !empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['illustrator']) && !empty($_POST['editor']) && !empty($_POST['publication_date']) && !empty($_POST['edition_date']) && !empty($_POST['synopsis']) && !empty($_POST['category']) && !empty($_POST['age']) && !empty($_POST['type']) && !empty($_FILES['picture']) && !empty($_POST['copy']) && !empty($_POST['id_author']) && !empty($_POST['id_illustrator'])){
@@ -216,6 +159,7 @@ class ControllerBook {
                 $_FILES['picture']['name'] = $fileName;
                 $img = $fileName . '.webp';
                 $path = '/uploads' . '/' . $img;
+                
                 if(move_uploaded_file($_FILES['picture']['tmp_name'], './uploads/' . $img)){
                     $model = new ModelBook();
                     $id_book = $model->addNewBook($_POST['isbn'], $_POST['title'], $_POST['editor'], $path, $_POST['publication_date'], $_POST['edition_date'], $_POST['synopsis'], intval($_POST['type']), intval($_POST['age']));

@@ -41,20 +41,34 @@ $router->map('GET', '/confirm-user/[a:token]', 'ControllerUser#confirmUser', 'co
 $router->map('GET|POST', '/login', 'ControllerUser#login', 'login');
 //deconnexion
 $router->map('GET', '/logout', 'ControllerUser#logout', 'logout');
+
+// si pb avec l'age d'un enfant à l'inscription
 $router->map('GET|POST', '/register-child', 'ControllerChild#registerChild', 'register-child');
 
 //utilisateur
 $router->map('GET|POST', '/profil', 'ControllerUser#showProfil', 'showProfil');
 $router->map('GET|POST', '/profil/parameter', 'ControllerUser#profilParameter', 'profilParameter');
 
+//route age
+$router->map('GET', '/age/[i:age]/[i:idchild]?', 'ControllerBook#drawAge', 'drawAge');
+
+//route 404 error
+$router->map('GET', '/error404', 'ControllerUser#errorPage', 'errorPage');
+
+//route informations page
+$router->map('GET', '/informations', 'ControllerUser#infoPage', 'infoPage');
+
+//search-bar
+$router->map('POST', '/search-book', 'ControllerBook#searchBook', 'search-book');
+
+
 //bibliotequaire
 $router->map('GET|POST', '/login-admin', 'ControllerUser#loginAdmin', 'loginAdmin');
 $router->map('GET|POST', '/dashboard', 'ControllerUser#dashboard', 'dashboard');
 $router->map('GET|POST', '/dashboard/[i:child]', 'ControllerUser#dashboardChild', 'dashboardChild');
+
 // gestion du stock
-
 $router->map('GET|POST', '/dashboard-book/book-stock', 'ControllerBook#checkCopies', 'book-stock');
-
 
 //Créer un livre
 $router->map('GET|POST', '/dashboard-book', 'ControllerBook#createBook', 'create-book');
@@ -66,23 +80,9 @@ $router->map('GET|POST', '/dashboard-book/modify-book', 'ControllerBook#modifyBo
 $router->map('POST', '/dashboard-search-author', 'ControllerAuthor#searchAuthor', 'search-author');
 $router->map('POST', '/dashboard-search-illustrator', 'ControllerIllustrator#searchIllustrator', 'search-illustrator');
 
-
 //Add author / illustrator
 $router->map('POST', '/dashboard/add-author', 'ControllerAuthor#addAuthor', 'add-author');
 $router->map('POST', '/dashboard/add-illustrator', 'ControllerIllustrator#addIllustrator', 'add-illustrator');
-
-//route age
-$router->map('GET', '/age/[i:age]/[i:idchild]?', 'ControllerBook#drawAge', 'drawAge');
-
-//route 404 error
-$router->map('GET', '/error404', 'ControllerUser#errorPage', 'errorPage');
-
-//route informations page
-$router->map('GET', '/informations', 'ControllerUser#infoPage', 'infoPage');
-
-
-//search-bar
-$router->map('POST', '/search-book', 'ControllerBook#searchBook', 'search-book');
 
 //gestion de stock
 $router->map('POST', '/search-copies', 'ControllerBook#searchCopies', 'search-copies');

@@ -40,7 +40,7 @@ class ControllerUser {
                                 $card = strtoupper(substr($_POST['first-name'], 0, 2)) . $id . strtoupper(substr($_POST['name'], 0, 2));
                                 $model->updateUser($card, $id);
                                 
-                                //check child age  
+                                //check child age, has to be under 10 yo
                                 $modelChild = new ModelChild();
                                 $diff = 10;
                                 $years = $modelChild->yearDiff($arrayChild, $diff);
@@ -129,6 +129,7 @@ class ControllerUser {
                     $_SESSION['full-name'] = $user->getFirst_Name() . ' ' . $user->getLast_Name();
                     $_SESSION['role'] = $user->getRole();
 
+                    // remember me
                     if(isset($_POST['Check1'])){
                         setcookie("remember_mail", $_POST['email'], time() + 3600*24*30);
                         setcookie("remember", $_POST['Check1'], time() + 3600*24*30);
@@ -400,7 +401,7 @@ class ControllerUser {
                                     "birth" => $_POST['child-birth'][$i]
                                 ];
                             }
-                            var_dump($arrayChild);
+
                             //check child age  
                             $modelChild = new ModelChild();
                             $diff = 10;
@@ -446,6 +447,7 @@ class ControllerUser {
 
 
     public function createPassword(int $id){
+        // création de mdp user après l'inscription côté admin
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(!empty($_POST['password']) && !empty($_POST['confpassword'])){
                 
@@ -472,145 +474,6 @@ class ControllerUser {
             require('./View/create_password.php');
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public function updateUser(){
         global $router;

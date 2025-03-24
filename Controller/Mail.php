@@ -17,7 +17,6 @@ abstract class Mail {
         self::$phpmailer->Password = $_ENV['MAIL_PASSWORD'];    
     }
 
-    // pattern de Singleton
     protected function getPhpmailer(){
         if(self::$phpmailer === null){
             self::setPhpmailer();
