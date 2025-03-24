@@ -90,26 +90,43 @@ class ModelChild extends Model {
 
 
     public function updateChild(array $newInfos, int $id_child){
-        $query = "UPDATE `child` SET ";
-        // requete à changer si y a le temps => mettre des "?" pour éviter les variables
 
-        $lastKey = array_key_last($newInfos);
+        // j'initialise des tableaux vides
+        $fields = [];
+        $clearValue = [];
+        $realValue = [];
 
-        // boucler pour concaténer la clé/ valeur à la requête
+        //  je boucle sur le tableau des infos pour stocker des '?' dans $clearValue, les clés dans $fields et les valeurs dans $realValue
         foreach($newInfos as $key => $value){
+
+            $fields[] = $key;
+            $clearValue[] = '?';
+            $realValue[] = $value;
             
-            if($key !== $lastKey){
-                $query .= '`' . $key . '`' . ' = ' . '"' . $value .'"' . ',';
+        }
+
+        // je rajoute l'id dans le tableau car on peut envoyer qu'un param dans un execute 
+        array_push($realValue, $id_child);
+
+        // je crée le début de la requête
+        $query = "UPDATE `child` SET ";
+        // pour connaitre le dernier index
+        $numberOfIndex = count($newInfos) -1;
+
+        // je boucle sur le tableau pour concaténer les champs + les clearValue
+        for($i = 0; $i < count($fields); $i++){
+            if($i === $numberOfIndex){
+                $query .= $fields[$i] . '=' . $clearValue[$i];
             } else {
-                $query .= '`' . $key . '`' . ' = ' . '"' . $value .'"';
+                $query .= $fields[$i] . '=' . $clearValue[$i] . ', ';
             }
         }
 
-        $query .= (' WHERE `id_child` = :id_child');
-        
-        $req = $this->getDb()->prepare($query);
-        $req->bindParam('id_child', $id_child, PDO::PARAM_INT);
-        $req->execute();
+        //  je rajoute la clause where
+        $query .= " WHERE `id_child` = ?";
+
+        $req = $this->getDb()->prepare($query);        
+        $req->execute($realValue);
     }
 
     public function deleteChild(int $id_child){

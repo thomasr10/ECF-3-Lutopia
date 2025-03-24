@@ -1,8 +1,7 @@
-const childSection = document.getElementById('child-section');
+const childSection = document.getElementById('child-section-js-ne-pas-toucher');
 const addChild = document.getElementById('add-child');
 let count = 2;
 
-// juste pour rajouter les input pour ajouter un enfant
 
 addChild.addEventListener('click', function(){
 

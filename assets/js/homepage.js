@@ -8,7 +8,7 @@ const prevButton = document.getElementById('prevButton');
 const totalImages = document.querySelectorAll('.image').length;
 
 
-// afficher les nouveautés en fonction de l'age de l'enfant séléctionné
+// afficher les nouveautés en fonction de l'age de l'enfant séléctionné dans le slider
 
 function displayNewBooks(age) {
     let currentAge = age.value;
@@ -19,8 +19,18 @@ function displayNewBooks(age) {
     .then(response => response.json())
     .then(data => {
         console.log(data.length);
+      
+    let currentAge = age.value; // contient l'age et l'id de l'enfant
+    let splitAge = currentAge.split('-'); // pour récupérer uniquement l'age
+    
+    fetch(`/home-category-age/${splitAge[0]}`) // envoie de l'age dans le fetch
+    .then(response => response.json())
+    .then(data => {
+
+        // création des éléments pour afficher les livres
         let bookArticle = document.createElement('div');
         bookArticle.className = 'images';
+
         data.forEach(book => {
             let imgContainer = document.createElement('img');
             imgContainer.className = 'image';
@@ -33,10 +43,6 @@ function displayNewBooks(age) {
             booksContainer = document.getElementById('bookContainer');
             booksContainer.append(bookArticle);
 
-            //à enlever c juste pour pas que l'image soit BALEZE
-            imgContainer.style.width = 200 + 'px'
-
-            
          })
             // Ajouter le conteneur d'images au conteneur principal
     booksContainer.appendChild(bookArticle);
@@ -63,11 +69,12 @@ document.getElementById('prevButton').addEventListener('click', () => {
 
 }
 
-
+// condition pour que les fonctions soient appliquées uniquement si connecté
 if(selectChild !== null){
-    
+// select child = select avec le nom des enfants
     displayNewBooks(selectChild);
     selectChild.addEventListener('change', function() {
+        // on vide les éléments html avant de les remplir avec les nouvelles data
         sectionContainer.innerHTML = "";
         booksContainer.innerHTML = "";
         displayNewBooks(selectChild);
@@ -76,11 +83,11 @@ if(selectChild !== null){
     selectChild.addEventListener('change', function(event) {
         const selectedAge = event.target.value;
         const newSplit = selectedAge.split('-');
-        const newAgeArray = newSplit[0];
-        const newId = newSplit[1]; 
+        const newAgeArray = newSplit[0]; // récupère l'age de l'enfant séléctionné apres l'event
+        const newId = newSplit[1]; // récupère l'id de l'enfant séléctionné après l'event
         
-        const newArray = [newAgeArray, ...ageArray.filter(age => age !== newAgeArray)]
-        const newIdArray = [newId, ...idArray.filter(age => age !== newId)];
+        const newArray = [newAgeArray, ...ageArray.filter(age => age !== newAgeArray)]; // réorganise les ages dans l'ordre du select pour que l'affichage des catégories se fasse dans le bon ordre (je sais pas comment dire autrement dsl)
+        const newIdArray = [newId, ...idArray.filter(age => age !== newId)]; // pareil avec l'id
 
 
         sectionContainer.innerHTML = "";
@@ -96,8 +103,10 @@ if(selectChild !== null){
         ageArray.push(split[0]);
         idArray.push(split[1]);
     });
+    // réservation de l'enfant (à côté du select)
     showReservation(idArray[0]);
     sendChildValue(ageArray, idArray[0]);
+
 
     updateNavigationButtons();
     prevButton.addEventListener('click', prev); 
@@ -173,43 +182,8 @@ function prev() {
 
 
 
-
-
-
-
-
-
-
-
-
-// Debut menu burger-------------------------------------------------------
-// const menuToggle = document.querySelector('.menu-toggle');
-// const navbar = document.querySelector('.navbar');
-
-// menuToggle.addEventListener("click", () => {
-//     if (navbar.style.left === "0%") {
-//       gsap.to(navbar, { left: "-80%", duration: 0.5, scale: 1 }); // Ferme le menu
-    
-//     } else {
-//       gsap.to(navbar, {
-//         left: "0%",
-//         duration: 0.5,
-//         scale: 1, // Ouvre le menu avec une échelle de 1
-//         ease: "back.out", // Effet de rebond
-//       });
-    
-//     }
-// });
-
-// Fin menu burger-------------------------------------------------------
-// afficher des propositions de livres
-
-
-
-
-
 const sectionContainer = document.getElementById('section-connected');
-
+// fonction pour afficher les livres en fonction de l'age
 function sendChildValue(array, id){
     fetch('/home-section', {
         method: "POST",
@@ -223,8 +197,9 @@ function sendChildValue(array, id){
         for(let i = 0; i < arrayObj.length; i++){
              arrayId.push(arrayObj[i].id_age);
         }
-        uniqueId = Array.from(new Set(arrayId));
+        uniqueId = Array.from(new Set(arrayId)); // j'enleve les doublons pour éviter l'affichage en double des livres
 
+    
         for(let i = 0; i < uniqueId.length; i ++){
             console.log(array[i]);
             const divCube = document.createElement('div');
@@ -286,6 +261,9 @@ function sendChildValue(array, id){
                                             <div class="cubesGsap">      
                                             <img src="uploads/autres/age_0_5.webp" class="square img5">
                                             </div>
+                                        </div>
+                                        <div id="insteadContainer_0">
+                                            <a class="age-label" href="/age/1">De 0 à 2 ans</a>
                                         </div>`;
                     divCube.innerHTML = include1;
                     const age0_2 = document.querySelector('.img2');
@@ -302,7 +280,10 @@ function sendChildValue(array, id){
                                             <img src="uploads/autres/age_2_1.webp" class="square img9">    
                                             <img src="uploads/autres/age_2_2.webp" class="square img10">
                                             </div>
-                                        </div>`;
+                                        </div>
+                                        <div id="insteadContainer_2">
+                                            <a class="age-label" href="/age/2">De 2 à 4 ans</a>
+                                        </div>`
                     divCube.innerHTML = include2;
                     const age2_4 = document.querySelector('.img7');
                     age2_4.addEventListener('click', function(){document.location.href = "/age/2/" + id;});
@@ -320,6 +301,9 @@ function sendChildValue(array, id){
                                                 <div class="cubesGsap">      
                                                 <img src="uploads/autres/age_4_5.webp" class="square img15">
                                                 </div>
+                                        </div>
+                                        <div id="insteadContainer_4">
+                                            <a class="age-label" href="/age/3">De 4 à 6 ans</a>
                                         </div>`;
                     divCube.innerHTML = include3;
                     const age4_6 = document.querySelector('.img12');
@@ -339,7 +323,10 @@ function sendChildValue(array, id){
                                             <img src="uploads/autres/age_6_6.webp" class="square img20">
                                             <img src="uploads/autres/age_6_7.webp" class="square img20b">
                                             </div>
-                                    </div>`;
+                                    </div>
+                                    <div id="insteadContainer_6">
+                                            <a class="age-label" href="/age/4">De 6 à 8 ans</a>
+                                        </div>`;
                     divCube.innerHTML = include4;
                     const age6_8 = document.querySelector('.img17');
                     age6_8.addEventListener('click', function(){document.location.href = "/age/4/" + id;});
@@ -359,7 +346,10 @@ function sendChildValue(array, id){
                                             <img src="uploads/autres/age_8_5.webp" class="square img25">
                                             <img src="uploads/autres/age_8_5.webp" class="square img25b">
                                             </div>
-                                    </div>`;
+                                    </div>
+                                    <div id="insteadContainer_8">
+                                            <a class="age-label" href="/age/5">De 8 à 10 ans</a>
+                                        </div>`;
                     divCube.innerHTML = include5;
                     const age8_10 = document.querySelector('.img22');
                     age8_10.addEventListener('click', function(){document.location.href = "/age/5/" + id;});
@@ -370,18 +360,25 @@ function sendChildValue(array, id){
             
         }
 
+
+        // affichage des livres
         const rowContainers = document.querySelectorAll('.row-container');
         const chunks = [];
         const chunkSize = 4;
+
+        // on affiche 4 livres par catégories. La requete renvoie les livres groupés par catégories d'age. je crée des tableaux de 4 éléments que je stock dans un tableau
+        //  ca donne ca en gros : [ [livre, livre, livre, livre], [livre, livre, livre, livre] ]
+
         for(let i = 0; i < arrayObj.length; i += chunkSize){
             chunks.push(arrayObj.slice(i, i+ chunkSize));
         }
+        // on boucle sur le grand tableau
         for(let i = 0; i < chunks.length; i++){
+            // on boucle sur les sous tableau
             for(let j = 0; j < chunks[i].length; j++){
-                const bookArticle = document.createElement('article');
-                
-                
 
+                // je crée les éléments html et leur attribue les datas
+                const bookArticle = document.createElement('article');
                 bookArticle.classList.add('card');
                 rowContainers[i].append(bookArticle);
                 const bookImg = document.createElement('img');

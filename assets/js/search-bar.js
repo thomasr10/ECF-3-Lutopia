@@ -6,6 +6,7 @@ responseDiv.classList.add('result-searchbar-container')
 searchBar.addEventListener('input', function(){
     const search = searchBar.value;
     responseDiv.textContent = "";
+
     if(search.length >= 3){
         fetch('/search-book', {
             method: "POST",
@@ -13,6 +14,7 @@ searchBar.addEventListener('input', function(){
         })
         .then(response => response.json())
         .then(data => {
+            
             const list = document.createElement('ul');
             data.forEach(book => {
                 console.log(book)

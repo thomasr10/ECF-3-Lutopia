@@ -3,7 +3,7 @@ const deleteChildModal = document.getElementById('delete-child-modal');
 const confirmDeleteBtn = document.getElementById('confirm-delete-child');
 
 
-// DELETE CHIL
+// DELETE CHILD
 
 deleteChildBtnArray.forEach(btn => {
     btn.addEventListener('click', function(){
