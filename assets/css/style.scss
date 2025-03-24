@@ -1569,44 +1569,838 @@ article h2 {
 
 // FIN-DASHBOARD STAT BOOK---------------------------------------------------------
 
+//CONNECTION LOGIN
+#grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  height: 100%;
+  margin-top: 3rem;
+}
+#grid > form {
+  grid-column: 1;
+}
 
+.contenu {
+  text-align: center;
+}
 
+.contenu > div > label {
+  font-family: "Lexend", sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
+.contenu > div > input {
+  border-radius: 20px;
+  width: 285px;
+  height: 40px;
+  text-align: center;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653f31;
+  margin-bottom: 20px;
+}
 
+#book2 {
+  grid-column: 2;
+  // position: absolute;
+  // top: 30%;
+  // bottom: 0;
+  // left: 50%;
+  // right: 0;
+  // margin: auto;
+  width: 27.75rem;
+  height: 18.75rem;
+  perspective: 105rem;
+}
 
+.cover {
+  background-color: #36354e;
+  transform: rotateY(0deg);
+}
+.page {
+  top: 0.375rem;
+  left: 0.375rem;
+  background-color: #e9e6c4;
+  transform: rotateY(0deg);
+  text-align: right;
+  font-size: 8px;
+  color: #777;
+  font-family: monospace;
+  width: 13.5rem;
+  height: 18rem;
+}
 
+.cover,
+.page {
+  position: absolute;
+  padding: 1rem;
+  transform-origin: 100% 0;
+  border-radius: 5px 0 0 5px;
+  box-shadow: inset 3px 0px 20px rgba(0, 0, 0, 0.2),
+    0px 0px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+.cover.turn {
+  animation: bookCover 3s forwards;
+}
+.page.turn {
+  animation: bookOpen 4s forwards;
+}
+.page:nth-of-type(1) {
+  animation-delay: 0.05s;
 
+  background: linear-gradient(
+    135deg,
+    rgba(252, 221, 236, 1) 0%,
+    rgba(255, 230, 199, 1) 27%,
+    rgba(232, 255, 196, 1) 54%,
+    rgba(252, 221, 236, 1) 80%,
+    rgba(255, 250, 251, 1) 100%
+  );
+}
+.page:nth-of-type(2) {
+  animation-delay: 0.33s;
+  background: linear-gradient(
+    135deg,
+    rgba(252, 221, 236, 1) 0%,
+    rgba(255, 230, 199, 1) 27%,
+    rgba(232, 255, 196, 1) 54%,
+    rgba(252, 221, 236, 1) 80%,
+    rgba(255, 250, 251, 1) 100%
+  );
+}
+.page:nth-of-type(3) {
+  animation-delay: 0.66s;
+  background: linear-gradient(
+    135deg,
+    rgba(252, 221, 236, 1) 0%,
+    rgba(255, 230, 199, 1) 27%,
+    rgba(232, 255, 196, 1) 54%,
+    rgba(252, 221, 236, 1) 80%,
+    rgba(255, 250, 251, 1) 100%
+  );
 
+  background: linear-gradient(
+    135deg,
+    rgba(252, 221, 236, 1) 0%,
+    rgba(255, 230, 199, 1) 27%,
+    rgba(232, 255, 196, 1) 54%,
+    rgba(252, 221, 236, 1) 80%,
+    rgba(255, 250, 251, 1) 100%
+  );
+}
+.page:nth-of-type(2) {
+  animation-delay: 0.33s;
+  background: linear-gradient(
+    135deg,
+    rgba(252, 221, 236, 1) 0%,
+    rgba(255, 230, 199, 1) 27%,
+    rgba(232, 255, 196, 1) 54%,
+    rgba(252, 221, 236, 1) 80%,
+    rgba(255, 250, 251, 1) 100%
+  );
+}
+.page:nth-of-type(3) {
+  animation-delay: 0.66s;
+  background: linear-gradient(
+    135deg,
+    rgba(252, 221, 236, 1) 0%,
+    rgba(255, 230, 199, 1) 27%,
+    rgba(232, 255, 196, 1) 54%,
+    rgba(252, 221, 236, 1) 80%,
+    rgba(255, 250, 251, 1) 100%
+  );
+}
+.page:nth-of-type(4) {
+  animation: bookOpen150deg 3s forwards;
+  animation-delay: 1.3s;
+}
+.page:nth-of-type(5) {
+  animation: bookOpen30deg 3s forwards;
+  animation-delay: 1.2s;
+}
+.page:nth-of-type(6) {
+  animation: bookOpen55deg 3s forwards;
+  animation-delay: 1.25s;
 
+  background: linear-gradient(
+    135deg,
+    rgba(252, 221, 236, 1) 0%,
+    rgba(255, 230, 199, 1) 27%,
+    rgba(232, 255, 196, 1) 54%,
+    rgba(252, 221, 236, 1) 80%,
+    rgba(255, 250, 251, 1) 100%
+  );
+}
+@keyframes bookOpen {
+  30% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(180deg);
+    z-index: 999;
+  }
+}
+@keyframes bookCover {
+  30% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+}
+@keyframes bookOpen150deg {
+  30% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(150deg);
+    z-index: 999;
+  }
+}
+@keyframes bookOpen55deg {
+  30% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(55deg);
+    z-index: 999;
+  }
+}
+@keyframes bookOpen30deg {
+  50% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(30deg);
+    z-index: 999;
+  }
+}
 
+@keyframes bookOpen {
+  30% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(180deg);
+    z-index: 999;
+  }
+}
+@keyframes bookCover {
+  30% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+}
+@keyframes bookOpen150deg {
+  30% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(150deg);
+    z-index: 999;
+  }
+}
+@keyframes bookOpen55deg {
+  30% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(55deg);
+    z-index: 999;
+  }
+}
+@keyframes bookOpen30deg {
+  50% {
+    z-index: 999;
+  }
+  100% {
+    transform: rotateY(30deg);
+    z-index: 999;
+  }
+}
 
+.page.turn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+.page .turn > p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateY(180deg);
+  font-size: 2rem;
+  font-family: "Lexend", sans-serif;
+  font-weight: bold;
+  color: #36354e;
+  white-space: nowrap;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
 
+// DEBUT MODIFIER USER--------------------------
+.update-user-title {
+  font-size: $titre-h2;
+  color: $primary-text-900;
+  padding-bottom: 3rem;
+}
+.update-user-container {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  color: $primary-text-900;
+  form {
+    margin: 0 auto;
+    margin-top: 3rem;
+    width: 100%;
+  }
+}
+.update-user-form1 {
+  width: 50%;
+  margin: 0 auto;
+}
+.update-user-entry {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+.update-user-sub-entry {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 1rem 1rem;
 
+  label {
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+  }
+  button {
+    color: $primary-text-900;
+    font-weight: 600;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    background-color: $pastel-rose-300;
+    border: 2px solid $primary-text-900;
+    &:hover {
+      background-color: $pastel-rose-400;
+      border: 2px solid $pastel-rose-600;
+      color: $primary-text-1100;
+    }
+  }
+}
+.update-user-border {
+  display: flex;
+  justify-content: left;
+  border: solid 2px $pastel-rose-400;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+}
+.update-user-entry,
+.update-user-sub-entry {
+  input {
+    padding: 0.3rem 1rem;
+    background-color: $primary-text-300;
+    border-radius: 20px;
+    color: $primary-text-900;
+    border: 2px solid transparent;
+    &:hover {
+      border: 2px solid $primary-text-900;
+    }
+  }
+}
+.update-user-addchild {
+  padding-bottom: 2rem;
+  button {
+    font-weight: 600;
+    padding-bottom: 1rem;
+    padding: 0.3rem 1rem;
+    background-color: $primary-text-300;
+    border-radius: 20px;
+    color: $primary-text-900;
+    border: 2px solid transparent;
+    &:hover {
+      border: 2px solid $primary-text-900;
+      color: $primary-text-1100;
+    }
+  }
+}
+.update-user-modifications {
+  display: flex;
+  justify-content: space-around;
+  input {
+    font-weight: 600;
+    padding: 0.5rem 1.3rem;
+    background-color: $primary-text-300;
+    border-radius: 20px;
+    color: $primary-text-900;
+    border: 2px solid transparent;
+  }
+  :first-child {
+    background-color: $pastel-vert-200;
+    &:hover {
+      border: 2px solid $pastel-vert-500;
+      background-color: $pastel-vert-300;
+      color: $primary-text-1100;
+    }
+  }
+  :last-child {
+    background-color: $pastel-rose-200;
+    &:hover {
+      border: 2px solid $pastel-rose-500;
+      background-color: $pastel-rose-300;
+      color: $primary-text-1100;
+    }
+  }
+}
 
+// FIN MODIFIER USER--------------------------
 
+//Informations
+article {
+  font-family: "Lexend", sans-serif;
+  margin: 0 100px;
+  line-height: 1.5;
+}
+.titre {
+  font-size: $titre-h3;
+  color: $primary-text-800;
+  text-align: center;
+  margin: 50px 0;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.semi-bold {
+  font-weight: 550;
+  font-style: italic;
+}
+.soulign {
+  text-decoration: underline;
+}
+.adress {
+  text-align: center;
+}
+.rejoindre {
+  margin: 50px 0;
+  text-align: center;
+  font-size: $titre-h3;
+}
+article p {
+  font-size: $titre-h4;
+}
+article h2 {
+  font-size: $titre-h3;
+  color: $primary-text-800;
+  text-align: center;
+  margin: 20px 0;
+}
 
+//Dashboard Modify Livres
+#search-form {
+  margin: 40px 0;
+}
+#search-form > .accueil-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  // margin-left: 100px;
+}
+#listBook {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+#search-form > form > #book-datas > input {
+  font-family: "Lexend", sans-serif;
+  border-radius: 20px;
+  width: 285px;
+  height: 40px;
+  text-align: center;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653f31;
+}
+#search-form > form > div > .db-modify-valider {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: $pastel-vert-300;
+  border-radius: 20px;
+  width: auto;
+  height: 40px;
+  padding: 0 15px;
+  justify-content: center;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653f31;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.book-datas > img {
+  display: inline-block;
+  width: 150px;
+  height: auto;
+}
 
+#resultatSearchForm {
+  line-height: 2;
+  display: grid;
+  grid-template-columns: 40% 40%;
+  grid-template-rows: auto;
+  height: 100%;
+}
+#resultatSearchForm > img {
+  grid-column: 1;
+  grid-area: 1 / 1 / 7 / 2;
+  align-self: center;
+  margin: 0 auto;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  @include desktop {
+    margin: 30px;
+  }
+}
+#resultatSearchForm > p {
+  grid-column: 2;
+}
+.titreBleuGras {
+  color: $primary-text-800;
+  font-weight: 550;
+  font-size: $titre-h3;
+}
+#modify-input {
+  grid-column: 2;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 285px;
+  height: 40px;
+  text-align: center;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653f31;
+  pointer-events: auto !important;
+}
 
+#modal-modify-book > form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+}
+#modal-modify-book > form > div {
+  display: contents;
+}
 
+#modal-modify-book > form > div > label {
+  grid-column: 1;
+  align-self: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 4px;
+}
+#modal-modify-book > form > div > input {
+  grid-column: 2;
+  border-radius: 20px;
+  width: 285px;
+  height: 40px;
+  text-align: center;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653f31;
+  margin-top: 10px;
+}
 
+#modal-modify-book > form > textarea {
+  grid-column: 2;
+  margin-left: 20px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  font-family: "Lexend", sans-serif;
+}
 
+#modal-modify-book > .formModalMB {
+  width: 100%;
+}
 
+#textAearaMB > textarea {
+  border-radius: 20px;
+  width: 300px;
+  height: auto;
+  font-family: "Lexend", sans-serif;
+  padding: 10px;
+}
+#modal-modify-book > form > #close > img {
+  width: 25px;
+  height: auto;
+  cursor: pointer;
+}
+// Fond grisé et modal
+// Overlay pour fond grisé
+#modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
 
+// Modal
+#modal-modify-book {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px solid $pastel-rose-300;
+  background-color: $stroke-gris-100;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
 
+  #cancel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
 
+    img {
+      width: 25px;
+      height: auto;
+    }
+  }
+}
 
+// Affichage de l'overlay et du modal actif
+#modal-overlay.active,
+#modal-modify-book.active {
+  opacity: 1;
+  visibility: visible;
+}
 
+//DASHBOARD STOCK BOOK
 
+//CreateBook
+#createBook {
+  width: 100%;
+  height: auto;
+  //left: 50%;
+  //transform: translateX(50%);
+}
+#createBook > form {
+  width: 750px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 40px;
+  row-gap: 10px;
+}
+#createBook > h1 {
+  font-size: $titre-h2;
+  color: $primary-text-800;
+  grid-column: span 2;
+  text-align: center;
+}
+#createBook > form > div {
+  display: contents;
+}
+#createBook > form > div > label {
+  grid-column: 1;
+  align-self: center;
+  border-bottom: 1px solid #e0e0e0; /* Bordure en bas */
+  padding-bottom: 4px;
+}
+#createBook > form > div > input {
+  grid-column: 2;
+  font-family: "Lexend", sans-serif;
+  border-radius: 20px;
+  width: 285px;
+  height: 40px;
+  text-align: center;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653f31;
+  align-self: center;
+  justify-self: center;
+}
+#createBook > form > #author-section > button {
+  grid-column: 2;
+  width: 285px;
+  height: 40px;
+}
+#createBook > form > #illustrator-section > button {
+  grid-column: 2;
+  width: 285px;
+  height: 40px;
+  border-radius: 20px;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653f31;
+  align-self: center;
+  justify-self: center;
+  background-color: $pastel-vert-200;
+}
+#createBook > form > #illustrator-section > button {
+  grid-column: 2;
+  width: 285px;
+  height: 40px;
+  border-radius: 20px;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653f31;
+  align-self: center;
+  justify-self: center;
+  background-color: $pastel-vert-200;
+}
+#author-section > #author-btn {
+  grid-column: 2;
+  width: 285px;
+  height: 40px;
+  border-radius: 20px;
+  font-family: "Lexend", sans-serif;
+  border: 1px solid #653f31;
+  align-self: center;
+  justify-self: center;
+  background-color: $pastel-vert-200;
+}
+#synopsis > textarea {
+  border-radius: 10px;
+  width: 300px;
+  height: auto;
+  font-family: "Lexend", sans-serif;
+  padding: 10px;
+  align-self: center;
+  justify-self: center;
+}
 
+#category-section > select {
+  grid-column: 2;
+  border-radius: 20px;
+  height: 40px;
+  text-align: center;
+}
 
+#trancheAge > select {
+  border-radius: 20px;
+  height: 40px;
+  text-align: center;
+}
 
+#typeLivre > select {
+  border-radius: 20px;
+  height: 40px;
+  text-align: center;
+}
 
+#dlPicture > input {
+  align-content: center;
+  padding: 5px;
+}
+#dlPicture > p {
+  grid-column: 2;
+  text-align: center;
+  font-style: oblique;
+  margin-bottom: 20px;
+}
+#submit > input {
+  background-color: $pastel-vert-300;
+}
 
+// DEBUT-DASHBOARD STAT BOOK-------------------------------------------------------
 
+.dash-statbook-globalcontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 
+  h2 {
+    padding: 3rem 0;
+    font-size: $titre-h2;
+    text-align: center;
+  }
+}
+.dash-statbook-container {
+  width: 100%;
+  padding-top: 3rem;
+  margin: 0 auto;
+  display: flex;
+}
+.dash-statbook-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 3px solid $pastel-rose-400;
+}
+.table,
+th,
+td {
+  border: 2px solid $pastel-rose-300;
+}
 
+.dash-statbook-header {
+  background: $pastel-rose-200;
+  color: $primary-text-900;
+  font-weight: 600;
+  height: 2.5rem;
+  .statbook-title {
+    width: 40%;
+  }
+  .statbook-author {
+    width: 30%;
+  }
+  .statbook-type {
+    width: 20%;
+  }
+}
 
+.dash-statbook-cellule {
+  padding-left: 0.3rem;
+}
+.dash-statbook-body {
+  color: $primary-text-800;
+  height: 2rem;
+  :nth-child(2) {
+    text-align: center;
+    padding: 0;
+  }
+  :nth-child(4) {
+    text-align: center;
+    padding: 0;
+  }
+  :nth-child(6) {
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.dash-form-container {
+  width: 100%;
+  display: flex;
+}
+.dash-statbook-search {
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
 
 
 
@@ -5494,6 +6288,7 @@ td {
   display: flex;
   justify-content: space-around;
 
+
   input {
     padding: 0 0;
     border: none;
@@ -5529,6 +6324,7 @@ td {
 }
 
 
+
 #sub-title {
   color: $primary-text-900;
   padding-bottom: 1rem;
@@ -5542,6 +6338,7 @@ td {
   border: 3px solid $primary-text-800;
   font-family: "Lexend", sans-serif;
 }
+
 
 // FIN-DASHBOARD STAT BOOK---------------------------------------------------------
 
@@ -5867,6 +6664,7 @@ th {
 }
 
 
+
 // DEBUT DASHBOARD-CREATE-USER-----------------------
 .create-user-container {
   width: 100%;
@@ -5974,3 +6772,4 @@ th {
     }
   }
 }
+
