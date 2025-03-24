@@ -91,7 +91,7 @@ ob_start();
                     </table>
 
                 <?php } else { ?>
-                    <p>Aucun emprunt dans l'historique</p>
+                    <p class="pasderesaProfil" >Aucun emprunt dans l'historique</p>
                 <?php } ?>
             </div>
     </div>
