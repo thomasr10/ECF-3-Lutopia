@@ -109,14 +109,32 @@ if(isset($_SESSION['id']) && $_SESSION['role'] == 0){
 <div id="section-container">
 
 <?php
-    $count = 0;
-    foreach(array_chunk($books, 4) as $chunk){
-    $animationIndex = $count;  
+   $ageGroups = [
+    "0" => "De 0 à 2 ans",
+    "2" => "De 2 à 4 ans",
+    "4" => "De 4 à 6 ans",
+    "6" => "De 6 à 8 ans",
+    "8" => "De 8 à 10 ans",
+    "10" => "De 8 à 10 ans"
+];
+
+$count = 0;
+$booksByAgeGroup = array_chunk($books, 4);
+
+    foreach($booksByAgeGroup as $chunk){
+
+    $animationIndex = $count; 
+    $ageLabel = $ageGroups[$count]; 
+     
 ?>
+
 <!-- div qui comprend l'image du dé + la rangée de livres associé -->
-        <div class="bookRowCubeAge">
-        <?php include "animation_{$animationIndex}.php" ?>
-        <div>
+<div id="bookRowCubeAge">
+    <?php include "animation_{$animationIndex}.php" ?>
+</div>
+<div id="insteadContainer_<?= $count ?>">
+<p class="age-label"><?= htmlspecialchars($ageLabel) ?></p>
+</div>
 
 
 <div class="booksContainer">          
@@ -132,8 +150,9 @@ if(isset($_SESSION['id']) && $_SESSION['role'] == 0){
                 </div>
             
 <?php } ?>
+
 </div>
-</div>
+
 <?php
         
         $count+=2;
