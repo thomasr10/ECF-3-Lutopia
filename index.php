@@ -110,7 +110,7 @@ $router->map('GET|POST', '/create-password/[i:id]', 'ControllerUser#createPasswo
 // modifier/ supprimer user ou enfant
 $router->map('GET|POST', '/dashboard/update-user', 'ControllerUser#updateUser', 'update-user');
 $router->map('POST', '/delete-child', 'ControllerChild#deleteChild');
-
+$router->map('POST', '/delete-user', 'ControllerUser#deleteUser');
 
 
 

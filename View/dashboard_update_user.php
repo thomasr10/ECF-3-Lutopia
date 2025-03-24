@@ -10,6 +10,10 @@ ob_start();
     <p>Êtes-vous sûr(e) de vouloir supprimer cet enfant ?</p>
     <button type="button" id="confirm-delete-child">Confirmer</button>
 </div>
+<div class="modal" id="delete-user-modal">
+    <p>Êtes-vous sûr(e) de vouloir supprimer cet utilisateur ?</p>
+    <button type="button" id="confirm-delete-user">Confirmer</button>
+</div>
 
 
 <h1 class = "update-user-title">Modifier un utilisateur</h1>
@@ -28,21 +32,24 @@ if(!empty($user) && !empty($children)){
 <div class="update-user-container">
 <form action="/dashboard/update-user" method="POST">
     <div class="update-user-form1">
-    <div class="update-user-entry">
-        <label for="first-name">Prénom</label>
-        <input type="text" name="first-name" id="first-name" value="<?=$user->getFirst_name() ?>" required>
-    </div>
-    <div class="update-user-entry">
-        <label for="last-name">Nom de famille</label>
-        <input type="text" name="last-name" id="last-name" value="<?=$user->getLast_name() ?>" required>
-    </div>
-    <div class="update-user-entry">
-        <label for="email">Adresse mail</label>
-        <input type="text" name="email" id="email" value="<?=$user->getEmail() ?>" required>
-    </div>
-    <div>
-        <input type="hidden" name="id_user" value="<?= $user->getId_user()?>">
-    </div>
+        <div class="update-user-entry">
+            <label for="first-name">Prénom</label>
+            <input type="text" name="first-name" id="first-name" value="<?=$user->getFirst_name() ?>" required>
+        </div>
+        <div class="update-user-entry">
+            <label for="last-name">Nom de famille</label>
+            <input type="text" name="last-name" id="last-name" value="<?=$user->getLast_name() ?>" required>
+        </div>
+        <div class="update-user-entry">
+            <label for="email">Adresse mail</label>
+            <input type="text" name="email" id="email" value="<?=$user->getEmail() ?>" required>
+        </div>
+        <div>
+            <input type="hidden" name="id_user" value="<?= $user->getId_user()?>">
+        </div>
+        <div class="update-user-sub-entry">
+            <button id="delete-user-btn" type="button" value="<?= $user->getId_user() ?>">Supprimer</button>
+        </div>
     </div>
     <?php foreach($children as $child){ ?>
         <!-- div en dessous à flex pour aligner le prénom et la date comme sur figma -->
@@ -60,10 +67,9 @@ if(!empty($user) && !empty($children)){
             </div>        
         </div>
     <?php } ?>
-    
+        <div id="add-child" class="update-user-sub-entry"></div>
         <div class = "update-user-addchild">
-       
-        <button id="add-child-btn" type="button">Ajouter un enfant</button>
+            <button id="add-child-btn" type="button">Ajouter un enfant</button>
         </div>  
     <div class = "update-user-modifications">
         <input type="submit" value="Valider les modifications" name="update-user">

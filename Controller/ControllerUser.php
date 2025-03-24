@@ -736,4 +736,14 @@ class ControllerUser {
             require_once('./View/dashboard_update_user.php');
         }
     }
+
+    public function deleteUser(){
+        $a = file_get_contents('php://input');
+        $id_user = json_decode($a, true);
+
+        $model = new ModelUser();
+        $model->deleteUser($id_user);
+        echo json_encode(['success' => true]);
+
+    }
 }

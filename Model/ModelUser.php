@@ -373,4 +373,11 @@ class ModelUser extends Model {
         $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
         $req->execute();
     }
+
+
+    public function deleteUser(int $id_user){
+        $req = $this->getDb()->prepare("DELETE FROM `user` WHERE `id_user`= :id_user");
+        $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
+        $req->execute();
+    }
 }

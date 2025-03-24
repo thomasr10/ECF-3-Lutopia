@@ -64,3 +64,30 @@ addChildBtn.addEventListener('click', function(){
     newChildDiv.append(dateLabel);
     newChildDiv.append(inputDate);
 })
+
+
+//  delete user
+
+const deleteUserBtn = document.getElementById('delete-user-btn');
+const deleteUserModal = document.getElementById('delete-user-modal');
+
+
+deleteUserBtn.addEventListener('click', function(){
+    deleteUserModal.style.display = 'block';
+    const confirmDeleteBtn = document.getElementById('confirm-delete-user');
+    
+    confirmDeleteBtn.addEventListener('click', () => deleteUser(deleteUserBtn.value));
+})
+
+function deleteUser(id){
+    fetch('/delete-user', {
+        method: 'POST',
+        body: JSON.stringify(id)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data){
+            window.location.reload();
+        }
+    })
+}
