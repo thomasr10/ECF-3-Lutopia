@@ -9,10 +9,12 @@ addChild.addEventListener('click', function(){
     
     //Création des éléments HTML
     const div = document.createElement('div');
+    div.classList.add('create-chils2-container')
     const label = document.createElement('label');
     const input = document.createElement('input');
     const labelAge = document.createElement('label');
     const inputAge = document.createElement('input');
+
 
     //Ajout du contenu dans les éléments
     label.textContent = "Enfant " + count + " ";
@@ -22,7 +24,7 @@ addChild.addEventListener('click', function(){
     input.minLength = 2;
     input.name = "child-name[]";
     input.id = "child-" + count;
-    input.placeholder = "Prénom de l'enfant";
+    input.placeholder = "  Prénom de l'enfant";
 
     labelAge.textContent = " Date de naissance ";
     labelAge.setAttribute("for", "birth-" + count);
