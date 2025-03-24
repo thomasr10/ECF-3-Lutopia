@@ -17,10 +17,10 @@
         <div class="footer-section3">
             <h4>Suivez-nous</h4>
             <div class="social-icons">
-                <a href="#"><img src="uploads/autres/icons8-méta.svg" alt="Meta"></a>
-                <a href="#"><img src="uploads/autres/icons8-twitter.svg" alt="X"></a>
-                <a href="#"><img src="uploads/autres/icons8-youtube.svg" alt="YouTube"></a>
-                <a href="#"><img src="uploads/autres/icons8-instagram.svg" alt="Instagram"></a>
+                <a href="#"><img src="<?= UPLOADS ?>/autres/icons8-méta.svg" alt="Meta"></a>
+                <a href="#"><img src="<?= UPLOADS ?>/autres/icons8-twitter.svg" alt="X"></a>
+                <a href="#"><img src="<?= UPLOADS ?>/autres/icons8-youtube.svg" alt="YouTube"></a>
+                <a href="#"><img src="<?= UPLOADS ?>/autres/icons8-instagram.svg" alt="Instagram"></a>
 
                 <form id="newsletter-form">
                 <input type="email" name="email" placeholder="Votre email" required>
