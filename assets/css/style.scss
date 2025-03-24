@@ -1177,6 +1177,9 @@ select {
   font-family: "Lexend", sans-serif;
   justify-self: center;
   margin-top: 3rem;
+  @include mobile{
+    grid-template-columns: 1fr;
+  }
 }
 
 #register {
@@ -1188,6 +1191,9 @@ select {
 #register > label {
   grid-column: 1;
   align-self: center;
+  @include mobile{
+    margin: 30px;
+  }
 }
 
 #register > input {
@@ -1200,6 +1206,9 @@ select {
   text-align: center;
   border: 1px solid #653f31;
   margin: 10px 0;
+  @include mobile{
+    margin-right: 30px;
+  }
 }
 #book {
   grid-column: 2;
@@ -1208,6 +1217,9 @@ select {
   width: 27.75rem;
   height: 18.75rem;
   perspective: 105rem;
+  @include mobile{
+    display: none;
+  }
 }
 
 .page {
