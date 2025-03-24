@@ -271,3 +271,33 @@ function addIllustrator(event){
         }
     })
 }
+//modalModel
+const modalBook = document.getElementById('modal-author')
+
+if (modalBook) {
+    document.addEventListener("DOMContentLoaded", () => {
+    //modifier l'id en fonction du besoin modalModel- what you want
+    const modal = document.getElementById('modal-author');
+    const overlay = document.getElementById("modal-overlay");
+    overlay.id = "modal-overlay";
+    document.body.appendChild(overlay);
+    // mettre un Id modify-input au button que l'on doit cliquer pour faire apparaitre l'overlay
+    const openModalBtn = document.getElementById("author-btn");
+    const closeModalBtn = document.getElementById("cancel");
+
+    // Ouvrir le modal
+    openModalBtn.addEventListener("click", () => {
+        modal.classList.add("active");
+        overlay.classList.add("active");
+    });
+
+    // Fermer le modal
+    const closeModal = () => {
+        modal.classList.remove("active");
+        overlay.classList.remove("active");
+    };
+
+    closeModalBtn.addEventListener("click", closeModal);
+    overlay.addEventListener("click", closeModal);
+})};
+//..............................................................

@@ -407,7 +407,6 @@ h1 {
   display: flex;
   left: 50%;
   top: 100%;
-  transform: translateX(-50%);
   @include mobile{
     display: none;
   }
@@ -1638,7 +1637,44 @@ article h2 {
   justify-self: center;
   background-color: $pastel-vert-200;
 }
+#modal-author{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 35rem;
+  height: auto;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px solid $pastel-rose-300;
+  background-color: $stroke-gris-100;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+//pour le button cancel
+//<div id="cancel"><img src="<?= UPLOADS ?>autres/cancel.webp" alt="croix"></div>
+  #cancel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+
+    img {
+      width: 25px;
+      height: auto;
+    }
+  }
+
+}
 
 // FIN-DASHBOARD STAT BOOK---------------------------------------------------------
 
@@ -6529,11 +6565,13 @@ td {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, transform 0.3s ease;
+  
 
   &.active {
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, -50%) scale(1);
+    
   }
 }
 
