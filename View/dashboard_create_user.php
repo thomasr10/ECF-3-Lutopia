@@ -1,7 +1,7 @@
 <?php
 $title = "Création utilisateur | Lutopia";
 $description = "Page de création d'un utilisateur sur le dashboard admin de Lutopia";
-$arrayJs = ["../assets/js/register.js"];
+$arrayJs = ["../assets/js/dashboard_register.js"];
 ob_start();
 
 ?>
@@ -22,7 +22,7 @@ ob_start();
             <label for="email">Adresse mail</label>
             <input class = "input-correction" type="email" placeholder="Votre adresse mail" name="email" id="email" required>
         </div>
-        <div class="child-section">
+        <div class="child-section" id="child-section-js-ne-pas-toucher">
             <div class = "create-user-entry">
                 <label for="child-1">Enfant 1</label>
                 <input type="text" name="child-name[]" id="child-1" placeholder="Prénom de l'enfant" minlength="2" required>
@@ -34,7 +34,6 @@ ob_start();
             <div>
                 <input class = "create-user-input"type="button" id="add-child" value="Ajouter un enfant">           
             </div>
-        </div>
         <div>
             <input class = "create-user-input" type="submit" value="Valider">
         </div>
