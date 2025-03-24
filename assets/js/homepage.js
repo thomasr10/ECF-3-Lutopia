@@ -1,14 +1,25 @@
 const selectChild = document.getElementById('select-child');
-let booksContainer = document.getElementById('booksContainer');
+let booksContainer = document.getElementById('bookContainer');
 const childOption = document.querySelectorAll('.child')
 const buttonBorrow = document.querySelectorAll('.button_borrow');
 const sliderContainer = document.getElementById('bookContainer');
-
+const nextButton = document.getElementById('nextButton');
+const prevButton = document.getElementById('prevButton');
+const totalImages = document.querySelectorAll('.image').length;
 
 
 // afficher les nouveautés en fonction de l'age de l'enfant séléctionné dans le slider
 
 function displayNewBooks(age) {
+    let currentAge = age.value;
+    let splitAge = currentAge.split('-');
+
+    
+    fetch(`/home-category-age/${splitAge[0]}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.length);
+      
     let currentAge = age.value; // contient l'age et l'id de l'enfant
     let splitAge = currentAge.split('-'); // pour récupérer uniquement l'age
     
@@ -33,7 +44,29 @@ function displayNewBooks(age) {
             booksContainer.append(bookArticle);
 
          })
+            // Ajouter le conteneur d'images au conteneur principal
+    booksContainer.appendChild(bookArticle);
+       document.getElementById('nextButton').addEventListener('click', () => {
+    const totalImages = document.querySelectorAll('.image').length;
+    if (currentIndex < totalImages - 1) {
+        currentIndex++;
+        showImage(); // Met à jour l'affichage de l'image
+        updateNavigationButtons(); // Met à jour l'état des boutons
+    }
+});
+
+document.getElementById('prevButton').addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        showImage(); // Met à jour l'affichage de l'image
+        updateNavigationButtons(); // Met à jour l'état des boutons
+    }
+}); 
+   
+    
     })
+
+
 }
 
 // condition pour que les fonctions soient appliquées uniquement si connecté
@@ -72,12 +105,13 @@ if(selectChild !== null){
     });
     // réservation de l'enfant (à côté du select)
     showReservation(idArray[0]);
-
     sendChildValue(ageArray, idArray[0]);
-    // boutons slider
-    document.getElementById('nextButton').addEventListener('click', next);
-    document.getElementById('prevButton').addEventListener('click', prev);
 
+
+    updateNavigationButtons();
+    prevButton.addEventListener('click', prev); 
+    nextButton.addEventListener('click', next);
+   
 }
 
 
@@ -90,28 +124,58 @@ function initCarousel() {
     const imagesContainer = document.querySelector('.images');
     imagesContainer.innerHTML = ''; // Réinitialise le conteneur avant d'ajouter de nouvelles images
 }
+let currentIndex = 0;
+function updateNavigationButtons() {
+    const nextButton = document.getElementById('nextButton');
+    const prevButton = document.getElementById('prevButton');
+    const totalImages = document.querySelectorAll('.image').length;
+
+    if (totalImages === 0) return; // Si aucune image, sortir de la fonction
+
+  
+    const imageWidth = 250; // Suppose que chaque image a une largeur fixe de 250px
+    const totalScrollableWidth = totalImages * imageWidth; // Largeur totale des images affichables
+
+    // Désactiver "next" si la dernière image est entièrement affichée
+    if (currentIndex * imageWidth + booksContainer.clientWidth >= totalScrollableWidth) {
+        nextButton.disabled = true;
+    } else {
+        nextButton.disabled = false;
+    }
+
+    // Désactiver "prev" si on est à la première image
+    prevButton.disabled = currentIndex === 0;
+}
 
 function showImage() {
     const imagesContainer = document.querySelector('.images');
     const totalImages = document.querySelectorAll('.image').length;
-    
+    console.log(totalImages);
     // Calcul dynamique de la largeur pour adapter au nombre d'images
-    imagesContainer.style.transform = `translateX(${-index * 100 / totalImages}%)`; 
+    imagesContainer.style.transform = `translateX(${-index * 100 / totalImages}%)`;
+    updateNavigationButtons(); 
 }
 
 function next() {
     const totalImages = document.querySelectorAll('.image').length;
+    console.log(totalImages)
     
     if (index < totalImages - 1) { 
         index++;
+        
         showImage();
+        updateNavigationButtons();
+    
     }
+ 
 }
 
 function prev() {
     if (index > 0) {
         index--;
         showImage();
+        updateNavigationButtons();
+
     }
 }
 

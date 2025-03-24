@@ -212,8 +212,16 @@ figure {
   padding-left: 4rem;
   margin-top: 2rem;
   margin-bottom: 3rem;
-  @include tablet {
+  @include tablet{
     flex-direction: column;
+  }
+  @include mobile{
+    padding-left: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: $para;
   }
 }
 .ours-icon {
@@ -239,6 +247,9 @@ figure {
   height: 35px;
   border-radius: 100px;
   outline: none;
+  @include mobile{
+    margin-bottom: 20px;
+  }
 }
 
 // reservation
@@ -247,6 +258,11 @@ figure {
   @include desktop {
     flex-direction: column;
     margin: 2rem 4rem;
+  }
+  @include mobile{
+    width: 100%;
+    height: auto;
+    margin: 0 !important;
   }
 }
 
@@ -274,6 +290,7 @@ figure {
   @include desktop {
     justify-content: left;
   }
+
 }
 
 .mini-book-title {
@@ -328,8 +345,9 @@ figure {
 #bookRowCubeAge{
   width: 100%;
   @include mobile{
-display:none;
+  display:none;
   }
+
   #section-container,
 #section-connected{
   display: none;
@@ -346,9 +364,14 @@ h1 {
   font-size: $titre-h2;
   text-align: center;
   width: 100%;
+
+  @include mobile{
+    display: none;
+  }
   color: $primary-text-900;
   font-family: "Lexend", sans-serif;
 }
+
 }
 
 #bookContainer {
@@ -361,6 +384,9 @@ h1 {
   justify-content: center;
   align-items: center;
   padding-left: 20px;
+  @include mobile{
+    display: none;
+  }
 }
 .images {
   display: flex;
@@ -378,6 +404,12 @@ h1 {
 .buttons {
   margin-bottom: 3rem;
   display: flex;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  @include mobile{
+    display: none;
+  }
   // left: 50%;
   // top: 100%;
   justify-content: center;
@@ -388,6 +420,7 @@ h1 {
   background: none;
   border: none;
 }
+
 #section-container,
 #section-connected {
   display: flex;
@@ -398,6 +431,7 @@ h1 {
   gap: 50px;
   width: 100%;
   margin: 0 auto;
+  margin-top: 100px;
   @include mobile{
     display: block;
   }
@@ -410,6 +444,8 @@ h1 {
     text-align: center;
     align-content: center;
     font-family: "Lexend", sans-serif;
+    text-decoration: none;
+    color: #3f446b;
     margin: 0 auto;
     transition: 1s ease-in-out;
     cursor:pointer;
@@ -430,6 +466,9 @@ h1 {
     position: relative;
     margin-top: 30px;
     margin: 0 auto;
+    @include mobile{
+      display: none;
+    }
   }
   .images {
     position: relative;
@@ -459,11 +498,17 @@ h1 {
   .img4 {
     top: 50px;
     left: 0;
+    @include mobile{
+      display: none;
+    }
   }
 
   .img5 {
     left: 320px;
     top: 70px;
+    @include mobile{
+      display: none;
+    }
   }
   #container_2 {
     width: 350px;
