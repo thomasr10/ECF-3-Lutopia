@@ -1,6 +1,6 @@
 <?php 
 $title = $ageInfos[0]->getFrom() . ' à ' . $ageInfos[0]->getTo() .' ans | Lutopia';
-$arrayJs = ["../assets/js/type.js", "../assets/js/search-bar.js"];
+$arrayJs = [ASSETS . "js/type.js", ASSETS . "js/search-bar.js"];
 $pointSlash = "../";
 ob_start();
 ?>
@@ -9,16 +9,17 @@ ob_start();
 if(isset($_SESSION['id'])){
 ?>
 <section class = "reservation">
-    <img src="../uploads/autres/ours.svg" alt="icone d'ours">
+    <img src="<?= UPLOADS ?>autres/ours.svg" alt="icone d'ours">
    <div class = "child-select">
 
     
     <select name="select-child" id="select-child" class = "select-child">
     <?php
     foreach($datasChild as $child){
+        if($child->getId_child() == $idchild){ 
     ?>
     <option class="child" value="<?=date('Y')-$child->getBirth_date()->format('Y')?>-<?= $child->getId_child(); ?>"><?= $child->getName() ?></option>
-    <?php
+    <?php }
     }
     ?>
     </select>
@@ -71,7 +72,7 @@ if(isset($_SESSION['id'])){
         <div id="containerArticle">
             <?php foreach($datas as $key=>$value): ?>
                 <article class="card">
-                    <img src="../<?= $datas[$key]->book->getImg_Src() ?>" alt="" width="200px" height="200px"><!-- image pour chaque livre --> 
+                    <img src="<?= UPLOADS . str_replace("/uploads/", "", $datas[$key]->book->getImg_Src()) ?>" alt="" width="200px" height="200px"><!-- image pour chaque livre --> 
                     <p><?= $datas[$key]->book->getTitle(); ?> </p> <!-- titre  --> 
                     <a href="/book/<?= $datas[$key]->book->getId_book(); ?>" class="button_pink">voir la fiche</a>
                     <button class="button_borrow" value="<?= $datas[$key]->book->getId_book(); ?>">Réserver</button>   

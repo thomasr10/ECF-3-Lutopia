@@ -36,7 +36,7 @@ class ControllerChild {
 
     public function home(){
         global $router;
-        if(isset($_SESSION['id'])){
+        if(isset($_SESSION['id']) && $_SESSION['role'] == 0){
             
             $model = new ModelChild();
             $id = $_SESSION['id'];
