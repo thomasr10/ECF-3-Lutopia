@@ -39,7 +39,8 @@ class ControllerBook {
 
     }
 
-    public function drawAge(int $age){
+    public function drawAge(int $age, int $idchild = 0){
+
         global $router;
         $model = new ModelBook();
         if(isset($_SESSION['id'])){

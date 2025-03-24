@@ -6,33 +6,37 @@ ob_start();
 
 ?>
 
-<div>
+<div class = "create-user-container">
     <h1>Créer un nouvel utilisateur</h1>
     <?= (isset($message)) ? $message : '' ?>
-    <form action="/dashboard/create-user" method="POST">
-        <div>
+    <form class = "create-user-form" action="/dashboard/create-user" method="POST">
+        <div class = "create-user-entry">
             <label for="first-name">Prénom</label>
             <input class = "input-correction" type="text" name="first-name" id="first-name" placeholder="Prénom" required>
         </div>
-        <div>
+        <div class = "create-user-entry">
             <label for="last-name">Nom</label>
             <input class = "input-correction" type="text" name="last-name" id="last-name" placeholder="Nom" required>
         </div>
-        <div>
+        <div class = "create-user-entry">
             <label for="email">Adresse mail</label>
             <input class = "input-correction" type="email" placeholder="Votre adresse mail" name="email" id="email" required>
         </div>
-        <div id="child-section">
-            <div>
+        <div class="child-section">
+            <div class = "create-user-entry">
                 <label for="child-1">Enfant 1</label>
-                <input type="text" name="child-name[]" id="child-1" placeholder="Prénom de l'enfant" minlength="2" required><br>
+                <input type="text" name="child-name[]" id="child-1" placeholder="Prénom de l'enfant" minlength="2" required>
+        </div>
+            <div class = "create-user-entry">
                 <label for="birth-1">Date de naissance</label>
-                <input type="date" id="birth-1" name="child-birth[]" placeholder="Date de naissance" required><br>
-                <input type="button" id="add-child" value="Ajouter un enfant">           
+                <input type="date" id="birth-1" name="child-birth[]" placeholder="Date de naissance" required>
+            </div>
+            <div>
+                <input class = "create-user-input"type="button" id="add-child" value="Ajouter un enfant">           
             </div>
         </div>
         <div>
-            <input class = "input-correction" type="submit" value="Valider">
+            <input class = "create-user-input" type="submit" value="Valider">
         </div>
     </form>
 </div>
