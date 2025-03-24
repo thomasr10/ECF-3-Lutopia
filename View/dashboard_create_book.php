@@ -24,6 +24,7 @@ ob_start();
 </div>
 
 <div id="modal-illustrator" class="modal">
+<div id="cancel"><img src="<?= UPLOADS ?>autres/cancel.webp" alt="croix"></div>
     <h2>Ajouter un(e) illustrateur(ice)</h2>
     <form action="/dashboard-book">
         <div>

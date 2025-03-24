@@ -7051,3 +7051,27 @@ th {
 } */
 // FIN FOOTER-----------------------------
 
+// debut illustrator-modal
+#modal-illustrator{
+  position: fixed;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 35rem;
+  height: auto;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px solid $pastel-rose-300;
+  background-color: $stroke-gris-100;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }}
+// debut illustrator-modal
