@@ -11,15 +11,7 @@ const totalImages = document.querySelectorAll('.image').length;
 // afficher les nouveautés en fonction de l'age de l'enfant séléctionné dans le slider
 
 function displayNewBooks(age) {
-    let currentAge = age.value;
-    let splitAge = currentAge.split('-');
 
-    
-    fetch(`/home-category-age/${splitAge[0]}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.length);
-      
     let currentAge = age.value; // contient l'age et l'id de l'enfant
     let splitAge = currentAge.split('-'); // pour récupérer uniquement l'age
     
