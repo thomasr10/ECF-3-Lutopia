@@ -229,6 +229,9 @@ function sendChildValue(array, id){
                                             <div class="cubesGsap">      
                                             <img src="uploads/autres/age_0_5.webp" class="square img5">
                                             </div>
+                                        </div>
+                                        <div id="insteadContainer_0">
+                                            <a class="age-label" href="/age/1">De 0 à 2 ans</a>
                                         </div>`;
                     divCube.innerHTML = include1;
                     const age0_2 = document.querySelector('.img2');
@@ -245,7 +248,10 @@ function sendChildValue(array, id){
                                             <img src="uploads/autres/age_2_1.webp" class="square img9">    
                                             <img src="uploads/autres/age_2_2.webp" class="square img10">
                                             </div>
-                                        </div>`;
+                                        </div>
+                                        <div id="insteadContainer_2">
+                                            <a class="age-label" href="/age/2">De 2 à 4 ans</a>
+                                        </div>`
                     divCube.innerHTML = include2;
                     const age2_4 = document.querySelector('.img7');
                     age2_4.addEventListener('click', function(){document.location.href = "/age/2/" + id;});
@@ -263,6 +269,9 @@ function sendChildValue(array, id){
                                                 <div class="cubesGsap">      
                                                 <img src="uploads/autres/age_4_5.webp" class="square img15">
                                                 </div>
+                                        </div>
+                                        <div id="insteadContainer_4">
+                                            <a class="age-label" href="/age/3">De 4 à 6 ans</a>
                                         </div>`;
                     divCube.innerHTML = include3;
                     const age4_6 = document.querySelector('.img12');
@@ -282,7 +291,10 @@ function sendChildValue(array, id){
                                             <img src="uploads/autres/age_6_6.webp" class="square img20">
                                             <img src="uploads/autres/age_6_7.webp" class="square img20b">
                                             </div>
-                                    </div>`;
+                                    </div>
+                                    <div id="insteadContainer_6">
+                                            <a class="age-label" href="/age/4">De 6 à 8 ans</a>
+                                        </div>`;
                     divCube.innerHTML = include4;
                     const age6_8 = document.querySelector('.img17');
                     age6_8.addEventListener('click', function(){document.location.href = "/age/4/" + id;});
@@ -302,7 +314,10 @@ function sendChildValue(array, id){
                                             <img src="uploads/autres/age_8_5.webp" class="square img25">
                                             <img src="uploads/autres/age_8_5.webp" class="square img25b">
                                             </div>
-                                    </div>`;
+                                    </div>
+                                    <div id="insteadContainer_8">
+                                            <a class="age-label" href="/age/5">De 8 à 10 ans</a>
+                                        </div>`;
                     divCube.innerHTML = include5;
                     const age8_10 = document.querySelector('.img22');
                     age8_10.addEventListener('click', function(){document.location.href = "/age/5/" + id;});
