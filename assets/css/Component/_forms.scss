@@ -43,4 +43,11 @@
   visibility: visible ;
   
 }
+// Affichage de l'overlay et du modal actif pour modal illustrator
+#modal-overlay.active,
+#modal-illustrator.active {
+  opacity: 1;
+  visibility: visible ;
+  
+}
 

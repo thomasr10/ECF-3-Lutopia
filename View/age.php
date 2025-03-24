@@ -22,8 +22,9 @@ if(isset($_SESSION['id'])){
     <?php }
     }
     ?>
-    </select>
 
+    </select>
+    
    <!-- </div>
    <div class= "padding-element2">
    <div class= "mini-book">
@@ -36,8 +37,10 @@ if(isset($_SESSION['id'])){
     </div> -->
     
    </div >
+   
 
 </section>
+
 <?php } ?>
 
     <div id="titrePageAge">
