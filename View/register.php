@@ -8,7 +8,7 @@ ob_start();
 
 ?>
 <!-- MESSAGE D'ERREUR -->
-<div>
+<div id="messageErreur">
     <p><?= (isset($message)) ? $message : '' ?></p>
 </div>
     <div id="grid2">

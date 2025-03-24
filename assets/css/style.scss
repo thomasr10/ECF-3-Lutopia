@@ -1168,7 +1168,11 @@ select {
   }
 }
 //Register
-
+#messageErreur{
+  @include mobile{
+    display:none;
+  }
+}
 #grid2 {
   display: grid;
   grid-template-columns: 50% 1fr;
@@ -1186,13 +1190,21 @@ select {
   grid-column: 1; /* Fais en sorte que le formulaire prenne 2 colonnes */
   display: grid;
   grid-template-columns: 1fr 1fr; /* Deux colonnes à l'intérieur */
+  @include mobile{
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 #register > label {
   grid-column: 1;
   align-self: center;
   @include mobile{
-    margin: 30px;
+    display: flex;
+    margin: 20px 0;
   }
 }
 
@@ -1207,7 +1219,7 @@ select {
   border: 1px solid #653f31;
   margin: 10px 0;
   @include mobile{
-    margin-right: 30px;
+  margin-top: 10px;
   }
 }
 #book {
@@ -1613,6 +1625,9 @@ article h2 {
   width: 27.75rem;
   height: 18.75rem;
   perspective: 105rem;
+  @include mobile{
+    display: none;
+  }
 }
 
 .cover {
@@ -3163,6 +3178,7 @@ td {
   height: 100%;
   margin-top: 3rem;
   @include mobile{
+    grid-template-columns: 1fr;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -3171,6 +3187,12 @@ td {
 }
 #grid>form{
   grid-column: 1;
+  @include mobile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .contenu {
