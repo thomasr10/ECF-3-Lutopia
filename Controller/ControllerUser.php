@@ -555,19 +555,19 @@ class ControllerUser {
                     for($i = 0; $i < count($newInfosChildren); $i++){
                         $modelChild->updateChild($newInfosChildren[$i], $children[$i]->getId_child());                    
                     }
-                    // header('Location: /dashboard/update-user?user-card=' . $user->getCard()); 
+                    header('Location: /dashboard/update-user?user-card=' . $user->getCard()); 
                     
                 } else {
-                    // header('Location: /dashboard/update-user?user-card=' . $user->getCard()); 
+                    header('Location: /dashboard/update-user?user-card=' . $user->getCard()); 
                                        
                 } 
                 $newChild = [];
                 // condition pour que la requete s'effectue que s'il y a des nouvelles infos
                 if(count($newInfosUser) > 0){
                     $modelUser->updateUserInfos($newInfosUser, $_POST['id_user']);
-                    // header('Location: /dashboard/update-user?user-card=' . $user->getCard());              
+                    header('Location: /dashboard/update-user?user-card=' . $user->getCard());              
                 } else {
-                    // header('Location: /dashboard/update-user?user-card=' . $user->getCard());
+                    header('Location: /dashboard/update-user?user-card=' . $user->getCard());
                                        
                 }
                 
