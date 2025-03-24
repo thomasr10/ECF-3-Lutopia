@@ -305,9 +305,12 @@ class ModelBook extends Model {
         INNER JOIN `author` ON `book_author`.`id_author` = `author`.`id_author`
         INNER JOIN `book_illustrator` ON `book`.`id_book` = `book_illustrator`.`id_book`
         INNER JOIN `illustrator` ON `book_illustrator`.`id_illustrator` = `illustrator`.`id_illustrator`
+        INNER JOIN `book_category` ON `book`.`id_book` = `book_category`.`id_book`
+        INNER JOIN `category` ON `book_category`.`id_category` = `category`.`id_category` 
         WHERE `book`.`title` LIKE :search
         OR `book`.`isbn` LIKE :search
-        OR CONCAT(`author`.`first_name`, ' ', `author`.`last_name`) LIKE :search;");
+        OR CONCAT(`author`.`first_name`, ' ', `author`.`last_name`) LIKE :search
+        OR `category`.`category_name` LIKE :search LIMIT 10;");
         $req->bindParam('search', $search, PDO::PARAM_STR);
         $req->execute();
 
