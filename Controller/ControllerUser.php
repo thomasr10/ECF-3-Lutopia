@@ -131,10 +131,10 @@ class ControllerUser {
 
                     // remember me
                     if(isset($_POST['Check1'])){
-                        setcookie("remember_mail", $_POST['email'], time() + 3600*24*30);
+                        setcookie("remember_mail", $_POST['email'], time() + 3600*24*30);   //set d'un cookie de 30 jours qui garde en mémoire l'email ainsi que la checkbox 
                         setcookie("remember", $_POST['Check1'], time() + 3600*24*30);
                     } else {
-                        setcookie("remember_mail", '', time() - 36000);
+                        setcookie("remember_mail", '', time() - 36000); //suppresion du cookie si la checkbox est décocher
                         setcookie("remember", '', time() - 3600);
                     }
 
@@ -200,21 +200,21 @@ class ControllerUser {
                 $model = new ModelUser();
                 $child = $model->getChildByCard($_GET['searchAdminUser']);
                 if(!isset($_POST['id-child'])){
-                    $_POST['id-child'] = (string)$child[0]->getId_child();
+                    $_POST['id-child'] = (string)$child[0]->getId_child();  //si post id-child n'est pas attribué on lui attribut la première valeur de l'id-child puisque elle seras selectionner lors de la génération du select avec le nom des enfants
                 }
 
-                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
+                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);  //model qui renvoie les emprunts en fonction de la carte user et du id-child
                 
-                $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']);
+                $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']); //model qui renvoie les réservations par carte et id-child
 
-                $avaibility = [];
-                $copyDispo = [];
-                foreach($reservation as $book=>$value){
-                   $avaibility = $model->getAvailability($reservation[$book]->getId_book());
-                   foreach($avaibility as $key=>$value){
-                        $copy = $model->getBorrowCopy($avaibility[$key]->getId_copy());
-                        if(empty($copy)){
-                            $copyDispo[$book] =  $avaibility[$key]->getId_copy();        
+                $avaibility = [];   //tableau vide pour la disponibilité
+                $copyDispo = [];    //tableau vide pour les copies
+                foreach($reservation as $book=>$value){     // pour chaque réservation 
+                   $avaibility = $model->getAvailability($reservation[$book]->getId_book());   // select les infos d'un id_book 
+                   foreach($avaibility as $key=>$value){    
+                        $copy = $model->getBorrowCopy($avaibility[$key]->getId_copy()); // selectionne les copie des emprunts en cours
+                        if(empty($copy)){   // si il n'y a pas d'emprunt en cours avec cette copie
+                            $copyDispo[$book] =  $avaibility[$key]->getId_copy();  //envoie la copie de l'emprunt dans le tableau copyDispo à l'array du livre      
                         }
                    } 
                 }
@@ -224,19 +224,19 @@ class ControllerUser {
                 $date = $date->format('Y-m-d');
                 
             }
-            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toBorrow'])){
+            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toBorrow'])){     //pour le bouton disponible cliquable
                 $model = new ModelUser();
-                $getResInfo = $model->reservationToBorrow($_POST['reservation_id']);
-                $insertBorrow = $model->createBorrow($_POST['child_id'], $_POST['copy_id']);
-                $search2 = $model->deleteReservation($_POST['reservation_id']);
-                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
-                $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']);
+                $getResInfo = $model->reservationToBorrow($_POST['reservation_id']);    // transforme les infos de la réservation en emprunt
+                $insertBorrow = $model->createBorrow($_POST['child_id'], $_POST['copy_id']);    //crée l'emprunt
+                $search2 = $model->deleteReservation($_POST['reservation_id']);     //supprime la réservation
+                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);    //recharge l'affichage des emprunts
+                $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']);  //recharge l'affichage des réservations
             }
 
-            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel'])){
+            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel'])){   //bouton annuler pour la réservation
                 $model = new ModelUser();
-                $search2 = $model->deleteReservation($_POST['id_reservation']);
-                $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']);
+                $search2 = $model->deleteReservation($_POST['id_reservation']); //supprime la réservation
+                $reservation = $model->getReservationByCard($_GET['searchAdminUser'], $_POST['id-child']); //recharge l'affichage de la réservation
                 $avaibility = [];
                 $copyDispo = [];
                 foreach($reservation as $book=>$value){
@@ -248,17 +248,17 @@ class ControllerUser {
                         }
                    } 
                 }
-                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
+                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']); //recharge l'affichage des emprunts
             }
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prolong'])){
                 $model = new ModelUser();
-                $search2 = $model->updateBorrow($_POST['id_borrow'], $_POST['date_back']);
-                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
+                $search2 = $model->updateBorrow($_POST['id_borrow'], $_POST['date_back']);  //mise à jour d'un emprunt prolonger la date de retour
+                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);    //recharge l'affichage des emprunts
             }
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['suppr'])){
                 $model = new ModelUser();
-                $search2 = $model->deleteBorrow($_POST['id_borrow'], $_POST['date_back']);
-                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);
+                $search2 = $model->deleteBorrow($_POST['id_borrow'], $_POST['date_back']);  //supprime un emprunt 
+                $search = $model->getBorrowByCard($_GET['searchAdminUser'], $_POST['id-child']);    //recharge l'affichage des emprunts
             }
             require_once('./View/dashboard.php');
         } else {
@@ -272,19 +272,19 @@ class ControllerUser {
         json_encode($child);
     }
 
-    public function logout(){
+    public function logout(){  
         session_unset();
         session_destroy();
         header('Location: /');
         exit();
     }
 
-    public function errorPage(){
+    public function errorPage(){    //redirection 404
         global $router;
         require_once('./View/error404.php');
     }
 
-    public function infoPage(){
+    public function infoPage(){     //route page d'information global sur la bibliothèque
         global $router;
         require_once('./View/informations.php');
     }
@@ -294,11 +294,11 @@ class ControllerUser {
         $model = new ModelUser();
         if(isset($_SESSION['id'])){
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel'])){
-                $delete = $model->deleteReservation($_POST['id_reservation']);
+                $delete = $model->deleteReservation($_POST['id_reservation']);      //bouton cancel qui permet d'annuler une réservation avec un form post
             }
-            if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['tri']) && $_GET['tri'] != 0){
+            if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['tri']) && $_GET['tri'] != 0){   //condition d'un select avec POST qui tri les informations du profil en fonction de la date d'emprunt la date de retour, la date d'emprunt, l'enfant ou le titre du livre, en fonction de l' $_GET['tri'] qui correspond au select de la page
                 if($_GET['tri'] == 1){
-                    $info = $model->getInfoChildByUser($_SESSION['id'], $_GET['tri']);
+                    $info = $model->getInfoChildByUser($_SESSION['id'], $_GET['tri']);      
                     $borrow = $model->getBorrowByUser($_SESSION['id'], $_GET['tri']);
                     $borrowHistory = $model->getBorrowByUserHistory($_SESSION['id'], $_GET['tri']);
                     $reservation = $model->getReservationByUser($_SESSION['id'], $_GET['tri']);
@@ -332,7 +332,7 @@ class ControllerUser {
         $model = new ModelUser();
         $user = $model->getUserById($_SESSION['id']);
         if(isset($_SESSION['id'])){
-            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['changeinfo'])){
+            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['changeinfo'])){       //validation d'email en cas de modification de l'email par l'user
                 if(!empty($_POST['first-name']) && !empty($_POST['last-name']) && !empty($_POST['email'])){
                     if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
                         $updateInfo = $model->updateInfo($_SESSION['id'], $_POST['first-name'], $_POST['last-name'], $_POST['email']);  
@@ -346,7 +346,7 @@ class ControllerUser {
                 }
             }
 
-            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['changepass'])){
+            if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['changepass'])){   //validation du mot de passe en cas de modification du mot de passe par l'user
                 if(!empty($_POST['latepass']) && !empty($_POST['newpass']) && !empty($_POST['newpass2'])){
                     $passverify = $model->getPasswordUser($_SESSION['id']);
                     if($passverify && password_verify($_POST['latepass'], $passverify->getPassword())){

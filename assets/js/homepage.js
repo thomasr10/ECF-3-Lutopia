@@ -419,7 +419,7 @@ function sendChildValue(array, id){
             console.log(data);
             if(data == 'ok'){       //condition pour chaque cas d'une réservation 
                 alert('Votre réservation à été prise en compte');
-                showReservation(id);
+                showReservation(id);    //affichage des réservations
                 console.log('reservation ok');
             } else if(data == 'max'){
                 alert('Vous avez atteint la limite de 3 réservations');
@@ -434,7 +434,7 @@ function sendChildValue(array, id){
 
     function showReservation(id){
         const resBox = document.querySelector('.reservation');
-        removeElementByClass('padding-element2');       //suppression de l'affichage de chaque reservation en fonction de l'enfant choisi
+        removeElementByClass('padding-element2');       //suppression de l'affichage pour l'actualiser à chaque fois que la fonction est appelé
         fetch(`/${id}`)
         .then(response => response.json())
         .then(data => { 
@@ -468,7 +468,7 @@ function sendChildValue(array, id){
                     xIcon.setAttribute('alt', 'icone fermeture');
                     xIcon.setAttribute('value', element.id_reservation);
 
-                    xIcon.addEventListener("click", () =>{              //add eventlistener popur la suppression d'une réservation
+                    xIcon.addEventListener("click", () =>{              //add eventlistener pour la suppression d'une réservation
                         removeReservation(element.id_reservation, id);
                     });
 

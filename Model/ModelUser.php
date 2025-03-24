@@ -179,13 +179,13 @@ class ModelUser extends Model {
         "SELECT `reservation`.`id_reservation`,
         `reservation`.`reservation_date`, 
         `reservation`.`id_child`, 
-        `reservation`.`id_book`, 
+        `reservation`.`id_book`,        
         `copy`.`id_copy` 
         FROM `reservation` 
         INNER JOIN `book` ON `reservation`.`id_book` = `book`.`id_book` 
         INNER JOIN `copy` ON `book`.`id_book` = `copy`.`id_book` 
         INNER JOIN `borrow` ON `copy`.`id_copy` = `borrow`.`id_copy`
-        WHERE `id_reservation` = :id AND `borrow`.`status` = 1 AND `borrow`.`end_date` < NOW() LIMIT 1;");
+        WHERE `id_reservation` = :id AND `borrow`.`status` = 1 AND `borrow`.`end_date` < NOW() LIMIT 1;");  
 
         $req->bindParam('id', $id_reservation, PDO::PARAM_INT);
         $req->execute();
@@ -392,26 +392,41 @@ class ModelUser extends Model {
     }
 
     public function updateUserInfos(array $newInfos, int $id_user){
-        $query = "UPDATE `user` SET ";
-        // requete à changer si y a le temps => mettre des "?" pour éviter les variables
+        // j'initialise des tableaux vides
+        $fields = [];
+        $clearValue = [];
+        $realValue = [];
 
-        $lastKey = array_key_last($newInfos);
-
-        // boucler pour concaténer la clé/ valeur à la requête
+        //  je boucle sur le tableau des infos pour stocker des '?' dans $clearValue, les clés dans $fields et les valeurs dans $realValue
         foreach($newInfos as $key => $value){
+
+            $fields[] = $key;
+            $clearValue[] = '?';
+            $realValue[] = $value;
             
-            if($key !== $lastKey){
-                $query .= '`' . $key . '`' . ' = ' . '"' . $value .'"' . ',';
+        }
+
+        // je rajoute l'id dans le tableau car on peut envoyer qu'un param dans un execute 
+        array_push($realValue, $id_user);
+
+        // je crée le début de la requête
+        $query = "UPDATE `user` SET ";
+        // pour connaitre le dernier index
+        $numberOfIndex = count($newInfos) -1;
+
+        // je boucle sur le tableau pour concaténer les champs + les clearValue
+        for($i = 0; $i < count($fields); $i++){
+            if($i === $numberOfIndex){
+                $query .= $fields[$i] . '=' . $clearValue[$i];
             } else {
-                $query .= '`' . $key . '`' . ' = ' . '"' . $value .'"';
+                $query .= $fields[$i] . '=' . $clearValue[$i] . ', ';
             }
         }
 
-        $query .= (' WHERE `id_user` = :id_user');
-        
-        $req = $this->getDb()->prepare($query);
-        $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
-        $req->execute();
+        //  je rajoute la clause where
+        $query .= " WHERE `id_user` = ?";
+        $req = $this->getDb()->prepare($query);        
+        $req->execute($realValue);
     }
 
 

@@ -11,8 +11,6 @@ const buttonBorrowSelect  = document.querySelectorAll('.button_borrow');
 const selectChild = document.getElementById('select-child');
 const childOption = document.querySelectorAll('.child');
 const buttonReserv = document.querySelector('.onebook-reserver');
-console.log(buttonBorrowSelect);
-
 const ageArray = [];
 const idArray = [];
 
@@ -29,30 +27,6 @@ buttonBorrowSelect.forEach(element => {
     });
 });
 
-// selectChild.addEventListener('change', function(event) {
-    
-//     const selectedAge = event.target.value;
-//     const newSplit = selectedAge.split('-');
-//     const newAgeArray = newSplit[0];
-//     const newId = newSplit[1]; 
-    
-//     const newArray = [newAgeArray, ...ageArray.filter(age => age !== newAgeArray)]
-//     const newIdArray = [newId, ...idArray.filter(age => age !== newId)];
-
-//     console.log(newArray);
-//     console.log(newIdArray);
-
-
-    
-//     showReservation(newIdArray[0]);
-
-//     buttonBorrowSelect.forEach(element => {
-//         element.addEventListener('click', () => {
-//                 reservationBook(element.value, newIdArray[0]);
-//         });
-//     });
-// });
-
 
 
 showReservation(idArray[0]);
@@ -61,11 +35,9 @@ function reservationBook(book, id){     //verification reservation
     fetch(`/${book}/${id}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         if(data == 'ok'){
             alert('Votre réservation à été prise en compte');
             showReservation(id);
-            console.log('reservation ok');
         } else if(data == 'max'){
             alert('Vous avez atteint la limite de 3 réservations');
         } else if(data == 'already'){
@@ -128,24 +100,20 @@ function showReservation(id){
                 aButton.append(xIcon);
             });
             
-            const aBack = document.createElement('a'); // a link pour le retour a la homepage
-            aBack.setAttribute("href", "/");
-            aBack.innerHTML = "Changer d'enfant";
-
-            resBox.append(aBack); 
+            
 
         }
     });
 }
 
-function removeElementByClass(className){
+function removeElementByClass(className){       //class qui permet de boucler boucler et supprimer chaque element ayant un classname donner
     let elements = document.getElementsByClassName(className);
     while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[0]);
     }
 }
 
-function removeReservation(id_reservation, id){
+function removeReservation(id_reservation, id){     //suppresion d'une réservation avec la croix dans l'affichage puis rechargement des réservations
     fetch(`/remove/${id_reservation}`)
     .then(response => response.json())
     .then(data => {  
@@ -154,29 +122,23 @@ function removeReservation(id_reservation, id){
 }
 
 
-// console.log(getPageAge.value); debug
 
 let typeId;
 let pageAge = getPageAge.value;
 let categoryId = 0;
-// console.log(typeRadio); debug
 
 
 
-function showTypeBook(age, type, categoryId){
-    containerArticle.innerHTML = '';
-    console.log(age);
-    console.log(type);
-    console.log(categoryId);
-    fetch(`/type/${age}/${type}/${categoryId}`)
+function showTypeBook(age, type, categoryId){   //fonction qui affiche les livres en fonction du type de livre, de la categorie, et de l'age
+    containerArticle.innerHTML = '';   //vider le container à chaque appel de fonction pour pouvoir l'afficher en fonction des filtres 
+    fetch(`/type/${age}/${type}/${categoryId}`) //fetch de la route avec toute les variables
     .then(response => response.json())
     .then(data => {
-        // console.log(data); debug
-        if(data == "Aucun livre trouvé pour se type"){
+        if(data == "Aucun livre trouvé pour ce type"){  //condition pour le renvoie du json encode si aucun livre ne correspond au filtre
             let noFound = document.createElement('h2');
             containerArticle.append(noFound);
-            noFound.append('Aucun livre trouvé pour se type');
-        } else {
+            noFound.append('Aucun livre trouvé pour ce type');
+        } else {      // sinon affichage puis creation des elements pour chaque livre qui match ses filtres
             data.forEach(book => {
                 let bookArticle = document.createElement('article');
                 let title = document.createElement('p')
@@ -198,8 +160,8 @@ function showTypeBook(age, type, categoryId){
                 bookArticle.classList.add('card');
                 bookArticle.append(buttonPink);
                 buttonPink.classList.add("button_pink");
-                buttonPink.addEventListener('click', (e) => {
-                    document.location.href = "/book/" + book.id_book;
+                buttonPink.addEventListener('click', (e) => {   
+                    document.location.href = "/book/" + book.id_book;   //add event listener pour la redirection vers chaque page de livre
                 });
                 buttonPink.setAttribute("value", book.id_book);
                 buttonPink.textContent = "Voir la fiche";
@@ -214,7 +176,7 @@ function showTypeBook(age, type, categoryId){
                 edition.append("illustrée par " + book.editor);
 
                 buttonBorrow.addEventListener('click', function listener1(){
-                    reservationBook(buttonBorrow.value, idArray[0]);
+                    reservationBook(buttonBorrow.value, idArray[0]);    //add event listener pour réserver un livre par rapport à l'enfant selectionner
                 });
 
 
@@ -226,24 +188,20 @@ function showTypeBook(age, type, categoryId){
     })
 }
 
-for (let items of category) {
+for (let items of category) {       //appel de la fonction type book à chaque changement dans le select category
     items.addEventListener("change", (e)=>{
-        console.log(items.value);
         categoryId = items.value;
-        if(typeId == undefined){
+        if(typeId == undefined){    //reglage d'un problème sur le fetch pour une category par défaut
             typeId = 0;
         }
-        showTypeBook(pageAge, typeId, categoryId);
+        showTypeBook(pageAge, typeId, categoryId);  
     });
 }
 
 
 
-typeRadio.forEach(element => {
+typeRadio.forEach(element => {  //appel de la fonction type book à chaque changement dans le input radio type
     element.addEventListener("change", (e)=>{
-        // console.log(element.id);
-        // console.log(typeId);     debug
-        // console.log(pageAge);
         typeId = element.id;
         showTypeBook(pageAge, typeId, categoryId);
     });

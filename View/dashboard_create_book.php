@@ -4,10 +4,11 @@ $description = "Page de création d'un livre sur le dashboard admin de Lutopia";
 $arrayJs = ["./assets/js/dashboard_create_book"];
 ob_start();
 ?>
-
+<div id="modal-overlay"></div>
 <div id="modal-author" class="modal">
     <h2>Ajouter un(e) auteur(ice)</h2>
     <form action="/dashboard-book">
+    <div id="cancel"><img src="<?= UPLOADS ?>autres/cancel.webp" alt="croix"></div>
         <div>
             <label for="author-first-name">Prénom</label>
             <input type="text" name="author-first-name" id="author-first-name" placeholder="Prénom" required>
@@ -17,7 +18,7 @@ ob_start();
             <input type="text" name="author-last-name" id="author-last-name" placeholder="Nom de famille" required>
         </div>
         <div>
-            <input type="submit" name="add-author" id="add-author" value="Ajouter">
+            <input class="button_pink" type="submit" name="add-author" id="add-author" value="Ajouter">
         </div>
     </form>
 </div>
