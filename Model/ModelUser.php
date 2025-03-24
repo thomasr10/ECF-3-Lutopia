@@ -179,13 +179,13 @@ class ModelUser extends Model {
         "SELECT `reservation`.`id_reservation`,
         `reservation`.`reservation_date`, 
         `reservation`.`id_child`, 
-        `reservation`.`id_book`, 
+        `reservation`.`id_book`,        
         `copy`.`id_copy` 
         FROM `reservation` 
         INNER JOIN `book` ON `reservation`.`id_book` = `book`.`id_book` 
         INNER JOIN `copy` ON `book`.`id_book` = `copy`.`id_book` 
         INNER JOIN `borrow` ON `copy`.`id_copy` = `borrow`.`id_copy`
-        WHERE `id_reservation` = :id AND `borrow`.`status` = 1 AND `borrow`.`end_date` < NOW() LIMIT 1;");
+        WHERE `id_reservation` = :id AND `borrow`.`status` = 1 AND `borrow`.`end_date` < NOW() LIMIT 1;");  
 
         $req->bindParam('id', $id_reservation, PDO::PARAM_INT);
         $req->execute();
