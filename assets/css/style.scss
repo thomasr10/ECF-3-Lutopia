@@ -2296,6 +2296,9 @@ article h2 {
   padding-top: 3rem;
   margin: 0 auto;
   display: flex;
+
+  align-items: center;
+
 }
 .dash-statbook-table {
   border-collapse: collapse;
@@ -2313,6 +2316,57 @@ td {
   color: $primary-text-900;
   font-weight: 600;
   height: 2.5rem;
+
+
+  .statbook-title {
+    width: 40%;
+  }
+  .statbook-author {
+    width: 25%;
+  }
+  .statbook-type {
+    width: 20%;
+  }
+  .statbook-borrow {
+    width: 15%;
+  }
+}
+
+.dash-statbook-cellule {
+  padding-left: 0.3rem;
+}
+.dash-statbook-body {
+  color: $primary-text-800;
+  height: 2rem;
+  :nth-child(2) {
+    text-align: center;
+    padding: 0;
+  }
+  :nth-child(4) {
+    text-align: center;
+    padding: 0;
+  }
+  :nth-child(6) {
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.dash-form-container {
+  width: 100%;
+  display: flex;
+}
+.dash-statbook-search {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+
+  input {
+    padding: 0 0;
+    border: none;
+    margin-right: 1rem;
+    color: $primary-text-800;
+    border-radius: 20px;
   .statbook-title {
     width: 40%;
   }
@@ -2386,6 +2440,22 @@ td {
     }
   }
 }
+
+
+#sub-title {
+  color: $primary-text-900;
+  padding-bottom: 1rem;
+  font-size: $titre-h3;
+}
+
+#year {
+  color: $primary-text-900;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 3px solid $primary-text-800;
+  font-family: "Lexend", sans-serif;
+}
+
 // FIN-DASHBOARD STAT BOOK---------------------------------------------------------
 
 //DASHBOARD STOCK BOOK
@@ -2709,6 +2779,56 @@ th {
   background-color: #f2f2f2;
 }
 
+
+// DEBUT DASHBOARD-CREATE-USER-----------------------
+.create-user-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  h1 {
+    font-size: $titre-h2;
+    color: $primary-text-900;
+    margin-bottom: 3rem;
+  }
+}
+
+.create-user-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 70%;
+}
+.child-section {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+.create-user-entry {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  input {
+    padding: 0.3rem 1rem;
+    background-color: $primary-text-300;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    color: $primary-text-900;
+    &:hover {
+      border: 2px solid $primary-text-900;
+    }
+  }
+}
+.create-user-input {
+  padding: 0.3rem 1rem;
+  background-color: $primary-text-300;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  color: $primary-text-900;
+  &:hover {
+    border: 2px solid $primary-text-900;
+  }
+}
+// FIN DASHBOARD-CREATE-USER-----------------------
 // PARAMETRES PROFIL UTILISATEUR
 .parameter-container {
   display: flex;
