@@ -2,7 +2,7 @@
 
 $title = "Accueil | Lutopia";
 $description = "Page d'accueil de Lutopia";
-$arrayJs = ["./assets/js/homepage.js", "./assets/js/search-bar.js","./assets/js/flipCard.js"];
+$arrayJs = ["./assets/js/homepage.js", "./assets/js/search-bar.js", "./assets/js/flipCard.js"];
 $pointSlash = "";
 ob_start();
 ?>
@@ -119,6 +119,7 @@ if(isset($_SESSION['id']) && $_SESSION['role'] == 0){
 ];
 
 $count = 0;
+$countPage = 1;
 $booksByAgeGroup = array_chunk($books, 4);
 
     foreach($booksByAgeGroup as $chunk){
@@ -133,7 +134,7 @@ $booksByAgeGroup = array_chunk($books, 4);
     <?php include "animation_{$animationIndex}.php" ?>
 </div>
 <div id="insteadContainer_<?= $count ?>">
-<p class="age-label"><?= htmlspecialchars($ageLabel) ?></p>
+    <a class="age-label" href="/age/<?= $countPage ?>" ><?= htmlspecialchars($ageLabel) ?></a>
 </div>
 
 
@@ -154,7 +155,7 @@ $booksByAgeGroup = array_chunk($books, 4);
 </div>
 
 <?php
-        
+        $countPage++;
         $count+=2;
     }
 ?>          
