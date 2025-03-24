@@ -2397,10 +2397,7 @@ td {
   width: 100%;
   display: flex;
 }
-.dash-statbook-search {
-  width: 40%;
-  display: flex;
-  justify-content: space-around;
+
 
 
 
@@ -4981,12 +4978,6 @@ grid-template-rows: auto;
   display: flex;
   
 }
-.dash-statbook-search {
-  width: 40%;
-  display: flex;
-  justify-content: space-around;
-
-
     input {
       padding: 0 0 ;
       border: none;
@@ -5019,7 +5010,7 @@ grid-template-rows: auto;
         }
       }
     }
-}
+
 // FIN-DASHBOARD STAT BOOK---------------------------------------------------------
 
 
@@ -5478,11 +5469,6 @@ td {
   width: 100%;
   display: flex;
 }
-.dash-statbook-search {
-  width: 40%;
-  display: flex;
-  justify-content: space-around;
-
   input {
     padding: 0 0;
     border: none;
@@ -5515,7 +5501,7 @@ td {
       }
     }
   }
-}
+
 
 // FIN-DASHBOARD STAT BOOK---------------------------------------------------------
 
@@ -6177,9 +6163,7 @@ article h2 {
   padding-top: 3rem;
   margin: 0 auto;
   display: flex;
-
   align-items: center;
-
 }
 .dash-statbook-table {
   border-collapse: collapse;
@@ -6237,15 +6221,10 @@ td {
   width: 100%;
   display: flex;
 }
-.dash-statbook-search {
-  width: 40%;
-  display: flex;
-  justify-content: center;
 
   input {
     padding: 0 0;
     border: none;
-    margin-right: 1rem;
     color: $primary-text-800;
     border-radius: 20px;
   .statbook-title {
@@ -6325,6 +6304,7 @@ td {
 
 
 
+
 #sub-title {
   color: $primary-text-900;
   padding-bottom: 1rem;
@@ -6333,10 +6313,13 @@ td {
 
 #year {
   color: $primary-text-900;
+  background-color: $primary-text-200;
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  border: 3px solid $primary-text-800;
-  font-family: "Lexend", sans-serif;
+  border: 3px solid transparent;
+    &:hover {
+      border: 3px solid $primary-text-800;
+    }
 }
 
 
@@ -6738,7 +6721,7 @@ th {
   padding: 1rem 1.5rem;
   border: 1px solid #653f31;
   border-radius: 20px;
-}
+
   label {
     padding-right: 0.5rem;
     padding-left: 2rem;
@@ -6773,4 +6756,4 @@ th {
     }
   }
 }
-}
+
