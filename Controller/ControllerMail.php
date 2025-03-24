@@ -14,7 +14,7 @@ class ControllerMail extends Mail {
 
         $phpmailer = $this->getPhpMailer();
         $model = new ModelUser();
-        $user = $model->getNewUser($id);
+        $user = $model->getUserById($id);
         $email = $user->getEmail();
         $name = $user->getFirst_name();
         $token = $user->getToken();
@@ -74,7 +74,7 @@ class ControllerMail extends Mail {
 
         $phpmailer = $this->getPhpMailer();
         $model = new ModelUser();
-        $user = $model->getNewUser($id);
+        $user = $model->getUserById($id);
         $email = $user->getEmail();
         $name = $user->getFirst_name();
         $token = $user->getToken();

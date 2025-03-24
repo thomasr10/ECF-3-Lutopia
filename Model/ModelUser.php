@@ -36,7 +36,7 @@ class ModelUser extends Model {
         $req->execute();
     }
 
-    public function getNewUser(int $id){
+    public function getUserById(int $id){
 
         $req =$this->getDb()->prepare("SELECT `id_user`, `first_name`, `last_name`,`email`, `password`, `token`, `card` FROM `user` WHERE `id_user` = :id");
         $req->bindParam('id', $id, PDO::PARAM_INT);

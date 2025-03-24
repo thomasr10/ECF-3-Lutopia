@@ -330,13 +330,13 @@ class ControllerUser {
     public function profilParameter(){
         global $router;
         $model = new ModelUser();
-        $user = $model->getNewUser($_SESSION['id']);
+        $user = $model->getUserById($_SESSION['id']);
         if(isset($_SESSION['id'])){
             if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['changeinfo'])){
                 if(!empty($_POST['first-name']) && !empty($_POST['last-name']) && !empty($_POST['email'])){
                     if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
                         $updateInfo = $model->updateInfo($_SESSION['id'], $_POST['first-name'], $_POST['last-name'], $_POST['email']);  
-                        $user = $model->getNewUser($_SESSION['id']);
+                        $user = $model->getUserById($_SESSION['id']);
                         $message = "Info mise à jour avec succès"; 
                     } else {
                         $message = "L'email n'est pas au bon format"; 
@@ -486,7 +486,7 @@ class ControllerUser {
 
             if(isset($_POST['update-user']) && !isset($_POST['new-child-name'])){
                 // je me sers de ces méthodes pour récupérer les infos de la bdd
-                $user = $modelUser->getNewUser($_POST['id_user']);
+                $user = $modelUser->getUserById($_POST['id_user']);
                 $children = $modelChild->getChildByUser($user->getId_user());
 
                 // je crée un tabeleau associatif avec les infos du users
@@ -573,7 +573,7 @@ class ControllerUser {
                 
             } else {
                 if(isset($_POST['new-child-name'])){
-                    $user = $modelUser->getNewUser($_POST['id_user']);
+                    $user = $modelUser->getUserById($_POST['id_user']);
                     $newChild[] = [
                         "name" => $_POST['new-child-name'],
                         "birth" => $_POST['new-child-date']
