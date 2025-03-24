@@ -15,20 +15,15 @@ ob_start();
          
          <form class="dash-accueil-form" method="GET" action="/dashboard">
              <input type="text"name="searchAdminUser" id="searchAdminUser" value="" placeholder="entrez ici le n° d'abonné" required>
+             <!-- champ de recherche d'utilisateur par carte d'adhérent -->
              <button type="submit" >
-             <img src="uploads/autres/icon-loupe.svg" alt="">
+                <img src="uploads/autres/icon-loupe.svg" alt="">    <!-- bouton rechercher -->
              </button>
          </form>
-         <div class="dash-accueil-user-name">
-         <?php if(!empty($search)){?><span>FAMILLE : </span><?php echo $search[0]->getLast_Name(); } ?>
-         </div>
+            <div class="dash-accueil-user-name">
+                <?php if(!empty($search)){?><span>FAMILLE : </span><?php echo $search[0]->getLast_Name(); } ?>
+            </div>
         </div>
-        <!-- <div class="dash-select-contain">
-            <select name="id-child" id="id-child" class="dash-select-child">
-                <option value="choisir l'enfant">choisir l'enfant</option>
-            </select>
-        </div>
-    </article> -->
 
 <?php if(isset($_GET['searchAdminUser']) && !empty($_GET['searchAdminUser'])){ 
  ?>
@@ -36,12 +31,10 @@ ob_start();
         
             <form id="child" method="POST" action="/dashboard?searchAdminUser=<?= $_GET['searchAdminUser'] ?>">
                 <select name="id-child" id="id-child" class="dash-select-child">
-                    <?php foreach($child as $key=>$value): ?>
-                        <option <?php if(isset($_POST['id-child']) && $_POST['id-child'] == $child[$key]->getId_child()){ echo 'selected'; }?> value="<?= $child[$key]->getId_child()?>"><?= $child[$key]->getName()?></option>
-                        
+                    <?php foreach($child as $key=>$value): ?> <!-- boucle pour récupérer les informations des enfant par rapport au user -->
+                        <option <?php if(isset($_POST['id-child']) && $_POST['id-child'] == $child[$key]->getId_child()){ echo 'selected'; }?> value="<?= $child[$key]->getId_child()?>"><?= $child[$key]->getName()?></option> <!-- condition pour savoir quel champs doit être selected ainsi que l'id child en value et le nom de l'enfant dans les balises options -->
                     <?php endforeach ?>
                 </select>
-                <!-- <input type="submit" value="Filtrer"> -->
             </form>   
         </div>
     </article>
@@ -58,28 +51,29 @@ ob_start();
            foreach($reservation as $key=>$value):
            ?>
            <div class="dash-accueil-reserv-contain">
-           <p><?= $reservation[$key]->getTitle(); ?></p> <!-- titre de chaque livre réserver -->
-           <?php 
-           if(!empty($copyDispo[$key])){ // if bouton disponible ou else affichage indisponible
-                echo '<form class= "dash-form-reserv" method="POST" action="/dashboard?searchAdminUser=' . $_GET['searchAdminUser'] . '">
-                        <input type="hidden" name="reservation_id" value="' . $reservation[$key]->getId_reservation() . '">                               
-                        <input type="hidden" name="copy_id" value="' . $copyDispo[$key] . '">
-                        <input type="hidden" name="child_id" value="' . $_POST['id-child'] . '">                               
-                        <button class = "dash-dispo" type="submit" name="toBorrow">Disponible
-                          <img src="uploads/autres/keyboard_return.svg" alt="">
-                        </button> ' ;
-            } else {
-                echo '
-                <form method="POST" action="/dashboard?searchAdminUser=' . $_GET['searchAdminUser'] . '"> 
-                <button class = "dash-disabled" type="submit" disabled value="Indisponible">Indisponible  <img src="uploads/autres/keyboard_return.svg" alt=""></button> '; // information indisponibilité du livre
-            }
-            echo '</form>';
-           ?> 
+            <p><?= $reservation[$key]->getTitle(); ?></p> <!-- titre de chaque livre réserver -->
 
-           <form method="POST" action="/dashboard<?= '?searchAdminUser=' . $_GET['searchAdminUser'] ?>">
-            <input type="hidden" name="id_reservation" value="<?= $reservation[$key]->getId_reservation();?>">
-            <input class= "dash-input-annuler" type="submit" name="cancel" value="Annuler">
-           </form>
+                <?php 
+                if(!empty($copyDispo[$key])){ // condition pour la disponibilité d'un livre en fonction des copies du livre réservé
+                        echo '<form class= "dash-form-reserv" method="POST" action="/dashboard?searchAdminUser=' . $_GET['searchAdminUser'] . '">
+                                <input type="hidden" name="reservation_id" value="' . $reservation[$key]->getId_reservation() . '">  
+                                <input type="hidden" name="copy_id" value="' . $copyDispo[$key] . '">
+                                <input type="hidden" name="child_id" value="' . $_POST['id-child'] . '">                               
+                                <button class = "dash-dispo" type="submit" name="toBorrow">Disponible
+                                <img src="uploads/autres/keyboard_return.svg" alt="">
+                                </button> '; // formulaire avec l'id reservation une copie disponible et id de l'enfant pour pouvoir transformer la réservation en emprunt 
+                    } else {
+                        echo '
+                        <form method="POST" action="/dashboard?searchAdminUser=' . $_GET['searchAdminUser'] . '"> 
+                        <button class = "dash-disabled" type="submit" disabled value="Indisponible">Indisponible  <img src="uploads/autres/keyboard_return.svg" alt=""></button> '; // information indisponibilité du livre
+                    }
+                    echo '</form>';
+                ?> 
+
+            <form method="POST" action="/dashboard<?= '?searchAdminUser=' . $_GET['searchAdminUser'] ?>">
+                <input type="hidden" name="id_reservation" value="<?= $reservation[$key]->getId_reservation();?>"> 
+                <input class= "dash-input-annuler" type="submit" name="cancel" value="Annuler">     <!-- formulaire qui envoie une suppression de réservation avec l'id -->
+            </form>
            </div>
            <?php endforeach;
            echo 3 - count($reservation). ' reservations restantes'; //nombre de réservation restante ?>

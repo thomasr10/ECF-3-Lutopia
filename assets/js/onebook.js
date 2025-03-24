@@ -26,9 +26,6 @@ selectChild.addEventListener('change', function(event) {
     const newArray = [newAgeArray, ...ageArray.filter(age => age !== newAgeArray)]
     const newIdArray = [newId, ...idArray.filter(age => age !== newId)];
 
-    console.log(newArray);
-    console.log(newIdArray);
-
     showReservation(newIdArray[0]);
     buttonReserv.addEventListener('click', () => {
         reservationBook(buttonReserv.value, newIdArray[0]);
@@ -42,11 +39,9 @@ function reservationBook(book, id){     //verification reservation
     fetch(`/${book}/${id}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         if(data == 'ok'){
             alert('Votre réservation à été prise en compte');
             showReservation(id);
-            console.log('reservation ok');
         } else if(data == 'max'){
             alert('Vous avez atteint la limite de 3 réservations');
         } else if(data == 'already'){
