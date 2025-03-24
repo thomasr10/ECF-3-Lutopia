@@ -138,10 +138,10 @@ function showTypeBook(age, type, categoryId){   //fonction qui affiche les livre
     fetch(`/type/${age}/${type}/${categoryId}`) //fetch de la route avec toute les variables
     .then(response => response.json())
     .then(data => {
-        if(data == "Aucun livre trouvé pour se type"){  //condition pour le renvoie du json encode si aucun livre ne correspond au filtre
+        if(data == "Aucun livre trouvé pour ce type"){  //condition pour le renvoie du json encode si aucun livre ne correspond au filtre
             let noFound = document.createElement('h2');
             containerArticle.append(noFound);
-            noFound.append('Aucun livre trouvé pour se type');
+            noFound.append('Aucun livre trouvé pour ce type');
         } else {      // sinon affichage puis creation des elements pour chaque livre qui match ses filtres
             data.forEach(book => {
                 let bookArticle = document.createElement('article');

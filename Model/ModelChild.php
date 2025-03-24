@@ -105,7 +105,7 @@ class ModelChild extends Model {
             
         }
 
-        // je rajoute l'id dans le tableau car on peut envoyer qu'un param dans un execute 
+        // je rajoute l'id dans le tableau car on peut envoyer qu'un param dans un execute
         array_push($realValue, $id_child);
 
         // je crée le début de la requête

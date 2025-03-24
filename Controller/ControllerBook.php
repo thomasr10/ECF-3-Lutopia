@@ -87,7 +87,7 @@ class ControllerBook {
                 echo json_encode($arrayObj);
 
             } else {
-                echo json_encode("Aucun livre trouvé pour se type");
+                echo json_encode("Aucun livre trouvé pour ce type");
             }
     }
 
