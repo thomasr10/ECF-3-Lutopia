@@ -775,6 +775,9 @@ h1 {
     object-fit: contain;
     justify-content: center;
     align-items: center;
+    @include mobile{
+      align-items: start;
+    }
   }
 }
 .onebook-resume {
@@ -797,6 +800,7 @@ h1 {
       font-size: $para;
       text-align: left;
     }
+ 
   }
 }
 
@@ -808,6 +812,9 @@ h1 {
   @include tablet {
     margin: 0 auto;
     text-align: center;
+  }
+  @include mobile{
+    width: 60%;
   }
 }
 .onebook-creator {
@@ -6760,6 +6767,7 @@ th {
   margin: 0 auto;
   width: 70%;
 }
+
 .child-section {
   display: flex;
   flex-direction: column;
