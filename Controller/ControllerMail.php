@@ -62,42 +62,10 @@ class ControllerMail extends Mail {
     }
 
 
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function confirmRegisterFromDashboard(int $id){
+        
+        //  mail envoyé au user pour créer son mdp après l'inscription côté admin
+
         $url = $_SERVER['REQUEST_URI'];
         $s = explode('/', $url);
         $id = intval(end($s));
@@ -123,18 +91,6 @@ class ControllerMail extends Mail {
         <body style='font-family: Arial, sans-serif; background-color: #F7F7F7; color: #181B31; margin: 0; padding: 0;'>
             <h3 style='color: #653F31;'>Bonjour " . $name . ",</h3>
             <p style='font-size: 16px; line-height: 1.5; margin: 10px 0; color: #181B31;'>Bienvenue chez <span style='color: #FD9C94; font-weight: bold;'>Lutopia</span>, la première librairie uniquement dédiée aux enfants.</p>";
-    
-            if(count($child) > 1){
-                $phpmailer->Body .= "<p style='font-size: 16px; line-height: 1.5; margin: 10px 0; color: #181B31;'>En espérant que vos petits </p>";
-                $lastIndex = count($child) - 1;
-                foreach($child as $index => $c){
-                    $phpmailer->Body .= "<span style='color: #181B31;'>" . $c->getName() . "</span>" . ($index < $lastIndex ? ', ' : ' ');
-                }
-                $phpmailer->Body .= "<p style='font-size: 16px; line-height: 1.5; margin: 10px 0; color: #181B31;'>trouvent leur bonheur parmi nos livres !</p>";
-            } else {
-                $phpmailer->Body .= "<p style='font-size: 16px; line-height: 1.5; margin: 10px 0; color: #181B31;'>En espérant que votre petit <span style='color: #FD9C94; font-weight: bold;'>" . $child[0]->getName() . "</span> trouve son bonheur parmi nos livres !</p>";
-            }
-            
             $phpmailer->Body .= "
                     <p style='font-size: 16px; line-height: 1.5; margin: 10px 0; color: #181B31;'>Veuillez valider votre inscription en cliquant sur ce <a href='http://lutopia/create-password/" . $id . "' style='color: #FD9C94; font-weight: bold;'>lien</a></p>
                     <br>
