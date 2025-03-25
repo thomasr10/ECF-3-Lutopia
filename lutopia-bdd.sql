@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 24 mars 2025 à 11:28
+-- Généré le : mar. 25 mars 2025 à 08:35
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -487,7 +487,7 @@ CREATE TABLE IF NOT EXISTS `borrow` (
   PRIMARY KEY (`id_borrow`),
   KEY `COPY` (`id_copy`),
   KEY `CHILD` (`id_child`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=385 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=387 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `borrow`
@@ -617,7 +617,9 @@ INSERT INTO `borrow` (`id_borrow`, `start_date`, `end_date`, `id_child`, `id_cop
 (381, '2025-03-13', '2025-03-28', 29, 149, 0),
 (382, '2025-03-13', '2025-03-28', 29, 151, 0),
 (383, '2025-03-13', '2025-03-28', 29, 153, 0),
-(384, '2025-03-13', '2025-03-28', 23, 157, 0);
+(384, '2025-03-13', '2025-03-28', 23, 157, 0),
+(385, '2025-03-25', '2025-04-09', 25, 63, 0),
+(386, '2025-03-25', '2025-04-09', 24, 34, 0);
 
 -- --------------------------------------------------------
 
@@ -676,7 +678,7 @@ INSERT INTO `child` (`id_child`, `id_user`, `name`, `birth_date`, `end_valid_dat
 (24, 34, 'toto', '2024-12-15', '2036-12-15 00:00:00'),
 (25, 34, 'tg', '2019-12-28', '2031-12-28 00:00:00'),
 (26, 36, 'Lina', '2019-05-14', '2027-05-14 00:00:00'),
-(27, 36, 'Elias', '2021-09-30', '2029-09-30 00:00:00'),
+(27, 36, 'Elias', '2020-09-30', '2029-09-30 00:00:00'),
 (28, 37, 'Naël', '2017-02-22', '2025-02-22 00:00:00'),
 (29, 37, 'Maya', '2020-07-11', '2028-07-11 00:00:00'),
 (30, 38, 'Kenzo', '2022-03-05', '2030-03-05 00:00:00'),
@@ -977,7 +979,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   PRIMARY KEY (`id_reservation`),
   KEY `BOOK` (`id_book`),
   KEY `CHILD` (`id_child`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `reservation`
@@ -987,7 +989,7 @@ INSERT INTO `reservation` (`id_reservation`, `reservation_date`, `id_child`, `id
 (6, '2025-03-19', 24, 25),
 (8, '2025-03-19', 25, 7),
 (11, '2025-03-23', 25, 59),
-(13, '2025-03-24', 25, 27);
+(14, '2025-03-25', 24, 22);
 
 -- --------------------------------------------------------
 
@@ -1046,9 +1048,8 @@ INSERT INTO `user` (`id_user`, `first_name`, `last_name`, `email`, `password`, `
 (31, 'thomas', 'thomas', 'testggggggggg@mail.com', '$2y$10$mF06k5njC9eb7Ks68gxLzulqnU/ueJ18.2ZOgFvyg8YL6agB73pTm', 0, 1, '', '2025-02-28 11:41:34', '2025-02-28', 'TH31TH'),
 (32, 'thomas', 'ddfkf', 'sdjkfsfj@mail.com', '$2y$10$oSN1qXdS4YDYkTeNdi8J0uFsEcedt8FlOz5B3Y9hJad13sSaOjRAu', 0, 1, '', '2025-02-28 11:52:58', '2025-02-28', 'TH32DD'),
 (33, 'thomas', 'test', 'thomas1212@gmail.com', '$2y$10$dWU8LZjw7bUQ4ObBgM6BHO9B/ynya7.t9Y/RF54htCTzvEnltvcL.', 0, 1, '', '2025-02-28 14:25:34', '2025-02-28', 'TH33TE'),
-(34, 'thomas', 'fgd', 'fgdgg@mail.com', '$2y$10$iM3uCLtLnpAuV4v3oGKNKebopctWsYVL.Mdowmv1w/ZsBe2qoPyjq', 0, 1, '', '2025-02-28 14:55:44', '2025-02-28', 'TH34FG'),
-(35, 'thomas', 'dfsdfk', 'fdfdf@mail.com', '$2y$10$66Hg0mcq4XaSk28bND4xBed6nzr4uWGEIZeaNfpvAJPNDTOktkvS.', 0, 1, '', '2025-03-03 09:43:28', '2025-03-03', 'TH35DF'),
-(36, 'Adrien', 'Verdier', 'adrien.verdier@email.com', '$2y$10$Fq9A1n1uOljb2/5J9WQ5SOPLR5sw8/YT1nZ9WbFAilEqZ88H7FY.i', 0, 1, '', '2024-03-06 12:15:00', '2024-03-06', 'AD36VE'),
+(34, 'User', 'Lutopia', 'user@lutopia.com', '$2y$10$iM3uCLtLnpAuV4v3oGKNKebopctWsYVL.Mdowmv1w/ZsBe2qoPyjq', 0, 1, '', '2025-02-28 14:55:44', '2025-02-28', 'US35LU'),
+(36, 'Adrien', 'Verdier', 'adrien.verdier@email.com', '$2y$10$.k63gAozanXuhYqxHpjIwuUS22DVcHStZUEOGRsfU3GIi4YLmccVq', 0, 1, '', '2024-03-06 12:15:00', '2024-03-06', 'AD36VE'),
 (37, 'Clémence', 'Morel', 'clemence.morel@email.com', '$2y$10$Fq9A1n1uOljb2/5J9WQ5SOPLR5sw8/YT1nZ9WbFAilEqZ88H7FY.i', 0, 1, '', '2023-11-22 09:30:00', '2023-11-22', 'CL37MO\n'),
 (38, 'Jules', 'Charpentier', 'jules.charpentier@email.com', '$2y$10$Fq9A1n1uOljb2/5J9WQ5SOPLR5sw8/YT1nZ9WbFAilEqZ88H7FY.i', 0, 1, '', '2022-08-14 18:45:00', '2022-08-14', 'JU38CH\n'),
 (39, 'Emilie', 'Lambert', 'emilie.lambert@email.com', '$2y$10$Fq9A1n1uOljb2/5J9WQ5SOPLR5sw8/YT1nZ9WbFAilEqZ88H7FY.i', 0, 1, '', '2023-05-30 15:20:00', '2023-05-30', 'EM39LA'),
