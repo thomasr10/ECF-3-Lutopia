@@ -39,3 +39,13 @@ Complete with your own credentials and settings.
 MAIL_USERNAME = "Your mailtrap username"
 MAIL_PASSWORD = "Your mailtrap password"
 ```
+
+### Users
+#### User
+- mail : user@lutopia.com
+- pass : Test12345!
+
+#### Admin
+- name : admin
+- mail : admin@admin.com
+- pass : 123456Aa$
